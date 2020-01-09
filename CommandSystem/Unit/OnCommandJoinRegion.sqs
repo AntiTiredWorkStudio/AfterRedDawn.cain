@@ -15,12 +15,15 @@ _tCommand = _this select 1
 TriggerUnits = TriggerUnits+[_tUnit]
 _InviteInfo = [format["Invite %1 To Team",_tUnit],"CommandSystem/Commander/OnInvite.sqs"]
 _ActionID = _tCommand addAction _InviteInfo
-[_tUnit,_tCommand,_ActionID] exec "CommandSystem/Unit/OnCommandLeaveRegion.sqs"
-exit
+goto "OnCommandLeaveRegion"
 
 #Exist
 TriggerUnits = TriggerUnits+[_tUnit]
 _InviteInfo = [format["Dismiss %1 From Team",_tUnit],"CommandSystem/Commander/OnDissmiss.sqs"]
 _ActionID = _tCommand addAction _InviteInfo
-[_tUnit,_tCommand,_ActionID] exec "CommandSystem/Unit/OnCommandLeaveRegion.sqs"
-exit
+goto "OnCommandLeaveRegion"
+
+#OnCommandLeaveRegion
+@(_tCommand distance _tUnit > 3)
+_tCommand removeAction _ActionID;
+goto "Loop"

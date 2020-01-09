@@ -1,0 +1,43 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+RadioOperator = _this select 0
+StolenRadio = false
+StolenMap = false
+
+
+SignalTrigger_01_Units = []
+SignalTrigger_02_Units = []
+SignalTrigger_03_Units = []
+SignalTrigger_04_Units = []
+SignalTrigger_05_Units = []
+SignalTrigger_06_Units = []
+SignalTrigger_07_Units = []
+SignalTrigger_08_Units = []
+
+
+
+@ ((count SignalTrigger_01_Units>0) && (count SignalTrigger_02_Units>0) && (count SignalTrigger_03_Units>0) && (count SignalTrigger_04_Units>0) && (count SignalTrigger_05_Units>0) && (count SignalTrigger_06_Units>0) && (count SignalTrigger_07_Units>0) && (count SignalTrigger_08_Units>0))
+
+
+SignalGroup01 = [SignalTower01,"Signal_01","SignalRegion_01",SignalTrigger_01,SignalTrigger_01_Units]
+SignalGroup02 = [SignalTower02,"Signal_02","SignalRegion_02",SignalTrigger_02,SignalTrigger_02_Units]
+SignalGroup03 = [SignalTower03,"Signal_03","SignalRegion_03",SignalTrigger_03,SignalTrigger_03_Units]
+SignalGroup04 = [SignalTower04,"Signal_04","SignalRegion_04",SignalTrigger_04,SignalTrigger_04_Units]
+SignalGroup05 = [SignalTower05,"Signal_05","SignalRegion_05",SignalTrigger_05,SignalTrigger_05_Units]
+SignalGroup06 = [SignalTower06,"Signal_06","SignalRegion_06",SignalTrigger_06,SignalTrigger_06_Units]
+SignalGroup07 = [SignalTower07,"Signal_07","SignalRegion_07",SignalTrigger_07,SignalTrigger_07_Units]
+SignalGroup08 = [SignalTower08,"Signal_08","SignalRegion_08",SignalTrigger_08,SignalTrigger_08_Units]
+
+SignalInfoList= [SignalGroup01,SignalGroup02,SignalGroup03,SignalGroup04,SignalGroup05,SignalGroup06,SignalGroup07,SignalGroup08]
+
+{(_x select 3) setPos getpos (_x select 0)}forEach SignalInfoList
+{(_x select 2) setMarkerPos [-1000,-1000];(_x select 1) setMarkerPos [-1000,-1000];}forEach SignalInfoList
+"SIGNAL_FEEDBACK" setMarkerPos [-1000,-1000]
+
+1 setRadioMsg "[UNAVAILABLE]"
+
+[RadioOperator,MapTable]exec "SignalSystem/OnStolenMap.sqs"
+[RadioOperator,RadioMechine]exec "SignalSystem/OnStolenRadio.sqs"
+
+exit

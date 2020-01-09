@@ -1,0 +1,14 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+_tCommand = _this select 0
+_Radio = _this select 1
+
+#Loop
+@ (_tCommand distance _Radio)<=2
+TriggerUnits = TriggerUnits+[_Radio]
+_ActionID = _tCommand addAction["Steal Radio","SignalSystem/StealRadio.sqs"]
+@ (_tCommand distance _Radio)>2
+_tCommand removeAction _ActionID;
+?(!StolenRadio) : goto "Loop"
+exit

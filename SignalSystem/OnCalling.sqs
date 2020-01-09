@@ -1,0 +1,54 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+_tCommand = _this select 0
+_tCommand sideChat "Alpha One to All Units,Please Report your status!"
+
+_i = 0
+_isfound = false
+
+#startfound
+
+_currentTower = (SignalInfoList select _i) select 0
+
+
+_tCommand sideChat format["%1 distance:%2",_i,_currentTower distance _tCommand];
+
+if((_currentTower distance _tCommand)<1000)then{_isfound=true;goto "found"}
+
+_i = _i+1
+~3
+? _i< count SignalInfoList : goto "startfound"
+
+#found
+
+? !_isfound : goto "End"
+
+
+_units = (SignalInfoList select _i) select 4
+
+_i = _i+1
+
+;hint format["You are in the region:%1,units:%2", _i,_units]
+
+_seek = 0
+_LeaderGroup = []
+
+#SearchLeader
+_cUnit = _units select _seek
+if(_cUnit == Leader _cUnit)then{_LeaderGroup= _LeaderGroup+[_cUnit]}
+_seek = _seek + 1
+?(_seek < count _units) : goto "SearchLeader"
+
+_Target = _LeaderGroup select (random (count _LeaderGroup))
+
+hint format["You are in the region:%1,units:%2", _i,_LeaderGroup]
+
+~(1+random 10)
+
+
+"SIGNAL_FEEDBACK" setMarkerPos getpos _Target
+_Target sideChat format["%1 Copy That",_Target]
+
+#End
+exit

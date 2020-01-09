@@ -1,0 +1,11 @@
+_regionUnits = _this select 0
+_id = _this select 1
+if(_id == 1) then {SignalTrigger_01_Units=_regionUnits;exit;}
+if(_id == 2) then {SignalTrigger_02_Units=_regionUnits;exit;}
+if(_id == 3) then {SignalTrigger_03_Units=_regionUnits;exit;}
+if(_id == 4) then {SignalTrigger_04_Units=_regionUnits;exit;}
+if(_id == 5) then {SignalTrigger_05_Units=_regionUnits;exit;}
+if(_id == 6) then {SignalTrigger_06_Units=_regionUnits;exit;}
+if(_id == 7) then {SignalTrigger_07_Units=_regionUnits;exit;}
+if(_id == 8) then {SignalTrigger_08_Units=_regionUnits;exit;}
+exit

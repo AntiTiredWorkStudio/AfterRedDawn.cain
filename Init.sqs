@@ -6,3 +6,5 @@ Guba addMagazine"glocksMag";
 Guba addMagazine"glocksMag";
 Guba addMagazine"glocksMag";
 Guba addWeapon"glocks";
+
+[Guba]exec "SignalSystem/InitSignalSystem.sqs"

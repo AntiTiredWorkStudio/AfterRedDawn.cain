@@ -1,0 +1,13 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+_ActionID = _this select 2
+_tCommand removeAction _ActionID;
+TitleText["Stealing","Plain Down"]
+~1
+TitleText["","Plain Down"]
+RadioMechine setpos [-1000,-1000]
+StolenRadio = true
+1 setRadioMsg "Call Units"
+hint "You can use radio to Call your units,Press 0-0-1 to call."
+exit
