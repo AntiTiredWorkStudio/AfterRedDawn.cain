@@ -1,0 +1,24 @@
+_ActionID = _this select 2
+_tUnit = TriggerUnits select _ActionID
+
+TitleText["Inviting","Plain Down"]
+TitleText[format["Do you want to join me %1?",_tUnit],"Plain Down"]
+_cGroup = group _tUnit
+[_tUnit] join group Commander
+hint format["%1",units _cGroup]
+~1
+_tUnit setBehaviour "SAFE"
+~2
+_tUnit setDir (getDir Commander)-180
+_tUnit doWatch Commander
+~2
+_tUnit PlayMove "EffectStandSalute"
+~1
+_tUnit PlayMove "EffectStandSaluteOut"
+TitleText["Ok I want it!","Plain Down"]
+~1
+_tUnit setBehaviour "AWARE"
+~1
+hint format["%1 join your team",_tUnit]
+TitleText["","Plain Down"]
+exit

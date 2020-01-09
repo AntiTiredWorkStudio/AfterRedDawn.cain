@@ -1,0 +1,23 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+
+InviteCommands = []
+DismissCommands = []
+DismissCommandsInfo = []
+TriggerUnits = []
+_GetGroup = _this select 0
+Commander = _this select 1
+
+_i=-1
+_count = 0
+#Loop
+_i=_i+1
+_unit = (_GetGroup select _i)
+?(_unit==Player or (not alive _unit) or (Vehicle _unit != _unit)):goto "PlayerFlag"
+[_unit,Commander] exec "CommandSystem/Unit/OnCommandJoinRegion.sqs"
+[_unit] exec "CommandSystem/Unit/ListenUnitInTeam.sqs"
+_count = _count+1
+#PlayerFlag
+?(_i<(count _GetGroup)):goto "Loop"
+exit

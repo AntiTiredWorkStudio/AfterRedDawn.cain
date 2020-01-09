@@ -1,0 +1,8 @@
+_ActionID = _this select 2
+_tUnit = TriggerUnits select _ActionID
+
+TitleText["Dismiss Unit","Plain Down"]
+[_tUnit] join grpNull
+~2
+TitleText["","Plain Down"]
+exit

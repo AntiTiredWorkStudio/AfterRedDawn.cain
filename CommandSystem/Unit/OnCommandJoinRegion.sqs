@@ -1,0 +1,26 @@
+_tUnit = _this select 0
+_tCommand = _this select 1
+#Loop
+@(_tCommand distance _tUnit <= 3 and alive _tUnit)
+
+
+;不在指挥官所在的编组
+? (!(_tUnit in units group _tCommand) and (count units group _tCommand)<12) : goto "NotExist"
+;在指挥官所在的编组
+?(_tUnit in units group _tCommand) : goto "Exist"	
+
+? (!(_tUnit in units group _tCommand) and (count units group _tCommand)>=12) : goto "Loop"
+
+#NotExist
+TriggerUnits = TriggerUnits+[_tUnit]
+_InviteInfo = [format["Invite %1 To Team",_tUnit],"CommandSystem/Commander/OnInvite.sqs"]
+_ActionID = _tCommand addAction _InviteInfo
+[_tUnit,_tCommand,_ActionID] exec "CommandSystem/Unit/OnCommandLeaveRegion.sqs"
+exit
+
+#Exist
+TriggerUnits = TriggerUnits+[_tUnit]
+_InviteInfo = [format["Dismiss %1 From Team",_tUnit],"CommandSystem/Commander/OnDissmiss.sqs"]
+_ActionID = _tCommand addAction _InviteInfo
+[_tUnit,_tCommand,_ActionID] exec "CommandSystem/Unit/OnCommandLeaveRegion.sqs"
+exit

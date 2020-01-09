@@ -1,0 +1,8 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+Guba addMagazine"glocksMag";
+Guba addMagazine"glocksMag";
+Guba addMagazine"glocksMag";
+Guba addMagazine"glocksMag";
+Guba addWeapon"glocks";

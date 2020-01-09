@@ -1,0 +1,10 @@
+_tUnit = _this select 0
+_tCommand = _this select 1
+_tID = _this select 2
+
+#Loop
+@(_tCommand distance _tUnit > 3)
+
+_tCommand removeAction _tID;
+
+[_tUnit,_tCommand] exec "CommandSystem/Unit/OnCommandJoinRegion.sqs"

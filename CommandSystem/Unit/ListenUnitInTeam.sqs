@@ -1,0 +1,7 @@
+_tUnit = _this select 0
+_tGroup = group _tUnit
+#Loop
+@((count units _tGroup >= 2) && (count units group _tUnit == 1) && (group _tUnit != _tGroup))
+[_tUnit] join _tGroup
+hint format["%1",units _tGroup]
+goto "Loop"
