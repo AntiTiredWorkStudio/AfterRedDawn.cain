@@ -1,0 +1,26 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+_tUnit = _this select 0
+_fUnit = _this select 1
+
+_tUnit doFollow (Leader group _tUnit)
+
+_tUnit setUnitPos "Up"
+#Track
+_GubaPos = getpos _fUnit
+_tUnit doMove _GubaPos
+~1
+?(_tUnit distance _fUnit)>5 :goto "Track"
+#Hold
+CapturedCount = CapturedCount + 1
+_tUnit doWatch Guba
+_tUnit doTarget Guba
+dostop _tUnit
+~2
+? Arrest : goto "End"
+?(_tUnit distance _fUnit)>5 :goto "Track"
+?(_tUnit distance _fUnit)<5 :goto "Hold"
+#End
+
+exit

@@ -1,0 +1,10 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+_units =units group (_this select 0)
+_i=0
+#Loop
+[_units select _i]exec "DammageRemove/RemoveUnitDammage.sqs"
+_i = _i+1
+? _i< (count _units) : goto "Loop"
+exit

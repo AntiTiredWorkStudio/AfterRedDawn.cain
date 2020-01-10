@@ -1,0 +1,8 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+_unit =_this select 0
+#Loop
+@(getDammage _unit) > 0
+_unit setDammage 0
+goto "Loop"

@@ -1,0 +1,28 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+[DTeam01]exec "DammageRemove/RemoveGroupDammage.sqs"
+[DTeam02]exec "DammageRemove/RemoveGroupDammage.sqs"
+[DTeamSky]exec "DammageRemove/RemoveGroupDammage.sqs"
+[DTeamFly]exec "DammageRemove/RemoveUnitDammage.sqs"
+
+DTeamSky moveInCargo DTeamFly;
+DTeamSky setCombatMode "RED"
+DTeamSky_Driver moveInDriver DTeamFly;
+DTeamSky_Driver setCombatMode "RED"
+DTeamSky_Gunner moveInGunner DTeamFly;
+DTeamSky_Gunner setCombatMode "RED"
+doStop DTeamSky_Driver
+
+(units group EscTeam select 1) moveInDriver EscapeUaz
+(units group EscTeam select 0) moveInCargo EscapeUaz
+(units group EscTeam select 2) moveInCargo EscapeUaz
+Guba moveInCargo EscapeUaz
+{_x allowFleeing 1}forEach units group EscTeam
+
+CapturedCount = 0
+Arrest = false
+
+Guba setCaptive true
+
+[]exec"OnCaptured/PlayerCaptured.sqs"

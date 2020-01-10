@@ -4,7 +4,7 @@
 RadioOperator = _this select 0
 StolenRadio = false
 StolenMap = false
-
+OnCalling = false
 
 SignalTrigger_01_Units = []
 SignalTrigger_02_Units = []
@@ -34,6 +34,7 @@ SignalInfoList= [SignalGroup01,SignalGroup02,SignalGroup03,SignalGroup04,SignalG
 {(_x select 3) setPos getpos (_x select 0)}forEach SignalInfoList
 {(_x select 2) setMarkerPos [-1000,-1000];(_x select 1) setMarkerPos [-1000,-1000];}forEach SignalInfoList
 "SIGNAL_FEEDBACK" setMarkerPos [-1000,-1000]
+"SIGNAL_YOUR" setMarkerPos [-1000,-1000]
 
 1 setRadioMsg "[UNAVAILABLE]"
 
