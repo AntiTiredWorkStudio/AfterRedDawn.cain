@@ -1,0 +1,11 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+
+@ ((count weapons Guba) > 0 or (Guba distance Tent)>15) or (Guba in KeyTruck)
+Guba setCaptive false
+~3
+DTeam01 doMove getpos Guba
+DTeam02 doMove getpos Guba
+DTeamSky doMove getpos Guba
+exit

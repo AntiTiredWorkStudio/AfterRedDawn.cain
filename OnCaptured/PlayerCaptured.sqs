@@ -1,7 +1,10 @@
 ; *****************************************************
 ; ** Operation Flashpoint Script File
 ; *****************************************************
-
+removeAllWeapons Guba
+Guba action["Eject",EscapeUaz]
+EscapeUaz setDammage 1
+goto "FinishCheck"
 _EscapeGroup = (units group EscTeam)
 _T1 = (units group EscTeam) select 0
 _T2 = (units group EscTeam) select 1
@@ -9,18 +12,18 @@ _T3 = (units group EscTeam) select 2
 ;hint format["%1,%2,%3",_T1,_T2,_T3]
 group EscTeam setSpeedMode "FULL"
 EscTeam doMove getpos EscapeTarget
-{_x doMove getpos EscTeam;_x doTarget EscTeam;_x setSpeedMode "FULL"}forEach units group DTeam01
-{_x doMove getpos EscTeam;_x doTarget EscTeam;_x setSpeedMode "FULL"}forEach units group DTeam02
-DTeamSky_Gunner doTarget EscapeUaz
+{_x doMove getpos EscTeam;_x doFire EscTeam;_x setSpeedMode "FULL"}forEach units group DTeam01
+{_x doMove getpos EscTeam;_x doFire EscTeam;_x setSpeedMode "FULL"}forEach units group DTeam02
+DTeamFly doTarget EscapeUaz
 @ !canmove EscapeUaz
-DTeamSky_Gunner doTarget ObjNull
+DTeamFly doTarget ObjNull
 ~0.5
 
 {unassignVehicle _x}forEach _EscapeGroup
 unassignVehicle Guba
 
 {_x doMove getpos SkyLandPlane;_x setSpeedMode "FULL"}forEach units group EscTeam
-;DTeamSky land "LAND"
+
 
 @(!alive _T1 and !alive _T2 and !alive _T3)
 ;hint format["%1",(count units group _EscapeGroup)]
@@ -38,7 +41,7 @@ Guba setDammage 0
 
 TitleText["Drop your weapons old man! I count 3 times!","Plain Down"]
 ~3
-
+if(Player != Guba) then{removeAllWeapons Guba;Guba switchmove "FXStandSurDown"}
 _CheckWeaponsCount=0
 #CheckWeapon
 _CheckWeaponsCount = _CheckWeaponsCount+1
@@ -56,23 +59,33 @@ Guba setCaptive false
 goto "End"
 
 #FinishCheck
+showMap=false
 ~1
 Arrest = true
 TitleText["You are under arrest,Old Devil!","Plain Down"]
+;*************** 01 **************************
 disableUserInput true
 ~3
+Guba say "36v01"
+~6
 TitleText["","Plain Down"]
 ~1
+;*************** 02 **************************
 TitleCut["You are being escorted to NATO's base","Black"]
 ~5
 
 Guba moveInCargo DTeamFly
-
-{_x setpos getpos guard_DTeam01}forEach units group DTeam01
-{_x setpos getpos guard_DTeam02}forEach units group DTeam02
+_T1Guard = [t1_01,t1_02,t1_03,t1_04,t1_05]
+_T2Guard = [t2_01,t2_02,t2_03,t2_04,t2_05]
+_T1Index = 0
+_T2Index = 0
+{[_x,getpos (_T1Guard select _T1Index)]exec "OnCaptured/SetNatoBaseGuardUnit.sqs";_T1Index=_T1Index+1;}forEach units group DTeam01
+{[_x,getpos (_T2Guard select _T2Index)]exec "OnCaptured/SetNatoBaseGuardUnit.sqs";_T2Index=_T2Index+1;}forEach units group DTeam02
 skiptime 1
 
-;{_x moveInCargo DTeamFly}forEach units group DTeam01
+if(!(DTeamSky in DTeamFly)) then {DTeamSky moveInCargo DTeamFly;}
+if(!(DTeamSky_Driver in DTeamFly)) then {DTeamSky_Driver moveInDriver DTeamFly;}
+if(!(DTeamSky_Gunner in DTeamFly)) then {DTeamSky_Gunner moveInGunner DTeamFly;}
 
 DTeamFly doMove getpos LandStopPos
 
@@ -90,22 +103,64 @@ hint format["%1",(DTeamFly distance LandStopPos)]
 ?(DTeamFly distance LandStopPos)>100 : goto "OnTheWay"
 hint "Land"
 DTeamFly land "Land"
-DTeamSky land "Land"
-DTeamSky_Driver land "Land"
+;DTeamSky land "Land"
+;DTeamSky_Driver land "Land"
 ;#checkHeight
 @ (getpos DTeamFly select 2)<2
 ~2
 
 hint format["height:%1",(getpos DTeamFly select 2)]
 
-{unassignVehicle _x;_x setBehaviour "SAFE"}forEach units group DTeamSky
+{unassignVehicle _x}forEach units group DTeamSky
 Guba action["Eject",DTeamFly]
 ~2
-@!(DTeamSky in DTeamFly)
-#Loop
-{_x doMove getpos guard01}forEach units group DTeamSky
+@!(DTeamSky in DTeamFly) and !(DTeamSky_Gunner in DTeamFly) and !(DTeamSky_Driver in DTeamFly)
+{_x doFire ObjNull;_x doWatch ObjNull;_x setBehaviour "SAFE"}forEach units group DTeamSky
+
+DTeamSky doMove getpos guard01
+DTeamSky_Driver doMove getpos guard02
+DTeamSky_Gunner doMove getpos guard03
 Guba doMove getpos Tent
 ~3
-goto "Loop"
+disableUserInput true
+TitleCut["","Black"]
+~3
+[DTeamSky,getpos guard01]exec "OnCaptured/SetNatoBaseGuardUnit.sqs"
+[DTeamSky_Driver,getpos guard02]exec "OnCaptured/SetNatoBaseGuardUnit.sqs"
+[DTeamSky_Gunner,getpos guard03]exec "OnCaptured/SetNatoBaseGuardUnit.sqs"
+[Guba,getpos Tent]exec "OnCaptured/SetNatoBaseGuardUnit.sqs"
+~2
+Guba setDir 335
+
+;=== 0:13:03
+_camera ="camera" camCreate getPos Guba
+_camera cameraEffect ["internal","back"]
+_camera camSetTarget [-10443.37,-87379.10,29348.33]
+_camera camSetPos [6883.35,6768.88,0.05]
+_camera camSetFOV 0.700
+_camera camCommit 1
+@camCommitted _camera
+~1
+TitleCut["","Black In"]
+
+TitleText["A long,long night which seems to have no end","Plain Down"]
+_timeSkip = 0
+#skipTime
+_timeSkip = _timeSkip+0.1
+skiptime 0.1
+~0.25
+?_timeSkip < 10 : goto "skipTime"
+
+Guba cameraEffect ["terminate","back"]
+camDestroy _camera
+
+disableUserInput false
+TitleText["","Plain Down"]
+
+savegame
+[]exec "OnCaptured/GubaEscapeDefend.sqs"
+[]exec "OnCaptured/KeyTruckEvent.sqs"
+
+
 #End
 exit

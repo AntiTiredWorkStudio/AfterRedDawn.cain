@@ -1,0 +1,28 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+_unit = _this select 0
+_pos = _this select 1
+? Leader group _unit != _unit :goto "solider"
+
+_unit doWatch ObjNull;
+? Leader group _unit == _unit :goto "leader"
+
+#solider
+
+_unit doWatch Leader group _unit;
+
+#leader
+_unit setpos _pos;
+~1
+_unit setUnitPos "Up";
+;_unit stop true;
+;#loop
+_unit setBehaviour "AWARE";
+_unit globalchat format["%1 change state",_unit]
+_unit doWatch Guba;
+_unit doFollow (Leader _unit)
+~3
+;goto "loop"
+;soldier1 switchMove "effectStandSitDown"
+exit

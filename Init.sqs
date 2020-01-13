@@ -5,9 +5,16 @@ Guba addMagazine"glocksMag";
 ;Guba addMagazine"glocksMag";
 ;Guba addMagazine"glocksMag";
 ;Guba addMagazine"glocksMag";
-Guba addWeapon"glocks";
+Guba addWeapon "glocks";
+KeyBarrel addWeaponCargo["glocks",1]
+KeyBarrel addMagazineCargo["glocksMag",4]
 
+;_pos = getPos t2_01;
+;tank = "M21" createVehicle [_pos select 0,_pos select 1,3]
+;tank setpos [_pos select 0,_pos select 1,10]
+;tank setDammage 1
 
 []exec "OnCaptured/InitCaptured.sqs"
 
 [Guba]exec "SignalSystem/InitSignalSystem.sqs"
+

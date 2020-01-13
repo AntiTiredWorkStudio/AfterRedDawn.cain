@@ -1,0 +1,11 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+KeyTruck setPos getpos InitPos
+KeyTruck doMove getpos StopPos
+hint "launch KeyTruckEvent"
+[KeyTruck,Guba]exec "OnCaptured/FollowTruckEscape.sqs"
+@ (KeyTruck distance StopPos) < 10
+~60
+KeyTruck doMove getpos StopPos_01
+exit

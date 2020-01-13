@@ -12,7 +12,9 @@ DTeamSky_Driver moveInDriver DTeamFly;
 DTeamSky_Driver setCombatMode "RED"
 DTeamSky_Gunner moveInGunner DTeamFly;
 DTeamSky_Gunner setCombatMode "RED"
-doStop DTeamSky_Driver
+
+DTeamFly lock true
+dostop DTeamFly
 
 (units group EscTeam select 1) moveInDriver EscapeUaz
 (units group EscTeam select 0) moveInCargo EscapeUaz
@@ -26,3 +28,12 @@ Arrest = false
 Guba setCaptive true
 
 []exec"OnCaptured/PlayerCaptured.sqs"
+
+exit
+
+_T1Guard = [t1_01,t1_02,t1_03,t1_04,t1_05]
+_T2Guard = [t2_01,t2_02,t2_03,t2_04,t2_05]
+_T1Index = 0
+_T2Index = 0
+{dostop _x;_x setpos getpos (_T1Guard select _T1Index);_x setBehaviour "SAFE";_T1Index=_T1Index+1}forEach units group DTeam01
+{dostop _x;_x setpos getpos (_T2Guard select _T2Index);_x setBehaviour "SAFE";_T2Index=_T2Index+1}forEach units group DTeam02
