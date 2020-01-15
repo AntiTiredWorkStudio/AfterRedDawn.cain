@@ -1,10 +1,14 @@
 ; *****************************************************
 ; ** Operation Flashpoint Script File
 ; *****************************************************
+;exit
+;goto "start"
 removeAllWeapons Guba
 Guba action["Eject",EscapeUaz]
 EscapeUaz setDammage 1
+setAccTime 4
 goto "FinishCheck"
+#start
 _EscapeGroup = (units group EscTeam)
 _T1 = (units group EscTeam) select 0
 _T2 = (units group EscTeam) select 1
@@ -16,14 +20,15 @@ EscTeam doMove getpos EscapeTarget
 {_x doMove getpos EscTeam;_x doFire EscTeam;_x setSpeedMode "FULL"}forEach units group DTeam02
 DTeamFly doTarget EscapeUaz
 @ !canmove EscapeUaz
+EscapeUaz lock false
 DTeamFly doTarget ObjNull
 ~0.5
 
 {unassignVehicle _x}forEach _EscapeGroup
-unassignVehicle Guba
 
 {_x doMove getpos SkyLandPlane;_x setSpeedMode "FULL"}forEach units group EscTeam
-
+@!(Guba in EscapeUaz)
+EscapeUaz lock true
 
 @(!alive _T1 and !alive _T2 and !alive _T3)
 ;hint format["%1",(count units group _EscapeGroup)]

@@ -4,14 +4,14 @@
 _Truck = _this select 0
 EscapeUnit = _this select 1
 IsEscape = false
-hint "pescape"
+;hint "pescape"
 #loop
-@(_Truck distance EscapeUnit) < 6
+@(_Truck distance EscapeUnit) < 4
 hint "Escape"
 TriggerUnits = TriggerUnits+[_Truck]
 _ActionID = EscapeUnit addAction ["Escape by Truck","OnCaptured/OnEscapeByTruck.sqs"]
 
-@(_Truck distance EscapeUnit >= 6)
+@(_Truck distance EscapeUnit >= 4 or IsEscape)
 EscapeUnit removeAction _ActionID;
 hint "No"
 

@@ -19,10 +19,10 @@ _unit setUnitPos "Up";
 ;_unit stop true;
 ;#loop
 _unit setBehaviour "AWARE";
-_unit globalchat format["%1 change state",_unit]
+;_unit globalchat format["%1 change state",_unit]
 _unit doWatch Guba;
 _unit doFollow (Leader _unit)
-~3
+;~3
 ;goto "loop"
 ;soldier1 switchMove "effectStandSitDown"
 exit
