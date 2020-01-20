@@ -4,6 +4,8 @@
 
 @ ((count weapons Guba) > 0 or (Guba distance Tent)>15) or (Guba in KeyTruck)
 Guba setCaptive false
+
+hint "You Captive Is Exploer"
 if(Guba in KeyTruck) then {KeyTruck lock true}
 ~ 25+(random 10)
 ? ((Guba distance StopPos)>80) : goto "EscapeDone"
@@ -15,8 +17,12 @@ unassignVehicle (Driver KeyTruck)
 ~3
 Guba action["Eject",KeyTruck]
 KeyTruck lock true
+@((Guba distance StopPos)>80)
+goto "EscapeDone"
 exit
 #EscapeDone
 hint "Escape Success!"
+playMusic "WanderMusic";
 if(Guba in KeyTruck) then {KeyTruck lock false}
+
 exit

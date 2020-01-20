@@ -164,3 +164,21 @@ class CfgEnvSounds
 {
 	sounds[] = {};
 };
+
+
+
+
+class CfgMusic
+{
+	tracks[] = {};
+	class WanderMusic
+	{
+		name	= "Wander";
+		sound[]	= { "TrackWander.ogg", db + 40, 1.0 };
+	};
+	class NervousMusic
+	{
+		name	= "Nervous";
+		sound[]	= { "TrackNervous.ogg", db + 40, 1.0 };
+	};
+};

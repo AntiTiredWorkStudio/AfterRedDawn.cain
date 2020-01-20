@@ -1,0 +1,17 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+_partorlUnits = _this select 0
+_partorlPoints = _this select 1
+_i = 0
+_Leader = _partorlUnits select 0
+#Loop
+?(behaviour _Leader != "SAFE"):goto "End"
+_partorlUnits doMove getpos (_partorlPoints select _i)
+@(_Leader distance (_partorlPoints select _i) < 15)
+_i = _i+1
+?(_i<(count _partorlPoints)):goto "Loop"
+_i = 0
+goto "Loop"
+#End
+exit;

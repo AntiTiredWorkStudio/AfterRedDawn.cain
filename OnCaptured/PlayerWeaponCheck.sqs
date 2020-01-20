@@ -1,0 +1,12 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+
+@ (count weapons Guba) > 0
+hint format["%1",weapons Guba]
+player selectWeapon "Glocks";
+
+{_x reveal Guba;Guba reveal _x;_x setBehaviour "AWARE";}forEach units group DTeamSky
+{_x reveal Guba;Guba reveal _x;_x setBehaviour "AWARE";}forEach units group DTeam01
+{_x reveal Guba;Guba reveal _x;_x setBehaviour "AWARE";}forEach units group DTeam02
+exit

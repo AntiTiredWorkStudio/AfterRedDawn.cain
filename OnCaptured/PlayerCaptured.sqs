@@ -5,6 +5,7 @@
 ;goto "start"
 removeAllWeapons Guba
 Guba action["Eject",EscapeUaz]
+[]exec "OnCaptured/PlayerWeaponCheck.sqs"
 EscapeUaz setDammage 1
 setAccTime 4
 goto "FinishCheck"
@@ -120,7 +121,7 @@ hint format["height:%1",(getpos DTeamFly select 2)]
 Guba action["Eject",DTeamFly]
 ~2
 @!(DTeamSky in DTeamFly) and !(DTeamSky_Gunner in DTeamFly) and !(DTeamSky_Driver in DTeamFly)
-{_x doFire ObjNull;_x doWatch ObjNull;_x setBehaviour "SAFE"}forEach units group DTeamSky
+{_x doFire ObjNull;_x doWatch ObjNull;_x setBehaviour "AWARE"}forEach units group DTeamSky
 
 DTeamSky doMove getpos guard01
 DTeamSky_Driver doMove getpos guard02
@@ -136,6 +137,7 @@ TitleCut["","Black"]
 [Guba,getpos Tent]exec "OnCaptured/SetNatoBaseGuardUnit.sqs"
 ~2
 Guba setDir 335
+
 
 ;=== 0:13:03
 _camera ="camera" camCreate getPos Guba
