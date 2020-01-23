@@ -7,7 +7,7 @@ showGPS=1
 class CfgSounds
 {
 	sounds[] = 	{ };
-
+	
 	class 36v01
 	{
 		name = "";
@@ -150,6 +150,22 @@ class CfgRadio
 		name = "";
 		sound[] = {"36r22.ogg", db-40, 1.0};
 		title = $STRM_36r22;
+	};
+	
+	
+	class RadioCalling
+	{
+		name = "";
+		sound[] = { "RadioCall.ogg", db+90, 1.0 };
+		title = "Copy That.";
+	};
+	
+	
+	class RadioCall
+	{
+		name = "";
+		sound[] = {"RadioCallBack.ogg", db+90, 1.0};
+		title = "Alpha One to All Units,Please Report your status!";
 	};
 };
 

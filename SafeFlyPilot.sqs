@@ -1,0 +1,33 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+_groupLeader = _this select 0
+_units = units group _groupLeader
+_vehicles = _this select 1
+_defendId = _this select 2
+~3
+Defend set[_defendId,false]
+~1
+hint format["%1",Defend]
+doStop _units
+group _groupLeader setBehaviour "SAFE"
+{_x lock true}forEach _vehicles
+@(Defend select _defendId)
+{_x lock false}forEach _vehicles
+group _groupLeader setBehaviour "AWARE"
+_units orderGetIn true
+_seek = 0
+_tankSeek = 0
+#Loop
+
+if(_seek%2 == 0)then {(_units select _seek) assignAsDriver (_vehicles select _tankSeek);}
+if(_seek%2 == 1)then {(_units select _seek) assignAsGunner (_vehicles select _tankSeek);_tankSeek = _tankSeek+1;}
+_seek = _seek+1
+? (_seek < (count _units)):goto "Loop"
+@(count crew (_vehicles select 0) > 1 && count crew (_vehicles select 1) > 1)
+
+;group _groupLeader setCombatMode "RED";
+
+_vehicles doMove getpos (object 4438)
+
+exit

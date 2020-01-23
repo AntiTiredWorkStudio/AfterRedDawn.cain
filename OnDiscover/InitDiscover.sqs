@@ -1,0 +1,12 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+
+[Search01,SearchLeader01,Guba,SearchLogic01,SignalTrigger_01]exec"OnDiscover/SearchTeam.sqs"
+[Search02,SearchLeader02,Guba,SearchLogic02,SignalTrigger_06]exec"OnDiscover/SearchTeam.sqs"
+[Search03,SearchLeader03,Guba,SearchLogic03,SignalTrigger_02]exec"OnDiscover/SearchTeam.sqs"
+[Search04,SearchLeader04,Guba,SearchLogic04,SignalTrigger_03]exec"OnDiscover/SearchTeam.sqs"
+[Search05,SearchLeader05,Guba,SearchLogic05,SignalTrigger_05]exec"OnDiscover/SearchTeam.sqs"
+[Search06,SearchLeader06,Guba,SearchLogic06,SignalTrigger_04]exec"OnDiscover/SearchTeam.sqs"
+
+exit;

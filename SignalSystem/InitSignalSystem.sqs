@@ -14,8 +14,8 @@ SignalTrigger_05_Units = []
 SignalTrigger_06_Units = []
 SignalTrigger_07_Units = []
 SignalTrigger_08_Units = []
-
-
+;["SCUD_POS",(object 4438)]
+MapMarkers = [["ENEMYBASE01",(object 62227)],["SUPPLY",(object 4584)],["ENEMYBASE02",(object 4438)],["OUTPOST01",(object 4129)],["OUTPOST02",(object 24973)],["OUTPOST03",(object 27878)]]
 
 @ ((count SignalTrigger_01_Units>0) && (count SignalTrigger_02_Units>0) && (count SignalTrigger_03_Units>0) && (count SignalTrigger_04_Units>0) && (count SignalTrigger_05_Units>0) && (count SignalTrigger_06_Units>0) && (count SignalTrigger_07_Units>0) && (count SignalTrigger_08_Units>0))
 
@@ -35,6 +35,10 @@ SignalInfoList= [SignalGroup01,SignalGroup02,SignalGroup03,SignalGroup04,SignalG
 {(_x select 2) setMarkerPos [-1000,-1000];(_x select 1) setMarkerPos [-1000,-1000];}forEach SignalInfoList
 "SIGNAL_FEEDBACK" setMarkerPos [-1000,-1000]
 "SIGNAL_YOUR" setMarkerPos [-1000,-1000]
+"SCUD_POS" setMarkerPos [-1000,-1000]
+
+
+{(_x select 0) setMarkerPos [-1000,-1000];}forEach MapMarkers
 
 1 setRadioMsg "[UNAVAILABLE]"
 

@@ -1,0 +1,21 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+_pos = _this select 0
+_group = _this select 1
+_groupId = _this select 2
+_defendId = _this select 3
+~3
+Defend set[_defendId,false]
+
+@(Defend select _defendId)
+_soliders = ["OfficerW","SoldierWMG","SoldierWG","SoldierWG","SoldierWLAW","SoldierWMG","SoldierWB","SoldierWB"]
+
+_i = 0
+#Loop
+hint "spawn"
+(_soliders select _i) createUnit [_pos, _group];
+_i = _i+1
+?(_i<(count _soliders)) : goto "Loop"
+WestSpawnGroups set[_groupId,_group]
+exit

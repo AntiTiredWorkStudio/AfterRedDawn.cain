@@ -11,5 +11,8 @@ MapTable setpos [-1000,-1000]
 MapTableNone setpos tempPos
 StolenMap = true
 {(_x select 2) setMarkerPos getpos (_x select 0);(_x select 1) setMarkerPos getpos (_x select 0)}forEach SignalInfoList
+
+{(_x select 0) setMarkerPos getpos (_x select 1);}forEach MapMarkers
+
 hint "You can check the radio reception area in map."
 exit

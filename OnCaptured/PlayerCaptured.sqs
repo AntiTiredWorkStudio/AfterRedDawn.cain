@@ -1,15 +1,15 @@
 ; *****************************************************
 ; ** Operation Flashpoint Script File
 ; *****************************************************
-;exit
-;goto "start"
+
+goto "start"
 removeAllWeapons Guba
 Guba action["Eject",EscapeUaz]
-[]exec "OnCaptured/PlayerWeaponCheck.sqs"
 EscapeUaz setDammage 1
 setAccTime 4
 goto "FinishCheck"
 #start
+[]exec "OnCaptured/PlayerWeaponCheck.sqs"
 _EscapeGroup = (units group EscTeam)
 _T1 = (units group EscTeam) select 0
 _T2 = (units group EscTeam) select 1
@@ -33,7 +33,7 @@ EscapeUaz lock true
 
 @(!alive _T1 and !alive _T2 and !alive _T3)
 ;hint format["%1",(count units group _EscapeGroup)]
-hint "All Unit Dead"
+;hint "All Unit Dead"
 Guba setCaptive true
 EscapeUaz setDammage 1
 Guba setDammage 0
@@ -105,9 +105,9 @@ disableUserInput false
 DTeamFly doMove getpos LandStopPos
 ;DTeamSky doMove getpos LandStopPos
 ~10
-hint format["%1",(DTeamFly distance LandStopPos)]
+;hint format["%1",(DTeamFly distance LandStopPos)]
 ?(DTeamFly distance LandStopPos)>100 : goto "OnTheWay"
-hint "Land"
+;hint "Land"
 DTeamFly land "Land"
 ;DTeamSky land "Land"
 ;DTeamSky_Driver land "Land"
@@ -115,7 +115,7 @@ DTeamFly land "Land"
 @ (getpos DTeamFly select 2)<2
 ~2
 
-hint format["height:%1",(getpos DTeamFly select 2)]
+;hint format["height:%1",(getpos DTeamFly select 2)]
 
 {unassignVehicle _x}forEach units group DTeamSky
 Guba action["Eject",DTeamFly]
@@ -150,7 +150,7 @@ _camera camCommit 1
 ~1
 TitleCut["","Black In"]
 
-TitleText["A long,long night which seems to have no end","Plain Down"]
+TitleText["A long long night which seems to have no end","Plain Down"]
 _timeSkip = 0
 #skipTime
 _timeSkip = _timeSkip+0.1

@@ -9,10 +9,10 @@ KeyTruck setPos getpos InitPos
 KeyTruck doMove getpos StopPos
 [KeyTruck,Guba]exec "OnCaptured/FollowTruckEscape.sqs"
 @ (KeyTruck distance StopPos) < 15
-hint "Truck In Position"
-~60
+~55
+?cadetMode:hint "Truck Prepare To Go"
+~5
 KeyTruck stop false
-hint "Truck Prepare To Go"
 KeyTruck doMove getpos StopPos_01
 @ (KeyTruck distance StopPos_01) < 15
 Guba setCaptive false
@@ -24,16 +24,15 @@ KeyTruck lock true
 ?(!(Guba in KeyTruck)):goto "NotCaptive"
 Guba setCaptive true
 #NotCaptive
-hint "Stop02"
-~3
-hint format["%1",(units (group DTeam03))]
-~3
+;hint "Stop02"
+~6
+;hint format["%1",(units (group DTeam03))]
 units (group DTeam03) doFollow (Leader group DTeam03)
 ~3
-hint "AWARE"
+;hint "AWARE"
 group DTeam03 setBehaviour "AWARE";
 ~3
-hint "orderGetIn"
+;hint "orderGetIn"
 (units group DTeam03) orderGetIn true;
 {_x assignAsCargo KeyTruck}foreach units group DTeam03
 ~2

@@ -7,8 +7,26 @@ Guba addWeapon "glocks";
 KeyBarrel addWeaponCargo["glocks",1]
 KeyBarrel addMagazineCargo["glocksMag",4]
 
-[]exec "OnCaptured/InitCaptured.sqs"
+Defend = []
+WestSpawnGroups = []
+ChapterCaptured = true;
+ChapterDiscover = false;
+
 
 [Guba]exec "SignalSystem/InitSignalSystem.sqs"
 
+;--------------第一章：被俘----------------------
+;TitleText["Chapter 01 : Captured","Plain Down",3]
+;[]exec "OnCaptured/InitCaptured.sqs"
 
+@ChapterCaptured
+;--------------第二章：探索----------------------
+TitleText["Chapter 02 : Discover","Plain Down",3]
+[]exec "OnDiscover/InitDiscover.sqs"
+
+@ChapterDiscover
+
+
+playMusic "WanderMusic";
+0 fadeMusic 0
+5 fadeMusic 0.25

@@ -22,7 +22,6 @@ goto "EscapeDone"
 exit
 #EscapeDone
 hint "Escape Success!"
-playMusic "WanderMusic";
 if(Guba in KeyTruck) then {KeyTruck lock false}
-
+ChapterCaptured = true
 exit

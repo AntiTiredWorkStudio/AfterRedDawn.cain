@@ -1,0 +1,9 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+_i = 0
+#Loop
+Defend set [_i,true]
+_i = _i +1
+?(_i < (count _this)) : goto "Loop"
+exit
