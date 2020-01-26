@@ -15,7 +15,7 @@ SignalTrigger_06_Units = []
 SignalTrigger_07_Units = []
 SignalTrigger_08_Units = []
 ;["SCUD_POS",(object 4438)]
-MapMarkers = [["ENEMYBASE01",(object 62227)],["SUPPLY",(object 4584)],["ENEMYBASE02",(object 4438)],["OUTPOST01",(object 4129)],["OUTPOST02",(object 24973)],["OUTPOST03",(object 27878)]]
+MapMarkers = [["ENEMYBASE01",(object 62227)],["SUPPLY",(object 4584)],["ENEMYBASE02",(object 4438)],["OUTPOST01",(object 4129)],["OUTPOST02",(object 24973)],["OUTPOST03",(object 27878)],["SCUDFOUND",(object 21691)],["CGUBA",(object 772)],["LOCK01",(object 14588)],["LOCK02",(object 13652)],["LOCK03",(object 14664)],["LOCK04",(object 18489)],["LOCK05",(object 12203)],["LOCK06",(object 20204)]]
 
 @ ((count SignalTrigger_01_Units>0) && (count SignalTrigger_02_Units>0) && (count SignalTrigger_03_Units>0) && (count SignalTrigger_04_Units>0) && (count SignalTrigger_05_Units>0) && (count SignalTrigger_06_Units>0) && (count SignalTrigger_07_Units>0) && (count SignalTrigger_08_Units>0))
 

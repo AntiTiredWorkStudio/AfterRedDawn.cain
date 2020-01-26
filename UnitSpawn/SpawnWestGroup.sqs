@@ -5,16 +5,21 @@ _pos = _this select 0
 _group = _this select 1
 _groupId = _this select 2
 _defendId = _this select 3
+_fast = false
+if(count _this >4) then {_fast = _this select 4}
 ~3
+? _fast : goto "CREATE"
 Defend set[_defendId,false]
-
+;hint format["%1 actived",_defendId];
 @(Defend select _defendId)
+#CREATE
 _soliders = ["OfficerW","SoldierWMG","SoldierWG","SoldierWG","SoldierWLAW","SoldierWMG","SoldierWB","SoldierWB"]
 
 _i = 0
 #Loop
-hint "spawn"
+;hint "spawn"
 (_soliders select _i) createUnit [_pos, _group];
+~1
 _i = _i+1
 ?(_i<(count _soliders)) : goto "Loop"
 WestSpawnGroups set[_groupId,_group]

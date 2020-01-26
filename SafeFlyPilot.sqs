@@ -8,7 +8,7 @@ _defendId = _this select 2
 ~3
 Defend set[_defendId,false]
 ~1
-hint format["%1",Defend]
+;hint format["%1",Defend]
 doStop _units
 group _groupLeader setBehaviour "SAFE"
 {_x lock true}forEach _vehicles

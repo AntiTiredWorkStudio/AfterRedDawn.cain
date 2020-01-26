@@ -3,7 +3,9 @@
 ; *****************************************************
 _i = 0
 #Loop
-Defend set [_i,true]
+;if(_i in _this) then {Defend set [_i,true];hint format["%1 actived",_i];}
+Defend set [(_this select _i),true]
 _i = _i +1
 ?(_i < (count _this)) : goto "Loop"
+;hint format["%1",Defend]
 exit
