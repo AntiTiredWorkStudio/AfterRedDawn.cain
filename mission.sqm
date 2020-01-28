@@ -9,7 +9,8 @@ class Mission
 		"Vulcan",
 		"G36a",
 		"Bradley",
-		"6g30"
+		"6g30",
+		"Bizon"
 	};
 	addOnsAuto[]=
 	{
@@ -19,7 +20,8 @@ class Mission
 		"BIS_WeaponPack",
 		"Vulcan",
 		"G36a",
-		"Bradley"
+		"Bradley",
+		"Bizon"
 	};
 	randomSeed=6896643;
 	class Intel
@@ -4101,18 +4103,18 @@ class Mission
 				items=1;
 				class Item0
 				{
-					position[]={4906.504395,260.544586,4442.655273};
-					azimut=1948.723267;
+					position[]={5061.065430,688.353882,6323.038574};
+					azimut=1846.380981;
+					special="FLY";
 					id=362;
 					side="EAST";
-					vehicle="SoldierELAW";
+					vehicle="SoldierESaboteurBizon";
 					player="PLAYER COMMANDER";
 					leader=1;
 					rank="COLONEL";
-					skill=0.200000;
-					ammo=0.900000;
+					skill=1.000000;
 					text="Guba";
-					init="this addWeapon ""Binocular"";setViewDistance 10";
+					init="this addWeapon ""Binocular"";";
 				};
 			};
 		};

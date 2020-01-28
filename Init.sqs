@@ -8,6 +8,8 @@ Guba addWeapon "glocks";
 KeyBarrel addWeaponCargo["glocks",1]
 KeyBarrel addMagazineCargo["glocksMag",4]
 
+(object 63448) setDammage 1
+
 Defend = []
 WestSpawnGroups = []
 
