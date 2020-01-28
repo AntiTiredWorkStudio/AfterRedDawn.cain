@@ -21,6 +21,6 @@ _i = 0
 (_soliders select _i) createUnit [_pos, _group];
 ~1
 _i = _i+1
-?(_i<(count _soliders)) : goto "Loop"
+?(_i<(count _soliders) && (count units _group < 12)) : goto "Loop"
 WestSpawnGroups set[_groupId,_group]
 exit

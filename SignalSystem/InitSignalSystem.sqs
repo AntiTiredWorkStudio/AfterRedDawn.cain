@@ -2,9 +2,7 @@
 ; ** Operation Flashpoint Script File
 ; *****************************************************
 RadioOperator = _this select 0
-StolenRadio = false
-StolenMap = false
-OnCalling = false
+
 
 SignalTrigger_01_Units = []
 SignalTrigger_02_Units = []

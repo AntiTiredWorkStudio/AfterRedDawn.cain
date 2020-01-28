@@ -1,0 +1,13 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+TankSupply setFuel 1
+TankSupply01 setFuel 1
+TankSupply02 setFuel 1
+TankSupply03 setFuel 1
+
+TankSupply setBehaviour "AWARE"
+TankSupply01 setBehaviour "AWARE"
+TankSupply02 setBehaviour "AWARE"
+TankSupply03 setBehaviour "AWARE"
+exit

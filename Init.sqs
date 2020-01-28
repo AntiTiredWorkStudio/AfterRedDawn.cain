@@ -1,5 +1,6 @@
 ; *****************************************************
 ; ** Operation Flashpoint Script File
+; Document Url: https://community.bistudio.com/wiki/Category:Scripting_Commands_OFP_1.96
 ; *****************************************************
 Guba addMagazine"glocksMag";
 Guba addWeapon "glocks";
@@ -9,24 +10,43 @@ KeyBarrel addMagazineCargo["glocksMag",4]
 
 Defend = []
 WestSpawnGroups = []
+
+;任务条件
+	;--偷取无线电--
+	StolenRadio = false
+	;--偷取地图--
+	StolenMap = false
+	;--无线电呼叫--
+	OnCalling = false
+	;--美军进攻城镇--
+	TownAttack = false
+
+;章节条件
 ChapterCaptured = true;
 ChapterDiscover = false;
+ChapterDefender = false;
+ChapterAssault = false;
 
-
-[Guba]exec "SignalSystem/InitSignalSystem.sqs"
+"Attack01" setMarkerPos [-1000,-1000]
+"Attack02" setMarkerPos [-1000,-1000]
+"Attack03" setMarkerPos [-1000,-1000]
 
 ;--------------第一章：被俘----------------------
 ;TitleText["Chapter 01 : Captured","Plain Down",3]
 ;[]exec "OnCaptured/InitCaptured.sqs"
-
 @ChapterCaptured
 ;--------------第二章：探索----------------------
-TitleText["Chapter 02 : Discover","Plain Down",3]
+TitleText["Chapter 02 : Lurker","Plain Down",3]
 []exec "OnDiscover/InitDiscover.sqs"
-
+[Guba]exec "SignalSystem/InitSignalSystem.sqs"
 @ChapterDiscover
-
-
+;--------------第三章：防御----------------------
+TitleText["Chapter 03 : Defender","Plain Down",3]
+[]exec "OnDefend/InitDefender.sqs"
+@ChapterDefender
+;--------------第四章：反击----------------------
+TitleText["Chapter 04 : Assault","Plain Down",3]
+@ChapterAssault
 playMusic "WanderMusic";
 0 fadeMusic 0
 5 fadeMusic 0.25
