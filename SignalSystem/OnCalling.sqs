@@ -4,7 +4,13 @@
 _tCommand = _this select 0
 ? OnCalling : goto "End"
 OnCalling = true
-_tCommand sideChat "Alpha One to All Units,Please Report your status!"
+
+
+_tCommand sideRadio "RadioCall"
+~15
+
+
+;_tCommand sideChat "Alpha One to All Units,Please Report your status!"
 
 "SIGNAL_YOUR" setMarkerPos getpos _tCommand
 
@@ -17,7 +23,7 @@ _currentTower = (SignalInfoList select _i) select 0
 
 
 ;_tCommand sideChat format["%1 distance:%2",_i,_currentTower distance _tCommand];
-
+;hint format["%1",(_currentTower distance _tCommand)]
 if((_currentTower distance _tCommand)<1000)then{_isfound=true;goto "found"}
 
 _i = _i+1
@@ -60,17 +66,14 @@ _tpos = getpos _Target
 
 _LetterBoxMax = ["A","B","C","D","E","F","G","H","I","J"]
 _LetterBoxMin = ["a","b","c","d","e","f","g","h","i","j"]
-
 _tpos = getpos _Target
 _tgrid = [(_tpos select 0)/128,99-(_tpos select 1)/128]
-
 _LocalX = (_tgrid select 0)
 _LetterX1 = _LetterBoxMax select (_LocalX/10 -1)
 _LetterX2 = _LetterBoxMin select (_LocalX%10 -1)
 _LocalY = (_tgrid select 1)
 _LocalY = _LocalY - ((_LocalY*100)%10)/100
-;if(_LocalY < 10) then{_LocalY = _LocalY - ((_LocalY*100)%10)/100}else{}
-
+_LocalY = _LocalY - _LocalY%1
 _Target sideChat format["%1 Copy That,We are in %2%3%4",_Target,_LetterX1,_LetterX2,_LocalY]
 ~1
 forceMap true
@@ -81,8 +84,11 @@ mapAnimCommit
 @mapAnimDone
 ~3
 forceMap false
+#End
 
 OnCalling = false
-#End
 hint"End"
+~5
+_Target sideRadio "RadioCalling"
+~10
 exit

@@ -1,0 +1,9 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+[]exec "Fleet/SupportTankSupply.sqs"
+{_x doFollow TankSupply}forEach units group TankSupply
+
+TownAttack = true
+
+exit;

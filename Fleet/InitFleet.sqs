@@ -1,13 +1,7 @@
 ; *****************************************************
 ; ** Operation Flashpoint Script File
 ; *****************************************************
-_unit =_this select 0
-#Loop
-?(Arrest):goto "End"
-@(getDammage _unit) > 0
-?(Arrest):goto "End"
-_unit setDammage 0
-goto "Loop"
-#End
-;hint "end dammage"
+_leaderTruck = _this
+_trucks = units group _leaderTruck
+{dostop _x;_x setBehaviour "COMBAT";_x action["LIGHT OFF"];}forEach _trucks
 exit

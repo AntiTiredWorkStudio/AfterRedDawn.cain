@@ -1,0 +1,37 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+_defendUnits = units group (_this select 0)
+_defendGroup = group (_this select 0)
+_partorlUnits = _this select 1
+_partorlPoints = _this select 2
+_defendBehaviours = _this select 3
+_KeyTarget = _this select 4
+_defendUnits = _defendUnits - _partorlUnits
+group (_this select 0) setBehaviour "SAFE"
+doStop _defendUnits
+[_partorlUnits,_partorlPoints]exec "BaseDefend/Partorl.sqs"
+[_defendUnits]exec ("BaseDefend/"+_defendBehaviours+".sqs")
+@ (_defendGroup knowsAbout _KeyTarget)>0.6
+hint "Explose"
+_defendGroup setBehaviour "AWARE"
+{_x reveal _KeyTarget;_KeyTarget reveal _x;_x doTarget _KeyTarget;_x doMove getpos _KeyTarget}forEach _defendUnits
+exit
+
+;{_x reveal Guba;_x doTarget Guba}forEach _defendUnits
+;{Guba reveal _x;Guba doTarget _x}forEach _defendUnits
+~3
+Guba action ["STROKEGUN"]
+{_x action ["STROKEFIST",_x]}forEach _defendUnits
+~3
+Guba action ["STROKEGUN"]
+{_x action ["STROKEFIST"]}forEach _defendUnits
+~3
+Guba action ["STROKEGUN"]
+{_x action ["STROKEFIST"]}forEach _defendUnits
+~3
+Guba action ["STROKEFIST"]
+{_x action ["STROKEFIST"]}forEach _defendUnits
+~3
+Guba action ["STROKEFIST"]
+{_x action ["STROKEFIST"]}forEach _defendUnits

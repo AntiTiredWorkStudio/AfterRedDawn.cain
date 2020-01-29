@@ -1,0 +1,54 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+(units group KeyTruck) orderGetIn true;
+KeyTruckDriver moveInDriver KeyTruck
+((units group KeyTruckDriver) select 1) moveInCargo KeyTruck
+((units group KeyTruckDriver) select 2) moveInCargo KeyTruck
+KeyTruck setPos getpos InitPos
+KeyTruck doMove getpos StopPos
+[KeyTruck,Guba]exec "OnCaptured/FollowTruckEscape.sqs"
+@ (KeyTruck distance StopPos) < 15
+~55
+?cadetMode:hint "Truck Prepare To Go"
+~5
+KeyTruck stop false
+KeyTruck doMove getpos StopPos_01
+@ (KeyTruck distance StopPos_01) < 15
+Guba setCaptive false
+~25
+KeyTruck stop false
+KeyTruck doMove getpos StopPos_02
+@ (KeyTruck distance StopPos_02) < 15
+KeyTruck lock true
+?(!(Guba in KeyTruck)):goto "NotCaptive"
+Guba setCaptive true
+#NotCaptive
+;hint "Stop02"
+~6
+;hint format["%1",(units (group DTeam03))]
+units (group DTeam03) doFollow (Leader group DTeam03)
+~3
+;hint "AWARE"
+group DTeam03 setBehaviour "AWARE";
+~3
+;hint "orderGetIn"
+(units group DTeam03) orderGetIn true;
+{_x assignAsCargo KeyTruck}foreach units group DTeam03
+~2
+@(count crew KeyTruck >=6)
+;hint "count units crew KeyTruck >=5"
+?(!(Guba in KeyTruck)):goto "Fine"
+KeyTruck lock false
+Guba setCaptive false
+hint "You has been founded"
+Guba action["Eject",KeyTruck]
+group DTeam03 setBehaviour "AWARE"
+{_x doTarget Guba;unAssignVehicle _x}foreach units group DTeam03
+~3
+#Fine
+;hint "Fine"
+@(count crew KeyTruck >=10)
+KeyTruck stop false
+KeyTruck doMove getpos StopPos_03
+exit

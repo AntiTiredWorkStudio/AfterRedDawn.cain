@@ -1,0 +1,22 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+_Truck = _this select 0
+EscapeUnit = _this select 1
+IsEscape = false
+;hint "pescape"
+#loop
+@(_Truck distance EscapeUnit) < 4
+?(!(captive EscapeUnit)) :  goto "end"
+hint "Escape"
+TriggerUnits = TriggerUnits+[_Truck]
+_ActionID = EscapeUnit addAction ["Escape by Truck","OnCaptured/OnEscapeByTruck.sqs"]
+
+@(_Truck distance EscapeUnit >= 4 or IsEscape or !(captive EscapeUnit))
+EscapeUnit removeAction _ActionID;
+hint "No"
+
+? IsEscape : goto "end"
+goto "loop"
+#end
+exit

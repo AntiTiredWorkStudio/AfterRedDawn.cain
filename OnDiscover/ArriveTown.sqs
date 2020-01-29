@@ -1,0 +1,10 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+@(Guba distance RussiaFlag < 30)
+hint "Arrive Town"
+;
+;播过场动画
+;
+ChapterDiscover = true;
+exit;

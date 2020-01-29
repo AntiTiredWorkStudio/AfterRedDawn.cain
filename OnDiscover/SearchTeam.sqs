@@ -1,0 +1,64 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+_veh = _this select 0
+_grpUnits = units group (_this select 1)
+_target = _this select 2
+_targetPos = _this select 3
+_searchArea = _this select 4
+
+group (_this select 1) setSpeedMode "FULL"
+group (_this select 1) allowFleeing 0
+group (_this select 1) setCombatMode "RED"
+_veh lock true
+
+if (count _grpUnits != 3) then {hint"error:group members count error";exit;}
+
+
+#StartSearch
+_veh setFuel 1
+@ (_target in (list _searchArea))
+
+if(!canmove _veh) then{exit;}
+
+_grpUnits orderGetIn true
+_grpUnits select 0 assignAsCargo _veh
+_grpUnits select 1 assignAsGunner _veh
+_grpUnits select 2 assignAsDriver _veh
+
+@((_grpUnits select 0 in _veh) && (_grpUnits select 1 in _veh)&&(_grpUnits select 2 in _veh))
+_veh stop false
+_targetPos setpos getpos _target
+_countWait = 0
+
+_veh setSpeedMode "FULL";
+
+_veh doMove getpos _targetPos
+
+@ (_veh distance _targetPos < 150)
+
+#Repeat
+~3
+_countWait = _countWait + 1
+
+
+if (_veh knowsAbout _target < 1 && _countWait<10) then {goto "Repeat";}
+if (_countWait>=10) then {goto "StartSearch";}
+
+_veh doMove getpos _veh
+_veh stop true
+[(_grpUnits select 0),(_grpUnits select 2)]doMove getpos _target
+[(_grpUnits select 0),_veh,(_grpUnits select 2)]doTarget _target
+[(_grpUnits select 0),_veh,(_grpUnits select 2)]doFire _target
+
+unassignVehicle (_grpUnits select 0)
+unassignVehicle (_grpUnits select 2)
+~2
+@ (_veh knowsAbout _target < 0.4  or (_veh distance _targetPos > 250))
+
+
+[(_grpUnits select 0),_veh,(_grpUnits select 2)]doTarget ObjNull
+[(_grpUnits select 0),_veh,(_grpUnits select 2)]doFire ObjNull
+
+~5
+goto "StartSearch";

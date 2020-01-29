@@ -1,0 +1,51 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+_cargo = _this select 0
+_units = units group (_this select 1)
+_trucks = units group sup01
+
+FleetDiscover = false
+FleetTimer = false
+
+@ ((Guba knowsAbout sup01) > 0.5) || ((Guba knowsAbout sup02) > 0.5) || ((Guba knowsAbout sup03) > 0.5) || ((Guba knowsAbout sup04) > 0.5) || FleetTimer
+
+FleetDiscover = ((Guba knowsAbout sup01) > 0.5) || ((Guba knowsAbout sup02) > 0.5) || ((Guba knowsAbout sup03) > 0.5) || ((Guba knowsAbout sup04) > 0.5)
+
+;如果未发现车队,证明
+if(!FleetDiscover)then{goto "FleetMoveOn"}
+
+;hint "Wait FleetTimer and 220"
+;等待计时器结束
+@FleetTimer
+;奖励220秒
+~220
+
+#FleetMoveOn
+{_x setBehaviour "AWARE";_x action["LIGHT ON"];}forEach _trucks
+{_x doFollow sup01;_x stop false}forEach _trucks
+
+_units orderGetIn true 
+{_x assignAsCargo _cargo;_x setBehaviour "AWARE"} forEach _units
+
+@(count crew sup01 >=8)
+~3
+{_x doFollow sup01;_x stop false}forEach _trucks
+
+sup01 doFollow objNull
+ 
+group sup01 setFormation "COLUMN"
+~2
+sup01 Move getpos (object 3460)
+
+@(sup01 distance (object 3460) < 15)
+~2
+hint "finished"
+{unassignVehicle _x;_x setBehaviour "AWARE"} forEach _units
+
+@(count crew sup01 <=2)
+
+_units doMove getpos (object 16184)
+~25
+[]exec "Fleet/SupportTankSupply.sqs"
+exit

@@ -1,0 +1,20 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+_groupLeader = _this select 0
+_defendId = _this select 1
+_units = units group _groupLeader
+doStop _units
+{_x setBehaviour "SAFE";_x doWatch _x;_x addWeapon "Binocular";}forEach _units
+~3
+Defend set[_defendId,false]
+#repeat
+?(Defend select _defendId) : goto "end"  
+{_x selectWeapon "Binocular";}forEach _units
+?(Defend select _defendId) : goto "end"  
+~10
+?(Defend select _defendId) : goto "end"  
+goto "repeat"
+#end
+hint"end look"
+exit
