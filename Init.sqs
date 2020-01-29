@@ -24,7 +24,7 @@ WestSpawnGroups = []
 	TownAttack = false
 
 ;章节条件
-ChapterCaptured = true;
+ChapterCaptured = false;
 ChapterDiscover = false;
 ChapterDefender = false;
 ChapterAssault = false;
@@ -33,9 +33,11 @@ ChapterAssault = false;
 "Attack02" setMarkerPos [-1000,-1000]
 "Attack03" setMarkerPos [-1000,-1000]
 
+[Guba]exec "SignalSystem/InitSignalSystem.sqs"
+
 ;--------------第一章：被俘----------------------
-;TitleText["Chapter 01 : Captured","Plain Down",3]
-;[]exec "OnCaptured/InitCaptured.sqs"
+TitleText["Chapter 01 : Captured","Plain Down",3]
+[]exec "OnCaptured/InitCaptured.sqs"
 @ChapterCaptured
 ;--------------第二章：探索----------------------
 TitleText["Chapter 02 : Lurker","Plain Down",3]
