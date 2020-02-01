@@ -1,7 +1,7 @@
 minScore=500
-avgScore=3000
-maxScore=8000
-
+avgScore=30000
+maxScore=80000
+onLoadMission = You are in the car to escape
 showGPS=1
 
 class CfgSounds

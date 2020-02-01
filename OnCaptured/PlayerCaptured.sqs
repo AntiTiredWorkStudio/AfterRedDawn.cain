@@ -69,6 +69,7 @@ showMap=false
 ~1
 Arrest = true
 TitleText["You are under arrest,Old Devil!","Plain Down"]
+"1" objStatus "FAILED"
 ;*************** 01 **************************
 disableUserInput true
 ~3
@@ -165,6 +166,8 @@ disableUserInput false
 TitleText["","Plain Down"]
 
 savegame
+
+"2" objStatus "ACTIVE"
 []exec "OnCaptured/GubaEscapeDefend.sqs"
 []exec "OnCaptured/KeyTruckEvent.sqs"
 

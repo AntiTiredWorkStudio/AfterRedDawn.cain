@@ -21,7 +21,10 @@ KeyTruck lock true
 goto "EscapeDone"
 exit
 #EscapeDone
-hint "Escape Success!"
 if(Guba in KeyTruck) then {KeyTruck lock false}
+@ (Guba in KeyTruck)
+hint "Escape Success!"
 ChapterCaptured = true
+"2" objStatus "DONE"
+"3" objStatus "ACTIVE"
 exit

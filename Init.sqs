@@ -2,9 +2,34 @@
 ; ** Operation Flashpoint Script File
 ; Document Url: https://community.bistudio.com/wiki/Category:Scripting_Commands_OFP_1.96
 ; *****************************************************
+;Sets the status of an objective that was defined in briefing.html. Status may be one of:
+		;"ACTIVE"
+		;"FAILED"
+		;"DONE"
+		;"HIDDEN"
+
+"1" objStatus "ACTIVE"
+"2" objStatus "HIDDEN"
+"3" objStatus "HIDDEN"
+"4" objStatus "HIDDEN"
+"5" objStatus "HIDDEN"
+"6" objStatus "HIDDEN"
+"7" objStatus "HIDDEN"
+"8" objStatus "HIDDEN"
+"9" objStatus "HIDDEN"
+"10" objStatus "HIDDEN"
+"11" objStatus "HIDDEN"
+"12" objStatus "HIDDEN"
+"13" objStatus "HIDDEN"
+
+MapMarkers = [["ENEMYBASE01",(object 62227)],["SUPPLY",(object 4584)],["ENEMYBASE02",(object 4438)],["OUTPOST01",(object 4129)],["OUTPOST02",(object 24973)],["OUTPOST03",(object 27878)],["SCUDFOUND",(object 21691)],["CGUBA",(object 772)],["LOCK01",(object 14588)],["LOCK02",(object 13652)],["LOCK03",(object 14664)],["LOCK04",(object 18489)],["LOCK05",(object 12203)],["LOCK06",(object 20204)]]
+"Attack01" setMarkerPos [-1000,-1000]
+"Attack02" setMarkerPos [-1000,-1000]
+"Attack03" setMarkerPos [-1000,-1000]
+{(_x select 0) setMarkerPos [-1000,-1000];}forEach MapMarkers
+
 Guba addMagazine"glocksMag";
 Guba addWeapon "glocks";
-
 KeyBarrel addWeaponCargo["glocks",1]
 KeyBarrel addMagazineCargo["glocksMag",4]
 
@@ -24,25 +49,23 @@ WestSpawnGroups = []
 	TownAttack = false
 
 ;章节条件
-ChapterCaptured = false;
+ChapterCaptured = true;
 ChapterDiscover = false;
 ChapterDefender = false;
 ChapterAssault = false;
 
-"Attack01" setMarkerPos [-1000,-1000]
-"Attack02" setMarkerPos [-1000,-1000]
-"Attack03" setMarkerPos [-1000,-1000]
+
 
 [Guba]exec "SignalSystem/InitSignalSystem.sqs"
 
 ;--------------第一章：被俘----------------------
-TitleText["Chapter 01 : Captured","Plain Down",3]
-[]exec "OnCaptured/InitCaptured.sqs"
-@ChapterCaptured
+;TitleText["Chapter 01 : Captured","Plain Down",3]
+;[]exec "OnCaptured/InitCaptured.sqs"
+;@ChapterCaptured
 ;--------------第二章：探索----------------------
 TitleText["Chapter 02 : Lurker","Plain Down",3]
 []exec "OnDiscover/InitDiscover.sqs"
-[Guba]exec "SignalSystem/InitSignalSystem.sqs"
+;[Guba]exec "SignalSystem/InitSignalSystem.sqs"
 @ChapterDiscover
 ;--------------第三章：防御----------------------
 TitleText["Chapter 03 : Defender","Plain Down",3]

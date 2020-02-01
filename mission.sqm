@@ -33,7 +33,7 @@ class Mission
 	};
 	class Groups
 	{
-		items=107;
+		items=108;
 		class Item0
 		{
 			side="EAST";
@@ -47,13 +47,12 @@ class Mission
 					id=0;
 					side="EAST";
 					vehicle="BBB006";
-					player="PLAYER COMMANDER";
 					leader=1;
 					rank="COLONEL";
 					skill=1.000000;
 					fuel=0.900000;
 					ammo=0.900000;
-					text="Guba";
+					text="Guba1";
 				};
 			};
 		};
@@ -4159,7 +4158,7 @@ class Mission
 				items=1;
 				class Item0
 				{
-					position[]={5056.739258,14.930374,10136.092773};
+					position[]={5056.739258,14.923023,10136.092773};
 					azimut=2408.389893;
 					special="FLY";
 					id=359;
@@ -4346,6 +4345,29 @@ class Mission
 					{
 					};
 					showWP="NEVER";
+				};
+			};
+		};
+		class Item107
+		{
+			side="EAST";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={6560.399414,196.033295,5143.177246};
+					azimut=78.476822;
+					id=381;
+					side="EAST";
+					vehicle="BBB006";
+					player="PLAYER COMMANDER";
+					leader=1;
+					rank="COLONEL";
+					skill=1.000000;
+					fuel=0.900000;
+					ammo=0.900000;
+					text="Guba";
 				};
 			};
 		};
@@ -5650,7 +5672,7 @@ class Mission
 	};
 	class Markers
 	{
-		items=41;
+		items=58;
 		class Item0
 		{
 			position[]={5450.232910,362.780670,4999.553711};
@@ -5875,7 +5897,7 @@ class Mission
 		{
 			position[]={5261.631836,0.636007,11622.466797};
 			name="OUTPOST03";
-			text="Camp A";
+			text="NATO Camp";
 			type="Start";
 			colorName="ColorRed";
 			angle=-0.000067;
@@ -5884,7 +5906,7 @@ class Mission
 		{
 			position[]={5249.379395,0.636007,11833.823242};
 			name="OUTPOST02";
-			text="Camp B";
+			text="NATO Camp";
 			type="Start";
 			colorName="ColorRed";
 			angle=-0.000067;
@@ -5893,7 +5915,7 @@ class Mission
 		{
 			position[]={4379.446289,0.636007,11714.361328};
 			name="OUTPOST01";
-			text="Camp C";
+			text="NATO Camp";
 			type="Start";
 			colorName="ColorRed";
 			angle=-0.000067;
@@ -5953,7 +5975,7 @@ class Mission
 		{
 			position[]={10414.429688,99.297348,10157.823242};
 			name="SCUDFOUND";
-			text="We found a second SCUD From here";
+			text="NATO found SCUD From here";
 			type="Marker";
 			colorName="ColorBlack";
 		};
@@ -6005,6 +6027,112 @@ class Mission
 			type="Start";
 			colorName="ColorRed";
 		};
+		class Item41
+		{
+			position[]={2212.446289,124.604996,7353.603516};
+			name="SBase";
+			text="Soviet Camp";
+			type="Flag1";
+			colorName="ColorGreen";
+		};
+		class Item42
+		{
+			position[]={1901.668945,132.244568,7389.407715};
+			name="VILLA";
+			text="Your Villa";
+			type="Flag1";
+			colorName="ColorGreen";
+		};
+		class Item43
+		{
+			position[]={10431.380859,97.615372,10157.884766};
+			name="Ib20";
+			type="Empty";
+		};
+		class Item44
+		{
+			position[]={7468.990723,20.879999,4822.926758};
+			name="Fi62";
+			type="Empty";
+		};
+		class Item45
+		{
+			position[]={3270.560547,266.444977,6853.654785};
+			name="Cf46";
+			type="Empty";
+		};
+		class Item46
+		{
+			position[]={4563.328613,39.599998,3480.047119};
+			name="Df72";
+			type="Empty";
+		};
+		class Item47
+		{
+			position[]={5605.647949,419.039978,6850.271484};
+			name="Ed46";
+			type="Empty";
+		};
+		class Item48
+		{
+			position[]={7094.564453,311.994110,6024.828125};
+			name="Ff52";
+			type="Empty";
+		};
+		class Item49
+		{
+			position[]={6893.577148,436.274994,6761.977051};
+			name="Fd47";
+			type="Empty";
+		};
+		class Item50
+		{
+			position[]={7233.313477,303.295837,7750.691406};
+			name="Fg39";
+			type="Empty";
+		};
+		class Item51
+		{
+			position[]={8893.458008,111.483681,9410.752930};
+			name="Gj26";
+			type="Empty";
+		};
+		class Item52
+		{
+			position[]={10848.532227,110.403221,10409.437500};
+			name="Ie18";
+			type="Empty";
+		};
+		class Item53
+		{
+			position[]={6972.495117,185.999191,5578.440918};
+			name="Fe56";
+			type="Empty";
+		};
+		class Item54
+		{
+			position[]={5812.710449,145.495026,3986.969482};
+			name="Ef68";
+			type="Empty";
+		};
+		class Item55
+		{
+			position[]={3954.627197,262.893860,5140.102051};
+			name="Da59";
+			type="Empty";
+		};
+		class Item56
+		{
+			position[]={2905.871338,246.933105,6957.775391};
+			name="Cc45";
+			type="Empty";
+		};
+		class Item57
+		{
+			position[]={4883.108398,191.737518,7508.252930};
+			name="Di41";
+			type="Empty";
+		};
 	};
 	class Sensors
 	{
@@ -6031,6 +6159,7 @@ class Mission
 			activationBy="EAST";
 			age="UNKNOWN";
 			name="CommandArea";
+			expCond="ChapterCaptured";
 			expActiv="[list CommandArea,Guba] exec ""CommandSystem/InitCommanderSystem.sqs""";
 			class Effects
 			{
