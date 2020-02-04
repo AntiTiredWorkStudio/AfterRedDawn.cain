@@ -1,0 +1,8 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+_campIndex = _this select 0
+if(_campIndex == 1)then{"OUTPOST01" setMarkerPos getpos (object 4129);}
+if(_campIndex == 3)then{"OUTPOST03" setMarkerPos getpos (object 27878);}
+hint "Enemy Base Found!"
+exit

@@ -22,14 +22,26 @@
 "12" objStatus "HIDDEN"
 "13" objStatus "HIDDEN"
 
-MapMarkers = [["ENEMYBASE01",(object 62227)],["SUPPLY",(object 4584)],["ENEMYBASE02",(object 4438)],["OUTPOST01",(object 4129)],["OUTPOST02",(object 24973)],["OUTPOST03",(object 27878)],["SCUDFOUND",(object 21691)],["CGUBA",(object 772)],["LOCK01",(object 14588)],["LOCK02",(object 13652)],["LOCK03",(object 14664)],["LOCK04",(object 18489)],["LOCK05",(object 12203)],["LOCK06",(object 20204)]]
+MapMarkers = [["ENEMYBASE01",(object 62227)],["SUPPLY",(object 4584)],["ENEMYBASE02",(object 4438)],["SCUDFOUND",(object 21691)],["CGUBA",(object 772)],["LOCK01",(object 14588)],["LOCK02",(object 13652)],["LOCK03",(object 14664)],["LOCK04",(object 18489)],["LOCK05",(object 12203)],["LOCK06",(object 20204)]]
 "Attack01" setMarkerPos [-1000,-1000]
 "Attack02" setMarkerPos [-1000,-1000]
 "Attack03" setMarkerPos [-1000,-1000]
+
+;,["OUTPOST01",(object 4129)],["OUTPOST02",(object 24973)],["OUTPOST03",(object 27878)]
+
+"OUTPOST02" setMarkerPos [-1000,-1000]
+"OUTPOST01" setMarkerPos [-1000,-1000]
+"OUTPOST03" setMarkerPos [-1000,-1000]
+"AirStrike" setMarkerPos [-1000,-1000]
+"AirPos" setMarkerPos [-1000,-1000]
+"STOPCONVOY" setMarkerPos [-1000,-1000]
+
 {(_x select 0) setMarkerPos [-1000,-1000];}forEach MapMarkers
 
 Guba addMagazine"glocksMag";
 Guba addWeapon "glocks";
+Guba setIdentity "Guba"
+
 KeyBarrel addWeaponCargo["glocks",1]
 KeyBarrel addMagazineCargo["glocksMag",4]
 

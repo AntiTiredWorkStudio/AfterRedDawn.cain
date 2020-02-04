@@ -1,0 +1,21 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+_plane = _this select 0
+_pos = _this select 1
+_attackTime = 0
+_plane setCombatMode "RED"
+#repeat
+_plane doMove getpos _pos
+_attackTime = _attackTime+1
+@_plane distance _pos < 1000
+_plane setCombatMode "RED"
+@_plane distance _pos < 600
+hint "enter"
+@_plane distance _pos > 1000
+_plane setCombatMode "BLUE"
+hint "out"
+?_attackTime<4:goto "repeat"
+_plane doMove [-1000,-1000]
+
+exit

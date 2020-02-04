@@ -1,0 +1,29 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+_group = group (_this select 0)
+_pliots = units group (_this select 0)
+_airs = _this select 1
+_airInserts = _this select 2
+
+AirStrikeState = false
+marker = "AirStrike"
+onMapSingleClick "AirStrikeLogic setpos _pos;marker setMarkerPos _pos;"
+@ AirStrikeState
+_i = 0
+#Loop
+_tpos = getpos (_airInserts select _i)
+_tpos set [2,600]
+_airs select _i setpos _tpos
+(_pliots select _i) MoveInDriver (_airs select _i)
+_i=_i+1
+? (_i<count _airs) : goto "Loop"
+
+{[_x,AirStrikeLogic]exec "OnDefend/AirRepeatStrike.sqs"}forEach _airs
+
+#comfirmPos
+~1
+"AirPos" setMarkerPos getpos (Leader _group)
+? (alive (Leader _group)) : goto "comfirmPos"
+"AirPos" setMarkerPos [-1000,-1000]
+exit

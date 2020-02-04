@@ -9,11 +9,12 @@
 [ATG02_1,Guba,"Attack01"]exec "OnDiscover/AttackTeamFound.sqs"
 
 [sup01,FleetGroup]exec "Fleet/OnFleetStart.sqs"
-[]exec "Fleet/FleetTimer.sqs"
 []exec "OnDiscover/ArriveTown.sqs"
 ~3
 ;TownLeader setBehaviour "AWARE"
 TownLeader setUnitPos "UP"
+
+"OUTPOST02" setMarkerPos getpos (object 24973)
 
 @StolenRadio
 hint "Start Track"

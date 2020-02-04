@@ -8,6 +8,118 @@ class CfgSounds
 {
 	sounds[] = 	{ };
 	
+	class TownArrive_Leader_01
+	{
+		name = "";
+		sound[] = {"NormalVoice.ogg", db-40, 1.0};
+		forceTitles = true;
+		titles[] = { 0, "General, I can't believe I can see you again." };
+	};
+	
+	class TownArrive_Guba_01
+	{
+		name = "";
+		sound[] = {"NormalVoice.ogg", db-40, 1.0};
+		forceTitles = true;
+		titles[] = { 0, "At ease, major.Tell me what's going on." };
+	};
+	
+	class TownArrive_Leader_02
+	{
+		name = "";
+		sound[] = {"NormalVoice.ogg", db-40, 1.0};
+		forceTitles = true;
+		titles[] = { 0, "We're in a terrible situation.The enemy will attack here at any time." };
+	};
+	
+	class TownArrive_Leader_03
+	{
+		name = "";
+		sound[] = {"NormalVoice.ogg", db-40, 1.0};
+		forceTitles = true;
+		titles[] = { 0, "The enemy sent out a powerful M1A1 tank,We didn't have enough AT weapons." };
+	};
+	
+	class TownArrive_Leader_04
+	{
+		name = "";
+		sound[] = {"NormalVoice.ogg", db-40, 1.0};
+		forceTitles = true;
+		titles[] = { 0, "Our armored forces suffered heavy losses in the enemy's air strike." };
+	};
+	
+	class TownArrive_Leader_05
+	{
+		name = "";
+		sound[] = {"NormalVoice.ogg", db-40, 1.0};
+		forceTitles = true;
+		titles[] = { 0, "If we have supply truck,we can fix these iron things on.They have shells." };
+	};
+	
+	class TownArrive_Leader_06
+	{
+		name = "";
+		sound[] = {"NormalVoice.ogg", db-40, 1.0};
+		forceTitles = true;
+		titles[] = { 0, "The soldiers in the camp lost their desire to fight because they lost you." };
+	};
+	
+	class TownArrive_Leader_07
+	{
+		name = "";
+		sound[] = {"NormalVoice.ogg", db-40, 1.0};
+		forceTitles = true;
+		titles[] = { 0, "If you come back, you'll get those soldiers back on their feet." };
+	};
+	
+	class TownArrive_Guba_02
+	{
+		name = "";
+		sound[] = {"NormalVoice.ogg", db-40, 1.0};
+		forceTitles = true;
+		titles[] = { 0, "Thank you, major.I'll take care of these problems." };
+	};
+	
+	class TownArrive_Leader_08
+	{
+		name = "";
+		sound[] = {"NormalVoice.ogg", db-40, 1.0};
+		forceTitles = true;
+		titles[] = { 0, "And there are a good news, general.The Kremlin has agreed to our request for support,\n but you need to go back to the villa and contact yourself." };
+	};
+	
+	class TownArrive_Guba_03
+	{
+		name = "";
+		sound[] = {"NormalVoice.ogg", db-40, 1.0};
+		forceTitles = true;
+		titles[] = { 0, "Ok,I have got it.We can handle the situation.We can make it major." };
+	};
+	
+	class TownArrive_Leader_09
+	{
+		name = "";
+		sound[] = {"NormalVoice.ogg", db-40, 1.0};
+		forceTitles = true;
+		titles[] = { 0, "We will obey your orders to the death,General." };
+	};
+	
+	class TownArrive_Guba_04
+	{
+		name = "";
+		sound[] = {"NormalVoice.ogg", db-40, 1.0};
+		forceTitles = true;
+		titles[] = { 0, "Thank you major and come back to your position." };
+	};
+	
+	class TownArrive_Leader_10
+	{
+		name = "";
+		sound[] = {"NormalVoice.ogg", db-40, 1.0};
+		forceTitles = true;
+		titles[] = { 0, "Yes sir!All the Soviet units will fight for you!" };
+	};
+	
 	class 36v01
 	{
 		name = "";
@@ -198,3 +310,23 @@ class CfgMusic
 		sound[]	= { "TrackNervous.ogg", db + 40, 1.0 };
 	};
 };
+
+class CfgIdentities
+{
+	class Guba
+	{
+		name = "Aleksei Vasilii Guba";
+		face = "Face15";
+		glasses="None";
+		speaker = "Adam";
+		pitch = 0.85;
+	};
+	class Angelina
+	{
+		name = "Angelina";
+		face = "Face99";
+		glasses="None";
+		speaker = "Adam";
+		pitch = 1.15;
+	};
+}

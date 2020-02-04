@@ -6,20 +6,20 @@ _units = units group (_this select 1)
 _trucks = units group sup01
 
 FleetDiscover = false
-FleetTimer = false
 
-@ ((Guba knowsAbout sup01) > 0.5) || ((Guba knowsAbout sup02) > 0.5) || ((Guba knowsAbout sup03) > 0.5) || ((Guba knowsAbout sup04) > 0.5) || FleetTimer
+@ ((Guba knowsAbout sup01) > 0.5) || ((Guba knowsAbout sup02) > 0.5) || ((Guba knowsAbout sup03) > 0.5) || ((Guba knowsAbout sup04) > 0.5)
 
 FleetDiscover = ((Guba knowsAbout sup01) > 0.5) || ((Guba knowsAbout sup02) > 0.5) || ((Guba knowsAbout sup03) > 0.5) || ((Guba knowsAbout sup04) > 0.5)
 
 ;如果未发现车队,证明
-if(!FleetDiscover)then{goto "FleetMoveOn"}
+if(!FleetDiscover)then{goto "FleetMoveOn"}else{"5" objStatus "DONE";"6" objStatus "ACTIVE";"STOPCONVOY" setMarkerPos getpos (object 3283);hint "You found the convoy";}
 
-;hint "Wait FleetTimer and 220"
 ;等待计时器结束
-@FleetTimer
+
 ;奖励220秒
-~220
+~(300 + random 200)
+
+
 
 #FleetMoveOn
 {_x setBehaviour "AWARE";_x action["LIGHT ON"];}forEach _trucks

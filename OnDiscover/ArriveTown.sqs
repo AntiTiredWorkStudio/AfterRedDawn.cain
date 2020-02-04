@@ -2,9 +2,223 @@
 ; ** Operation Flashpoint Script File
 ; *****************************************************
 @(Guba distance RussiaFlag < 30)
-hint "Arrive Town"
+"7" objStatus "DONE"
+@(Guba distance TownLeader < 10)
+_LeaderPos = getpos TownLeader
+TownLeader setUnitPos "AUTO"
+TownLeader setBehaviour "SAFE"
+TownLeader doWatch Guba
 ;
 ;播过场动画
 ;
+
+~2
+
+disableUserInput true;
+TitleCut["","Black Out",3]
+~4
+Guba setpos getpos TownTalkPos
+TownLeader setpos _LeaderPos
+TownLeader setDir 352
+~1
+Guba setDir 155
+~1
+TitleCut["","Black In",2]
+_camera ="camera" camCreate getPos Guba
+_camera cameraEffect ["internal","back"]
+
+Guba action["WEAPONONBACK"]
+
+;=== 0:23:10
+_camera camSetTarget [14109.74,-88733.75,-27230.78]
+_camera camSetPos [3282.75,6798.27,6.54]
+_camera camSetFOV 0.700
+_camera camCommit 0
+@camCommitted _camera
+;=== 0:24:42
+_camera camSetTarget [-579.79,-92943.50,6356.31]
+_camera camSetPos [3283.32,6796.14,1.20]
+_camera camSetFOV 0.700
+_camera camCommit 4
+@camCommitted _camera
+~1
+;=== 0:44:11
+_camera camSetTarget [52428.18,-79155.85,14356.88]
+_camera camSetPos [3281.07,6786.14,1.17]
+_camera camSetFOV 0.700
+_camera camCommit 0
+@camCommitted _camera
+~1
+TownLeader PlayMove "EffectStandSalute"
+TownLeader say "TownArrive_Leader_01"
+;General, I can't believe I can see you again
+~3
+;=== 0:50:37
+_camera camSetTarget [15778.01,103787.22,21114.08]
+_camera camSetPos [3280.62,6786.14,1.07]
+_camera camSetFOV 0.700
+_camera camCommit 0
+@camCommitted _camera
+~1
+Guba say "TownArrive_Guba_01"
+~3
+;=== 0:44:11
+_camera camSetTarget [52428.18,-79155.85,14356.88]
+_camera camSetPos [3281.07,6786.14,1.17]
+_camera camSetFOV 0.700
+_camera camCommit 0
+@camCommitted _camera
+~1
+TownLeader PlayMove "EffectStandSaluteEnd"
+~1
+TownLeader say "TownArrive_Leader_02"
+~5
+TownLeader say "TownArrive_Leader_03"
+~2
+;=== 1:40:00
+_camera camSetTarget [-72331.27,71365.91,-4385.47]
+_camera camSetPos [2753.83,5464.78,0.95]
+_camera camSetFOV 0.700
+_camera camCommit 0
+@camCommitted _camera
+;=== 1:40:20
+_camera camSetTarget [-61273.57,61660.98,-52314.68]
+_camera camSetPos [2763.24,5456.52,13.90]
+_camera camSetFOV 0.700
+_camera camCommit 6
+@camCommitted _camera
+~6
+;=== 0:44:11
+_camera camSetTarget [52428.18,-79155.85,14356.88]
+_camera camSetPos [3281.07,6786.14,1.17]
+_camera camSetFOV 0.700
+_camera camCommit 0
+@camCommitted _camera
+TownLeader say "TownArrive_Leader_04"
+~1
+;=== 1:42:15
+_camera camSetTarget [-82591.40,24646.34,-47679.12]
+_camera camSetPos [3330.57,6808.80,6.53]
+_camera camSetFOV 0.700
+_camera camCommit 0
+@camCommitted _camera
+~3
+;=== 1:42:42
+_camera camSetTarget [-31254.59,97549.85,-23752.70]
+_camera camSetPos [3273.72,6830.21,3.97]
+_camera camSetFOV 0.700
+_camera camCommit 0
+@camCommitted _camera
+~3
+;=== 1:43:11
+_camera camSetTarget [85586.67,-44360.32,-23774.20]
+_camera camSetPos [3163.17,6906.25,3.30]
+_camera camSetFOV 0.700
+_camera camCommit 0
+@camCommitted _camera
+~4
+;=== 0:44:11
+_camera camSetTarget [52428.18,-79155.85,14356.88]
+_camera camSetPos [3281.07,6786.14,1.17]
+_camera camSetFOV 0.700
+_camera camCommit 0
+@camCommitted _camera
+TownLeader say "TownArrive_Leader_05"
+~6
+;=== 1:46:40
+_camera camSetTarget [-77840.64,31055.34,-55014.38]
+_camera camSetPos [2118.41,7285.65,8.37]
+_camera camSetFOV 0.700
+_camera camCommit 0
+@camCommitted _camera;
+playSound "TownArrive_Leader_06"
+;TownLeader say "TownArrive_Leader_06"
+;=== 1:47:00
+_camera camSetTarget [-93583.47,35735.34,5764.19]
+_camera camSetPos [2118.41,7285.65,0.38]
+_camera camSetFOV 0.700
+_camera camCommit 3
+@camCommitted _camera
+~3
+;=== 1:48:05
+_camera camSetTarget [-75725.18,69485.31,-8223.55]
+_camera camSetPos [2186.48,7356.24,4.25]
+_camera camSetFOV 0.700
+_camera camCommit 0
+@camCommitted _camera
+playSound "TownArrive_Leader_07"
+;TownLeader say "TownArrive_Leader_07"
+;=== 1:48:36
+_camera camSetTarget [-96842.72,16377.22,10786.84]
+_camera camSetPos [2177.98,7365.80,0.05]
+_camera camSetFOV 0.700
+_camera camCommit 3
+@camCommitted _camera
+~3
+;=== 0:50:37
+_camera camSetTarget [15778.01,103787.22,21114.08]
+_camera camSetPos [3280.62,6786.14,1.07]
+_camera camSetFOV 0.700
+_camera camCommit 0
+@camCommitted _camera
+Guba say "TownArrive_Guba_02"
+~4
+;=== 0:44:11
+_camera camSetTarget [52428.18,-79155.85,14356.88]
+_camera camSetPos [3281.07,6786.14,1.17]
+_camera camSetFOV 0.700
+_camera camCommit 0
+@camCommitted _camera
+~2
+Guba say "TownArrive_Leader_08"
+~1
+;=== 2:06:01
+_camera camSetTarget [-52601.41,86447.15,-27638.98]
+_camera camSetPos [1925.15,7356.80,10.06]
+_camera camSetFOV 0.700
+_camera camCommit 0
+@camCommitted _camera
+~5
+;=== 2:06:27
+_camera camSetTarget [-5883.28,106615.59,-9528.29]
+_camera camSetPos [1906.07,7388.25,1.33]
+_camera camSetFOV 0.700
+_camera camCommit 0
+@camCommitted _camera
+~8
+;=== 0:50:37
+_camera camSetTarget [15778.01,103787.22,21114.08]
+_camera camSetPos [3280.62,6786.14,1.07]
+_camera camSetFOV 0.700
+_camera camCommit 0
+@camCommitted _camera
+Guba say "TownArrive_Guba_03"
+~4
+;=== 0:44:11
+_camera camSetTarget [52428.18,-79155.85,14356.88]
+_camera camSetPos [3281.07,6786.14,1.17]
+_camera camSetFOV 0.700
+_camera camCommit 0
+@camCommitted _camera
+TownLeader say "TownArrive_Leader_09"
+~4
+;=== 0:50:37
+_camera camSetTarget [15778.01,103787.22,21114.08]
+_camera camSetPos [3280.62,6786.14,1.07]
+_camera camSetFOV 0.700
+_camera camCommit 0
+@camCommitted _camera
+Guba say "TownArrive_Guba_04"
+~3
+TownLeader say "TownArrive_Leader_10"
+~2
+Guba cameraEffect ["terminate","back"]
+camDestroy _camera
+
+disableUserInput false;
+~2
+TownLeader setBehaviour "STEALTH"
+TownLeader doWatch objNull
 ChapterDiscover = true;
+
 exit;

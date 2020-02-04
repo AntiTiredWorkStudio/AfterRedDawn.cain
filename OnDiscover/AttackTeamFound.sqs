@@ -7,4 +7,4 @@ _placeMarker = _this select 2
 @ _searcher knowsAbout _targetGrp > 0.75
 _placeMarker setMarkerPos getpos _targetGrp 
 hint "Enemy Found"
-exit;
+exit

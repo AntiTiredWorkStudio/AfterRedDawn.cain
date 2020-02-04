@@ -1,8 +1,0 @@
-; *****************************************************
-; ** Operation Flashpoint Script File
-; *****************************************************
-_seconds = (600 + (Random 300))
-hint format["time out:%1",_seconds]
-~_seconds
-FleetTimer = true
-exit
