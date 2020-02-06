@@ -6,8 +6,15 @@ TankSupply01 setFuel 1
 TankSupply02 setFuel 1
 TankSupply03 setFuel 1
 
+TankSupply setDammage 0
+TankSupply01 setDammage 0
+TankSupply02 setDammage 0
+TankSupply03 setDammage 0
+
 TankSupply setBehaviour "AWARE"
 TankSupply01 setBehaviour "AWARE"
 TankSupply02 setBehaviour "AWARE"
 TankSupply03 setBehaviour "AWARE"
+
+TankSupplyResult = true
 exit

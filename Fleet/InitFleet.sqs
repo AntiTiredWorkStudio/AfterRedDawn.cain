@@ -1,6 +1,7 @@
 ; *****************************************************
 ; ** Operation Flashpoint Script File
 ; *****************************************************
+TankSupplyResult = false
 _leaderTruck = _this
 _trucks = units group _leaderTruck
 {dostop _x;_x setBehaviour "COMBAT";_x action["LIGHT OFF"];}forEach _trucks

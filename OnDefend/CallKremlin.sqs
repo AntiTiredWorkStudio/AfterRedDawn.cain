@@ -1,0 +1,19 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+TelephoneLine = false
+KermlinState = false
+OnCallingK = false
+CallTimes = 0
+@Guba distance (object 9379) < 10
+hint "Try to find telephone"
+#loop
+if(!alive (object 9379))Then{exit;}
+@Guba distance Calling < 2
+TriggerUnits = TriggerUnits+[Guba]
+
+_aid = Guba addAction ["Call Kermlin","OnDefend/OnCallingKremlin.sqs"]
+@Guba distance Calling > 2
+Guba removeAction _aid
+goto "loop"
+exit;

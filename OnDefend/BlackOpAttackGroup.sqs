@@ -1,0 +1,16 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+_AttackGroup = _this select 0
+_AttackPos = _this select 1
+_AttackGrp = group (_AttackGroup select 0)
+;{_x disableAI "TARGET"}forEach _AttackGroup
+#AttackPos
+
+_AttackGroup doMove _AttackPos
+
+{_x doMove _AttackPos}forEach _AttackGroup
+;@ unitReady ((units _AttackGrp) select 0)
+~5
+goto "AttackPos"
+exit

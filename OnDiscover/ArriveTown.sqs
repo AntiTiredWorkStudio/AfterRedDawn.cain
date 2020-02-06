@@ -11,7 +11,7 @@ TownLeader doWatch Guba
 ;
 ;播过场动画
 ;
-
+?(Debug):goto "AnimEnd"
 ~2
 
 disableUserInput true;
@@ -217,8 +217,8 @@ camDestroy _camera
 
 disableUserInput false;
 ~2
+#AnimEnd
 TownLeader setBehaviour "STEALTH"
 TownLeader doWatch objNull
-ChapterDiscover = true;
-
-exit;
+ChapterDiscover = true
+exit

@@ -1,0 +1,20 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+_campUnit = _this select 0
+@(Guba distance _campUnit < 20 || !(alive _campUnit))
+if(!alive _campUnit)then{goto "OnDead"}
+_campUnit setBehaviour "SAFE"
+_campUnit action["WEAPONONBACK"]
+_campUnit doWatch Guba
+_voice = "CampUnit01"
+if(random 2 >1)then {_voice = "CampUnit02"}
+~2
+_campUnit say _voice
+~5
+_campUnit PlayMove "EffectStandSalute"
+~10
+_campUnit PlayMove "EffectStandSaluteEnd"
+#OnDead
+campCount= campCount+1
+exit

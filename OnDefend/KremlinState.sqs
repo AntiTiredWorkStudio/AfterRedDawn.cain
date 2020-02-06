@@ -1,0 +1,7 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+
+@(!alive (object 9379) && !KermlinState)
+"9" objStatus "FAILED"
+exit;

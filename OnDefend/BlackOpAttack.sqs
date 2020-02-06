@@ -1,0 +1,45 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+hint "BlackOp Attack"
+{_x doFollow BlackOpLeader}forEach units group BlackOpLeader
+[B2]join grpNull
+[B3]join group B2
+group BlackOpLeader setBehaviour "AWARE"
+group BlackOpLeader setSpeedMode "FULL"
+group BlackOpLeader SetCombatMode "RED"
+group BlackOpLeader allowFleeing 0
+{_x addWeapon "Binocular"}forEach units group BlackOpLeader
+;B2 disableAI "AUTOTARGET"
+;B3 disableAI "AUTOTARGET"
+
+~1
+AttackGroup = [BlackOpLeader,B1,B4,B5,B6,B7]
+BombGroup = [B2,B3]
+;AttackGroup doMove getpos (object 12011)
+[AttackGroup,getpos (object 1036)]exec "OnDefend/BlackOpAttackGroup.sqs"
+BombGroup doMove getpos (object 69198)
+@(unitReady B2 && unitReady B3)
+B2 doMove getpos Bomb01
+B3 doMove getpos Bomb03
+@ (B2 distance Bomb01 < 6 || !(alive B2))
+B2 Fire ["put", "pipebomb"]
+~0.5
+B2 action ["SETTIMER"]
+~0.5
+B2 action ["SETTIMER"]
+~0.5
+B3 doMove getpos Bomb03
+@ (B3 distance Bomb03 < 6 || !(alive B3))
+B3 Fire ["put", "pipebomb"]
+~0.5
+B3 action ["SETTIMER"]
+~0.5
+B3 action ["SETTIMER"]
+~2
+BombGroup doMove getpos (object 24420)
+~30
+@(B2 distance Bomb01 > 50 && B3 distance Bomb03 > 50)
+B2 action ["TOUCHOFF"]
+B3 action ["TOUCHOFF"]
+exit

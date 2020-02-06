@@ -1,0 +1,19 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+if(!BlackAttack)Then{[]exec "OnDefend/BlackOpAttack.sqs";BlackAttack=true}
+if(OnCallingK)Then{goto "end"}
+CallTimes = CallTimes + 1
+OnCallingK = true
+hint "on calling kremlin"
+if(CallTimes <= 3 || !TelephoneLine)Then{goto "failed"}
+#success
+"9" objStatus "DONE"
+goto "end"
+#failed
+playSound "TelephoneInterfere"
+~4
+if(CallTimes == 3)Then{Guba say "TelephoneError"}
+OnCallingK = false
+#end
+exit;

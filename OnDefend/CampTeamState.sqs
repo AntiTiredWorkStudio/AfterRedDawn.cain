@@ -1,0 +1,23 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+_campGrp = _this select 0
+campCount = 0
+{[_x]exec "OnDefend/CampUnitSingle.sqs";}forEach units group _campGrp
+@(campCount>7)
+if(!BlackAttack)Then{[]exec "OnDefend/BlackOpAttack.sqs";BlackAttack=true;}
+@(campCount>=9)
+"8" objStatus "DONE"
+;hint "Mission Object Success"
+{_x doFollow _campGrp}forEach units group _campGrp
+(group _campGrp) setBehaviour "AWARE"
+(units group _campGrp) doMove getpos (object 1036)
+
+@(unitReady _campGrp)
+;hint "team success"
+_vehTruck = nearestObject [getpos _campGrp, "Ural"]
+@(_vehTruck distance _campGrp < 30)
+units group _campGrp
+(units group _campGrp) orderGetIn true
+{_x assignAsCargo _vehTruck}forEach units group _campGrp
+exit

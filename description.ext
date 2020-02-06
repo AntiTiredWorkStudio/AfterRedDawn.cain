@@ -120,6 +120,22 @@ class CfgSounds
 		titles[] = { 0, "Yes sir!All the Soviet units will fight for you!" };
 	};
 	
+	class CampUnit01
+	{
+		name = "";
+		sound[] = {"General.ogg", db-40, 1.0};
+		forceTitles = true;
+		titles[] = { 0, "Is glad to see you general!" };
+	};
+	
+	class CampUnit02
+	{
+		name = "";
+		sound[] = {"General.ogg", db-40, 1.0};
+		forceTitles = true;
+		titles[] = { 0, "General!" };
+	};
+	
 	class 36v01
 	{
 		name = "";
@@ -155,6 +171,29 @@ class CfgSounds
 		forceTitles = true;
 		titles[] = { 0, $STRM_36v05 };
 	};
+	
+	class RadioInterfere
+	{
+		name = "";
+		sound[] = {"RadioInterfere.ogg", db+40, 1.0};
+		forceTitles = true;
+		titles[] = { 0, "Radio Interfere" };
+	};
+	
+	class TelephoneInterfere
+	{
+		name = "";
+		sound[] = {"tel.wav", db+40, 1.0};
+		forceTitles = true;
+		titles[] = { 0, "Telephone Interfere" };
+	};
+	
+	class TelephoneError{
+		name = ""
+		sound[] = {"RadioInterfere.ogg", db+40, 1.0};
+		forceTitles = true;
+		titles[] = { 0, "Damn,there's something wrong with the phone line." };
+	}
 };
 
 class CfgRadio
@@ -328,5 +367,22 @@ class CfgIdentities
 		glasses="None";
 		speaker = "Adam";
 		pitch = 1.15;
+	};
+	class Eusev
+	{
+		name = "Col. Eusev";
+		face = "Face17";
+		glasses="spectacles";
+		speaker = "Adam";
+		pitch = 0.85;
+	};
+	
+	class Fuller
+	{
+		name = "Jack Fuller";
+		face = "Face25";
+		glasses="None";
+		speaker = "Rich";
+		pitch = 1.00;
 	};
 }
