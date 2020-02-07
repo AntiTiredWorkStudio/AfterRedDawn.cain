@@ -6,14 +6,61 @@ if(OnCallingK)Then{goto "end"}
 CallTimes = CallTimes + 1
 OnCallingK = true
 hint "on calling kremlin"
-if(CallTimes <= 3 || !TelephoneLine)Then{goto "failed"}
+if(!Satellite && CallTimes <= 3)Then{goto "failed"}
 #success
+
+TitleCut["","Black Out",3]
+~4
+TitleCut["","Black In",2]
+_camera ="camera" camCreate getPos Guba
+_camera cameraEffect ["internal","back"]
+
+Guba setpos[1897.09,7391.28,3]
+
+Guba setDir -172.837
+
+_hasBinocular = "Binocular" in (Weapons Guba)
+if(_hasBinocular)Then{Guba removeWeapon "Binocular";}
+Guba addWeapon "phone"
+
+;=== 1:01:57
+_camera camSetTarget [-62416.84,-67883.36,-13886.20]
+_camera camSetPos [1901.22,7393.86,4.40]
+_camera camSetFOV 0.700
+_camera camCommit 0
+@camCommitted _camera
+Guba switchMove "FXStandToTelHand"
+
+;=== 1:02:11
+_camera camSetTarget [-62416.84,-67883.36,-13886.20]
+_camera camSetPos [1899.45,7391.64,4.40]
+_camera camSetFOV 0.700
+_camera camCommit 10
+@camCommitted _camera
+~1
+;=== 1:48:13
+_camera camSetTarget [83208.51,64432.77,11724.23]
+_camera camSetPos [1895.84,7390.05,3.87]
+_camera camSetFOV 0.700
+_camera camCommit 0
+@camCommitted _camera
+~10
+Guba switchMove "Default"
+
+Guba cameraEffect ["terminate","back"]
+camDestroy _camera
+
+if(_hasBinocular)Then{Guba removeWeapon "phone";Guba addWeapon "Binocular";}
+
+
+
 "9" objStatus "DONE"
 goto "end"
 #failed
 playSound "TelephoneInterfere"
 ~4
 if(CallTimes == 3)Then{Guba say "TelephoneError"}
+~3
 OnCallingK = false
 #end
 exit;

@@ -1,0 +1,11 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+if(Satellite)Then{exit}
+Guba action ["HIDEBODY"]
+Guba removeAction _aid
+~3
+hint "Satellite is on."
+Satellite = true
+Guba switchMove "Default"
+exit

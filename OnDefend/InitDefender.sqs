@@ -5,6 +5,7 @@ ATG01Wait = false
 ATG02Wait = false
 BlackAttack = false
 TankSupplyWait = false
+
 "8" objStatus "ACTIVE"
 "9" objStatus "ACTIVE"
 "10" objStatus "ACTIVE"
@@ -12,6 +13,7 @@ if(!FleetDiscover)then{[]exec "Fleet/SupportTankSupply.sqs";{_x doFollow TankSup
 [CampTeam]exec "OnDefend/CampTeamState.sqs"
 []exec "OnDefend/CallKremlin.sqs"
 []exec "OnDefend/KremlinState.sqs"
+[]exec "OnDefend/SignalTower.sqs"
 ;?(Debug):goto "TownAttackPoint"
 ~300
 #TownAttackPoint

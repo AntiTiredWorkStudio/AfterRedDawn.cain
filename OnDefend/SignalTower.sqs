@@ -1,0 +1,22 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+_TowerFix = _this select 0
+tpos=getpos TFix
+tpos set[2,15]
+TFix setpos tpos
+
+FixTownerId = 0
+#RFIX
+if(Satellite)Then{exit}
+
+@(TFix distance Guba < 1)
+if(Satellite)Then{exit}
+TriggerUnits = TriggerUnits+[TFix]
+_aid = Guba addAction ["Turn on Satellite Phone","OnDefend/FixSignalTowner.sqs"]
+FixTownerId = _aid
+@(TFix distance Guba > 1)
+Guba removeAction _aid
+if(Satellite)Then{exit}
+goto "RFIX"
+exit
