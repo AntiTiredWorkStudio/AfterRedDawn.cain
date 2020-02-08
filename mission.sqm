@@ -4386,10 +4386,10 @@ class Mission
 				class Item0
 				{
 					position[]={1898.797852,132.249695,7390.399414};
-					azimut=-409.701294;
+					azimut=-409.700989;
 					id=379;
 					side="EAST";
-					vehicle="SoldierELAW";
+					vehicle="OfficerE";
 					player="PLAYER COMMANDER";
 					leader=1;
 					rank="COLONEL";
@@ -4418,7 +4418,6 @@ class Mission
 					rank="MAJOR";
 					skill=1.000000;
 					text="SkyStricks";
-					init="[this,[Su25_01,Su25_02,Su25_03,Su25_04],[AS0,AS1,AS2,AS3],AirStrikeLogic]exec ""OnDefend/AirStrike.sqs""";
 				};
 				class Item1
 				{
@@ -4798,7 +4797,7 @@ class Mission
 	};
 	class Vehicles
 	{
-		items=128;
+		items=129;
 		class Item0
 		{
 			position[]={7280.409180,313.073730,7759.161133};
@@ -6137,12 +6136,13 @@ class Mission
 		};
 		class Item126
 		{
-			position[]={1885.764282,129.194992,7387.284180};
+			position[]={1886.410400,129.194992,7386.546387};
 			azimut=253.460999;
+			age="ACTUAL";
 			id=407;
 			side="EMPTY";
 			vehicle="UralReammo";
-			skill=0.600000;
+			skill=1.000000;
 			init="this exec""AmmoCar.sqs""";
 		};
 		class Item127
@@ -6155,6 +6155,17 @@ class Mission
 			leader=1;
 			skill=1.000000;
 			init="chairpos = getpos this;chairpos set [2,3];this setpos chairpos";
+		};
+		class Item128
+		{
+			position[]={1890.059448,129.194992,7387.458984};
+			azimut=-201.923004;
+			id=410;
+			side="EMPTY";
+			vehicle="ReammoBoxEast";
+			leader=1;
+			skill=0.200000;
+			init="this exec""AmmoCar.sqs""";
 		};
 	};
 	class Markers
@@ -6646,7 +6657,7 @@ class Mission
 	};
 	class Sensors
 	{
-		items=33;
+		items=31;
 		class Item0
 		{
 			position[]={1869.473511,129.332520,7406.408691};
@@ -7039,6 +7050,7 @@ class Mission
 			b=0.000000;
 			activationBy="BRAVO";
 			age="UNKNOWN";
+			expCond="KermlinState && this";
 			expActiv="AirStrikeState=true;Guba sideChat""Su25 coming""";
 			class Effects
 			{
@@ -7085,35 +7097,6 @@ class Mission
 			text="TryScript";
 			expCond="true";
 			expActiv="ChapterDiscover=true;";
-			class Effects
-			{
-			};
-		};
-		class Item31
-		{
-			position[]={1891.006592,129.194992,7382.610352};
-			a=0.000000;
-			b=0.000000;
-			timeoutMin=5.000000;
-			timeoutMid=5.000000;
-			timeoutMax=5.000000;
-			age="UNKNOWN";
-			text="TryScript";
-			expCond="true";
-			expActiv="Satellite=true;hint ""Satellite=true""";
-			class Effects
-			{
-			};
-		};
-		class Item32
-		{
-			position[]={1897.313110,129.194992,7378.931152};
-			a=0.000000;
-			b=0.000000;
-			activationBy="INDIA";
-			age="UNKNOWN";
-			text="Telephone";
-			expActiv="hint format[""%1"",weapons Guba]";
 			class Effects
 			{
 			};

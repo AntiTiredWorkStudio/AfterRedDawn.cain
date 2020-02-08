@@ -193,7 +193,104 @@ class CfgSounds
 		sound[] = {"RadioInterfere.ogg", db+40, 1.0};
 		forceTitles = true;
 		titles[] = { 0, "Damn,there's something wrong with the phone line." };
-	}
+	};
+	
+	class Kremlin_Guba_01
+	{
+		name = "";
+		sound[] = {"NormalVoice.ogg", db-40, 1.0};
+		forceTitles = true;
+		titles[] = { 0, "I've done my best to help you get support,General." };
+	};
+	class Kremlin_Guba_02
+	{
+		name = "";
+		sound[] = {"NormalVoice.ogg", db-40, 1.0};
+		forceTitles = true;
+		titles[] = { 0, "Comrade Gorbachev still hasn't approved your military action." };
+	};
+	class Kremlin_Guba_03
+	{
+		name = "";
+		sound[] = {"NormalVoice.ogg", db-40, 1.0};
+		forceTitles = true;
+		titles[] = { 0, "But your recent military friction with NATO has left the Kremlin very unhappy." };
+	};
+	
+	class Kremlin_Guba_04
+	{
+		name = "";
+		sound[] = {"NormalVoice.ogg", db-40, 1.0};
+		forceTitles = true;
+		titles[] = { 0, "Is the Kremlin full of ignorant idiots?" };
+	};
+	
+	class Kremlin_Guba_05
+	{
+		name = "";
+		sound[] = {"NormalVoice.ogg", db-40, 1.0};
+		forceTitles = true;
+		titles[] = { 0, "American guns will soon open our country!" };
+	};
+	
+	
+	class Kremlin_Guba_06
+	{
+		name = "";
+		sound[] = {"NormalVoice.ogg", db-40, 1.0};
+		forceTitles = true;
+		titles[] = { 0, "Are they still indifferent!" };
+	};
+	
+	class Kremlin_Guba_07
+	{
+		name = "";
+		sound[] = {"NormalVoice.ogg", db-40, 1.0};
+		forceTitles = true;
+		titles[] = { 0, "Comrade Aleksei, I quite understand your situation." };
+	};
+	
+	class Kremlin_Guba_08
+	{
+		name = "";
+		sound[] = {"NormalVoice.ogg", db-40, 1.0};
+		forceTitles = true;
+		titles[] = { 0, "With the love of old friends, I risked my life to get you a good news." };
+	};
+	
+	class Kremlin_Guba_09
+	{
+		name = "";
+		sound[] = {"NormalVoice.ogg", db-40, 1.0};
+		forceTitles = true;
+		titles[] = { 0, "I privately transferred 4 Su25 fighters from an Air Force squadron to reinforce you." };
+	};
+	
+	class Kremlin_Guba_10
+	{
+		name = "";
+		sound[] = {"NormalVoice.ogg", db-40, 1.0};
+		forceTitles = true;
+		titles[] = { 0, "First,You need to mark their support locations on the tactical map." };
+	};
+	
+	
+	class Kremlin_Guba_11
+	{
+		name = "";
+		sound[] = {"NormalVoice.ogg", db-40, 1.0};
+		forceTitles = true;
+		titles[] = { 0, "And then,you can call the Bravo channel by radio,and they will come to reinforce you as soon as possible." };
+	};
+	
+	
+	class Kremlin_Guba_12
+	{
+		name = "";
+		sound[] = {"NormalVoice.ogg", db-40, 1.0};
+		forceTitles = true;
+		titles[] = { 0, "Thank you my friend,Thanks for all your efforts." };
+	};
 };
 
 class CfgRadio

@@ -5,8 +5,7 @@ if(!BlackAttack)Then{[]exec "OnDefend/BlackOpAttack.sqs";BlackAttack=true}
 if(OnCallingK)Then{goto "end"}
 CallTimes = CallTimes + 1
 OnCallingK = true
-hint "on calling kremlin"
-if(!Satellite && CallTimes <= 3)Then{goto "failed"}
+if(!Satellite)Then{goto "failed"}
 #success
 
 TitleCut["","Black Out",3]
@@ -44,7 +43,33 @@ _camera camSetPos [1895.84,7390.05,3.87]
 _camera camSetFOV 0.700
 _camera camCommit 0
 @camCommitted _camera
-~10
+~1
+playSound "Kremlin_Guba_01"
+~4
+playSound "Kremlin_Guba_02"
+~4
+playSound "Kremlin_Guba_03"
+~4
+Guba say "Kremlin_Guba_04"
+~4
+Guba say "Kremlin_Guba_05"
+~4
+Guba say "Kremlin_Guba_06"
+~4
+playSound "Kremlin_Guba_07"
+~4
+playSound "Kremlin_Guba_08"
+~4
+playSound "Kremlin_Guba_09"
+~6
+playSound "Kremlin_Guba_10"
+~6
+playSound "Kremlin_Guba_11"
+~6
+Guba say "Kremlin_Guba_12"
+~4
+
+
 Guba switchMove "Default"
 
 Guba cameraEffect ["terminate","back"]
@@ -52,15 +77,17 @@ camDestroy _camera
 
 if(_hasBinocular)Then{Guba removeWeapon "phone";Guba addWeapon "Binocular";}
 
-
-
 "9" objStatus "DONE"
+KermlinState = true
+2 setRadioMsg "Su25 Attack"
+
+
+[SkyStricks,[Su25_01,Su25_02,Su25_03,Su25_04],[AS0,AS1,AS2,AS3],AirStrikeLogic]exec "OnDefend/AirStrike.sqs"
 goto "end"
 #failed
 playSound "TelephoneInterfere"
-~4
+~2
 if(CallTimes == 3)Then{Guba say "TelephoneError"}
-~3
 OnCallingK = false
 #end
 exit;

@@ -1,7 +1,7 @@
 ; *****************************************************
 ; ** Operation Flashpoint Script File
 ; *****************************************************
-removeAllWeapons this
+;removeAllWeapons this
 this addWeaponCargo ["RPGLauncher",10]
 this addMagazineCargo ["RPGLauncher",50]
 this addWeaponCargo ["CarlGustavLauncher",5]

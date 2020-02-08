@@ -8,13 +8,13 @@ CallTimes = 0
 @Guba distance (object 9379) < 10
 hint "Try to find telephone"
 #loop
-if(!alive (object 9379) || KermlinState)Then{exit;}
+if(!alive (object 9379) || KermlinState)Then{Guba removeAction _aid;exit;}
 @Guba distance Calling < 2
-if(!alive (object 9379) || KermlinState)Then{exit;}
+if(!alive (object 9379) || KermlinState)Then{Guba removeAction _aid;exit;}
 TriggerUnits = TriggerUnits+[Guba]
 _aid = Guba addAction ["Call Kermlin","OnDefend/OnCallingKremlin.sqs"]
 @Guba distance Calling > 2
-if(!alive (object 9379) || KermlinState)Then{exit;}
+if(!alive (object 9379) || KermlinState)Then{Guba removeAction _aid;exit;}
 Guba removeAction _aid
 goto "loop"
 exit;
