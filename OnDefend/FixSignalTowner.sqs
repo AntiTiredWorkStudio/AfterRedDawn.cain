@@ -4,8 +4,10 @@
 if(Satellite)Then{exit}
 Guba action ["HIDEBODY"]
 Guba removeAction _aid
+playSound "TelephoneButton"
 ~3
 hint "Satellite is on."
+"9_1" objStatus "DONE"
 Satellite = true
 Guba switchMove "Default"
 exit

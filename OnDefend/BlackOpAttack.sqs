@@ -10,13 +10,11 @@ group BlackOpLeader setSpeedMode "FULL"
 group BlackOpLeader SetCombatMode "RED"
 group BlackOpLeader allowFleeing 0
 {_x addWeapon "Binocular"}forEach units group BlackOpLeader
-;B2 disableAI "AUTOTARGET"
-;B3 disableAI "AUTOTARGET"
 
 ~1
 AttackGroup = [BlackOpLeader,B1,B4,B5,B6,B7]
 BombGroup = [B2,B3]
-;AttackGroup doMove getpos (object 12011)
+
 [AttackGroup,getpos (object 1036)]exec "OnDefend/BlackOpAttackGroup.sqs"
 BombGroup doMove getpos (object 69198)
 @(unitReady B2 && unitReady B3)

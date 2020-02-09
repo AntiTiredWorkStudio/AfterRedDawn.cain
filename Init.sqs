@@ -17,6 +17,7 @@ Debug = true
 "7" objStatus "HIDDEN"
 "8" objStatus "HIDDEN"
 "9" objStatus "HIDDEN"
+"9_1" objStatus "HIDDEN"
 "10" objStatus "HIDDEN"
 "11" objStatus "HIDDEN"
 "12" objStatus "HIDDEN"
@@ -49,6 +50,8 @@ KeyBarrel addMagazineCargo["glocksMag",4]
 
 Defend = []
 WestSpawnGroups = []
+FollowGroup = []
+BehaviourGroup = []
 
 ;任务条件
 	;--偷取无线电--

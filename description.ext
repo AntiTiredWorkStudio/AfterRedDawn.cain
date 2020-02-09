@@ -188,6 +188,15 @@ class CfgSounds
 		titles[] = { 0, "Telephone Interfere" };
 	};
 	
+	class TelephoneButton
+	{
+		name = "";
+		sound[] = {"button.wav", db+40, 1.0};
+		forceTitles = true;
+		titles[] = { 0, "Turning on" };
+	};
+	
+	
 	class TelephoneError{
 		name = ""
 		sound[] = {"RadioInterfere.ogg", db+40, 1.0};

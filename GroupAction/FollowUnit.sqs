@@ -1,0 +1,33 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+ 
+_targetGroupLeader = _this select 0
+_FollowUnit = _this select 1
+_ActionId = _this select 2
+
+?((FollowGroup select _ActionId) == _targetGroupLeader):goto "Stop"
+
+_FollowUnit sideChat format["Follow me %1.",_targetGroupLeader]
+~2
+_targetGroupLeader sideChat "Roger."
+
+FollowGroup set [_ActionId,_targetGroupLeader]
+#Loop
+{_x doMove getpos _FollowUnit}forEach units group _targetGroupLeader
+#Wait
+?((FollowGroup select _ActionId) != _targetGroupLeader):goto "End"
+~3
+?((_targetGroupLeader distance _FollowUnit)<6):goto "Wait"
+goto "Loop"
+#Stop
+
+_FollowUnit sideChat format["Holding your position %1.",_targetGroupLeader]
+~2
+_targetGroupLeader sideChat "Roger."
+
+FollowGroup set [_ActionId,ObjNull]
+
+_targetGroupLeader doMove getpos _targetGroupLeader
+#End
+exit

@@ -1,0 +1,12 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+ 
+_targetGroupLeader = _this select 0
+_FollowUnit = _this select 1
+_ActionId = _this select 2
+
+
+{_x Fire["put", "MineE"]}forEach units group _targetGroupLeader
+
+exit

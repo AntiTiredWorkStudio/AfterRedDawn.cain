@@ -7,17 +7,22 @@ campCount = 0
 @(campCount>7)
 if(!BlackAttack)Then{[]exec "OnDefend/BlackOpAttack.sqs";BlackAttack=true;}
 @(campCount>=9)
-"8" objStatus "DONE"
 ;hint "Mission Object Success"
 {_x doFollow _campGrp}forEach units group _campGrp
 (group _campGrp) setBehaviour "AWARE"
 (units group _campGrp) doMove getpos (object 1036)
 
-@(unitReady _campGrp)
-;hint "team success"
+@(_campGrp distance (object 1036) < 10)
 _vehTruck = nearestObject [getpos _campGrp, "Ural"]
-@(_vehTruck distance _campGrp < 30)
-units group _campGrp
+@(Guba in _vehTruck && _vehTruck distance _campGrp < 50)
+#Loop
+@ (Guba in _vehTruck)
 (units group _campGrp) orderGetIn true
 {_x assignAsCargo _vehTruck}forEach units group _campGrp
+@ !(Guba in _vehTruck)
+{unassignVehicle _x}forEach units group _campGrp
+
+if(_vehTruck distance RussiaFlag < 30)then{"8" objStatus "DONE";exit}else{goto "Loop"}
+
+
 exit
