@@ -1,0 +1,12 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+clearWeaponCargo _this
+clearMagazineCargo _this
+_this addWeaponCargo["UZI",5]
+_this addWeaponCargo["Bizon",3]
+_this addWeaponCargo["AK47",10]
+_this addWeaponCargo["AK47GrenadeLauncher",5]
+_this addWeaponCargo["Tokarev",3]
+_this addWeaponCargo["PK",3]
+exit

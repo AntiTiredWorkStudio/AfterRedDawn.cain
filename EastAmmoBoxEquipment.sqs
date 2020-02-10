@@ -1,0 +1,10 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+clearWeaponCargo _this
+clearMagazineCargo _this
+_this addWeaponCargo["Binocular",3]
+_this addWeaponCargo["NVGoggles",3]
+_this addWeaponCargo["HuntingRifle",1]
+_this addMagazineCargo["HuntingRifleMag",8]
+exit

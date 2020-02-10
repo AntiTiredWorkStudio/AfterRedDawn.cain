@@ -1,14 +1,15 @@
 ; *****************************************************
 ; ** Operation Flashpoint Script File
 ; *****************************************************
-;removeAllWeapons this
-this addWeaponCargo ["RPGLauncher",10]
-this addMagazineCargo ["RPGLauncher",50]
-this addWeaponCargo ["AT4Launcher",5]
-this addMagazineCargo ["AT4Launcher",20]
-this addWeaponCargo ["SVDDragunov",2]
-this addMagazineCargo ["SVDDragunov",20]
-this addWeaponCargo ["6G30",4]
-this addMagazineCargo ["6G30Magazine",25]
-this addWeaponCargo ["Binocular",3]
+clearWeaponCargo _this
+clearMagazineCargo _this
+_this addWeaponCargo ["RPGLauncher",10]
+_this addMagazineCargo ["RPGLauncher",50]
+_this addWeaponCargo ["AT4Launcher",5]
+_this addMagazineCargo ["AT4Launcher",20]
+_this addWeaponCargo ["SVDDragunov",2]
+_this addMagazineCargo ["SVDDragunov",20]
+_this addWeaponCargo ["6G30",4]
+_this addMagazineCargo ["6G30Magazine",25]
+;_this addWeaponCargo ["Binocular",3]
 exit

@@ -1,0 +1,13 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+clearWeaponCargo _this
+clearMagazineCargo _this
+_this addWeaponCargo["MineE",10]
+_this addWeaponCargo["PipeBomb",5]
+_this addWeaponCargo["TimeBomb",5]
+_this addMagazineCargo["HandGrenade",15]
+_this addMagazineCargo["SmokeShellGreen",5]
+_this addMagazineCargo["SmokeShellRed",5]
+_this addMagazineCargo["SmokeShell",5]
+exit
