@@ -8,10 +8,9 @@ _ActionId = _this select 2
 
 _bId = 0
 
-if((count BehaviourGroup)< _ActionId)Then{BehaviourGroup set[_ActionId,0];_bId = 0}else{_bId = ((BehaviourGroup select _ActionId) + 1)%4;BehaviourGroup set[_ActionId,_bId];}
+if((count BehaviourGroup)< _ActionId)Then{BehaviourGroup set[_ActionId,0];_bId = 0}else{_bId = ((BehaviourGroup select _ActionId) + 1)%3;BehaviourGroup set[_ActionId,_bId];}
 
 if(_bId== 0)Then{{_x setBehaviour "AWARE"}forEach units group _targetGroupLeader}
-if(_bId== 1)Then{{_x setBehaviour "COMBAT"}forEach units group _targetGroupLeader}
-if(_bId== 2)Then{{_x setBehaviour "STEALTH"}forEach units group _targetGroupLeader}
-if(_bId== 3)Then{{_x setBehaviour "SAFE"}forEach units group _targetGroupLeader}
+if(_bId== 1)Then{{_x setBehaviour "STEALTH"}forEach units group _targetGroupLeader}
+if(_bId== 2)Then{{_x setBehaviour "SAFE"}forEach units group _targetGroupLeader}
 exit

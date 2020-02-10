@@ -7,7 +7,6 @@ campCount = 0
 @(campCount>7)
 if(!BlackAttack)Then{[]exec "OnDefend/BlackOpAttack.sqs";BlackAttack=true;}
 @(campCount>=9)
-;hint "Mission Object Success"
 {_x doFollow _campGrp}forEach units group _campGrp
 (group _campGrp) setBehaviour "AWARE"
 (units group _campGrp) doMove getpos (object 1036)

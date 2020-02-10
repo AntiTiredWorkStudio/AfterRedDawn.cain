@@ -1,7 +1,7 @@
 ; *****************************************************
 ; ** Operation Flashpoint Script File
 ; *****************************************************
-hint "BlackOp Attack"
+
 {_x doFollow BlackOpLeader}forEach units group BlackOpLeader
 [B2]join grpNull
 [B3]join group B2

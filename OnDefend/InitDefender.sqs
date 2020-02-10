@@ -15,7 +15,7 @@ if(!FleetDiscover)then{[]exec "Fleet/SupportTankSupply.sqs";{_x doFollow TankSup
 []exec "OnDefend/KremlinState.sqs"
 []exec "OnDefend/SignalTower.sqs"
 ;?(Debug):goto "TownAttackPoint"
-~300
+~320
 #TownAttackPoint
 TownAttack = true
 

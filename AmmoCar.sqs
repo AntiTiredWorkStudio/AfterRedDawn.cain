@@ -4,8 +4,8 @@
 ;removeAllWeapons this
 this addWeaponCargo ["RPGLauncher",10]
 this addMagazineCargo ["RPGLauncher",50]
-this addWeaponCargo ["CarlGustavLauncher",5]
-this addMagazineCargo ["CarlGustavLauncher",20]
+this addWeaponCargo ["AT4Launcher",5]
+this addMagazineCargo ["AT4Launcher",20]
 this addWeaponCargo ["SVDDragunov",2]
 this addMagazineCargo ["SVDDragunov",20]
 this addWeaponCargo ["6G30",4]

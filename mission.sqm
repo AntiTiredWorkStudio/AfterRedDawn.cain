@@ -109,7 +109,7 @@ class Mission
 				class Item0
 				{
 					position[]={3281.352051,266.444977,6782.872070};
-					azimut=341.358521;
+					azimut=341.359009;
 					special="NONE";
 					id=2;
 					side="EAST";
@@ -3270,7 +3270,7 @@ class Mission
 					skill=1.000000;
 					fuel=0.000000;
 					text="TankSupply";
-					init="[this]exec ""SafeGuard.sqs""";
+					init="[this]exec ""SafeGuard.sqs"";group this allowFleeing 0";
 				};
 				class Item1
 				{
@@ -3332,12 +3332,12 @@ class Mission
 				};
 				class Item1
 				{
-					position[]={3292.993408,257.595306,6342.319824};
+					position[]={3293.603271,258.201721,6345.064941};
 					combatMode="RED";
 					formation="COLUMN";
 					speed="FULL";
 					combat="COMBAT";
-					expActiv="TankSupplyWait=true;hint ""TankSupplyWait"";";
+					expActiv="TankSupplyWait=true;";
 					class Effects
 					{
 					};
@@ -3345,7 +3345,7 @@ class Mission
 				};
 				class Item2
 				{
-					position[]={3294.482422,259.369354,6365.870117};
+					position[]={3293.872559,258.663971,6352.602051};
 					synchronizations[]={22};
 					class Effects
 					{
@@ -3355,7 +3355,6 @@ class Mission
 				class Item3
 				{
 					position[]={3270.522949,266.444977,6829.344238};
-					placement=180.000000;
 					type="SAD";
 					combatMode="RED";
 					formation="COLUMN";
@@ -3409,7 +3408,7 @@ class Mission
 				items=1;
 				class Item0
 				{
-					position[]={2721.285400,16.559999,5529.417480};
+					position[]={2720.918945,16.559999,5534.055176};
 					azimut=1078.719971;
 					id=289;
 					side="LOGIC";
@@ -3579,7 +3578,7 @@ class Mission
 					rank="CAPTAIN";
 					skill=1.000000;
 					text="ATG02_1";
-					init="[getPos this,group this,8,18,false]exec ""UnitSpawn/SpawnWestGroup.sqs"";";
+					init="[getPos this,group this,8,18,false]exec ""UnitSpawn/SpawnWestGroup.sqs"";group this allowFleeing 0";
 				};
 				class Item1
 				{
@@ -3617,7 +3616,7 @@ class Mission
 					combatMode="RED";
 					speed="FULL";
 					combat="AWARE";
-					expActiv="ATG02Wait=true;hint ""ATG02Wait"";";
+					expActiv="ATG02Wait=true;";
 					class Effects
 					{
 					};
@@ -3635,7 +3634,6 @@ class Mission
 				class Item3
 				{
 					position[]={3270.422363,266.444977,6824.995117};
-					placement=180.000000;
 					type="SAD";
 					combatMode="RED";
 					speed="NORMAL";
@@ -3697,7 +3695,7 @@ class Mission
 					rank="LIEUTNANT";
 					skill=1.000000;
 					text="ATG01_2";
-					init="[getPos this,group this,7,17,false]exec ""UnitSpawn/SpawnWestGroup.sqs"";";
+					init="[getPos this,group this,7,17,false]exec ""UnitSpawn/SpawnWestGroup.sqs"";group this allowFleeing 0";
 				};
 				class Item1
 				{
@@ -3733,7 +3731,7 @@ class Mission
 					combatMode="RED";
 					speed="FULL";
 					combat="AWARE";
-					expActiv="ATG01Wait=true;hint ""ATG01Wait"";";
+					expActiv="ATG01Wait=true;";
 					class Effects
 					{
 					};
@@ -3751,7 +3749,6 @@ class Mission
 				class Item3
 				{
 					position[]={3270.382568,266.444977,6826.933105};
-					placement=180.000000;
 					type="SAD";
 					combatMode="RED";
 					formation="LINE";
@@ -4396,8 +4393,8 @@ class Mission
 				items=1;
 				class Item0
 				{
-					position[]={3346.999512,266.444977,6791.305664};
-					azimut=-645.636902;
+					position[]={3353.437744,266.444977,6808.448242};
+					azimut=-88.001389;
 					id=379;
 					side="EAST";
 					vehicle="OfficerE";
@@ -4813,8 +4810,8 @@ class Mission
 				items=4;
 				class Item0
 				{
-					position[]={3358.336182,266.438843,6799.447754};
-					azimut=160.000000;
+					position[]={3277.756592,268.545044,6929.684082};
+					azimut=190.706573;
 					special="NONE";
 					id=466;
 					side="EAST";
@@ -4824,8 +4821,8 @@ class Mission
 				};
 				class Item1
 				{
-					position[]={3359.731689,266.414215,6797.224609};
-					azimut=160.000000;
+					position[]={3280.962402,268.494995,6932.402832};
+					azimut=169.944016;
 					special="NONE";
 					id=467;
 					side="EAST";
@@ -4835,8 +4832,8 @@ class Mission
 				};
 				class Item2
 				{
-					position[]={3355.883301,266.415894,6797.376953};
-					azimut=246.022003;
+					position[]={3282.487305,268.652710,6926.388672};
+					azimut=108.161026;
 					special="NONE";
 					id=468;
 					side="EAST";
@@ -4845,12 +4842,12 @@ class Mission
 					rank="SERGEANT";
 					skill=1.000000;
 					text="EngineerGroup";
-					init="[this,[[""Follow/Hold"",""FollowUnit""],[""Put Mine"",""PutMine""],[""Switch Behaviour"",""Behaviour""]]]exec ""GroupAction/InitGroup.sqs""";
+					init="[this,[[""Follow/Hold"",""FollowUnit""],[""Put Mine"",""PutMine""],[""Switch Behaviour"",""Behaviour""],[""Switch Formation"",""Formation""]]]exec ""GroupAction/InitGroup.sqs"";[this]exec ""AwareGuard.sqs""";
 				};
 				class Item3
 				{
-					position[]={3359.010498,266.390930,6795.125000};
-					azimut=274.911163;
+					position[]={3286.271973,268.645630,6929.796387};
+					azimut=150.518005;
 					special="NONE";
 					id=469;
 					side="EAST";
@@ -4863,7 +4860,7 @@ class Mission
 	};
 	class Vehicles
 	{
-		items=183;
+		items=187;
 		class Item0
 		{
 			position[]={7280.409180,313.073730,7759.161133};
@@ -5777,7 +5774,6 @@ class Mission
 			vehicle="ReammoBoxEast";
 			leader=1;
 			skill=0.200000;
-			init="this exec""AmmoCar.sqs""";
 		};
 		class Item88
 		{
@@ -5788,7 +5784,6 @@ class Mission
 			vehicle="ReammoBoxEast";
 			leader=1;
 			skill=0.200000;
-			init="this exec""AmmoCar.sqs""";
 		};
 		class Item89
 		{
@@ -5918,7 +5913,7 @@ class Mission
 		};
 		class Item101
 		{
-			position[]={3267.160400,266.444977,6870.625488};
+			position[]={3266.274902,266.444977,6872.583984};
 			azimut=115.000000;
 			special="NONE";
 			id=325;
@@ -6206,7 +6201,7 @@ class Mission
 		{
 			position[]={1886.410400,129.194992,7386.546387};
 			azimut=253.460999;
-			age="ACTUAL";
+			special="NONE";
 			id=407;
 			side="EMPTY";
 			vehicle="UralReammo";
@@ -6803,10 +6798,50 @@ class Mission
 			leader=1;
 			skill=0.200000;
 		};
+		class Item183
+		{
+			position[]={3339.047607,266.459106,6794.452148};
+			azimut=66.488625;
+			id=470;
+			side="EMPTY";
+			vehicle="Fortress2";
+			leader=1;
+			skill=0.200000;
+		};
+		class Item184
+		{
+			position[]={3288.806885,266.444977,6736.510742};
+			azimut=-181.459000;
+			id=471;
+			side="EMPTY";
+			vehicle="HeavyReammoBoxEast";
+			leader=1;
+			skill=0.200000;
+		};
+		class Item185
+		{
+			position[]={3286.670654,266.444977,6738.603516};
+			azimut=-2.218910;
+			id=472;
+			side="EMPTY";
+			vehicle="ReammoBoxEast";
+			leader=1;
+			skill=0.200000;
+			init="this exec""AmmoCar.sqs""";
+		};
+		class Item186
+		{
+			position[]={3273.386963,268.585144,6927.880859};
+			azimut=51.744370;
+			id=473;
+			side="EMPTY";
+			vehicle="UAZG";
+			skill=0.600000;
+		};
 	};
 	class Markers
 	{
-		items=61;
+		items=62;
 		class Item0
 		{
 			position[]={5450.232910,362.780670,4999.553711};
@@ -7123,7 +7158,7 @@ class Mission
 		};
 		class Item36
 		{
-			position[]={3270.895508,266.444977,6858.771973};
+			position[]={3270.426270,266.444977,6862.290527};
 			name="RUSSIA_BASE";
 			text="Hold Our Town";
 			type="Warning";
@@ -7289,6 +7324,12 @@ class Mission
 			name="STOPCONVOY";
 			text="Stop the convoy";
 			type="Flag";
+		};
+		class Item61
+		{
+			position[]={3281.657227,268.553986,6929.739258};
+			name="demolition";
+			type="Empty";
 		};
 	};
 	class Sensors
@@ -7699,10 +7740,13 @@ class Mission
 			position[]={3495.293213,302.502472,6562.980957};
 			a=0.000000;
 			b=0.000000;
+			timeoutMin=2.000000;
+			timeoutMid=2.000000;
+			timeoutMax=2.000000;
 			type="SWITCH";
 			age="UNKNOWN";
 			expCond="ATG01Wait && ATG02Wait && (TankSupplyWait || !TankSupplyResult)";
-			expActiv="hint ""attack""";
+			expActiv="[]exec ""OnDefend/OnNatoAttack.sqs""";
 			class Effects
 			{
 				track="NervousMusic";

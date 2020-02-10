@@ -1,0 +1,18 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+NatoAttackUnit = []
+_VehicleAttackUnit = []
+
+if(ATG01Wait)Then{NatoAttackUnit= NatoAttackUnit+(units group ATG01_2);}
+
+if(ATG02Wait)Then{NatoAttackUnit= NatoAttackUnit+(units group ATG02_1);}
+
+if(TankSupplyResult && TankSupplyWait)Then{NatoAttackUnit= NatoAttackUnit+(units group TankSupply);}
+
+{if(Vehicle _x != ObjNull && !(Vehicle _x in _VehicleAttackUnit))Then{_VehicleAttackUnit=_VehicleAttackUnit+[Vehicle _x]}}forEach NatoAttackUnit
+
+@ (count units group ATG01_2 <= 0) && (count units group ATG02_1 <= 0) && (count units group TankSupply <= 0)
+~5
+"10" objStatus "DONE"
+exit

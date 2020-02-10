@@ -1,0 +1,17 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+ 
+_targetGroupLeader = _this select 0
+_FollowUnit = _this select 1
+_ActionId = _this select 2
+
+_fId = 0
+
+if((count InformationGroup)< _ActionId)Then{InformationGroup set[_ActionId,0];_fId = 0}else{_fId = ((InformationGroup select _ActionId) + 1)%4;InformationGroup set[_ActionId,_fId];}
+
+if(_fId== 0)Then{group _targetGroupLeader setFormation "COLUMN"}
+if(_fId== 1)Then{group _targetGroupLeader setFormation "LINE"}
+if(_fId== 2)Then{group _targetGroupLeader setFormation "VEE"}
+if(_fId== 3)Then{group _targetGroupLeader setFormation "WEDGE"}
+exit

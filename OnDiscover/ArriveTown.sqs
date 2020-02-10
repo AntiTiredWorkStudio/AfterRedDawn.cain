@@ -3,6 +3,7 @@
 ; *****************************************************
 @(Guba distance RussiaFlag < 30)
 "7" objStatus "DONE"
+"7_1" objStatus "ACTIVE"
 @(Guba distance TownLeader < 10)
 _LeaderPos = getpos TownLeader
 TownLeader setUnitPos "AUTO"
@@ -221,4 +222,6 @@ disableUserInput false;
 TownLeader setBehaviour "STEALTH"
 TownLeader doWatch objNull
 ChapterDiscover = true
+"7_1" objStatus "DONE"
+"7_2" objStatus "ACTIVE"
 exit
