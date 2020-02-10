@@ -6832,11 +6832,12 @@ class Mission
 		class Item186
 		{
 			position[]={3273.386963,268.585144,6927.880859};
-			azimut=51.744370;
+			azimut=152.298004;
 			id=473;
 			side="EMPTY";
 			vehicle="UAZG";
 			skill=0.600000;
+			init="this exec""AmmoCar.sqs""";
 		};
 	};
 	class Markers
