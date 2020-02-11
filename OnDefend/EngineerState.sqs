@@ -1,0 +1,11 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+;[this,[["Follow/Hold","FollowUnit"],["Put Mine","PutMine"],["Switch Behaviour","Behaviour"],["Switch Formation","Formation"]]]exec "GroupAction/InitGroup.sqs";[this]exec "AwareGuard.sqs"
+EngineerUaz lock true
+EngineerMoveTime = 0
+{_x exec "OnDefend/EngineerMoving.sqs"}forEach [Engineer01,Engineer02]
+@(EngineerMoveTime >= 12)
+EngineerUaz exec "EngineerCar.sqs"
+EngineerUaz lock false
+exit

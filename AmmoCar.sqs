@@ -4,12 +4,13 @@
 clearWeaponCargo _this
 clearMagazineCargo _this
 _this addWeaponCargo ["RPGLauncher",10]
-_this addMagazineCargo ["RPGLauncher",50]
-_this addWeaponCargo ["AT4Launcher",5]
-_this addMagazineCargo ["AT4Launcher",20]
+_this addMagazineCargo ["RPGLauncher",30]
+_this addWeaponCargo["AT4Launcher",3]
+_this addMagazineCargo["AT4Launcher",15]
+_this addWeaponCargo["9K32Launcher",3]
+_this addMagazineCargo["9K32Launcher",15]
 _this addWeaponCargo ["SVDDragunov",2]
-_this addMagazineCargo ["SVDDragunov",20]
+_this addMagazineCargo ["SVDDragunov",15]
 _this addWeaponCargo ["6G30",4]
 _this addMagazineCargo ["6G30Magazine",25]
-;_this addWeaponCargo ["Binocular",3]
 exit

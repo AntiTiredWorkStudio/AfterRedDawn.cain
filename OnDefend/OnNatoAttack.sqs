@@ -4,6 +4,9 @@
 NatoAttackUnit = []
 _VehicleAttackUnit = []
 
+0 fadeMusic 0.5
+PlayMusic "NervousMusic"
+
 if(ATG01Wait)Then{NatoAttackUnit= NatoAttackUnit+(units group ATG01_2);}
 
 if(ATG02Wait)Then{NatoAttackUnit= NatoAttackUnit+(units group ATG02_1);}

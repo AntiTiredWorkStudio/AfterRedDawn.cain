@@ -3,10 +3,6 @@
 ; *****************************************************
 clearWeaponCargo _this
 clearMagazineCargo _this
-_this addWeaponCargo["AT4Launcher",1]
-_this addMagazineCargo["AT4Launcher",7]
-_this addWeaponCargo["9K32Launcher",1]
-_this addMagazineCargo["9K32Launcher",7]
-_this addWeaponCargo["RPGLauncher",1]
-_this addMagazineCargo["RPGLauncher",25]
+_this addWeaponCargo["RPGLauncher",5]
+_this addMagazineCargo["RPGLauncher",30]
 exit

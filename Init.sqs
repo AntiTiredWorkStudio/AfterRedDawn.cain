@@ -7,7 +7,7 @@
 		;"FAILED"
 		;"DONE"
 		;"HIDDEN"
-Debug = false
+Debug = true
 "1" objStatus "ACTIVE"
 "2" objStatus "HIDDEN"
 "3" objStatus "HIDDEN"

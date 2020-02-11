@@ -4,6 +4,7 @@
 @(Guba distance RussiaFlag < 30)
 "7" objStatus "DONE"
 "7_1" objStatus "ACTIVE"
+[]exec "OnDefend/EngineerState.sqs"
 @(Guba distance TownLeader < 10)
 _LeaderPos = getpos TownLeader
 TownLeader setUnitPos "AUTO"
@@ -15,19 +16,20 @@ TownLeader doWatch Guba
 ?(Debug):goto "AnimEnd"
 ~2
 
-disableUserInput true;
+disableUserInput true
 TitleCut["","Black Out",3]
 ~4
 Guba setpos getpos TownTalkPos
 TownLeader setpos _LeaderPos
 TownLeader setDir 352
+disableUserInput false
 ~1
 Guba setDir 155
 ~1
 TitleCut["","Black In",2]
 _camera ="camera" camCreate getPos Guba
 _camera cameraEffect ["internal","back"]
-
+PlayMusic "Track12"
 Guba action["WEAPONONBACK"]
 
 ;=== 0:23:10
@@ -215,11 +217,10 @@ TownLeader say "TownArrive_Leader_10"
 ~2
 Guba cameraEffect ["terminate","back"]
 camDestroy _camera
-
-disableUserInput false;
+5 fadeMusic 0
 ~2
 #AnimEnd
-TownLeader setBehaviour "STEALTH"
+TownLeader setBehaviour "AWARE"
 TownLeader doWatch objNull
 ChapterDiscover = true
 "7_1" objStatus "DONE"

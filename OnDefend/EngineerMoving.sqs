@@ -1,0 +1,33 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+
+_pos = getpos _this
+_this setSpeedMode "Full"
+_this setBehaviour "AWARE"
+#Loop
+
+_this doMove getpos EngineerAmmo
+
+@ _this distance EngineerAmmo < 5
+~2
+_this action ["HideBody"]
+~2
+_this PlayMove "Default"
+~1
+_this doMove getpos EngineerUaz
+@ _this distance EngineerUaz < 5
+~2
+EngineerMoveTime = EngineerMoveTime+1
+if(EngineerMoveTime >= 12)Then{goto "End"}
+_this action ["HideBody"]
+~2
+_this PlayMove "Default"
+~1
+goto "Loop"
+#End
+ 
+_this setUnitPos "Auto"
+doStop _this
+
+exit
