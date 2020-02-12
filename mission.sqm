@@ -225,7 +225,7 @@ class Mission
 					rank="MAJOR";
 					skill=1.000000;
 					text="TownLeader";
-					init="[this]exec ""AwareGuard.sqs"";this setFace ""Face39""";
+					init="[this]exec ""AwareGuard.sqs"";this setFace ""Face39"";ConditionControlGroup=ConditionControlGroup+[this]";
 				};
 				class Item11
 				{
@@ -4418,8 +4418,8 @@ class Mission
 				items=1;
 				class Item0
 				{
-					position[]={3364.271484,266.444977,6810.503418};
-					azimut=-90.568306;
+					position[]={3358.864502,266.439392,6799.495605};
+					azimut=-90.568298;
 					id=376;
 					side="EAST";
 					vehicle="OfficerE";
@@ -4430,7 +4430,7 @@ class Mission
 					fuel=0.900000;
 					ammo=0.900000;
 					text="Guba";
-					init="this addWeapon ""Binocular"";";
+					init="this addWeapon ""Binocular"";skipTime 10";
 				};
 			};
 		};
@@ -7302,7 +7302,7 @@ class Mission
 	};
 	class Sensors
 	{
-		items=30;
+		items=31;
 		class Item0
 		{
 			position[]={1869.473511,129.332520,7406.408691};
@@ -7325,8 +7325,8 @@ class Mission
 			activationBy="EAST";
 			age="UNKNOWN";
 			name="CommandArea";
-			expCond="ChapterCaptured";
-			expActiv="[list CommandArea,Guba] exec ""CommandSystem/InitCommanderSystem.sqs""";
+			expCond="true";
+			expActiv="CommandAreaSetting = true";
 			class Effects
 			{
 			};
@@ -7730,6 +7730,19 @@ class Mission
 			age="UNKNOWN";
 			text="CameraSQS";
 			expActiv="Guba exec ""camera.sqs"";";
+			class Effects
+			{
+			};
+		};
+		class Item30
+		{
+			position[]={3353.674316,266.444977,6826.882324};
+			a=0.000000;
+			b=0.000000;
+			activationBy="INDIA";
+			age="UNKNOWN";
+			text="Save Game";
+			expActiv="saveGame";
 			class Effects
 			{
 			};

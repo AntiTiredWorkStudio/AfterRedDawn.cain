@@ -2,26 +2,22 @@
 ; ** Operation Flashpoint Script File
 ; *****************************************************
 _campGrp = _this select 0
+_groupCamp = group _campGrp
 campCount = 0
-{[_x]exec "OnDefend/CampUnitSingle.sqs";}forEach units group _campGrp
+{[_x]exec "OnDefend/CampUnitSingle.sqs";}forEach units _groupCamp
 @(campCount>7)
 if(!BlackAttack)Then{[]exec "OnDefend/BlackOpAttack.sqs";BlackAttack=true;}
 @(campCount>=9)
-{_x doFollow _campGrp}forEach units group _campGrp
-(group _campGrp) setBehaviour "AWARE"
-(units group _campGrp) doMove getpos (object 1036)
+{_x doFollow (Leader _groupCamp)}forEach units _groupCamp
+_groupCamp setBehaviour "AWARE"
+(units _groupCamp) doMove getpos (object 1036)
 
-@(_campGrp distance (object 1036) < 10)
-_vehTruck = nearestObject [getpos _campGrp, "Ural"]
-@(Guba in _vehTruck && _vehTruck distance _campGrp < 50)
-#Loop
-@ (Guba in _vehTruck)
-(units group _campGrp) orderGetIn true
-{_x assignAsCargo _vehTruck}forEach units group _campGrp
-@ !(Guba in _vehTruck)
-{unassignVehicle _x}forEach units group _campGrp
+@((Leader _groupCamp) distance (object 1036) < 10)
 
-if(_vehTruck distance RussiaFlag < 30)then{"8" objStatus "DONE";exit}else{goto "Loop"}
+[(Leader _groupCamp)]exec "cmd/BaseCommand.sqs";
 
+@((Leader _groupCamp) distance RussiaFlag < 30)
+
+"8" objStatus "DONE"
 
 exit

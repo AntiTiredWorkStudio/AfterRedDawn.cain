@@ -6,6 +6,35 @@ EngineerUaz lock true
 EngineerMoveTime = 0
 {_x exec "OnDefend/EngineerMoving.sqs"}forEach [Engineer01,Engineer02]
 @(EngineerMoveTime >= 12)
+@ ChapterDiscover
+@(Guba distance EngineerUaz < 8) && (Engineer01 distance EngineerUaz < 5)
+
+
+Engineer01 doWatch Guba
+Engineer02 doWatch Guba
+~2
+Engineer01 playMove "EffectStandSalute"
+Engineer02 playMove "EffectStandSalute"
+~1
+Engineer01 playMove "EffectStandSaluteEnd"
+Engineer02 playMove "EffectStandSaluteEnd"
+~1
+Engineer01 playMove "EffectStand"
+Engineer02 playMove "EffectStand"
+
+~1
+Engineer01 say "Engineer_01"
+~1
+
 EngineerUaz exec "EngineerCar.sqs"
 EngineerUaz lock false
+"7_2" objStatus "DONE"
+~5
+hint "You can drive uaz to deploy the mines and bombs."
+
+Engineer01 doWatch ObjNull
+Engineer02 doWatch ObjNull
+
+[TownLeader]exec "cmd/BaseCommand.sqs"
+
 exit

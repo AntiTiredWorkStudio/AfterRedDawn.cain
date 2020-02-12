@@ -55,6 +55,10 @@ WestSpawnGroups = []
 FollowGroup = []
 BehaviourGroup = []
 InformationGroup = []
+ConditionControlGroup = [TownLeader,CampTeam]
+
+
+CommandAreaSetting = false
 
 ;任务条件
 	;--偷取无线电--
@@ -65,13 +69,12 @@ InformationGroup = []
 	OnCalling = false
 	;--美军进攻城镇--
 	TownAttack = false
-
+	
 ;章节条件
 ChapterCaptured = true;
 ChapterDiscover = false;
 ChapterDefender = false;
 ChapterAssault = false;
-
 
 
 [Guba]exec "SignalSystem/InitSignalSystem.sqs"
@@ -84,6 +87,8 @@ ChapterAssault = false;
 TitleText["Chapter 02 : Lurker","Plain Down",3]
 []exec "OnDiscover/InitDiscover.sqs"
 ;[Guba]exec "SignalSystem/InitSignalSystem.sqs"
+@CommandAreaSetting
+[Guba,list CommandArea]exec "cmd/Init.sqs"
 @ChapterDiscover
 ;--------------第三章：防御----------------------
 TitleText["Chapter 03 : Defender","Plain Down",3]

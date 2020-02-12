@@ -300,6 +300,23 @@ class CfgSounds
 		forceTitles = true;
 		titles[] = { 0, "Thank you my friend,Thanks for all your efforts." };
 	};
+	
+	class Engineer_01
+	{
+		name = "";
+		sound[] = {"NormalVoice.ogg", db-40, 1.0};
+		forceTitles = true;
+		titles[] = { 0, "We just loaded the car with mines and pipebome,general." };
+	};
+	
+	class GroupReport
+	{
+		name = "";
+		sound[] = {"NormalVoice.ogg", db-40, 1.0};
+		forceTitles = false;
+		titles[] = { 0, "" };
+	};
+	
 };
 
 class CfgRadio

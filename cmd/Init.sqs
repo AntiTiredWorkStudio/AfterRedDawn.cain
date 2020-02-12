@@ -1,0 +1,15 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+BaseCommand = _this select 0
+ListArea = _this select 1
+GroupCount = 0
+_i = 0
+#Loop
+_unit = (ListArea select _i)
+
+if(Leader _unit == _unit && _unit!=BaseCommand && !(_unit in ConditionControlGroup))Then{GroupCount = GroupCount +1;[_unit]exec "cmd/BaseCommand.sqs";}
+_i=_i+1
+?(_i<count ListArea):goto "Loop"
+hint format["total groups:%1",GroupCount]
+exit
