@@ -14,8 +14,10 @@ if(ATG02Wait)Then{NatoAttackUnit= NatoAttackUnit+(units group ATG02_1);}
 if(TankSupplyResult && TankSupplyWait)Then{NatoAttackUnit= NatoAttackUnit+(units group TankSupply);}
 
 {if(Vehicle _x != ObjNull && !(Vehicle _x in _VehicleAttackUnit))Then{_VehicleAttackUnit=_VehicleAttackUnit+[Vehicle _x]}}forEach NatoAttackUnit
+NatoMovingTown = true
 
 @ (count units group ATG01_2 <= 0) && (count units group ATG02_1 <= 0) && (count units group TankSupply <= 0)
 ~5
-"10" objStatus "DONE"
+DefeatNato = true
+if(FinalLine)Then{"10_1" objStatus "DONE"}else{"10" objStatus "DONE"}
 exit

@@ -1,0 +1,12 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+if((_this select 1)!=Guba)Then{exit}
+disableUserInput true
+TitleText["","Plain Down",0]
+TitleCut["Never allow hurt friendly unit deliberately!","White Out",3]
+~5
+disableUserInput false
+addRating -100000
+KillFriendly=true
+exit

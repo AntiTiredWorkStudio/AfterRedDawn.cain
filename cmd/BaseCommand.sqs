@@ -4,6 +4,7 @@
 _Leader = _this select 0
 _controlGroup = group _Leader
 _controlUnits = units _controlGroup
+
 _aid = _Leader addAction[format["Take over control %1",group _Leader],"cmd/CommandAction.sqs"]
 @(!alive _Leader)
 _Leader removeAction _aid

@@ -3,6 +3,7 @@
 ; *****************************************************
 @(Guba distance RussiaFlag < 30)
 "7" objStatus "DONE"
+~1
 "7_1" objStatus "ACTIVE"
 []exec "OnDefend/EngineerState.sqs"
 @(Guba distance TownLeader < 10)
@@ -29,6 +30,7 @@ Guba setDir 155
 TitleCut["","Black In",2]
 _camera ="camera" camCreate getPos Guba
 _camera cameraEffect ["internal","back"]
+2 fadeMusic 0.5
 PlayMusic "Track12"
 Guba action["WEAPONONBACK"]
 
@@ -223,6 +225,8 @@ camDestroy _camera
 TownLeader setBehaviour "AWARE"
 TownLeader doWatch objNull
 ChapterDiscover = true
+~1
 "7_1" objStatus "DONE"
+~1
 "7_2" objStatus "ACTIVE"
 exit

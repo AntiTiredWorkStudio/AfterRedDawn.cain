@@ -1,4 +1,4 @@
-minScore=500
+minScore=-10000
 avgScore=30000
 maxScore=80000
 onLoadMission = You are in the car to escape

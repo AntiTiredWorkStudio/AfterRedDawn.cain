@@ -21,6 +21,7 @@ Debug = true
 "9" objStatus "HIDDEN"
 "9_1" objStatus "HIDDEN"
 "10" objStatus "HIDDEN"
+"10_1" objStatus "HIDDEN"
 "11" objStatus "HIDDEN"
 "12" objStatus "HIDDEN"
 "13" objStatus "HIDDEN"
@@ -36,6 +37,7 @@ MapMarkers = [["ENEMYBASE01",(object 62227)],["SUPPLY",(object 4584)],["ENEMYBAS
 "OUTPOST01" setMarkerPos [-1000,-1000]
 "OUTPOST03" setMarkerPos [-1000,-1000]
 "AirStrike" setMarkerPos [-1000,-1000]
+"HoldingLine" setMarkerPos [-1000,-1000]
 "AirPos" setMarkerPos [-1000,-1000]
 "STOPCONVOY" setMarkerPos [-1000,-1000]
 
@@ -44,6 +46,7 @@ MapMarkers = [["ENEMYBASE01",(object 62227)],["SUPPLY",(object 4584)],["ENEMYBAS
 Guba addMagazine"glocksMag";
 Guba addWeapon "glocks";
 Guba setIdentity "Guba"
+group Guba setGroupId ["Alpha", "GroupColor1","Command"]
 
 KeyBarrel addWeaponCargo["glocks",1]
 KeyBarrel addMagazineCargo["glocksMag",4]
@@ -67,8 +70,6 @@ CommandAreaSetting = false
 	StolenMap = false
 	;--无线电呼叫--
 	OnCalling = false
-	;--美军进攻城镇--
-	TownAttack = false
 	
 ;章节条件
 ChapterCaptured = true;
@@ -76,8 +77,19 @@ ChapterDiscover = false;
 ChapterDefender = false;
 ChapterAssault = false;
 
+;FinalLine_Heal setpos [-1000,-1000]
+;FinalLine_F1 setpos [-1000,-1000]
+;FinalLine_F2 setpos [-1000,-1000]
+
+;最终城镇失守
+BadEnd01 = false
+
 
 [Guba]exec "SignalSystem/InitSignalSystem.sqs"
+
+;保护免受伤害的友军
+ImportantProtection = [TownLeader,Engineer01,Engineer02,CampTeam,(object 9379)] + (units group EscTeam)
+[Guba] exec "FriendlyProtection.sqs"
 
 ;--------------第一章：被俘----------------------
 ;TitleText["Chapter 01 : Captured","Plain Down",3]

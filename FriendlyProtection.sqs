@@ -1,0 +1,11 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+KillFriendly = false
+_character = _this select 0
+_i=0
+#Loop
+(ImportantProtection select _i) addEventHandler["killed",{_this exec "OnFriendlyKillEnd.sqs"}]
+_i=_i+1
+?(_i<(count ImportantProtection)):goto "Loop"
+exit

@@ -1,10 +1,31 @@
 ; *****************************************************
 ; ** Operation Flashpoint Script File
 ; *****************************************************
+;第1组北约机械化部队到达攻击位置
 ATG01Wait = false
+;第2组北约机械化部队到达攻击位置
 ATG02Wait = false
+;北约特种部队开始进攻
 BlackAttack = false
+;北约坦克编队到达攻击位置
 TankSupplyWait = false
+;北约是否被击败
+DefeatNato = false
+;美军进攻部队是否开始集结
+TownAttack = false
+;美军是否开始进攻城镇(播放紧张音乐)
+NatoMovingTown = false
+;城镇失守,镇守最终防线,最终防线失守将任务失败
+FinalLine = false
+;美军到达最终防线,
+NatoInFinalLine = false
+;美军到达最终防线,
+LoseFinalLine = false
+
+_f1 = FinalLine_F1
+_f2 = FinalLine_F2
+_f3 = getpos FinalLine_Heal
+hint format["%1,%2,%3",_f1,_f2,_f3]
 
 "8" objStatus "ACTIVE"
 "9" objStatus "ACTIVE"
@@ -18,4 +39,6 @@ if(!FleetDiscover)then{[]exec "Fleet/SupportTankSupply.sqs";{_x doFollow TankSup
 ~320
 #TownAttackPoint
 TownAttack = true
+@DefeatNato
+
 exit;

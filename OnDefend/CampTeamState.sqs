@@ -14,9 +14,11 @@ _groupCamp setBehaviour "AWARE"
 
 @((Leader _groupCamp) distance (object 1036) < 10)
 
+hint "Take the AT group to town."
+
 [(Leader _groupCamp)]exec "cmd/BaseCommand.sqs";
 
-@((Leader _groupCamp) distance RussiaFlag < 30)
+@(FinalLine && ((Leader _groupCamp) distance (object 999) < 30)) || (!FinalLine &&((Leader _groupCamp) distance RussiaFlag < 30))
 
 "8" objStatus "DONE"
 

@@ -7,7 +7,7 @@ _Leader = _this select 0
 _LeaderGroup = group _Leader
 _commandCurrentTeam = units group _Command
 _removeUnits = []
-
+hint format["weapons : %1",(Weapons _Leader)]
 if(Leader _Leader == _Command)Then{hint "This team has already joined your group.";exit;}
 ?(count _commandCurrentTeam <= 1):goto "End"
 {if(_x != (leader _x))Then{_removeUnits=_removeUnits+[_x]}}forEach _commandCurrentTeam
