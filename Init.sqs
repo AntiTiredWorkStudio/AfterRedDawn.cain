@@ -59,7 +59,10 @@ FollowGroup = []
 BehaviourGroup = []
 InformationGroup = []
 ConditionControlGroup = [TownLeader,CampTeam]
+;间谍上了列表中的车辆不会被揭穿伪装
+SpyCustomVehicle = [scud]
 
+showRadio true
 
 CommandAreaSetting = false
 
@@ -72,7 +75,7 @@ CommandAreaSetting = false
 	OnCalling = false
 	
 ;章节条件
-ChapterCaptured = true;
+ChapterCaptured = false;
 ChapterDiscover = false;
 ChapterDefender = false;
 ChapterAssault = false;
@@ -90,24 +93,30 @@ BadEnd01 = false
 ;保护免受伤害的友军
 ImportantProtection = [TownLeader,Engineer01,Engineer02,CampTeam,(object 9379)] + (units group EscTeam)
 [Guba] exec "FriendlyProtection.sqs"
-
+goto "Chapter04"
+#Chapter01
 ;--------------第一章：被俘----------------------
-;TitleText["Chapter 01 : Captured","Plain Down",3]
-;[]exec "OnCaptured/InitCaptured.sqs"
-;@ChapterCaptured
+TitleText["Chapter 01 : Captured","Plain Down",3]
+[]exec "OnCaptured/InitCaptured.sqs"
+@ChapterCaptured
+#Chapter02
 ;--------------第二章：探索----------------------
 TitleText["Chapter 02 : Lurker","Plain Down",3]
 []exec "OnDiscover/InitDiscover.sqs"
-;[Guba]exec "SignalSystem/InitSignalSystem.sqs"
+	;被禁用的旧版指挥系统
+	;[Guba]exec "SignalSystem/InitSignalSystem.sqs"
 @CommandAreaSetting
 [Guba,list CommandArea]exec "cmd/Init.sqs"
 @ChapterDiscover
+#Chapter03
 ;--------------第三章：防御----------------------
 TitleText["Chapter 03 : Defender","Plain Down",3]
 []exec "OnDefend/InitDefender.sqs"
 @ChapterDefender
+#Chapter04
 ;--------------第四章：反击----------------------
 TitleText["Chapter 04 : Assault","Plain Down",3]
+[]exec "OnCounterAttack/InitCounterAttack.sqs"
 @ChapterAssault
 playMusic "WanderMusic";
 0 fadeMusic 0

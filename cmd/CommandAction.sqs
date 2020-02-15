@@ -25,8 +25,8 @@ _Leader doWatch _Command
 ~0.5
 _Leader say "GroupReport"
 _Leader PlayMove "EffectStandSalute"
-_Leader groupChat format["Roger,%1 report for duty sir!",_Leader]
-TitleText[format["Roger,%1 report for duty sir!",_Leader],"Plain Down",3]
+_Leader groupChat format["Roger,%1 report for duty sir!",name _Leader]
+TitleText[format["Roger,%1 report for duty sir!",name _Leader],"Plain Down",3]
 ~1
 _Leader PlayMove "EffectStandSaluteEnd"
 titleText["", "PLAIN DOWN",3]

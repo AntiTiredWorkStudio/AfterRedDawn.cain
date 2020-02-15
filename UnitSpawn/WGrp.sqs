@@ -1,0 +1,19 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+_pos = _this select 0
+_leaderType = "OfficerW"
+_solidersDefine = ["SoldierWMG","SoldierWG","SoldierWG","SoldierWLAW","SoldierWMG","SoldierWB","SoldierWB"]
+_leaderType createUnit [_pos, group WestFactory]
+_leader = (units group WestFactory) select 1
+[_leader] join grpNull
+_i = 0
+#Loop
+(_solidersDefine select _i) createUnit [_pos, group _leader]
+_i = _i+1
+?(_i<(count _solidersDefine) && (count units (group _leader) < 12)) : goto "Loop"
+group _leader setBehaviour "AWARE"
+group _leader setCombatMode "RED"
+group _leader setFormation "LINE"
+{_x setSkill 1}forEach units (group _leader) 
+exit

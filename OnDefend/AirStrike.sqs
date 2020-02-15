@@ -10,6 +10,7 @@ AirStrikeState = false
 marker = "AirStrike"
 onMapSingleClick "AirStrikeLogic setpos _pos;marker setMarkerPos _pos;"
 @ AirStrikeState
+_airs join group Guba
 _i = 0
 #Loop
 _tpos = getpos (_airInserts select _i)

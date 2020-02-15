@@ -1,0 +1,8 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+;ConfirmScud = false
+[getpos (object 267)]exec"UnitSpawn/WGrp.sqs"
+
+[]exec "OnCounterAttack/ConfirmScud.sqs"
+exit

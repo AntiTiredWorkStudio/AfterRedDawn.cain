@@ -20,4 +20,7 @@ NatoMovingTown = true
 ~5
 DefeatNato = true
 if(FinalLine)Then{"10_1" objStatus "DONE"}else{"10" objStatus "DONE"}
+
+TitleText["Complete","PLAIN",3]
+ChapterDefender = true
 exit
