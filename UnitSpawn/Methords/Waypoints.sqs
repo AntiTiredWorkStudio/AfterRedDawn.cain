@@ -1,0 +1,22 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+_leader = _this select 0
+_waypoints = _this select 1
+_delay = _this select 2
+_loop = (count _this >3 && (_this select 3))
+
+_i = 0
+#Loop
+_waypoint = _waypoints select _i
+
+(units group _leader) doMove getpos _waypoint
+;{if(!(stopped _x))Then{_x doMove getpos _waypoint}Else{doStop _x}}forEach (units group _leader)
+{if(stopped _x)Then{_x stop true;doStop _x;}}forEach (units group _leader)
+
+@(_leader distance _waypoint < 10)
+~_delay
+_i = _i+1
+if(_loop)Then{_i = _i % (count _waypoints)}
+?(_i < (count _waypoints)):goto "Loop"
+exit

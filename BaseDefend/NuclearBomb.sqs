@@ -1,0 +1,60 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+_NuclearMissile = _this
+_mpos = getpos _NuclearMissile
+@(getDammage _NuclearMissile > 0.99)
+_mpos = getpos _NuclearMissile
+@(!alive _NuclearMissile)
+TitleCut["","Black Out",2]
+~2
+TitleCut["","Black In",2]
+_camPos = getpos Guba
+@(alive Guba)
+Guba setpos getpos (object 16927)
+_camPos set[2,20]
+_camera ="camera" camCreate _camPos
+_camera cameraEffect ["internal","back"]
+;=== 0:23:10
+_camera camSetTarget _mpos
+_camera camSetPos _camPos
+_camera camSetFOV 0.100
+_camera camCommit 4
+@camCommitted _camera
+_camPosUp = _camPos
+_camPosUp set[2,(_camPosUp select 2)+1]
+_camera camSetTarget _mpos
+_camera camSetPos _camPosUp
+_camera camSetFOV 0.100
+_camera camCommit 0.06
+TitleCut["","White Out",5]
+
+_corePos = getpos _NuclearMissile
+deleteVehicle _NuclearMissile
+_Radius = 10
+_RadiusMax = 100
+#Loop
+_count = _Radius/2
+_seek = 0
+_bombs = []
+#BombLoop
+_angle = (360/_count)*_seek
+_posX = (_corePos select 0) + _Radius*(cos _angle)
+_posY = (_corePos select 1) + _Radius*(sin _angle)
+_bomb = "LaserGuidedBomb" createVehicle [_posX,_posY,0]
+_bombs = _bombs+[_bomb]
+_seek = _seek +1
+_step = _seek%11
+if(_step!=10)Then{goto "normal"}
+~0.05
+{deleteVehicle _x;}forEach _bombs
+#normal
+?(_seek < _count):goto "BombLoop"
+~0.1
+_Radius = _Radius+10
+{deleteVehicle _x;}forEach _bombs
+?(_Radius<_RadiusMax):goto "Loop"
+"13" objStatus "FAILED"
+~5
+BadEnd02 = true
+exit;

@@ -1,0 +1,73 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+_pos = _this select 0
+_leaderType = "SoldierWCrew"
+_solidersDefine = ["SoldierWSteyr","SoldierWSteyr","SoldierWSteyr","SoldierWCrew","SoldierWCrew","SoldierWCrew","SoldierWCrew","SoldierWCrew","SoldierWG36a","SoldierWG36a","SoldierWG36a"]
+_vehiclesDefine = "M1Abrams"
+_crew = "SoldierWPilot"
+_leaderType createUnit [_pos, group WestFactory]
+_leader = (units group WestFactory) select 1
+[_leader] join grpNull
+_singleSize = 10
+_p = [0,0,0]
+_p set[0,(_pos select 0)+_singleSize]
+_p set[1,(_pos select 1)+_singleSize]
+_p set[2,(_pos select 2)]
+_veh01 = _vehiclesDefine createVehicle _p
+_p set[0,(_pos select 0)-_singleSize]
+_p set[1,(_pos select 1)+_singleSize]
+_p set[2,(_pos select 2)]
+_veh02 = _vehiclesDefine createVehicle _p
+_p set[0,(_pos select 0)-_singleSize]
+_p set[1,(_pos select 1)-_singleSize]
+_p set[2,(_pos select 2)]
+_veh03 = _vehiclesDefine createVehicle _p
+_p set[0,(_pos select 0)+_singleSize]
+_p set[1,(_pos select 1)-_singleSize]
+_p set[2,(_pos select 2)]
+_veh04 = _vehiclesDefine createVehicle _p
+_i = 0
+#Loop
+(_solidersDefine select _i) createUnit [_pos, group _leader]
+_i = _i+1
+?(_i<(count _solidersDefine) && (count units (group _leader) < 12)) : goto "Loop"
+
+_crew createUnit [_pos, group _leader]
+_crew createUnit [_pos, group _leader]
+
+
+(units group _leader select 0) moveInCommander _veh01
+(units group _leader select 1) moveInDriver _veh01
+(units group _leader select 2) moveInGunner _veh01
+(units group _leader select 3) moveInCommander _veh02
+(units group _leader select 4) moveInDriver _veh02
+(units group _leader select 5) moveInGunner _veh02
+(units group _leader select 6) moveInCommander _veh03
+(units group _leader select 7) moveInDriver _veh03
+(units group _leader select 8) moveInGunner _veh03
+(units group _leader select 9) moveInCommander _veh04
+(units group _leader select 10) moveInDriver _veh04
+(units group _leader select 11) moveInGunner _veh04
+
+
+group _veh01 setBehaviour "AWARE"
+group _veh01 setCombatMode "RED"
+group _veh01 setFormation "LINE"
+(group _veh01) setSpeedMode "FULL"
+(group _veh01) allowFleeing 1
+
+{_x setSkill 1;}forEach [_veh01,_veh02,_veh03,_veh04]
+
+LastSpawnLeader = _leader
+
+if(count _this <= 1)Then{goto "End"}
+
+_methords = _this select 1
+
+if(count _methords <= 0)Then{goto "End"}
+
+{_paras=[_leader];_paras= _paras+(_x select 0);_paras exec format["UnitSpawn/Methords/%1.sqs",(_x select 1)]}forEach _methords
+
+#End
+exit

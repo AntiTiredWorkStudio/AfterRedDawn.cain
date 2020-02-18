@@ -7,24 +7,45 @@ _airs = _this select 1
 _airInserts = _this select 2
 
 AirStrikeState = false
-marker = "AirStrike"
-onMapSingleClick "AirStrikeLogic setpos _pos;marker setMarkerPos _pos;"
+AirStrikeMarker = false
 @ AirStrikeState
+[EAST,"AirBase"]sideRadio "AirRequestPosMarker"
+~1
+hint "You need to mark the location of the air strikes on map."
+marker = "AirStrike"
+onMapSingleClick "if(!AirStrikeMarker)Then{AirStrikeLogic setpos _pos;marker setMarkerPos _pos;AirStrikeMarker=true}"
+
+@AirStrikeMarker
+
+[EAST,"AirBase"]sideRadio "AirConfirmPos"
+
+
+~5
+ 
 _airs join group Guba
+_AttackDistance = 100000
+_AttackSpawnPos = [-1000,-1000,-1000]
+{if((_x distance AirStrikeLogic) < _AttackDistance)Then{_AttackDistance = (_x distance AirStrikeLogic);_AttackSpawnPos=(getpos _x);}}forEach _airInserts
 _i = 0
 #Loop
-_tpos = getpos (_airInserts select _i)
+_tpos = _AttackSpawnPos
 _tpos set [2,600]
+_tpos set [0,(_tpos select 0) + 25*_i]
 _airs select _i setpos _tpos
 (_pliots select _i) MoveInDriver (_airs select _i)
 _i=_i+1
 ? (_i<count _airs) : goto "Loop"
-
-{[_x,AirStrikeLogic]exec "OnDefend/AirRepeatStrike.sqs"}forEach _airs
+{_x allowFleeing 1}forEach _airs
+AirResult = 0
+{[_x,AirStrikeLogic,_AttackSpawnPos]exec "OnDefend/AirRepeatStrike.sqs"}forEach _airs
 
 #comfirmPos
 ~1
+{Guba reveal (Vehicle _x)}forEach units _group
 "AirPos" setMarkerPos getpos (Leader _group)
-? (alive (Leader _group)) : goto "comfirmPos"
+? (alive (Leader _group) && (AirResult<(count _airs))) : goto "comfirmPos"
+if(count _airs > 0)Then {[EAST,"AirBase"] sideRadio "AirFinished"}
 "AirPos" setMarkerPos [-1000,-1000]
+~30
+{deleteVehicle (Driver _x);deleteVehicle _x}forEach _airs
 exit

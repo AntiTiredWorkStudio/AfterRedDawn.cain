@@ -27,6 +27,8 @@ Arrest = false
 
 Guba setCaptive true
 
+TitleCut["","White In",10]
+goto "PrepareCaptured"
 _camera ="camera" camCreate getPos Guba
 _camera cameraEffect ["internal","back"]
 
@@ -56,7 +58,7 @@ _camera camCommit 0.5
 
 Guba cameraEffect ["terminate","back"]
 camDestroy _camera
-
+#PrepareCaptured
 
 []exec"OnCaptured/PlayerCaptured.sqs"
 

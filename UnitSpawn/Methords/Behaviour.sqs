@@ -1,9 +1,7 @@
 ; *****************************************************
 ; ** Operation Flashpoint Script File
 ; *****************************************************
-_ActionID = _this select 2
-_tUnit = _this select 0
-;hint format["_tUnit:%1",_tUnit]
-EscapeUnit moveInCargo _tUnit
-IsEscape = true
+_leader = _this select 0
+_state = _this select 1
+group _leader setBehaviour _state
 exit

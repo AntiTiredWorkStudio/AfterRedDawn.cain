@@ -9,12 +9,12 @@ IsEscape = false
 @(_Truck distance EscapeUnit) < 4
 ?(!(captive EscapeUnit)) :  goto "end"
 hint "Escape"
-TriggerUnits = TriggerUnits+[_Truck]
-_ActionID = EscapeUnit addAction ["Escape by Truck","OnCaptured/OnEscapeByTruck.sqs"]
-
+;TriggerUnits = TriggerUnits+[_Truck]
+_ActionID = _Truck addAction ["Escape by Truck","OnCaptured/OnEscapeByTruck.sqs"]
+;TriggerUnits set [_ActionID,_Truck]
 @(_Truck distance EscapeUnit >= 4 or IsEscape or !(captive EscapeUnit))
-EscapeUnit removeAction _ActionID;
-hint "No"
+_Truck removeAction _ActionID;
+hint format["%1,%2,%3",(_Truck distance EscapeUnit >= 4),IsEscape,(!(captive EscapeUnit))]
 
 ? IsEscape : goto "end"
 goto "loop"

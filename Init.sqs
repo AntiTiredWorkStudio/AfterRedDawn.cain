@@ -33,6 +33,7 @@ MapMarkers = [["ENEMYBASE01",(object 62227)],["SUPPLY",(object 4584)],["ENEMYBAS
 
 ;,["OUTPOST01",(object 4129)],["OUTPOST02",(object 24973)],["OUTPOST03",(object 27878)]
 
+"RSCUD" setMarkerPos [-1000,-1000]
 "OUTPOST02" setMarkerPos [-1000,-1000]
 "OUTPOST01" setMarkerPos [-1000,-1000]
 "OUTPOST03" setMarkerPos [-1000,-1000]
@@ -86,6 +87,8 @@ ChapterAssault = false;
 
 ;最终城镇失守
 BadEnd01 = false
+;核弹爆炸
+BadEnd02 = false
 
 
 [Guba]exec "SignalSystem/InitSignalSystem.sqs"
@@ -93,7 +96,7 @@ BadEnd01 = false
 ;保护免受伤害的友军
 ImportantProtection = [TownLeader,Engineer01,Engineer02,CampTeam,(object 9379)] + (units group EscTeam)
 [Guba] exec "FriendlyProtection.sqs"
-goto "Chapter04"
+goto "Chapter01"
 #Chapter01
 ;--------------第一章：被俘----------------------
 TitleText["Chapter 01 : Captured","Plain Down",3]
@@ -115,6 +118,10 @@ TitleText["Chapter 03 : Defender","Plain Down",3]
 @ChapterDefender
 #Chapter04
 ;--------------第四章：反击----------------------
+if(CommandAreaSetting)Then{goto "JumpSetting"}
+@CommandAreaSetting
+[Guba,list CommandArea]exec "cmd/Init.sqs"
+#JumpSetting
 TitleText["Chapter 04 : Assault","Plain Down",3]
 []exec "OnCounterAttack/InitCounterAttack.sqs"
 @ChapterAssault

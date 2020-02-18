@@ -1,0 +1,93 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; Document Url: https://community.bistudio.com/wiki/Category:Scripting_Commands_OFP_1.96
+; *****************************************************
+goto "Runtime"
+Guba exec "camera.sqs"
+exit
+#Runtime
+TitleCut["In The Villa","Black In",5]
+
+_camera ="camera" camCreate getPos Guba
+_camera cameraEffect ["internal","back"]
+
+;=== 15:41:23
+_camera camSetTarget [-93477.99,-13268.48,-21637.73]
+_camera camSetPos [1912.44,7381.67,10.83]
+_camera camSetFOV 0.700
+_camera camCommit 0
+@camCommitted _camera
+
+(units group sp) orderGetIn true
+
+sp01 = (units group sp select 1)
+sp02 = (units group sp select 2)
+
+sp assignAsDriver spcar
+sp01 assignAsCargo spcar
+sp02 assignAsCargo spcar
+
+;=== 15:41:38
+_camera camSetTarget [-97542.02,3532.83,-9756.78]
+_camera camSetPos [1893.59,7379.25,2.30]
+_camera camSetFOV 0.700
+_camera camCommit 10
+@camCommitted _camera
+
+@(sp in spcar) && (sp01 in spcar) && (sp02 in spcar)
+
+spcar doMove getpos (object 12156)
+
+~3
+
+;=== 15:55:19
+_camera camSetTarget [-50297.10,90617.37,18642.13]
+_camera camSetPos [1911.70,7361.90,0.13]
+_camera camSetFOV 0.700
+_camera camCommit 0
+@camCommitted _camera
+
+(units group Guba) orderGetIn true
+Guba assignAsCargo spcar
+
+@(Guba in spcar)
+spcar doMove getpos (object 998)
+~3
+
+;=== 16:01:09
+_camera camSetTarget [-48595.31,84136.78,-38641.43]
+_camera camSetPos [2184.06,7211.37,4.10]
+_camera camSetFOV 0.700
+_camera camCommit 0
+@camCommitted _camera
+
+;=== 16:01:09
+_camera camSetTarget [-48595.31,84136.78,-38641.43]
+_camera camSetPos [2184.06,7211.37,34.10]
+_camera camSetFOV 0.700
+_camera camCommit 30
+
+@(spcar distance (object 1020) < 10)
+
+;=== 16:24:58
+_camera camSetTarget [-86748.41,44481.16,-25239.53]
+_camera camSetPos [2441.68,7097.18,7.86]
+_camera camSetFOV 0.700
+_camera camCommit 0
+@camCommitted _camera
+
+;=== 16:25:11
+_camera camSetTarget [-89495.68,45632.66,8099.99]
+_camera camSetPos [2441.61,7097.03,0.11]
+_camera camSetFOV 0.700
+_camera camCommit 15
+~10
+
+TitleText["After Red Dawn","Plain",5]
+~5
+TitleCut["","Black Out",5]
+~5
+5 fadeMusic 0
+~5
+End = true
+exit;

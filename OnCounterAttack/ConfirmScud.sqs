@@ -4,11 +4,14 @@
 if(StolenMap)Then{goto "Know";}Else{goto "Unknow";}
 #Unknow
 "11" objStatus "ACTIVE"
-@ StolenMap || (Guba distance (object 21691)<40)
+@ StolenMap || (Guba distance (object 21691)<40) || (Guba knowsAbout scud > 1)
 #Know
 "SCUDFOUND" setMarkerpos getpos (object 21691)
 "SCUDSecond" setMarkerpos [-1000,-1000]
 "11" objStatus "DONE"
 "12" objStatus "ACTIVE"
-
+@(Guba knowsAbout scud > 1)
+"12" objStatus "DONE"
+"13" objStatus "ACTIVE"
+"RSCUD" setMarkerPos getMarkerPos "Fi62"
 exit

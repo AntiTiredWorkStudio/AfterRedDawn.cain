@@ -1,0 +1,25 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+_leader = _this select 0
+_area = _this select 1
+_guardPos = _this select 2
+@((count list _area) > 0)
+group _leader setBehaviour "AWARE"
+group _leader setCombatMode "RED"
+group _leader setFormation "LINE"
+group _leader setSpeedMode "FULL"
+(units group _leader) doFollow _leader
+_leader doFollow ObjNull
+{_x stop false}forEach (units group _leader)
+
+(units group _leader) doMove _guardPos
+;_leader move _guardPos
+_vehicles = []
+{if(!((Vehicle _x) in _vehicles))Then{_vehicles=_vehicles+[Vehicle _x]}}forEach units group _leader
+if(count _vehicles == 0)Then {goto "end"}
+{_x setBehaviour "AWARE";}forEach _vehicles
+_vehicles doFollow (_vehicles select 0)
+_vehicles doMove _guardPos
+#end
+exit

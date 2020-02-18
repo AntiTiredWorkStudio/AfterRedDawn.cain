@@ -1,0 +1,25 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+_posArray = _this select 0
+_vehDefine = _this select 1
+_vehDirs = _this select 2
+_vList = []
+_i = 0
+#Loop
+_veh = (_vehDefine select _i)  createVehicle (_posArray select _i)
+_veh setDir (_vehDirs select _i)
+_vList = _vList+[_veh]
+_i = _i+1
+?(_i<(count _posArray) && _i<(count _vehDefine)) : goto "Loop"
+
+if(count _this <= 3)Then{goto "End"}
+
+_methords = _this select 3
+
+if(count _methords <= 0)Then{goto "End"}
+
+{_paras=[_vList];_paras= _paras+(_x select 0);_paras exec format["UnitSpawn/Methords/%1.sqs",(_x select 1)]}forEach _methords
+
+#End
+exit

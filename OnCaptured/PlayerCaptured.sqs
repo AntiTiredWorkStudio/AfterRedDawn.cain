@@ -9,6 +9,9 @@ EscapeUaz setDammage 1
 setAccTime 4
 goto "FinishCheck"
 #start
+0 fadeMusic 0
+PlayMusic "Track11"
+5 fadeMusic 1
 []exec "OnCaptured/PlayerWeaponCheck.sqs"
 _EscapeGroup = (units group EscTeam)
 _T1 = (units group EscTeam) select 0
@@ -80,7 +83,7 @@ TitleText["","Plain Down"]
 ;*************** 02 **************************
 TitleCut["You are being escorted to NATO's base","Black"]
 ~5
-
+PlayMusic "Track4"
 Guba moveInCargo DTeamFly
 _T1Guard = [t1_01,t1_02,t1_03,t1_04,t1_05]
 _T2Guard = [t2_01,t2_02,t2_03,t2_04,t2_05]
@@ -164,6 +167,8 @@ camDestroy _camera
 
 disableUserInput false
 TitleText["","Plain Down"]
+
+10 fadeMusic 0
 
 savegame
 

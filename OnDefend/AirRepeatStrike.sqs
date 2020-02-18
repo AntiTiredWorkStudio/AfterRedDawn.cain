@@ -3,7 +3,9 @@
 ; *****************************************************
 _plane = _this select 0
 _pos = _this select 1
+_spawnPos = _this select 2
 _attackTime = 0
+_plane disableAI "TARGET"
 _plane setCombatMode "RED"
 #repeat
 _plane doMove getpos _pos
@@ -11,11 +13,11 @@ _attackTime = _attackTime+1
 @_plane distance _pos < 1000
 _plane setCombatMode "RED"
 @_plane distance _pos < 600
-hint "enter"
+;hint "enter"
 @_plane distance _pos > 1000
 _plane setCombatMode "BLUE"
-hint "out"
+;hint format["out:%1",_attackTime]
 ?_attackTime<4:goto "repeat"
-_plane doMove [-1000,-1000]
-
+AirResult = AirResult+1
+_plane doMove _spawnPos
 exit

@@ -1,8 +1,12 @@
 ; *****************************************************
 ; ** Operation Flashpoint Script File
 ; *****************************************************
-;ConfirmScud = false
-[getpos (object 267)]exec"UnitSpawn/WGrp.sqs"
+_holder = "WeaponHolder" createVehicle getpos Guba
+_holder addWeaponCargo ["Steyr",1]
+_holder addmagazineCargo ["SteyrMag",10]
 
+
+[]exec "OnCounterAttack/RCityDefence.sqs"
 []exec "OnCounterAttack/ConfirmScud.sqs"
+
 exit

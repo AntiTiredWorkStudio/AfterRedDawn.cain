@@ -1,0 +1,15 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+_leader = _this select 0
+_locations = _this select 1
+_vehicles = []
+{if(!((Vehicle _x) in _vehicles))Then{_vehicles=_vehicles+[Vehicle _x]}}forEach units group _leader
+_i = 0
+#Loop
+(_vehicles select _i) setpos (_locations select _i)
+dostop (_vehicles select _i)
+;(_vehicles select _i) stop true
+_i = _i+1
+?(_i < (count _locations) && _i < (count _vehicles)):goto "Loop"
+exit

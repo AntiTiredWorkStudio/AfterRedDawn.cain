@@ -1,8 +1,10 @@
 minScore=-10000
 avgScore=30000
 maxScore=80000
-onLoadMission = You are in the car to escape
+onLoadMission = You are in the UAZ to escape
 showGPS=1
+
+
 class CfgSounds
 {
 	sounds[] = 	{ };
@@ -440,6 +442,29 @@ class CfgRadio
 		sound[] = {"RadioCallBack.ogg", db+90, 1.0};
 		title = "Alpha One to All Units,Please Report your status!";
 	};
+	
+	class AirRequestPosMarker
+	{
+		name = "";
+		sound[] = {"RadioCall.ogg", db+90, 1.0};
+		title = "This is air force one.Please mark the position of the air strike.";
+	};
+	
+	
+	class AirConfirmPos
+	{
+		name = "";
+		sound[] = {"RadioCallBack.ogg", db+90, 1.0};
+		title = "Air force one copy that position.We will coming soon.";
+	};
+	
+	
+	class AirFinished
+	{
+		name = "";
+		sound[] = {"RadioCallBack.ogg", db+90, 1.0};
+		title = "Air force one to Alpha One,We've completed the bombing.Good luck to you,out.";
+	};
 };
 
 
@@ -506,5 +531,14 @@ class CfgIdentities
 		glasses="None";
 		speaker = "Rich";
 		pitch = 1.00;
+	};
+	
+	class Blake
+	{
+		name = "Caper Blake";
+		face = "Face16";
+		glasses="spectacles";
+		speaker = "Greg";
+		pitch = 0.85;
 	};
 }
