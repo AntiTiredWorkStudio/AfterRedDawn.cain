@@ -51,4 +51,6 @@ group DTeam03 setBehaviour "AWARE"
 @(count crew KeyTruck >=10)
 KeyTruck stop false
 KeyTruck doMove getpos StopPos_03
+@ (KeyTruck distance StopPos_03) < 15
+{unAssignVehicle _x}foreach units group DTeam03
 exit

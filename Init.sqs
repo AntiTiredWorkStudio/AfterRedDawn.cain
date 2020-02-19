@@ -66,6 +66,7 @@ FollowGroup = []
 BehaviourGroup = []
 InformationGroup = []
 ConditionControlGroup = [TownLeader,CampTeam]
+SpawnLeaderUnit = []
 ;间谍上了列表中的车辆不会被揭穿伪装
 SpyCustomVehicle = [scud]
 

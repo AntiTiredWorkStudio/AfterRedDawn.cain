@@ -27,7 +27,4 @@ hint "Escape Success!"
 @ !(Guba in KeyTruck) && (Guba distance KeyTruck > 100)
 ChapterCaptured = true
 "2" objStatus "DONE"
-"7" objStatus "ACTIVE"
-5 fadeMusic 1
-playMusic "WanderMusic"
 exit

@@ -6,10 +6,10 @@ _commander = _this select 1
 _spy addEventHandler ["Fired", {(_this select 0) setCaptive false;hint "Identity Exposure"}]
 #Loop
 _spy setCaptive true
-hint "Camouflage"
+;hint "Camouflage"
 @(!(captive _spy)) || (_spy distance _commander < 10) || ((Vehicle _spy != _spy)&& !((Vehicle _spy) in SpyCustomVehicle))
 _spy setCaptive false
-hint "Identity Exposure"
+;hint "Identity Exposure"
 @(_spy distance _commander < 10)
 @(_spy distance _commander > 30)
 goto "Loop"

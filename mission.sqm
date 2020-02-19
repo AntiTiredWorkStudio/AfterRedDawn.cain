@@ -11,8 +11,7 @@ class Mission
 		"Bradley",
 		"6g30",
 		"Su25",
-		"bmp2",
-		"Bizon"
+		"bmp2"
 	};
 	addOnsAuto[]=
 	{
@@ -23,7 +22,6 @@ class Mission
 		"G36a",
 		"bis_resistance",
 		"Bradley",
-		"Bizon",
 		"Su25"
 	};
 	randomSeed=6896643;
@@ -4760,20 +4758,19 @@ class Mission
 				items=1;
 				class Item0
 				{
-					position[]={6476.590820,463.608063,6553.848145};
-					azimut=266.161865;
+					position[]={6923.662109,383.658234,6236.940918};
+					azimut=95.617378;
 					special="NONE";
 					id=480;
 					side="EAST";
-					vehicle="SoldierESaboteurBizon";
+					vehicle="BBB006";
 					player="PLAYER COMMANDER";
 					leader=1;
-					rank="COLONEL";
 					skill=1.000000;
 					fuel=0.900000;
 					ammo=0.900000;
 					text="Guba";
-					init="this addWeapon ""Binocular"";this setCaptive false;skipTime 0";
+					init="this addWeapon ""Binocular"";this setCaptive false;skipTime 10;removeAllWeapons this";
 				};
 			};
 		};
@@ -4845,7 +4842,7 @@ class Mission
 	};
 	class Vehicles
 	{
-		items=194;
+		items=195;
 		class Item0
 		{
 			position[]={7280.409180,313.073730,7759.161133};
@@ -6909,6 +6906,15 @@ class Mission
 			text="fireFlame";
 			init="this inflame true";
 		};
+		class Item194
+		{
+			position[]={6157.140137,453.744232,6726.322266};
+			azimut=230.000000;
+			id=487;
+			side="EMPTY";
+			vehicle="UralWreck";
+			skill=0.600000;
+		};
 	};
 	class Markers
 	{
@@ -7586,10 +7592,11 @@ class Mission
 			activationBy="LEADER";
 			repeating=1;
 			age="UNKNOWN";
-			idVehicle=0;
-			expCond="count weapons Guba ==0  && this";
+			idVehicle=480;
+			name="CampC";
 			class Effects
 			{
+				track="NervousMusic";
 			};
 		};
 		class Item11

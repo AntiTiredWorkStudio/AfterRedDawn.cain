@@ -1,0 +1,22 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+
+;武器存放处01 Ei47 ural废墟处
+_ei47_pos01 = [6157.79,6724.46,0.53]
+_weapon01 = "WeaponHolder" createVehicle _ei47_pos01
+_weapon01 addMagazineCargo ["BizonMag",3]
+
+;_ListenUnit = _this select 0     监听单位
+;_TargetVehicle = _this select 1  监听目标单位
+;_SpawnPos = _this select 2       巡查小组诞生点
+;_GroupMembers = _this select 3   小组成员类型
+;_LeaderType = _this select 4     小组指挥官类型
+;_TrackVehicle = _this select 5   小组追踪目标  
+;_ListenRange = _this select 6    监听范围
+;_HoldTime =_this select 7	      小组停留时间
+
+[Guba,_weapon01,getpos (object 49801),["SoldierWB","SoldierWB","SoldierWMortar"],"SoldierWB",Guba]exec "OnDiscover\PartrolTeam.sqs"
+
+[Guba,(object 2443),getpos (object 29770),["SoldierWB","SoldierWB","SoldierWB","SoldierWB","SoldierWMG","SoldierWMG"],"SoldierWB",(object 1256),60,50]exec "OnDiscover\PartrolTeam.sqs"
+exit

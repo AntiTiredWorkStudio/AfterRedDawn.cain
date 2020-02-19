@@ -1,0 +1,37 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+
+;_ListenUnit = _this select 0     监听单位
+;_TargetVehicle = _this select 1  监听目标单位
+;_SpawnPos = _this select 2       巡查小组诞生点
+;_GroupMembers = _this select 3   小组成员类型
+;_LeaderType = _this select 4     小组指挥官类型
+;_TrackVehicle = _this select 5   小组追踪目标  
+;_ListenRange = _this select 6    监听范围
+;_HoldTime =_this select 7	      小组停留时间
+
+
+_ListenUnit = _this select 0
+_TargetVehicle = _this select 1
+_SpawnPos = _this select 2
+_GroupMembers = _this select 3
+_LeaderType = _this select 4
+_TrackVehicle = _ListenUnit
+_ListenRange = 30
+_HoldTime = 30
+if(count _this >=6)Then{_TrackVehicle=_this select 5}
+if(count _this >=7)Then{_ListenRange=_this select 6}
+if(count _this >=8)Then{_HoldTime=_this select 7}
+@(_ListenUnit distance _TargetVehicle < _ListenRange && !ChapterDiscover)
+
+_waypoints = [[[_TargetVehicle,_TrackVehicle],_HoldTime,true],"Waypoints"]
+
+_SCount = count SpawnLeaderUnit
+[_SpawnPos,[_waypoints],_GroupMembers,_LeaderType]exec "UnitSpawn\WGrp.sqs"
+@(count SpawnLeaderUnit != _SCount)
+_PartrolLeader = SpawnLeaderUnit select ((count SpawnLeaderUnit) -1)
+_PartrolUnits = units group _PartrolLeader
+@(ChapterDiscover && (count _PartrolUnits > 0) && (Guba knowsAbout (_PartrolUnits select 0) < 0.5))
+{deleteVehicle _x;_x setDammage 1}forEach _PartrolUnits
+exit

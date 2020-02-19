@@ -129,6 +129,44 @@ class CfgSounds
 		titles[] = { 0, "Is glad to see you general!" };
 	};
 	
+	class GubaState01
+	{
+		name = "";
+		sound[] = {"NormalVoice.ogg", db-40, 1.0};
+		forceTitles = true;
+		titles[] = { 0, "Aleksei Vasilii Guba,you are a coward." };
+	};
+	class GubaState02
+	{
+		name = "";
+		sound[] = {"NormalVoice.ogg", db-40, 1.0};
+		forceTitles = true;
+		titles[] = { 0, "You abandoned your army and chose to flee." };
+	};
+	class GubaState03
+	{
+		name = "";
+		sound[] = {"NormalVoice.ogg", db-40, 1.0};
+		forceTitles = true;
+		titles[] = { 0, "Whether you live or die, you have to stand with them." };
+	};
+	class GubaState04
+	{
+		name = "";
+		sound[] = {"NormalVoice.ogg", db-40, 1.0};
+		forceTitles = true;
+		titles[] = { 0, "You have to go back,lead them,save them,for the glory of Soviet Union." };
+	};
+	class GubaState05
+	{
+		name = "";
+		sound[] = {"NormalVoice.ogg", db-40, 1.0};
+		forceTitles = true;
+		titles[] = { 0, "Defeat the Americans,that is your duty." };
+	};
+	
+	
+	
 	class CampUnit02
 	{
 		name = "";

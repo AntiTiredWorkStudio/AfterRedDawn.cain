@@ -2,6 +2,88 @@
 ; ** Operation Flashpoint Script File
 ; *****************************************************
 
+TitleCut["","Black Out",5]
+~5
+Guba setDir 180
+5 fadeMusic 1
+playMusic "WanderMusic"
+
+TitleCut["","Black In",2]
+0 setFog 0.5
+
+10 setRain 1
+10 setOvercast 1
+_camera ="camera" camCreate getPos Guba
+_camera cameraEffect ["internal","back"]
+_corePos = getpos Guba
+Guba action["WEAPONONBACK"]
+Guba playMove "EffectStandSitDown"
+_corePos set[0,(_corePos select 0)+10]
+_corePos set[1,(_corePos select 1)+10]
+_corePos set[2,(_corePos select 2)+10]
+_camera camSetTarget (getPos Guba)
+_camera camSetPos _corePos
+_camera camSetFOV 0.100
+_camera camCommit 0
+@camCommitted _camera
+_corePos set[0,(_corePos select 0)+90]
+_corePos set[1,(_corePos select 1)+90]
+_corePos set[2,(_corePos select 2)+95]
+_corePos set[2,(_corePos select 2)+5]
+_camera camSetTarget (getPos Guba)
+_camera camSetPos _corePos
+_camera camSetFOV 0.700
+_camera camCommit 15
+@camCommitted _camera
+TitleCut["","Black Out",5]
+~5
+TitleCut["","Black In",5]
+Guba setMimic "Sad"
+_corePos = getpos Guba
+_corePos set[0,(_corePos select 0)+(cos 285)*2]
+_corePos set[1,(_corePos select 1)+(sin 285)*2]
+_corePos set[2,(_corePos select 2)+0.9]
+
+
+_corePos01 = getpos Guba
+_corePos01 set[0,(_corePos select 0)+(cos 277)*2]
+_corePos01 set[1,(_corePos select 1)+(sin 277)*2]
+_corePos01 set[2,(_corePos select 2)+0.5]
+
+_camera camSetTarget Guba
+_camera camSetPos _corePos
+_camera camSetFOV 0.700
+_camera camCommit 0
+@camCommitted _camera
+_camera camSetTarget Guba
+_camera camSetPos _corePos01
+_camera camSetFOV 0.3
+_camera camCommit 20
+Guba say "GubaState01"
+~5
+Guba say "GubaState02"
+~5
+Guba say "GubaState03"
+~5
+Guba say "GubaState04"
+~5
+Guba playMove "EffectStand"
+~6
+Guba say "GubaState05"
+~3
+Guba setMimic "Angry"
+~5
+TitleCut["","Black Out",3]
+~3
+Guba cameraEffect ["terminate","back"]
+camDestroy _camera
+Guba switchMove "Default"
+TitleCut["","Black In",3]
+~3
+
+~3
+"7" objStatus "ACTIVE"
+
 {_x setCombatMode "RED";_x setBehaviour "STEALTH";_x addWeapon "Binocular";_x doWatch Guba;_x doTarget Guba;dostop _x;}forEach units group SniperTeam
 
 [TankSupply,Guba,"Attack03"]exec "OnDiscover/AttackTeamFound.sqs"
@@ -25,4 +107,6 @@ TownLeader setUnitPos "UP"
 [Search06,SearchLeader06,Guba,SearchLogic06,SignalTrigger_04]exec"OnDiscover/SearchTeam.sqs"
 
 []exec"OnDiscover\DeathUnit.sqs"
+~1
+[]exec "OnDiscover\DiscoveryDyamicUnit.sqs"
 exit;

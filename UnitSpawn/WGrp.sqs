@@ -5,7 +5,9 @@ _pos = _this select 0
 _leaderType = "OfficerW"
 _solidersDefine = ["SoldierWMG","SoldierWG","SoldierWG","SoldierWLAW","SoldierWMG","SoldierWB","SoldierWB"]
 
-if(count _this == 3)Then{_solidersDefine = _this select 2}
+if(count _this >= 4)Then{_leaderType = _this select 3}
+if(count _this >= 3)Then{_solidersDefine = _this select 2}
+
 _leaderType createUnit [_pos, group WestFactory]
 _leader = (units group WestFactory) select 1
 [_leader] join grpNull
@@ -21,14 +23,14 @@ group _leader setFormation "LINE"
 (group _leader) setSpeedMode "FULL"
 (group _leader) allowFleeing 1
 LastSpawnLeader = _leader
-
+SpawnLeaderUnit = SpawnLeaderUnit+[_leader]
 if(count _this <= 1)Then{goto "End"}
 
 _methords = _this select 1
 
 if(count _methords <= 0)Then{goto "End"}
 
-{_paras=[_leader];_paras= _paras+(_x select 0);_paras exec format["UnitSpawn/Methords/%1.sqs",(_x select 1)]}forEach _methords
+{_paras=[_leader];_paras= _paras+(_x select 0);_paras exec format["UnitSpawn\Methords\%1.sqs",(_x select 1)]}forEach _methords
 
 #End
 exit
