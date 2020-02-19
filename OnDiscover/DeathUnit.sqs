@@ -1,0 +1,46 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+_holdgroupLeader = Leader d1
+_holdgroup = units group _holdgroupLeader
+_holdgroup = _holdgroup-[d1,d2,d3]
+[[6390.44,6533.95,0.14],"SoldierESaboteurBizon"]exec "UnitSpawn\EUnit.sqs"
+@(LastSpawnUnit != ObjNull)
+;LastSpawnUnit exec "camera.sqs"
+LastSpawnUnit removeMagazine "pipebomb"
+LastSpawnUnit removeMagazine "pipebomb"
+LastSpawnUnit removeMagazine "pipebomb"
+LastSpawnUnit removeMagazine "BizonMag"
+LastSpawnUnit removeMagazine "BizonMag"
+LastSpawnUnit removeMagazine "BizonMag"
+LastSpawnUnit removeMagazine "pipebomb"
+LastSpawnUnit removeMagazine "pipebomb"
+LastSpawnUnit setDammage 1
+@(Guba distance fireFlame < 30)
+~15
+d1 doMove getpos (object 31544)
+d2 doMove getpos (object 31545)
+@(not alive d3)
+[d1,d2] doMove getpos fireFlame
+
+@(not alive d1) && (not alive d2)
+
+_holdgroupLeader exec "camera.sqs"
+
+{_x doFollow _holdgroupLeader;_x allowFleeing 1;}forEach _holdgroup
+
+_holdgroupLeader doFollow ObjNull
+
+PatrolCar lock false
+
+_holdgroupLeader setBehaviour "AWARE"
+~1
+_holdgroup orderGetIn true
+{_x assignAsCargo PatrolCar}forEach _holdgroup
+_holdgroupLeader assignAsDriver PatrolCar
+@(count crew PatrolCar == 4)
+PatrolCar doMove getpos Guba
+@(_holdgroupLeader knowsAbout Guba>0.5 && _holdgroupLeader distance Guba < 40)
+{unassignVehicle _x}forEach _holdgroup
+_holdgroup doFire Guba
+exit

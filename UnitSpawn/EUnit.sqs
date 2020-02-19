@@ -1,0 +1,10 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+_pos = _this select 0
+_unitType = _this select 1
+_unitType createUnit [_pos, group WestFactory]
+_unit = (units group WestFactory) select 1
+[_unit] join grpNull
+LastSpawnUnit = _unit
+exit

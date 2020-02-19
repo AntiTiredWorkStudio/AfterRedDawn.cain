@@ -10,14 +10,13 @@
 
 [sup01,FleetGroup]exec "Fleet/OnFleetStart.sqs"
 []exec "OnDiscover/ArriveTown.sqs"
-~3
+
 ;TownLeader setBehaviour "AWARE"
 TownLeader setUnitPos "UP"
 
 "OUTPOST02" setMarkerPos getpos (object 24973)
 
-@StolenRadio
-;hint "Start Track"
+;@StolenRadio
 [Search01,SearchLeader01,Guba,SearchLogic01,SignalTrigger_01]exec"OnDiscover/SearchTeam.sqs"
 [Search02,SearchLeader02,Guba,SearchLogic02,SignalTrigger_06]exec"OnDiscover/SearchTeam.sqs"
 [Search03,SearchLeader03,Guba,SearchLogic03,SignalTrigger_02]exec"OnDiscover/SearchTeam.sqs"
@@ -25,4 +24,5 @@ TownLeader setUnitPos "UP"
 [Search05,SearchLeader05,Guba,SearchLogic05,SignalTrigger_05]exec"OnDiscover/SearchTeam.sqs"
 [Search06,SearchLeader06,Guba,SearchLogic06,SignalTrigger_04]exec"OnDiscover/SearchTeam.sqs"
 
+[]exec"OnDiscover\DeathUnit.sqs"
 exit;

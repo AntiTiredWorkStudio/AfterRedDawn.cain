@@ -31,6 +31,8 @@ MapMarkers = [["ENEMYBASE01",(object 62227)],["SUPPLY",(object 4584)],["ENEMYBAS
 "Attack02" setMarkerPos [-1000,-1000]
 "Attack03" setMarkerPos [-1000,-1000]
 
+SignalRegions = ["SignalRegion_01","SignalRegion_02","SignalRegion_03","SignalRegion_04","SignalRegion_05","SignalRegion_06","SignalRegion_07","SignalRegion_08"]
+
 ;,["OUTPOST01",(object 4129)],["OUTPOST02",(object 24973)],["OUTPOST03",(object 27878)]
 
 "RSCUD" setMarkerPos [-1000,-1000]
@@ -41,8 +43,12 @@ MapMarkers = [["ENEMYBASE01",(object 62227)],["SUPPLY",(object 4584)],["ENEMYBAS
 "HoldingLine" setMarkerPos [-1000,-1000]
 "AirPos" setMarkerPos [-1000,-1000]
 "STOPCONVOY" setMarkerPos [-1000,-1000]
+"SIGNAL_FEEDBACK" setMarkerPos [-1000,-1000]
+"SIGNAL_YOUR" setMarkerPos [-1000,-1000]
+"SCUD_POS" setMarkerPos [-1000,-1000]
 
 {(_x select 0) setMarkerPos [-1000,-1000];}forEach MapMarkers
+{_x setMarkerPos [-1000,-1000];}forEach SignalRegions
 
 Guba addMagazine"glocksMag";
 Guba addWeapon "glocks";
@@ -76,14 +82,11 @@ CommandAreaSetting = false
 	OnCalling = false
 	
 ;章节条件
-ChapterCaptured = false;
-ChapterDiscover = false;
-ChapterDefender = false;
-ChapterAssault = false;
+ChapterCaptured = false
+ChapterDiscover = false
+ChapterDefender = false
+ChapterAssault = false
 
-;FinalLine_Heal setpos [-1000,-1000]
-;FinalLine_F1 setpos [-1000,-1000]
-;FinalLine_F2 setpos [-1000,-1000]
 
 ;最终城镇失守
 BadEnd01 = false
@@ -96,7 +99,7 @@ BadEnd02 = false
 ;保护免受伤害的友军
 ImportantProtection = [TownLeader,Engineer01,Engineer02,CampTeam,(object 9379)] + (units group EscTeam)
 [Guba] exec "FriendlyProtection.sqs"
-goto "Chapter01"
+goto "Chapter02"
 #Chapter01
 ;--------------第一章：被俘----------------------
 TitleText["Chapter 01 : Captured","Plain Down",3]

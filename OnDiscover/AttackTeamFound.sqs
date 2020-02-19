@@ -4,7 +4,7 @@
 _targetGrp = _this select 0
 _searcher = _this select 1
 _placeMarker = _this select 2
-@ _searcher knowsAbout _targetGrp > 0.75
+@ (_searcher knowsAbout _targetGrp > 0.75) && (!ChapterDiscover)
 _placeMarker setMarkerPos getpos _targetGrp 
 hint "Enemy Found"
 exit

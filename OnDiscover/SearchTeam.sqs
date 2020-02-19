@@ -20,6 +20,7 @@ _veh setFuel 1
 @ (_target in (list _searchArea))
 
 if(!canmove _veh) then{exit;}
+hint "start search"
 
 _grpUnits orderGetIn true
 _grpUnits select 0 assignAsCargo _veh
@@ -35,10 +36,10 @@ _veh setSpeedMode "FULL";
 
 _veh doMove getpos _targetPos
 
-@ (_veh distance _targetPos < 150)
+@ (_veh distance _targetPos < 100)
 
 #Repeat
-~3
+~15
 _countWait = _countWait + 1
 
 
@@ -60,5 +61,5 @@ unassignVehicle (_grpUnits select 2)
 [(_grpUnits select 0),_veh,(_grpUnits select 2)]doTarget ObjNull
 [(_grpUnits select 0),_veh,(_grpUnits select 2)]doFire ObjNull
 
-~5
+~50+(random 100)
 goto "StartSearch";
