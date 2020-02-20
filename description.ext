@@ -2,8 +2,349 @@ minScore=-10000
 avgScore=30000
 maxScore=80000
 onLoadMission = You are in the UAZ to escape
+onLoadIntro = "Near the Villa"
 showGPS=1
 
+
+//Gui related
+#define DEFAULTFONT						"CourierNewB64"
+#define SMALLFONT						"Garamond64"
+#define VERYSMALLFONT					"SteelfishB64"
+#define BOLDFONT						"TahomaB48"
+
+#define GUIUNDEFINED					-1
+#define GUILEFT							0
+#define GUIRIGHT						1
+#define GUICENTER						2
+#define GUITILEBAR						32
+#define GUIFRAME						64
+#define GUIDEFAULTTILEBAR				GUITILEBAR + GUICENTER
+
+#define GUITEXT							0
+#define GUIBUTTON						1
+#define GUIEDITABLETEXT					2
+#define GUICOMBO						4
+#define GUILIST							5
+#define GUICHECKBOX						7
+#define GUICLICKABLETEXT				11
+
+#define IDCUNDEFINED									-1
+
+class GuiText
+{
+	type = GUITEXT;
+	idc = IDCUNDEFINED;
+	style = GUILEFT;
+	colorText[] = {1,1,1,1};
+	colorBackground[] = {0,0,0,0};
+	font = DEFAULTFONT;
+	sizeEx = 0.025;
+
+	//Default button dimensions.	
+	w = 0.275;
+	h = 0.04;
+};
+
+class GuiLargeText:GuiText
+{
+	font = DEFAULTFONT;
+	sizeEx = 0.029;
+
+	//Default button dimensions.	
+	w = 0.275;
+	h = 0.1;
+};
+
+class GuiButton
+{
+	type = GUIBUTTON;
+	idc = IDCUNDEFINED;
+	style = GUICENTER;
+	colorText[] = {0,0,0,1};
+	font = DEFAULTFONT;
+	sizeEx = 0.025;
+	soundClick[] = {"ui\ui_ok",0.2,1};
+	soundEscape[] = {"ui\ui_cc",0.2,1};
+	soundPush[] = {,0.2,1};
+	default = false;
+
+	//Default button dimensions.	
+	w = 0.275;
+	h = 0.04;
+};
+
+class GuiBoxButton
+{
+	type = GUIBUTTON;
+	idc = IDCUNDEFINED;
+	style = GUICENTER;
+	colorText[] = {0,0,0,1};
+	font = DEFAULTFONT;
+	sizeEx = 0.025;
+	soundClick[] = {"ui\ui_ok",0.2,1};
+	soundEscape[] = {"ui\ui_cc",0.2,1};
+	soundPush[] = {,0.2,1};
+	default = false;
+
+	//Default button dimensions.	
+	w = 0.06;
+	h = 0.06;
+};
+
+class GuiClickableText
+{
+	type = GUICLICKABLETEXT;
+	idc = IDCUNDEFINED;
+	style = GUILEFT;
+	color[] = {1,1,1,1};
+	colorActive[] = {1,0,0,1};
+	font = DEFAULTFONT;
+	sizeEx = 0.025;
+	soundClick[] = {"ui\ui_ok",0.2,1};
+	soundEnter[] = {"ui\ui_over",0.2,1};
+	soundEscape[] = {"ui\ui_cc",0.2,1};
+	soundPush[] = {, 0.2, 1};
+	default = false;
+
+	//Default text dimensions.	
+	w = 0.275;
+	h = 0.04;
+};
+
+class GuiEditableText
+{
+	type = GUIEDITABLETEXT;
+	idc = IDCUNDEFINED;
+	style = GUILEFT;
+	font = DEFAULTFONT;
+	autocomplete = false;
+	sizeEx = 0.02;
+	colorSelection[] = {0.5,0.5,0.5,1};
+	colorText[] = {0,0,0,1};
+	text = ;
+
+	//Default button dimensions.	
+	w = 0.275;
+	h = 0.1;
+};
+
+class GuiList
+{
+	style = GUILEFT;
+	idc = IDCUNDEFINED;
+	colorBackground[] = {0.35,0.35,0.35,1};
+	colorSelect[] = {0.4,0.4,0.4,1};
+	colorSelectBackground[] = {0.2,0.2,0.2,1};
+	colorText[] = {0.2, 0.2, 0.2, 1};
+	font = DEFAULTFONT;
+	sizeEx = 0.025;
+	rowHeight = 0.04;
+
+	//Default list dimensions.	
+	w = 0.275;
+	h = 0.04;
+};
+
+class GuiListBox:GuiList
+{
+	type = GUILIST;
+	rowHeight = 0.03;
+};
+
+class GuiTransparentListBox:GuiListBox
+{
+	colorBackground[] = {0,0,0,0};
+	colorSelect[] = {0,0,0,0};
+	colorSelectBackground[] = {0,0,0,0};
+	colorText[] = {0,0,0,0};
+};
+
+class GuiCameraList:GuiList
+{
+	type = GUILIST;
+	colorText[] = {0.5,0.5,0.5,1};
+	colorBackground[] = {0.5,0.5,0.5,1};
+};
+
+class GuiComboBox:GuiList
+{
+	type = GUICOMBO;
+	wholeHeight = 0.3;
+};
+
+class DefaultMenu
+{
+	idd = IDCUNDEFINED;
+	movingEnable = true;
+	controlsBackground[] = {BackgroundWindow};
+	objects[] = {};
+
+	class BackgroundWindow:GuiText
+	{
+		colorBackground[] = {0.35,0.35,0.35,0.85};
+
+		text = ;
+		x = 0.3;
+		y = 0.3;
+		w = 0.4;
+		h = 0.4;
+	};
+};
+class DefaultPad:DefaultMenu
+{
+	class DefaultHelpBackgroundWindow:BackgroundWindow
+	{
+		x = 0.35;
+		y = 0.3;
+		w = 0.3;
+		h = 0.5;
+	};
+	class LaunchButton:GuiButton
+	{
+		x = 0.37;
+		y = 0.7;
+		w = 0.1;
+		h = 0.08;
+		text = "Launch";
+		colorText[] = {1,0,0,1};
+		action = "onPadSubmit=true;inputContent=(ctrlText 10571);";
+	};
+	class BackButton:GuiButton
+	{
+		x = 0.53;
+		y = 0.7;
+		w = 0.1;
+		h = 0.08;
+		text = "Back";
+		colorText[] = {0,0,0,1};
+		action = "onPadQuit=true;";
+	};
+	class DefaultPadTitle:GuiLargeText
+	{
+		style = GUICENTER;
+		x = 0.35;
+		y = 0.3;
+		w = 0.3;
+		h = 0.09;
+		text = "";
+	};
+	class HelpLine:GuiText
+	{
+		style = GUILEFT;
+		x = 0.075;
+		y = 0.285;
+		w = 0.9;
+		h = 0.05;
+		text = "";
+	};
+	class CenterHelpLine:HelpLine
+	{
+		style = GUICENTER;
+		x = 0.05;
+	};
+};
+class NuclearLaunchPad:DefaultPad
+{
+	controlsBackground[] = {DefaultHelpBackgroundWindow};
+	controls[] = {MenuTitle,Num01,Num02,Num03,Num04,Num05,Num06,Num07,Num08,Num09,Password,LaunchButton,BackButton,WrongHint,RightHint};
+
+	class MenuTitle:DefaultPadTitle {text = "Nuclear Launch Pad";};
+
+	class WrongHint:CenterHelpLine {
+		idc = 10572;
+		text = "";
+		y = 0.3;
+		colorText[] = {1,0,0,1};
+	};
+	class RightHint:CenterHelpLine {
+		idc = 10573;
+		text = "";
+		y = 0.3;
+		colorText[] = {0,1,0,1};
+	};
+	
+	
+	class Password:GuiEditableText
+	{
+		idc = 10571
+		style = GUICENTER;
+		x = 0.37;
+		y = 0.37;
+		w = 0.26;
+		h = 0.05;
+		text = "";
+	};
+		
+	class Num01:GuiBoxButton
+	{
+		x = 0.4;
+		y = 0.45;
+		text = "1";
+		action = "if(count passwords<6)Then{ctrlSetText [10571, (ctrlText 10571)+""1""];passwords=passwords+[""1""];}";
+	};
+	
+	class Num02:GuiBoxButton
+	{
+		x = 0.47;
+		y = 0.45;
+		text = "2";
+		action = "if(count passwords<6)Then{ctrlSetText [10571, (ctrlText 10571)+""2""];passwords=passwords+[""2""];}";
+	};
+	
+	class Num03:GuiBoxButton
+	{
+		x = 0.54;
+		y = 0.45;
+		text = "3";
+		action = "if(count passwords<6)Then{ctrlSetText [10571, (ctrlText 10571)+""3""];passwords=passwords+[""3""];}";
+	};
+	class Num04:GuiBoxButton
+	{
+		x = 0.4;
+		y = 0.52;
+		text = "4";
+		action = "if(count passwords<6)Then{ctrlSetText [10571, (ctrlText 10571)+""4""];passwords=passwords+[""4""];}";
+	};
+	
+	class Num05:GuiBoxButton
+	{
+		x = 0.47;
+		y = 0.52;
+		text = "5";
+		action = "if(count passwords<6)Then{ctrlSetText [10571, (ctrlText 10571)+""5""];passwords=passwords+[""5""];}";
+	};
+	
+	class Num06:GuiBoxButton
+	{
+		x = 0.54;
+		y = 0.52;
+		text = "6";
+		action = "if(count passwords<6)Then{ctrlSetText [10571, (ctrlText 10571)+""6""];passwords=passwords+[""6""];}";
+	};
+	class Num07:GuiBoxButton
+	{
+		x = 0.4;
+		y = 0.59;
+		text = "7";
+		action = "if(count passwords<6)Then{ctrlSetText [10571, (ctrlText 10571)+""7""];passwords=passwords+[""7""];}";
+	};
+	
+	class Num08:GuiBoxButton
+	{
+		x = 0.47;
+		y = 0.59;
+		text = "8";
+		action = "if(count passwords<6)Then{ctrlSetText [10571, (ctrlText 10571)+""8""];passwords=passwords+[""8""];}";
+	};
+	
+	class Num09:GuiBoxButton
+	{
+		x = 0.54;
+		y = 0.59;
+		text = "9";
+		action = "if(count passwords<6)Then{ctrlSetText [10571, (ctrlText 10571)+""9""];passwords=passwords+[""9""];}";
+	};
+};
 
 class CfgSounds
 {

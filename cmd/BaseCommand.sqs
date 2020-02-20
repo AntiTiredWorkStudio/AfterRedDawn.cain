@@ -5,12 +5,12 @@ _Leader = _this select 0
 _controlGroup = group _Leader
 _controlUnits = units _controlGroup
 
-_aid = _Leader addAction[format["Take over control %1 group",name _Leader],"cmd/CommandAction.sqs"]
+_aid = _Leader addAction[format["Take over control %1 group",name _Leader],"cmd\CommandAction.sqs"]
 @(!alive _Leader)
 _Leader removeAction _aid
 _controlUnits = _controlUnits - [_Leader]
 @ !(Leader (_controlUnits select 0) == BaseCommand)
 if(count _controlUnits <=0)Then {exit;}
 ~2
-[(_controlUnits select 0)]exec "cmd/BaseCommand.sqs"
+[(_controlUnits select 0)]exec "cmd\BaseCommand.sqs"
 exit

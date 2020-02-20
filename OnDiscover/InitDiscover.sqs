@@ -1,7 +1,7 @@
 ; *****************************************************
 ; ** Operation Flashpoint Script File
 ; *****************************************************
-
+goto "Chapter02_Start"
 TitleCut["","Black Out",5]
 ~5
 Guba setDir 180
@@ -79,10 +79,12 @@ Guba cameraEffect ["terminate","back"]
 camDestroy _camera
 Guba switchMove "Default"
 TitleCut["","Black In",3]
+#Chapter02_Start
 ~3
-
+["566453"]exec "OnCounterAttack\NuclearLaunch.sqs"
 ~3
 "7" objStatus "ACTIVE"
+
 
 {_x setCombatMode "RED";_x setBehaviour "STEALTH";_x addWeapon "Binocular";_x doWatch Guba;_x doTarget Guba;dostop _x;}forEach units group SniperTeam
 
@@ -98,7 +100,6 @@ TownLeader setUnitPos "UP"
 
 "OUTPOST02" setMarkerPos getpos (object 24973)
 
-;@StolenRadio
 [Search01,SearchLeader01,Guba,SearchLogic01,SignalTrigger_01]exec"OnDiscover/SearchTeam.sqs"
 [Search02,SearchLeader02,Guba,SearchLogic02,SignalTrigger_06]exec"OnDiscover/SearchTeam.sqs"
 [Search03,SearchLeader03,Guba,SearchLogic03,SignalTrigger_02]exec"OnDiscover/SearchTeam.sqs"
@@ -109,4 +110,5 @@ TownLeader setUnitPos "UP"
 []exec"OnDiscover\DeathUnit.sqs"
 ~1
 []exec "OnDiscover\DiscoveryDyamicUnit.sqs"
+[]exec "OnDiscover\FindTeamate.sqs"
 exit;
