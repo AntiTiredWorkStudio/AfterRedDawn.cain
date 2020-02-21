@@ -1,0 +1,19 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+_scud = _this select 0
+@(!(_scud in (list scudRegion)) || (scudState _scud >= 1.03))
+
+;(driver _scud) setCaptive false
+{_x setCaptive false;TankGp01 reveal _x;TankGp02 reveal _x;}forEach crew _scud
+
+;TankGp01 reveal (driver _scud)
+;TankGp02 reveal (driver _scud)
+
+TankGp01 doTarget _scud
+TankGp02 doTarget _scud
+~1
+
+TankGp01 doFire _scud
+TankGp02 doFire _scud
+exit

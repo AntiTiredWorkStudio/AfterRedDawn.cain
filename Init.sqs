@@ -61,6 +61,7 @@ KeyBarrel addMagazineCargo["glocksMag",4]
 
 (object 63448) setDammage 1
 
+
 Defend = []
 WestSpawnGroups = []
 FollowGroup = []
@@ -96,39 +97,43 @@ BadEnd01 = false
 BadEnd02 = false
 
 
-[Guba]exec "SignalSystem/InitSignalSystem.sqs"
+;飞毛腿导弹车初始化
+ScudCar = scud
+[scud]exec "BaseDefend\InitScud.sqs"
+
+[Guba]exec "SignalSystem\InitSignalSystem.sqs"
 
 ;保护免受伤害的友军
 ImportantProtection = [TownLeader,Engineer01,Engineer02,CampTeam,(object 9379)] + (units group EscTeam)
 [Guba] exec "FriendlyProtection.sqs"
-goto "Chapter02"
+goto "Chapter04"
 #Chapter01
 ;--------------第一章：被俘----------------------
 TitleText["Chapter 01 : Captured","Plain Down",3]
-[]exec "OnCaptured/InitCaptured.sqs"
+[]exec "OnCaptured\InitCaptured.sqs"
 @ChapterCaptured
 #Chapter02
 ;--------------第二章：探索----------------------
 TitleText["Chapter 02 : Lurker","Plain Down",3]
-[]exec "OnDiscover/InitDiscover.sqs"
+[]exec "OnDiscover\InitDiscover.sqs"
 	;被禁用的旧版指挥系统
-	;[Guba]exec "SignalSystem/InitSignalSystem.sqs"
+	;[Guba]exec "SignalSystem\InitSignalSystem.sqs"
 @CommandAreaSetting
-[Guba,list CommandArea]exec "cmd/Init.sqs"
+[Guba,list CommandArea]exec "cmd\Init.sqs"
 @ChapterDiscover
 #Chapter03
 ;--------------第三章：防御----------------------
 TitleText["Chapter 03 : Defender","Plain Down",3]
-[]exec "OnDefend/InitDefender.sqs"
+[]exec "OnDefend\InitDefender.sqs"
 @ChapterDefender
 #Chapter04
 ;--------------第四章：反击----------------------
 if(CommandAreaSetting)Then{goto "JumpSetting"}
 @CommandAreaSetting
-[Guba,list CommandArea]exec "cmd/Init.sqs"
+[Guba,list CommandArea]exec "cmd\Init.sqs"
 #JumpSetting
 TitleText["Chapter 04 : Assault","Plain Down",3]
-[]exec "OnCounterAttack/InitCounterAttack.sqs"
+[]exec "OnCounterAttack\InitCounterAttack.sqs"
 @ChapterAssault
 playMusic "WanderMusic";
 0 fadeMusic 0

@@ -81,8 +81,8 @@ class GuiBoxButton
 	colorText[] = {0,0,0,1};
 	font = DEFAULTFONT;
 	sizeEx = 0.025;
-	soundClick[] = {"ui\ui_ok",0.2,1};
-	soundEscape[] = {"ui\ui_cc",0.2,1};
+	soundClick[] = {"",2,1};
+	soundEscape[] = {"",2,1};
 	soundPush[] = {,0.2,1};
 	default = false;
 
@@ -280,7 +280,7 @@ class NuclearLaunchPad:DefaultPad
 		x = 0.4;
 		y = 0.45;
 		text = "1";
-		action = "if(count passwords<6)Then{ctrlSetText [10571, (ctrlText 10571)+""1""];passwords=passwords+[""1""];}";
+		action = "playSound""PasswordButton"";if(count passwords<6)Then{ctrlSetText [10571, (ctrlText 10571)+""1""];passwords=passwords+[""1""];}";
 	};
 	
 	class Num02:GuiBoxButton
@@ -288,7 +288,7 @@ class NuclearLaunchPad:DefaultPad
 		x = 0.47;
 		y = 0.45;
 		text = "2";
-		action = "if(count passwords<6)Then{ctrlSetText [10571, (ctrlText 10571)+""2""];passwords=passwords+[""2""];}";
+		action = "playSound""PasswordButton"";if(count passwords<6)Then{ctrlSetText [10571, (ctrlText 10571)+""2""];passwords=passwords+[""2""];}";
 	};
 	
 	class Num03:GuiBoxButton
@@ -296,14 +296,14 @@ class NuclearLaunchPad:DefaultPad
 		x = 0.54;
 		y = 0.45;
 		text = "3";
-		action = "if(count passwords<6)Then{ctrlSetText [10571, (ctrlText 10571)+""3""];passwords=passwords+[""3""];}";
+		action = "playSound""PasswordButton"";if(count passwords<6)Then{ctrlSetText [10571, (ctrlText 10571)+""3""];passwords=passwords+[""3""];}";
 	};
 	class Num04:GuiBoxButton
 	{
 		x = 0.4;
 		y = 0.52;
 		text = "4";
-		action = "if(count passwords<6)Then{ctrlSetText [10571, (ctrlText 10571)+""4""];passwords=passwords+[""4""];}";
+		action = "playSound""PasswordButton"";if(count passwords<6)Then{ctrlSetText [10571, (ctrlText 10571)+""4""];passwords=passwords+[""4""];}";
 	};
 	
 	class Num05:GuiBoxButton
@@ -311,7 +311,7 @@ class NuclearLaunchPad:DefaultPad
 		x = 0.47;
 		y = 0.52;
 		text = "5";
-		action = "if(count passwords<6)Then{ctrlSetText [10571, (ctrlText 10571)+""5""];passwords=passwords+[""5""];}";
+		action = "playSound""PasswordButton"";if(count passwords<6)Then{ctrlSetText [10571, (ctrlText 10571)+""5""];passwords=passwords+[""5""];}";
 	};
 	
 	class Num06:GuiBoxButton
@@ -319,14 +319,14 @@ class NuclearLaunchPad:DefaultPad
 		x = 0.54;
 		y = 0.52;
 		text = "6";
-		action = "if(count passwords<6)Then{ctrlSetText [10571, (ctrlText 10571)+""6""];passwords=passwords+[""6""];}";
+		action = "playSound""PasswordButton"";if(count passwords<6)Then{ctrlSetText [10571, (ctrlText 10571)+""6""];passwords=passwords+[""6""];}";
 	};
 	class Num07:GuiBoxButton
 	{
 		x = 0.4;
 		y = 0.59;
 		text = "7";
-		action = "if(count passwords<6)Then{ctrlSetText [10571, (ctrlText 10571)+""7""];passwords=passwords+[""7""];}";
+		action = "playSound""PasswordButton"";if(count passwords<6)Then{ctrlSetText [10571, (ctrlText 10571)+""7""];passwords=passwords+[""7""];}";
 	};
 	
 	class Num08:GuiBoxButton
@@ -334,7 +334,7 @@ class NuclearLaunchPad:DefaultPad
 		x = 0.47;
 		y = 0.59;
 		text = "8";
-		action = "if(count passwords<6)Then{ctrlSetText [10571, (ctrlText 10571)+""8""];passwords=passwords+[""8""];}";
+		action = "playSound""PasswordButton"";if(count passwords<6)Then{ctrlSetText [10571, (ctrlText 10571)+""8""];passwords=passwords+[""8""];}";
 	};
 	
 	class Num09:GuiBoxButton
@@ -342,7 +342,7 @@ class NuclearLaunchPad:DefaultPad
 		x = 0.54;
 		y = 0.59;
 		text = "9";
-		action = "if(count passwords<6)Then{ctrlSetText [10571, (ctrlText 10571)+""9""];passwords=passwords+[""9""];}";
+		action = "playSound""PasswordButton"";if(count passwords<6)Then{ctrlSetText [10571, (ctrlText 10571)+""9""];passwords=passwords+[""9""];}";
 	};
 };
 
@@ -574,6 +574,27 @@ class CfgSounds
 		sound[] = {"button.wav", db+40, 1.0};
 		forceTitles = true;
 		titles[] = { 0, "Turning on" };
+	};
+	
+	class PasswordButton{
+		name = "";
+		sound[] = {"buttonLite.ogg", db+90, 1.0};
+		forceTitles = true;
+		titles[] = { 0, "" };
+	};
+	
+	
+	class PasswordRight{
+		name = "";
+		sound[] = {"right.ogg", db+90, 1.0};
+		forceTitles = true;
+		titles[] = { 0, "" };
+	};
+	class PasswordWrong{
+		name = "";
+		sound[] = {"wrong.ogg", db+90, 1.0};
+		forceTitles = true;
+		titles[] = { 0, "" };
 	};
 	
 	

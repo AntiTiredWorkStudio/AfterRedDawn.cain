@@ -1,0 +1,18 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+#Loop
+@((count crew ScudCar)==0 && (scudState ScudCar >= 1.03) && !SCUDPasswordConfirmed)
+_cPos = getpos ScudCar
+_cDir = getDir ScudCar
+_cDammage = getDammage ScudCar
+deleteVehicle ScudCar
+ScudCar ="Scud" createVehicle _cPos
+ScudCar setDir _cDir
+ScudCar setpos _cPos
+ScudCar setDammage _cDammage
+[ScudCar]exec "BaseDefend\ScudRegion.sqs"
+[ScudCar] exec "BaseDefend\NuclearLaunch.sqs"
+ScudCar exec "BaseDefend\NuclearBomb.sqs"
+goto "Loop"
+exit

@@ -81,8 +81,6 @@ Guba switchMove "Default"
 TitleCut["","Black In",3]
 #Chapter02_Start
 ~3
-[scud]exec "OnCounterAttack\NuclearLaunch.sqs"
-~3
 "7" objStatus "ACTIVE"
 
 

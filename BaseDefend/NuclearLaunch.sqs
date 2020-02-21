@@ -2,10 +2,11 @@
 ; ** Operation Flashpoint Script File
 ; *****************************************************
 _nuclearSCUD = _this select 0
+
 SCUDPassword = "566453"
 SCUDPasswordConfirmed = false
-[_nuclearSCUD]exec "OnCounterAttack\ScudState.sqs"
-NuclearLaunchID = _nuclearSCUD addAction["Input Launch Code","OnCounterAttack\PasswordCheck.sqs"]
+[_nuclearSCUD]exec "BaseDefend\ScudState.sqs"
+NuclearLaunchID = _nuclearSCUD addAction["Input Launch Code","BaseDefend\PasswordCheck.sqs"]
 @SCUDPasswordConfirmed
 _nuclearSCUD removeAction NuclearLaunchID
 scud action["SCUD START"]

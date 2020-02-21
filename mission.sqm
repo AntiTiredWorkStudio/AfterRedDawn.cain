@@ -11,8 +11,7 @@ class Mission
 		"Bradley",
 		"6g30",
 		"Su25",
-		"bmp2",
-		"KEGmakarov"
+		"bmp2"
 	};
 	addOnsAuto[]=
 	{
@@ -23,7 +22,6 @@ class Mission
 		"G36a",
 		"bis_resistance",
 		"Bradley",
-		"KEGmakarov",
 		"Su25"
 	};
 	randomSeed=6896643;
@@ -4760,12 +4758,12 @@ class Mission
 				items=1;
 				class Item0
 				{
-					position[]={7462.632324,20.879999,4774.398438};
+					position[]={7452.356445,20.879999,4783.304199};
 					azimut=-68.859200;
 					special="NONE";
 					id=480;
 					side="EAST";
-					vehicle="KEGOfficerEMakarov";
+					vehicle="OfficerE";
 					player="PLAYER COMMANDER";
 					leader=1;
 					skill=1.000000;
@@ -5365,7 +5363,6 @@ class Mission
 			lock="UNLOCKED";
 			skill=0.600000;
 			text="scud";
-			init="this exec ""BaseDefend\NuclearBomb.sqs""";
 		};
 		class Item51
 		{
@@ -7936,11 +7933,11 @@ class Mission
 			b=30.000000;
 			angle=185.358994;
 			rectangular=1;
-			activationBy="VEHICLE";
+			activationBy="ANY";
+			repeating=1;
 			age="UNKNOWN";
-			idVehicle=197;
-			expCond="not this";
-			expActiv="(driver scud) setCaptive false;TankGp01 reveal (driver scud);TankGp02 reveal (driver scud)";
+			text="scudRegion";
+			name="scudRegion";
 			class Effects
 			{
 			};

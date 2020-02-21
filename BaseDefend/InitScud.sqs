@@ -1,0 +1,9 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+
+[]exec "BaseDefend\ScudRespawn.sqs"
+[ScudCar]exec "BaseDefend\ScudRegion.sqs"
+[ScudCar] exec "BaseDefend\NuclearLaunch.sqs"
+ScudCar exec "BaseDefend\NuclearBomb.sqs"
+exit
