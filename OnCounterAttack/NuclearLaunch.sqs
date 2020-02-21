@@ -1,24 +1,13 @@
 ; *****************************************************
 ; ** Operation Flashpoint Script File
 ; *****************************************************
-
-_TargetPassword = _this select 0
-createDialog "NuclearLaunchPad"
-ctrlSetText [10572, ""]
-ctrlSetText [10573, ""]
-#retry
-passwords = []
-inputContent = ""
-onPadSubmit = false
-onPadQuit = false
-ctrlSetText [10571, ""]
-@(onPadSubmit || onPadQuit)
-hint format["%1",inputContent]
-if(onPadQuit)Then{closeDialog 0;exit;}
-if(onPadSubmit)Then{if(inputContent==_TargetPassword)Then{goto "correct"}Else{goto "retry";ctrlSetText [10572, "wrong password"];}}
-#correct
-ctrlSetText [10572, ""];
-ctrlSetText [10573, "comfirmed!"];
-~2
-closeDialog 0
+_nuclearSCUD = _this select 0
+SCUDPassword = "566453"
+SCUDPasswordConfirmed = false
+[_nuclearSCUD]exec "OnCounterAttack\ScudState.sqs"
+NuclearLaunchID = _nuclearSCUD addAction["Input Launch Code","OnCounterAttack\PasswordCheck.sqs"]
+@SCUDPasswordConfirmed
+_nuclearSCUD removeAction NuclearLaunchID
+scud action["SCUD START"]
 exit
+                                         
