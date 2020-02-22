@@ -5,7 +5,7 @@ _plane = _this select 0
 _pos = _this select 1
 _spawnPos = _this select 2
 _attackTime = 0
-_plane disableAI "TARGET"
+;_plane disableAI "TARGET"
 _plane setCombatMode "RED"
 #repeat
 _plane doMove getpos _pos
@@ -13,9 +13,10 @@ _attackTime = _attackTime+1
 @_plane distance _pos < 1000
 _plane setCombatMode "RED"
 @_plane distance _pos < 600
-;hint "enter"
+[EAST,"AirBase"] sideChat format["%2 out:%1",_attackTime,_plane]
 @_plane distance _pos > 1000
 _plane setCombatMode "BLUE"
+[EAST,"AirBase"] sideChat format["%2 out:%1",_attackTime,_plane]
 ;hint format["out:%1",_attackTime]
 ?_attackTime<4:goto "repeat"
 AirResult = AirResult+1

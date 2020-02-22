@@ -917,7 +917,7 @@ class CfgIdentities
 	};
 	class Eusev
 	{
-		name = "Col. Eusev";
+		name = "Col.Eusev";
 		face = "Face17";
 		glasses="spectacles";
 		speaker = "Adam";

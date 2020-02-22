@@ -4758,19 +4758,19 @@ class Mission
 				items=1;
 				class Item0
 				{
-					position[]={7452.356445,20.879999,4783.304199};
-					azimut=-68.859200;
+					position[]={10484.805664,97.966331,10162.842773};
+					azimut=-67.295868;
 					special="NONE";
 					id=480;
 					side="EAST";
-					vehicle="OfficerE";
+					vehicle="SoldierELAW";
 					player="PLAYER COMMANDER";
 					leader=1;
 					skill=1.000000;
 					fuel=0.900000;
 					ammo=0.900000;
 					text="Guba";
-					init="this addWeapon ""Binocular"";this setCaptive true;skipTime 10;removeAllWeapons this";
+					init="this addWeapon ""Binocular"";this setCaptive false;skipTime 10";
 				};
 			};
 		};

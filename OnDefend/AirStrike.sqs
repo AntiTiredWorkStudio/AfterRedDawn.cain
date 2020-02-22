@@ -37,13 +37,13 @@ _i=_i+1
 ? (_i<count _airs) : goto "Loop"
 {_x allowFleeing 1}forEach _airs
 AirResult = 0
-{[_x,AirStrikeLogic,_AttackSpawnPos]exec "OnDefend/AirRepeatStrike.sqs"}forEach _airs
+{[_x,AirStrikeLogic,_AttackSpawnPos]exec "OnDefend\AirRepeatStrike.sqs"}forEach _airs
 
 #comfirmPos
 ~1
 {Guba reveal (Vehicle _x)}forEach units _group
 "AirPos" setMarkerPos getpos (Leader _group)
-? (alive (Leader _group) && (AirResult<(count _airs))) : goto "comfirmPos"
+? ((count _airs > 0) && (AirResult<(count _airs))) : goto "comfirmPos"
 if(count _airs > 0)Then {[EAST,"AirBase"] sideRadio "AirFinished"}
 "AirPos" setMarkerPos [-1000,-1000]
 ~30
