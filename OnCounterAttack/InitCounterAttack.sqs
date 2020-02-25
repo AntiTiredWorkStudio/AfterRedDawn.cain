@@ -1,12 +1,13 @@
 ; *****************************************************
 ; ** Operation Flashpoint Script File
 ; *****************************************************
-_holder = "WeaponHolder" createVehicle getpos Guba
-_holder addWeaponCargo ["Steyr",1]
-_holder addmagazineCargo ["SteyrMag",10]
 
+;_holder = "WeaponHolder" createVehicle getpos Guba
+;_holder addWeaponCargo ["Steyr",1]
+;_holder addmagazineCargo ["SteyrMag",10]
 
-[]exec "OnCounterAttack/RCityDefence.sqs"
-[]exec "OnCounterAttack/ConfirmScud.sqs"
+[]exec "OnCounterAttack\ConversationSpy.sqs"
+[]exec "OnCounterAttack\RCityDefence.sqs"
+[]exec "OnCounterAttack\ConfirmScud.sqs"
 
 exit

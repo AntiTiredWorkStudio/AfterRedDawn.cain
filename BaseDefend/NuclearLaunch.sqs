@@ -9,6 +9,5 @@ SCUDPasswordConfirmed = false
 NuclearLaunchID = _nuclearSCUD addAction["Input Launch Code","BaseDefend\PasswordCheck.sqs"]
 @SCUDPasswordConfirmed
 _nuclearSCUD removeAction NuclearLaunchID
-scud action["SCUD START"]
 exit
                                          

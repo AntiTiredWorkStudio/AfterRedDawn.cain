@@ -4,4 +4,31 @@
 _spyLeader = _this select 0
 _commander = _this select 1
 {[_x,_commander] exec "OnCounterAttack/SpyAction.sqs"}forEach units group _spyLeader
+
+group _spyLeader setGroupId ["Alpha", "GroupColor7","Command"]
+
+@(Guba distance _spyLeader < 5)
+hint "You found spy team."
+SpyTeamFound = true
+"11_1" objStatus "DONE"
+"Gc39" setMarkerPos getpos (object 9793);
+
+_spyLeader setBehaviour "SAFE"
+_spyLeader action["WEAPONONBACK"]
+_spyLeader doWatch Guba
+~2
+_spyLeader playMove "EffectStandSaluteStart"
+~1
+_spyLeader playMove "EffectStandSaluteEnd"
+
+_spyLeader say "SpyTeamReport"
+
+~3
+
+_spyLeader setBehaviour "AWARE"
+
+~1
+
+[_spyLeader] exec "cmd\BaseCommand.sqs"
+
 exit

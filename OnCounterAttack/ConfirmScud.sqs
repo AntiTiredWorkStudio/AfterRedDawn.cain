@@ -14,4 +14,14 @@ if(StolenMap)Then{goto "Know";}Else{goto "Unknow";}
 "12" objStatus "DONE"
 "13" objStatus "ACTIVE"
 "RSCUD" setMarkerPos getMarkerPos "Fi62"
+"SCUDRange" setMarkerPos getpos (object 21691)
+@(ScudCar distance (object 21691)<30)
+hint "SCUD is under position."
+WestFactory globalRadio"WESTNegotiation"
+~10
+[]exec "OnCounterAttack\Meeting.sqs"
+"Meeting" setMarkerPos getpos (object 99)
+"14" objStatus "ACTIVE"
+@(ScudCar distance (object 21691)<30 && (scudState ScudCar)>=3.9)
+"13" objStatus "DONE"
 exit

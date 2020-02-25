@@ -4,9 +4,10 @@
 _nuclearSCUD = _this select 0
 @(count crew _nuclearSCUD > 0)
 if(!SCUDPasswordConfirmed)Then{hint "Unable to authenticate identity,launch Terminated."}
-#Loop
-@(scudState _nuclearSCUD >= 1.03 && !SCUDPasswordConfirmed && (count crew _nuclearSCUD > 0))
+#Loop 
+@(scudState _nuclearSCUD >= 1.03 && (!SCUDPasswordConfirmed || (SCUDPasswordConfirmed && (_nuclearSCUD distance (object 21691)>=30) && (scudState ScudCar)<3.9)) && (count crew _nuclearSCUD > 0))
 _nuclearSCUD action ["SCUD LAUNCH"]
-@(scudState _nuclearSCUD >= 1.03 && !SCUDPasswordConfirmed && (count crew _nuclearSCUD > 0))
+playSound "SCUDAlarm"
+@(scudState _nuclearSCUD >= 1.03 && (!SCUDPasswordConfirmed || (SCUDPasswordConfirmed && (_nuclearSCUD distance (object 21691)>=30) && (scudState ScudCar)<3.9)) && (count crew _nuclearSCUD > 0))
 goto "Loop"
 exit

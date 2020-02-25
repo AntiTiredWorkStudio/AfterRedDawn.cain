@@ -1,7 +1,7 @@
 ; *****************************************************
 ; ** Operation Flashpoint Script File
 ; *****************************************************
-goto "Chapter02_Start"
+if(Debug)Then{goto "Chapter02_Start"}
 TitleCut["","Black Out",5]
 ~5
 Guba setDir 180
@@ -86,27 +86,28 @@ TitleCut["","Black In",3]
 
 {_x setCombatMode "RED";_x setBehaviour "STEALTH";_x addWeapon "Binocular";_x doWatch Guba;_x doTarget Guba;dostop _x;}forEach units group SniperTeam
 
-[TankSupply,Guba,"Attack03"]exec "OnDiscover/AttackTeamFound.sqs"
-[ATG01_2,Guba,"Attack02"]exec "OnDiscover/AttackTeamFound.sqs"
-[ATG02_1,Guba,"Attack01"]exec "OnDiscover/AttackTeamFound.sqs"
+[TankSupply,Guba,"Attack03"]exec "OnDiscover\AttackTeamFound.sqs"
+[ATG01_2,Guba,"Attack02"]exec "OnDiscover\AttackTeamFound.sqs"
+[ATG02_1,Guba,"Attack01"]exec "OnDiscover\AttackTeamFound.sqs"
 
-[sup01,FleetGroup]exec "Fleet/OnFleetStart.sqs"
-[]exec "OnDiscover/ArriveTown.sqs"
+[sup01,FleetGroup]exec "Fleet\OnFleetStart.sqs"
+[]exec "OnDiscover\ArriveTown.sqs"
 
 ;TownLeader setBehaviour "AWARE"
 TownLeader setUnitPos "UP"
 
 "OUTPOST02" setMarkerPos getpos (object 24973)
 
-[Search01,SearchLeader01,Guba,SearchLogic01,SignalTrigger_01]exec"OnDiscover/SearchTeam.sqs"
-[Search02,SearchLeader02,Guba,SearchLogic02,SignalTrigger_06]exec"OnDiscover/SearchTeam.sqs"
-[Search03,SearchLeader03,Guba,SearchLogic03,SignalTrigger_02]exec"OnDiscover/SearchTeam.sqs"
-[Search04,SearchLeader04,Guba,SearchLogic04,SignalTrigger_03]exec"OnDiscover/SearchTeam.sqs"
-[Search05,SearchLeader05,Guba,SearchLogic05,SignalTrigger_05]exec"OnDiscover/SearchTeam.sqs"
-[Search06,SearchLeader06,Guba,SearchLogic06,SignalTrigger_04]exec"OnDiscover/SearchTeam.sqs"
+[Search01,SearchLeader01,Guba,SearchLogic01,SignalTrigger_01]exec"OnDiscover\SearchTeam.sqs"
+[Search02,SearchLeader02,Guba,SearchLogic02,SignalTrigger_06]exec"OnDiscover\SearchTeam.sqs"
+[Search03,SearchLeader03,Guba,SearchLogic03,SignalTrigger_02]exec"OnDiscover\SearchTeam.sqs"
+[Search04,SearchLeader04,Guba,SearchLogic04,SignalTrigger_03]exec"OnDiscover\SearchTeam.sqs"
+[Search05,SearchLeader05,Guba,SearchLogic05,SignalTrigger_05]exec"OnDiscover\SearchTeam.sqs"
+[Search06,SearchLeader06,Guba,SearchLogic06,SignalTrigger_04]exec"OnDiscover\SearchTeam.sqs"
 
 []exec"OnDiscover\DeathUnit.sqs"
 ~1
 []exec "OnDiscover\DiscoveryDyamicUnit.sqs"
+
 []exec "OnDiscover\FindTeamate.sqs"
 exit;

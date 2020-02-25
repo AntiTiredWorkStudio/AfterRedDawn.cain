@@ -3,7 +3,7 @@
 ; *****************************************************
 _NuclearMissile = _this
 _mpos = getpos _NuclearMissile
-@(getDammage _NuclearMissile > 0.99)
+@(getDammage _NuclearMissile > 0.99 && (scudState _NuclearMissile)<3)
 _mpos = getpos _NuclearMissile
 @(!alive _NuclearMissile)
 TitleCut["","Black Out",2]

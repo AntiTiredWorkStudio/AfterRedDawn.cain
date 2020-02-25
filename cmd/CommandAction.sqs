@@ -7,16 +7,23 @@ _Leader = _this select 0
 _LeaderGroup = group _Leader
 _commandCurrentTeam = units group _Command
 _removeUnits = []
-;hint format["weapons : %1",(Weapons _Leader)]
-if(Leader _Leader == _Command)Then{hint "This team has already joined your group.";exit;}
+_dismiss  =false
+
+_unitCount = (count units group _Command)+(count units group _Leader)
+if(Leader _Leader == _Command)Then{hint "This team has already joined your group.";_dismiss=true;}Else{goto "End"}
 ?(count _commandCurrentTeam <= 1):goto "End"
 {if(_x != (leader _x))Then{_removeUnits=_removeUnits+[_x]}}forEach _commandCurrentTeam
 _removeUnits join grpNull
 {doStop _x}forEach _removeUnits
 ~2
-if(!alive _Leader)Then{hint format["New Leader:%1",Leader (_removeUnits select 0)];[Leader group (_removeUnits select 0)]exec "cmd/BaseCommand.sqs"}
+if(!alive _Leader)Then{[Leader group (_removeUnits select 0)]exec "cmd\BaseCommand.sqs"}
+if(_dismiss)Then{exit;}
 #End
-_Command sideChat format["%1,Alpha one is going to take control your team.",_LeaderGroup]
+if(_unitCount > 12)Then{hint "Team members reach the upper limit.";exit;}
+
+if(count units group _Command >1)Then{_Leader removeAction _aid;_Leader removeAction (_aid+1)}
+
+_Command sideChat format["%1,Alpha 1 is going to take control your team.",_LeaderGroup]
 
 (units _LeaderGroup) join group _Command
 ~0.2

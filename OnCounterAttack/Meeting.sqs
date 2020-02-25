@@ -1,0 +1,20 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+_i = 0
+#Loop
+removeAllWeapons ((units group sniper) select _i);
+((units group sniper) select _i) addMagazine"SVDDragunov";
+((units group sniper) select _i) addWeapon"SVDDragunov";
+((units group sniper) select _i) addMagazine"SVDDragunov";
+((units group sniper) select _i) addMagazine"SVDDragunov";
+((units group sniper) select _i) addMagazine"SVDDragunov";
+((units group sniper) select _i) setBehaviour "STEALTH"
+((units group sniper) select _i) setCombatMode "RED"
+((units group sniper) select _i) doTarget Guba;
+((units group sniper) select _i) doFire Guba;
+((units group sniper) select _i) reveal Guba;
+dostop ((units group sniper) select _i)
+_i = _i+1
+?(_i<(count (units group sniper))):goto "Loop"
+exit

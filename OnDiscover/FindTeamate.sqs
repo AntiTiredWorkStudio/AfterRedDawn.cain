@@ -1,5 +1,9 @@
 ; *****************************************************
 ; ** Operation Flashpoint Script File
 ; *****************************************************
-
+~3
+"3_1" objStatus "ACTIVE"
+@(CountGatherTeamate>=6)
+~2
+"3_1" objStatus "DONE"
 exit

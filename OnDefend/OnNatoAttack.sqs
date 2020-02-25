@@ -4,9 +4,6 @@
 NatoAttackUnit = []
 _VehicleAttackUnit = []
 
-0 fadeMusic 0.5
-PlayMusic "NervousMusic"
-
 if(ATG01Wait)Then{NatoAttackUnit= NatoAttackUnit+(units group ATG01_2);}
 
 if(ATG02Wait)Then{NatoAttackUnit= NatoAttackUnit+(units group ATG02_1);}
@@ -15,12 +12,22 @@ if(TankSupplyResult && TankSupplyWait)Then{NatoAttackUnit= NatoAttackUnit+(units
 
 {if(Vehicle _x != ObjNull && !(Vehicle _x in _VehicleAttackUnit))Then{_VehicleAttackUnit=_VehicleAttackUnit+[Vehicle _x]}}forEach NatoAttackUnit
 NatoMovingTown = true
+~10
+CampTeam sideChat format["%1 to %2,We detected that the enemy were gathering in the south of Cf46.They could attack at any time over.",CampTeam,Guba]
+~(50+ (random 100))
+
+CampTeam sideChat format["%1 to %2,The enemy is moving towards the town,over.",CampTeam,Guba]
+
+0 fadeMusic 0.5
+PlayMusic "NervousMusic"
+
 
 @ (count units group ATG01_2 <= 0) && (count units group ATG02_1 <= 0) && (count units group TankSupply <= 0)
 ~5
 DefeatNato = true
 if(FinalLine)Then{"10_1" objStatus "DONE"}else{"10" objStatus "DONE"}
-
+Guba sideChat "Alpha one to all unit,we have defeated enemy's attack.We survived,celebrate it."
 TitleText["Complete","PLAIN",3]
+~5
 ChapterDefender = true
 exit

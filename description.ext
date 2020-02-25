@@ -592,7 +592,14 @@ class CfgSounds
 	};
 	class PasswordWrong{
 		name = "";
-		sound[] = {"wrong.ogg", db+90, 1.0};
+		sound[] = {"scudAlarm.ogg", db+90, 1.0};
+		forceTitles = true;
+		titles[] = { 0, "" };
+	};
+	
+	class SCUDAlarm{
+		name = "";
+		sound[] = {"wrong.ogg", db+20, 3.0};
 		forceTitles = true;
 		titles[] = { 0, "" };
 	};
@@ -718,6 +725,97 @@ class CfgSounds
 		titles[] = { 0, "" };
 	};
 	
+	
+
+	class SpyConversation00_Guba
+	{
+		name = "";
+		sound[] = {"NormalVoice.ogg", db-40, 1.0};
+		forceTitles = false;
+		titles[] = { 0, "Col.Eusev,the U.S. Army that we just beat back doesn't look so easy to attack now." };
+	};
+	
+	class SpyConversation01_Eusev
+	{
+		name = "";
+		sound[] = {"NormalVoice.ogg", db-40, 1.0};
+		forceTitles = false;
+		titles[] = { 0, "General, what's our next plan." };
+	};
+	
+	
+	class SpyConversation02_Guba
+	{
+		name = "";
+		sound[] = {"NormalVoice.ogg", db-40, 1.0};
+		forceTitles = false;
+		titles[] = { 0, "Most of the area is still under U.S. control,we have to make sure SCUD missile is launched successfully."};
+	};
+	
+	
+	class SpyConversation03_Eusev
+	{
+		name = "";
+		sound[] = {"NormalVoice.ogg", db-40, 1.0};
+		forceTitles = false;
+		titles[] = { 0, "Yes,there is unfortunate news that we have lost contact with the comrades of the nuclear launch team." };
+	};
+	
+	class SpyConversation04_Guba
+	{
+		name = "";
+		sound[] = {"NormalVoice.ogg", db-40, 1.0};
+		forceTitles = false;
+		titles[] = { 0, "Damn it!The nuclear bomb is likely to be intercepted by the US military."};
+	};
+	
+	class SpyConversation05_Guba
+	{
+		name = "";
+		sound[] = {"NormalVoice.ogg", db-40, 1.0};
+		forceTitles = false;
+		titles[] = { 0, "If so, we must take Scud back from the US."};
+	};
+	
+	class SpyConversation05_Eusev
+	{
+		name = "";
+		sound[] = {"NormalVoice.ogg", db-40, 1.0};
+		forceTitles = false;
+		titles[] = { 0, "I prepared a backup plan for SCUD to be stolen."};
+	};
+	
+	class SpyConversation06_Eusev
+	{
+		name = "";
+		sound[] = {"NormalVoice.ogg", db-40, 1.0};
+		forceTitles = false;
+		titles[] = { 0, "I've formed a team of spies. They're in area Gc39 now."};
+	};
+	
+	class SpyConversation07_Eusev
+	{
+		name = "";
+		sound[] = {"NormalVoice.ogg", db-40, 1.0};
+		forceTitles = false;
+		titles[] = { 0, "They are proficient in the way they communicate with the Americans and can sneak into US bases."};
+	};
+	
+	class SpyConversation08_Guba
+	{
+		name = "";
+		sound[] = {"NormalVoice.ogg", db-40, 1.0};
+		forceTitles = false;
+		titles[] = { 0, "Very well,Colonel,it's a brilliant plan."};
+	};
+	
+	class SpyTeamReport
+	{
+		name = "";
+		sound[] = {"NormalVoice.ogg", db-40, 1.0};
+		forceTitles = false;
+		titles[] = { 0, "Alpha 7 reporting for duty sir."};
+	};
 };
 
 class CfgRadio
@@ -865,6 +963,14 @@ class CfgRadio
 		sound[] = {"RadioCallBack.ogg", db+90, 1.0};
 		title = "Air force one to Alpha One,We've completed the bombing.Good luck to you,out.";
 	};
+	
+	class WESTNegotiation
+	{
+		name = "";
+		sound[] = {"36r08.ogg", db+90, 1.0};
+		title = "General Cuba, we have locked your position.You have a last chance to negotiate with us in Ii17.If you launch a nuclear bomb,we will start a comprehensive attack and carry out a strategic interception.";
+	};
+	
 };
 
 
@@ -917,17 +1023,17 @@ class CfgIdentities
 	};
 	class Eusev
 	{
-		name = "Col.Eusev";
+		name = "Sergey Eusev";
 		face = "Face17";
 		glasses="spectacles";
 		speaker = "Adam";
 		pitch = 0.85;
 	};
 	
-	class Fuller
+	class Yuri
 	{
-		name = "Jack Fuller";
-		face = "Face25";
+		name = "Yuri Fuller";
+		face = "Face39";
 		glasses="None";
 		speaker = "Rich";
 		pitch = 1.00;

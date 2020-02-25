@@ -20,7 +20,7 @@ _veh setFuel 1
 @ (_target in (list _searchArea))
 
 if(!canmove _veh) then{exit;}
-hint "start search"
+;hint "start search"
 
 _grpUnits orderGetIn true
 _grpUnits select 0 assignAsCargo _veh

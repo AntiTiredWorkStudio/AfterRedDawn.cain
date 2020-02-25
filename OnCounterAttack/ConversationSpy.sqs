@@ -1,0 +1,122 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+if(count _this >0)Then{goto "action"}
+if(!alive CampTeam)Then{exit;}
+_actionID = CampTeam addAction["Talking about next plan","OnCounterAttack\ConversationSpy.sqs"]
+exit
+#action
+
+TitleCut["","Black Out",2]
+disableUserInput true
+CampTeam setBehaviour "SAFE"
+
+CampTeam action["WEAPONONBACK"]
+CampTeam doWatch Guba
+~2
+
+disableUserInput false
+TitleCut["","Black In",2]
+
+_GubaPos = getpos CampTeam
+_GubaPos set[0,(_GubaPos select 0) -  (cos 45)*3]
+_GubaPos set[1,(_GubaPos select 1) -  (sin 45)*3]
+_GubaPos set[2,0]
+Guba setpos _GubaPos
+Guba setDir 45
+
+Guba action["WEAPONONBACK"]
+CampTeam setDir 225
+_camera ="camera" camCreate getPos Guba
+_camera cameraEffect ["internal","back"]
+
+_camPos = getpos Guba
+_angle =(getDir Guba)
+_camPos set[0,(_camPos select 0) + (cos _angle)*3]
+_camPos set[1,(_camPos select 1) + (sin _angle)*3]
+_camPos set[2,2]
+
+_camPos01 = getpos CampTeam
+_angle01 =(getDir CampTeam)
+_camPos01 set[0,(_camPos01 select 0) + (cos _angle01)*3]
+_camPos01 set[1,(_camPos01 select 1) + (sin _angle01)*3]
+_camPos01 set[2,2]
+
+;=== 0:23:10
+_camera camSetTarget Guba
+_camera camSetPos _camPos
+_camera camSetFOV 0.700
+_camera camCommit 0
+@camCommitted _camera
+~3
+Guba say "SpyConversation00_Guba"
+~4
+;=== 0:23:10
+_camera camSetTarget CampTeam
+_camera camSetPos _camPos01
+_camera camSetFOV 0.700
+_camera camCommit 0
+@camCommitted _camera
+CampTeam say "SpyConversation01_Eusev"
+~4
+
+;=== 0:23:10
+_camera camSetTarget Guba
+_camera camSetPos _camPos
+_camera camSetFOV 0.700
+_camera camCommit 0
+@camCommitted _camera
+Guba say "SpyConversation02_Guba"
+~4
+
+;=== 0:23:10
+_camera camSetTarget CampTeam
+_camera camSetPos _camPos01
+_camera camSetFOV 0.700
+_camera camCommit 0
+@camCommitted _camera
+CampTeam say "SpyConversation03_Eusev"
+~4
+
+;=== 0:23:10
+_camera camSetTarget Guba
+_camera camSetPos _camPos
+_camera camSetFOV 0.700
+_camera camCommit 0
+@camCommitted _camera
+Guba say "SpyConversation04_Guba"
+~4
+Guba say "SpyConversation05_Guba"
+~4
+;=== 0:23:10
+_camera camSetTarget CampTeam
+_camera camSetPos _camPos01
+_camera camSetFOV 0.700
+_camera camCommit 0
+@camCommitted _camera
+CampTeam say "SpyConversation06_Eusev"
+~4
+CampTeam say "SpyConversation07_Eusev"
+~4
+;=== 0:23:10
+_camera camSetTarget Guba
+_camera camSetPos _camPos
+_camera camSetFOV 0.700
+_camera camCommit 0
+@camCommitted _camera
+Guba say "SpyConversation08_Guba"
+~4
+Guba cameraEffect ["terminate","back"]
+camDestroy _camera
+Guba switchMove "Default"
+CampTeam switchMove "Default"
+CampTeam doWatch ObjNull
+TitleCut["","Black In",3]
+
+~2
+if(!SpyTeamFound)Then{"11_1" objStatus "ACTIVE";"Gc39" setMarkerPos getpos (object 9793);}
+
+@SpyTeamFound
+~3
+"11_1" objStatus "DONE"
+exit
