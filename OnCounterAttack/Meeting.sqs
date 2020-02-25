@@ -1,20 +1,140 @@
 ; *****************************************************
 ; ** Operation Flashpoint Script File
 ; *****************************************************
-_i = 0
+
+"Meeting" setMarkerPos getpos (object 99)
+"14" objStatus "ACTIVE"
+
+;创建狙击小队
+SpawnLeaderUnit = []
+_SniperLList = []
+_SniperLList set[0,[11179.17,10246.64,2.00]]
+_SniperLList set[1,[11172.09,10249.65,2.00]]
+_SniperLList set[2,[11178.41,10240.73,2.00]]
+_SniperGrpLocates = [[_SniperLList,true],"Locate"]
+_Sniper_behaviour = [["STEALTH"],"Behaviour"]
+[(object 3248),[_Sniper_behaviour,_SniperGrpLocates],["SoldierWLAWSniper","SoldierWLAWSniper"],"SoldierWLAWSniper"]exec "UnitSpawn\WGrp.sqs"
+@(count SpawnLeaderUnit > 0)
+_SniperTeam = SpawnLeaderUnit select 0
+{_x setSkill 1;_x setCombatMode "BLUE";}forEach units group _SniperTeam
+
+;会议帐篷
+_MeetingTent = "CampEast" createVehicle [11356.279297,10511.557617,107.071526]
+_MeetingTent setDir 153.300003
+;创建会议护卫小队
+SpawnLeaderUnit = []
+_GrpMeeting_behaviour = [["CARELESS"],"Behaviour"]
+_GMeetingLList = []
+_GMeetingLList set[0,[11315.96,10524.91,0.05]]
+_GMeetingLList set[1,[11320.61,10524.86,0.05]]
+_GMeetingLList set[2,[11327.02,10524.98,0.05]]
+_GMeetingLList set[3,[11331.92,10536.68,0.05]]
+_GMeetingLList set[4,[11343.24,10508.58,0.05]]
+_GMeetingLList set[5,[11334.56,10493.79,0.05]]
+_GMeetingLList set[6,[11357.39,10501.35,0.05]]
+_GMeetingLList set[7,[11350.85,10511.59,0.05]]
+_LocateGrpMeeting = [[_GMeetingLList,true],"Locate"]
+[(object 7784),[_LocateGrpMeeting,_GrpMeeting_behaviour]]exec "UnitSpawn\WGrp.sqs"
+@(count SpawnLeaderUnit > 0)
+_WGrpMeeting = SpawnLeaderUnit select 0
+_WGrpMeeting setFace "Face27"
+group _WGrpMeeting allowFleeing 1
+{_x setSkill 1}forEach units group _WGrpMeeting
+
+;布莱克上校
+SpawnLeaderUnit = []
+_GrpBlake_behaviour = [["AWARE"],"Behaviour"]
+[(object 207),[_GrpBlake_behaviour],["SoldierWSaboteurPipeHGS","SoldierWSaboteurPipeHGS","SoldierWSteyr"],"OfficerW"]exec "UnitSpawn\WGrp.sqs"
+@(count SpawnLeaderUnit > 0)
+_GrpBlake = SpawnLeaderUnit select 0
+_GrpBlake setIdentity "Blake"
+{_x setSkill 1}forEach _BlakeGroup
+
+;创建吉普车
+_BlakeJeep = "Jeep" createVehicle getpos (object 206)
+_BlakeJeep setDir 200
+(units group _GrpBlake) orderGetIn true
+_BlakeDriver = (units group _GrpBlake) select 3
+_BlakeCargo = (units group _GrpBlake)-[_BlakeDriver]
+_BlakeGroup = (units group _GrpBlake)
+group _GrpBlake allowFleeing 1
+
+;设置会议警戒
+MeetingGuardUnits = []
+MeetingGuardUnits = MeetingGuardUnits + _BlakeGroup
+MeetingGuardUnits = MeetingGuardUnits + (units group _WGrpMeeting) 
+MeetingGuardUnits = MeetingGuardUnits + (units group _SniperTeam)
+;是否会议警戒
+MeetingGuard = false
+[_GrpBlake] exec "OnCounterAttack\MeetingCode\MeetingState.sqs"
+{_x exec "OnCounterAttack\MeetingCode\WestGuard.sqs"}forEach MeetingGuardUnits
+
+#LeaveMeetingPoint
+@(Guba distance (object 99) < 25 && !MeetingGuard)
+
+hint "You are into the meeting position."
 #Loop
-removeAllWeapons ((units group sniper) select _i);
-((units group sniper) select _i) addMagazine"SVDDragunov";
-((units group sniper) select _i) addWeapon"SVDDragunov";
-((units group sniper) select _i) addMagazine"SVDDragunov";
-((units group sniper) select _i) addMagazine"SVDDragunov";
-((units group sniper) select _i) addMagazine"SVDDragunov";
-((units group sniper) select _i) setBehaviour "STEALTH"
-((units group sniper) select _i) setCombatMode "RED"
-((units group sniper) select _i) doTarget Guba;
-((units group sniper) select _i) doFire Guba;
-((units group sniper) select _i) reveal Guba;
-dostop ((units group sniper) select _i)
-_i = _i+1
-?(_i<(count (units group sniper))):goto "Loop"
+_grpGubaFarAway = true
+{_grpGubaFarAway = ((_grpGubaFarAway && (_x distance Guba>180)) || (count units group Guba == 1) || (_x == Guba));}forEach (units group Guba)
+~5
+;format["total:%1",_totalMiles]
+if(Guba distance (object 99) > 25)Then{goto "LeaveMeetingPoint";}
+if(!_grpGubaFarAway)Then{hint "You need to move your group units far away.";goto "Loop";}
+
+hint "Talk to Nato's officer near tent."
+
+
+@(Guba distance _WGrpMeeting < 5)
+
+_WGrpMeeting setMimic "Agresive"
+_WGrpMeeting doWatch Guba
+
+playSound "Meeting01"
+_WGrpMeeting say "Meeting01"
+~4
+
+hint "Put down all your weapons near the wall."
+
+[Guba,_WGrpMeeting]exec "OnCounterAttack\MeetingCode\WeaponsCheck.sqs"
+[Guba,_WGrpMeeting]exec "OnCounterAttack\MeetingCode\RangeCheck.sqs"
+
+_WGrpMeeting doWatch ObjNull
+
+{_x setBehaviour "CARELESS";_x disableAI "TARGET";_x disableAI "AUTOTARGET"}forEach _BlakeGroup
+{_x assignAsCargo _BlakeJeep}forEach _BlakeCargo
+_BlakeDriver assignAsDriver _BlakeJeep
+@(count crew _BlakeJeep == 4)
+_BlakeJeep Move getpos (object 123)
+@(unitReady _BlakeJeep)
+{unassignVehicle _x}forEach _BlakeGroup
+@(count crew _BlakeJeep == 0)
+_GrpBlake doMove [11348.97,10507.65,0.05]
+[Guba,_GrpBlake]exec "OnCounterAttack\MeetingCode\BlakeTalk.sqs"
+@(MeetingGuard)
+
+{_x setCombatMode "RED";_x setDir 45;_x doWatch Guba;_x doTarget Guba;_x doFire Guba;_x reveal Guba}forEach units group _SniperTeam
+_BlakeGroup = _BlakeGroup-[_GrpBlake]
+;_BlakeGroup join group _WGrpMeeting
+[_GrpBlake]join grpNull
+{_x doFollow _WGrpMeeting;_x doTarget Guba;_x reveal Guba}forEach units group _WGrpMeeting
+
+group _WGrpMeeting Move getpos Guba
+group _WGrpMeeting setCombatMode "RED"
+group _WGrpMeeting setSpeedMode "FULL"
+
+{_x setCombatMode "RED";_x reveal Guba;_x doMove (getpos Guba);}forEach _BlakeGroup
+
+_GrpBlake setBehaviour "CARELESS"
+_GrpBlake setCombatMode "BLUE"
+_GrpBlake setSpeedMode "NORMAL"
+_GrpBlake assignAsDriver _BlakeJeep
+
+~1
+@(_GrpBlake in _BlakeJeep)
+~1
+_BlakeJeep Move getpos (object 198)
+@(_BlakeJeep distance (object 198) < 15)
+hint "blake escaped"
+_BlakeJeep setpos getpos (object 16994)
+_GrpBlake setpos getpos (object 16994)
 exit

@@ -1,0 +1,6 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+
+_this addEventHandler["Hit", {{_x setBehaviour "COMBAT";_x setCombatMode "RED";_x doTarget (_this select 1)}forEach MeetingGuardUnits;MeetingGuard = true}]
+exit

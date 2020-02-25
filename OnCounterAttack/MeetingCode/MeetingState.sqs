@@ -1,0 +1,10 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+_blake = _this select 0
+@(MeetingGuard)
+"14" objStatus "FAILED"
+"15" objStatus "ACTIVE"
+@(!alive _blake)
+"15" objStatus "DONE"
+exit

@@ -36,7 +36,7 @@ class Mission
 	};
 	class Groups
 	{
-		items=116;
+		items=114;
 		class Item0
 		{
 			side="EAST";
@@ -4752,12 +4752,12 @@ class Mission
 				items=1;
 				class Item0
 				{
-					position[]={11353.558594,106.357529,10490.421875};
-					azimut=-139.574005;
+					position[]={11149.920898,103.303574,10235.500977};
+					azimut=437.764008;
 					special="NONE";
 					id=479;
 					side="EAST";
-					vehicle="SoldierESniper";
+					vehicle="OfficerE";
 					player="PLAYER COMMANDER";
 					leader=1;
 					rank="COLONEL";
@@ -4765,7 +4765,7 @@ class Mission
 					fuel=0.900000;
 					ammo=0.900000;
 					text="Guba";
-					init="this addWeapon ""Binocular"";this setCaptive true;skipTime 10";
+					init="this addWeapon ""Binocular"";this setCaptive false;skipTime 10;";
 				};
 			};
 		};
@@ -5056,75 +5056,10 @@ class Mission
 				};
 			};
 		};
-		class Item114
-		{
-			side="WEST";
-			class Vehicles
-			{
-				items=3;
-				class Item0
-				{
-					position[]={11171.086914,102.746246,10248.646484};
-					azimut=38.502300;
-					special="NONE";
-					id=507;
-					side="WEST";
-					vehicle="SoldierWSniper";
-					leader=1;
-					rank="CAPTAIN";
-					skill=1.000000;
-					text="sniper";
-				};
-				class Item1
-				{
-					position[]={11178.167969,102.236580,10245.637695};
-					azimut=38.502300;
-					special="NONE";
-					id=508;
-					side="WEST";
-					vehicle="SoldierWSniper";
-					rank="CAPTAIN";
-					skill=1.000000;
-					text="sniper01";
-				};
-				class Item2
-				{
-					position[]={11177.405273,102.476685,10239.726563};
-					azimut=38.502300;
-					special="NONE";
-					id=509;
-					side="WEST";
-					vehicle="SoldierWSniper";
-					rank="CAPTAIN";
-					skill=1.000000;
-					text="sniper02";
-				};
-			};
-		};
-		class Item115
-		{
-			side="WEST";
-			class Vehicles
-			{
-				items=1;
-				class Item0
-				{
-					position[]={11334.833984,106.331436,10494.296875};
-					azimut=154.629608;
-					special="NONE";
-					id=510;
-					side="WEST";
-					vehicle="Jeep";
-					leader=1;
-					rank="COLONEL";
-					skill=1.000000;
-				};
-			};
-		};
 	};
 	class Vehicles
 	{
-		items=197;
+		items=196;
 		class Item0
 		{
 			position[]={7280.409180,313.073730,7759.161133};
@@ -7209,17 +7144,6 @@ class Mission
 			skill=0.600000;
 			text="scud";
 		};
-		class Item196
-		{
-			position[]={11356.279297,107.071526,10511.557617};
-			azimut=153.300171;
-			special="NONE";
-			id=506;
-			side="EMPTY";
-			vehicle="CampEast";
-			leader=1;
-			skill=1.000000;
-		};
 	};
 	class Markers
 	{
@@ -7820,7 +7744,7 @@ class Mission
 	};
 	class Sensors
 	{
-		items=43;
+		items=42;
 		class Item0
 		{
 			position[]={1869.473511,129.332520,7406.408691};
@@ -8419,21 +8343,7 @@ class Mission
 			b=0.000000;
 			age="UNKNOWN";
 			expCond="true";
-			expActiv="[]exec ""OnCounterAttack\Meeting.sqs""";
-			class Effects
-			{
-			};
-		};
-		class Item42
-		{
-			position[]={11351.621094,107.009995,10501.202148};
-			a=0.000000;
-			b=0.000000;
-			timeoutMin=3.000000;
-			timeoutMid=3.000000;
-			timeoutMax=3.000000;
-			age="UNKNOWN";
-			expCond="true";
+			expActiv="[]exec ""OnCounterAttack\Meeting.sqs"";";
 			class Effects
 			{
 			};

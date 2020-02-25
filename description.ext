@@ -344,11 +344,29 @@ class NuclearLaunchPad:DefaultPad
 		text = "9";
 		action = "playSound""PasswordButton"";if(count passwords<6)Then{ctrlSetText [10571, (ctrlText 10571)+""9""];passwords=passwords+[""9""];}";
 	};
+	
 };
 
 class CfgSounds
 {
 	sounds[] = 	{ };
+	
+	class Meeting01
+	{
+		name = "";
+		sound[] = {"laydown.ogg", db+40, 1.0};
+		forceTitles = true;
+		titles[] = { 0, "Lay down your weapons and wait here for Colonel Blake.He'll be here in a minute.Don't play tricks!"};
+	};
+	
+	
+	class Meeting02
+	{
+		name = "";
+		sound[] = {"NormalVoice.ogg", db-40, 1.0};
+		forceTitles = true;
+		titles[] = { 0, "Good job, old man!Don't go too far here."};
+	};
 	
 	class TownArrive_Leader_01
 	{
@@ -968,7 +986,7 @@ class CfgRadio
 	{
 		name = "";
 		sound[] = {"36r08.ogg", db+90, 1.0};
-		title = "General Cuba, we have locked your position.You have a last chance to negotiate with us in Ii17.If you launch a nuclear bomb,we will start a comprehensive attack and carry out a strategic interception.";
+		title = "General Cuba, we have locked your position.You have a last chance to negotiate with us in Ii17,and you must come alone.If you launch a nuclear bomb,we will start a comprehensive attack and carry out a strategic interception.";
 	};
 	
 };

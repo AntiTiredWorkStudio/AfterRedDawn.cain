@@ -28,6 +28,8 @@ Debug = true
 "12" objStatus "HIDDEN"
 "13" objStatus "HIDDEN"
 "14" objStatus "HIDDEN"
+"15" objStatus "HIDDEN"
+
 
 MapMarkers = [["ENEMYBASE01",(object 62227)],["SUPPLY",(object 4584)],["ENEMYBASE02",(object 4438)],["SCUDFOUND",(object 21691)],["CGUBA",(object 772)],["LOCK01",(object 14588)],["LOCK02",(object 13652)],["LOCK03",(object 14664)],["LOCK04",(object 18489)],["LOCK05",(object 12203)],["LOCK06",(object 20204)]]
 "Attack01" setMarkerPos [-1000,-1000]

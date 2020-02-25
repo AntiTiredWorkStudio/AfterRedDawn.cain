@@ -1,0 +1,11 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+_player = _this select 0
+_WOfficer = _this select 1
+~20
+if(Count Weapons _player != 0)Then{{_x setBehaviour "COMBAT";_x doTarget _player;}forEach MeetingGuardUnits}Else{_WOfficer say "Meeting02"}
+@(Count Weapons _player > 0)
+{_x setBehaviour "COMBAT";_x doTarget _player;}forEach MeetingGuardUnits
+MeetingGuard = true
+exit

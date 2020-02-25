@@ -20,8 +20,6 @@ hint "SCUD is under position."
 WestFactory globalRadio"WESTNegotiation"
 ~10
 []exec "OnCounterAttack\Meeting.sqs"
-"Meeting" setMarkerPos getpos (object 99)
-"14" objStatus "ACTIVE"
 @(ScudCar distance (object 21691)<30 && (scudState ScudCar)>=3.9)
 "13" objStatus "DONE"
 exit
