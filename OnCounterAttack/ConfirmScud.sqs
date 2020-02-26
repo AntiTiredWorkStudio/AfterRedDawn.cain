@@ -21,5 +21,7 @@ WestFactory globalRadio"WESTNegotiation"
 ~10
 []exec "OnCounterAttack\Meeting.sqs"
 @(ScudCar distance (object 21691)<30 && (scudState ScudCar)>=3.9)
+;拒绝和谈，完成发射任务
 "13" objStatus "DONE"
+MeetingGuard = true
 exit

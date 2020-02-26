@@ -2,6 +2,7 @@
 ; ** Operation Flashpoint Script File
 ; *****************************************************
 #Loop
+_nuclearSCUD = ScudCar
 @(scudState _nuclearSCUD >= 1.03 && (!SCUDPasswordConfirmed || (SCUDPasswordConfirmed && (_nuclearSCUD distance (object 21691)>=30) && (scudState ScudCar)<3.9)) && (count crew _nuclearSCUD == 0))
 _cPos = getpos ScudCar
 _cDir = getDir ScudCar

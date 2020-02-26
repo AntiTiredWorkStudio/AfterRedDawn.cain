@@ -834,6 +834,63 @@ class CfgSounds
 		forceTitles = false;
 		titles[] = { 0, "Alpha 7 reporting for duty sir."};
 	};
+	
+	class BlakeTalk01
+	{
+		name = "";
+		sound[] = {"NormalVoice.ogg", db-40, 1.0};
+		forceTitles = false;
+		titles[] = { 0, "General Guba,we finally met."};
+	};
+	
+	class BlakeTalk02
+	{
+		name = "";
+		sound[] = {"NormalVoice.ogg", db-40, 1.0};
+		forceTitles = false;
+		titles[] = { 0, "I have to say that I admire your military talent. \nThe resistance you and your troops have made during this period has cost us a lot."};
+	};
+	
+	class BlakeTalk03
+	{
+		name = "";
+		sound[] = {"NormalVoice.ogg", db-40, 1.0};
+		forceTitles = false;
+		titles[] = { 0, "So I think we need to talk about peace."};
+	};
+	
+	class BlakeTalk04
+	{
+		name = "";
+		sound[] = {"NormalVoice.ogg", db-40, 1.0};
+		forceTitles = false;
+		titles[] = { 0, "Our conditions are very simple, you need to hand over the SCUD and the launch code,\n and our troops will withdraw from Kolgujev island."};
+	};
+	
+	class BlakeTalk05
+	{
+		name = "";
+		sound[] = {"NormalVoice.ogg", db-40, 1.0};
+		forceTitles = false;
+		titles[] = { 0, "We will also help you solve political problems.You are still your general."};
+	};
+	
+	class BlakeTalk06
+	{
+		name = "";
+		sound[] = {"NormalVoice.ogg", db-40, 1.0};
+		forceTitles = false;
+		titles[] = { 0, "If you don't agree, we can only launch the largest attack.You and your men will be wiped out."};
+	};
+	
+	
+	class BlakeTalk07
+	{
+		name = "";
+		sound[] = {"NormalVoice.ogg", db-40, 1.0};
+		forceTitles = false;
+		titles[] = { 0, "Are you willing to surrender Scud in exchange for your life and that of your followers?What say you."};
+	};
 };
 
 class CfgRadio

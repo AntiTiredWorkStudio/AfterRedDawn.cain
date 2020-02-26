@@ -1,0 +1,24 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+_blake = _this select 0
+_BlakeJeep = Vehicle _blake
+#Loop
+~3
+?(!(unitReady _BlakeJeep) && !MeetingGuard):goto "Loop"
+if(!MeetingGuard)Then{goto "MeetingNotGuard"}
+hint "Blake is going back to the port."
+_BlakeJeep stop true
+~1
+_BlakeJeep stop false
+_BlakeJeep Move getpos (object 198)
+@(_blake distance (object 198) < 15)
+;布莱克上校逃脱成功
+BlakeEscape = true
+{deleteVehicle _x} forEach units group _blake
+deleteVehicle _BlakeJeep
+hint "Blake Escaped."
+~3
+"15" objStatus "FAILED"
+#MeetingNotGuard
+exit

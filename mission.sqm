@@ -12,7 +12,8 @@ class Mission
 		"6g30",
 		"Su25",
 		"bmp2",
-		"Bizon"
+		"Bizon",
+		"hmmwv"
 	};
 	addOnsAuto[]=
 	{
@@ -4752,12 +4753,12 @@ class Mission
 				items=1;
 				class Item0
 				{
-					position[]={11149.920898,103.303574,10235.500977};
+					position[]={10335.740234,95.801071,10043.067383};
 					azimut=437.764008;
 					special="NONE";
 					id=479;
 					side="EAST";
-					vehicle="OfficerE";
+					vehicle="SoldierESaboteurBizon";
 					player="PLAYER COMMANDER";
 					leader=1;
 					rank="COLONEL";
@@ -4765,7 +4766,7 @@ class Mission
 					fuel=0.900000;
 					ammo=0.900000;
 					text="Guba";
-					init="this addWeapon ""Binocular"";this setCaptive false;skipTime 10;";
+					init="this addWeapon ""Binocular"";this setCaptive true;skipTime 10;";
 				};
 			};
 		};
@@ -7744,7 +7745,7 @@ class Mission
 	};
 	class Sensors
 	{
-		items=42;
+		items=41;
 		class Item0
 		{
 			position[]={1869.473511,129.332520,7406.408691};
@@ -8332,18 +8333,6 @@ class Mission
 			age="UNKNOWN";
 			name="West";
 			expActiv="westGrps = []; {if(!(group _x in westGrps))Then{westGrps=westGrps+[group _x]}}forEach thislist;if(Debug)Then{hint format[""%1"",(count westGrps)]}";
-			class Effects
-			{
-			};
-		};
-		class Item41
-		{
-			position[]={11339.549805,104.688087,10471.316406};
-			a=0.000000;
-			b=0.000000;
-			age="UNKNOWN";
-			expCond="true";
-			expActiv="[]exec ""OnCounterAttack\Meeting.sqs"";";
 			class Effects
 			{
 			};

@@ -1,7 +1,12 @@
 ; *****************************************************
 ; ** Operation Flashpoint Script File
 ; *****************************************************
-
+;击杀布莱克上校的任务是否被激活
+BlakeMissionActive = false
+;是否会议警戒
+MeetingGuard = false
+;布莱克上校是否逃脱
+BlakeEscape = false
 "Meeting" setMarkerPos getpos (object 99)
 "14" objStatus "ACTIVE"
 
@@ -51,7 +56,7 @@ _GrpBlake setIdentity "Blake"
 {_x setSkill 1}forEach _BlakeGroup
 
 ;创建吉普车
-_BlakeJeep = "Jeep" createVehicle getpos (object 206)
+_BlakeJeep = "HMMWV" createVehicle getpos (object 206)
 _BlakeJeep setDir 200
 (units group _GrpBlake) orderGetIn true
 _BlakeDriver = (units group _GrpBlake) select 3
@@ -61,13 +66,23 @@ group _GrpBlake allowFleeing 1
 
 ;设置会议警戒
 MeetingGuardUnits = []
+;布莱克组加入警戒人员队列
 MeetingGuardUnits = MeetingGuardUnits + _BlakeGroup
+;会议守卫加入警戒人员队列
 MeetingGuardUnits = MeetingGuardUnits + (units group _WGrpMeeting) 
-MeetingGuardUnits = MeetingGuardUnits + (units group _SniperTeam)
-;是否会议警戒
-MeetingGuard = false
-[_GrpBlake] exec "OnCounterAttack\MeetingCode\MeetingState.sqs"
+
+;警戒小队如果被攻击则布莱克组合卫士组切换战斗状态
 {_x exec "OnCounterAttack\MeetingCode\WestGuard.sqs"}forEach MeetingGuardUnits
+
+;狙击小队
+MeetingSniperGuard = (units group _SniperTeam)
+;狙击小队加入警戒人员队列
+MeetingGuardUnits = MeetingGuardUnits + MeetingSniperGuard
+;狙击小队如果被攻击则狙击小队切换战斗状态
+{_x exec "OnCounterAttack\MeetingCode\WestGuardSniper.sqs"}forEach MeetingSniperGuard
+
+;监控会议状态
+[_GrpBlake,_BlakeJeep,MeetingGuardUnits] exec "OnCounterAttack\MeetingCode\MeetingState.sqs"
 
 #LeaveMeetingPoint
 @(Guba distance (object 99) < 25 && !MeetingGuard)
@@ -77,14 +92,17 @@ hint "You are into the meeting position."
 _grpGubaFarAway = true
 {_grpGubaFarAway = ((_grpGubaFarAway && (_x distance Guba>180)) || (count units group Guba == 1) || (_x == Guba));}forEach (units group Guba)
 ~5
-;format["total:%1",_totalMiles]
 if(Guba distance (object 99) > 25)Then{goto "LeaveMeetingPoint";}
 if(!_grpGubaFarAway)Then{hint "You need to move your group units far away.";goto "Loop";}
 
+@(Guba distance (object 99) < 25 && !MeetingGuard)
 hint "Talk to Nato's officer near tent."
 
+;激活击杀布莱克上校的事件
+"15" objStatus "ACTIVE"
+BlakeMissionActive = true
 
-@(Guba distance _WGrpMeeting < 5)
+@(Guba distance _WGrpMeeting < 5 && !MeetingGuard)
 
 _WGrpMeeting setMimic "Agresive"
 _WGrpMeeting doWatch Guba
@@ -100,11 +118,13 @@ hint "Put down all your weapons near the wall."
 
 _WGrpMeeting doWatch ObjNull
 
+@(!MeetingGuard)
 {_x setBehaviour "CARELESS";_x disableAI "TARGET";_x disableAI "AUTOTARGET"}forEach _BlakeGroup
 {_x assignAsCargo _BlakeJeep}forEach _BlakeCargo
 _BlakeDriver assignAsDriver _BlakeJeep
 @(count crew _BlakeJeep == 4)
 _BlakeJeep Move getpos (object 123)
+[_GrpBlake]exec "OnCounterAttack\MeetingCode\BlakeState.sqs"
 @(unitReady _BlakeJeep)
 {unassignVehicle _x}forEach _BlakeGroup
 @(count crew _BlakeJeep == 0)
@@ -133,8 +153,12 @@ _GrpBlake assignAsDriver _BlakeJeep
 @(_GrpBlake in _BlakeJeep)
 ~1
 _BlakeJeep Move getpos (object 198)
-@(_BlakeJeep distance (object 198) < 15)
-hint "blake escaped"
-_BlakeJeep setpos getpos (object 16994)
-_GrpBlake setpos getpos (object 16994)
+@(_GrpBlake distance (object 198) < 15)
+;布莱克上校逃脱成功
+BlakeEscape = true
+{deleteVehicle _x} forEach units group _GrpBlake
+deleteVehicle _BlakeJeep
+hint "Blake Escaped."
+~3
+"15" objStatus "FAILED"
 exit

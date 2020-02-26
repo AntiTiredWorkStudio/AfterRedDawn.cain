@@ -4,5 +4,31 @@
 _player = _this select 0
 _blake = _this select 1
 @(unitReady _blake)
-hint "blake talk"
+;hint "blake talk"
+_blake doWatch _player
+~3
+@(!MeetingGuard && (_player distance _blake < 8))
+_blake setMimic "Smile"
+~1
+@(!MeetingGuard && (_player distance _blake < 8))
+_blake say "BlakeTalk01"
+~4
+@(!MeetingGuard && (_player distance _blake < 8))
+_blake say "BlakeTalk02"
+~7
+@(!MeetingGuard && (_player distance _blake < 8))
+_blake say "BlakeTalk03"
+~4
+@(!MeetingGuard && (_player distance _blake < 8))
+_blake say "BlakeTalk04"
+~4
+@(!MeetingGuard && (_player distance _blake < 8))
+_blake say "BlakeTalk05"
+~4
+@(!MeetingGuard && (_player distance _blake < 8))
+_blake say "BlakeTalk06"
+~4
+@(!MeetingGuard && (_player distance _blake < 8))
+_blake say "BlakeTalk07"
+~4
 exit
