@@ -1,0 +1,16 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+_searchedUnit = _this select 0
+_searchUnit = _this select 1
+if((_searchedUnit distance _searchUnit)>4)Then{hint "You need get close.";goto "EXIT"}
+if(_searchUnit != _searchedUnit)Then{_searchUnit action["HIDEBODY"]}
+~1
+if(KeyUnit!=_searchedUnit)Then{hint format["You found nothing."];goto "EXIT"}
+playSound "TurnPaper"
+createDialog "NuclearCodePad"
+_initID = 1201
+{ctrlSetText [_initID, _x];_initID=_initID+1;}forEach SCUDPasswordBook
+if(_searchUnit != _searchedUnit)Then{KeyUnit = _searchUnit;KeyUnit addAction["Check Launch Code Book","OnCounterAttack\NuclearCodeSearch.sqs"];}
+#EXIT
+exit

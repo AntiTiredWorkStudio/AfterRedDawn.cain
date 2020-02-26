@@ -6,8 +6,15 @@
 ;_holder addWeaponCargo ["Steyr",1]
 ;_holder addmagazineCargo ["SteyrMag",10]
 
-[]exec "OnCounterAttack\ConversationSpy.sqs"
-[]exec "OnCounterAttack\RCityDefence.sqs"
+;SCUD事件注册
 []exec "OnCounterAttack\ConfirmScud.sqs"
+;间谍小队线索对话
+[]exec "OnCounterAttack\ConversationSpy.sqs"
+~0.6
+;核弹密码小组
+[]exec "OnCounterAttack\NuclearLaunchGrp.sqs"
+~0.6
+;东北方美军布防
+[]exec "OnCounterAttack\RCityDefence.sqs"
 
 exit

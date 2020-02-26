@@ -11,6 +11,15 @@ showGPS=1
 #define SMALLFONT						"Garamond64"
 #define VERYSMALLFONT					"SteelfishB64"
 #define BOLDFONT						"TahomaB48"
+#define HANDFONT						"AudreysHandB48"
+
+//AudreysHand Italic 48pt
+//AudreysHand Bold 48pt
+//CourierNew Bold 64pt
+//Garamond 64pt
+//Steelfish bold 64, 128pt
+//SteelfishCE bold 64 pt
+//Tahoma bold 24, 36, 48pt
 
 #define GUIUNDEFINED					-1
 #define GUILEFT							0
@@ -27,6 +36,7 @@ showGPS=1
 #define GUILIST							5
 #define GUICHECKBOX						7
 #define GUICLICKABLETEXT				11
+#define ST_PICTURE						48
 
 #define IDCUNDEFINED									-1
 
@@ -243,6 +253,117 @@ class DefaultPad:DefaultMenu
 		x = 0.05;
 	};
 };
+
+class NuclearCodePad:DefaultPad
+{
+	controlsBackground[] = {PadBackground};
+	controls[] = {CodeTitle,CodeLine,CodeLine01,CodeLine02,CodeLine03,CodeLine04,CodeLine05,CloseHint};
+	class PadBackground:DefaultHelpBackgroundWindow
+	{
+		type = 0
+		style = ST_PICTURE
+		x = 0.35;
+		y = 0.3;
+		w = 0.3;
+		h = 0.5;
+		colorBackground[] = {1,1,1,1};
+		text = "LetterTGA512.paa"
+	};
+	
+	class CodeTitle:GuiText
+	{
+		style = GUILEFT;
+		x = 0.36;
+		y = 0.2;
+		w = 0.3;
+		h = 0.3;
+		text = "Launch Codebook";
+		font = HANDFONT;
+		shadow = 1
+		colorText[] = {0,0,0,1};
+		sizeEx = 0.05;
+	};
+	
+	class CloseHint:GuiText
+	{
+		style = GUICENTER;
+		x = 0.36;
+		y = 0.7;
+		w = 0.3;
+		h = 0.3;
+		text = "Press 'esc' to collect.";
+		shadow = 1
+		colorText[] = {1,1,1,1};
+		sizeEx = 0.03;
+	};
+	class CodeLine:GuiText
+	{
+		idc = 1201;
+		style = GUILEFT;
+		x = 0.4;
+		y = 0.25;
+		w = 0.2;
+		h = 0.3;
+		text = "566453";
+		shadow = 1
+		font = HANDFONT;
+		colorText[] = {0,0,0,1};
+		sizeEx = 0.05;
+	};
+	
+	class CodeLine01:CodeLine
+	{
+		idc = 1202;
+		x = 0.4;
+		y = 0.3;
+		w = 0.2;
+		h = 0.3;
+		text = "12685";
+	};
+	
+	class CodeLine02:CodeLine
+	{
+		idc = 1203;
+		x = 0.4;
+		y = 0.35;
+		w = 0.2;
+		h = 0.3;
+		text = "12685";
+	};
+	
+	
+	class CodeLine03:CodeLine
+	{
+		idc = 1204;
+		x = 0.4;
+		y = 0.4;
+		w = 0.2;
+		h = 0.3;
+		text = "12685";
+	};
+	
+	
+	class CodeLine04:CodeLine
+	{
+		idc = 1205;
+		x = 0.4;
+		y = 0.45;
+		w = 0.2;
+		h = 0.3;
+		text = "12685";
+	};
+	
+	
+	class CodeLine05:CodeLine
+	{
+		idc = 1206;
+		x = 0.4;
+		y = 0.5;
+		w = 0.2;
+		h = 0.3;
+		text = "12685";
+	};
+}
 class NuclearLaunchPad:DefaultPad
 {
 	controlsBackground[] = {DefaultHelpBackgroundWindow};
@@ -618,6 +739,12 @@ class CfgSounds
 	class SCUDAlarm{
 		name = "";
 		sound[] = {"wrong.ogg", db+20, 3.0};
+		forceTitles = true;
+		titles[] = { 0, "" };
+	};
+	class TurnPaper{
+		name = "";
+		sound[] = {"turnpaper.wav", db+20, 1.0};
 		forceTitles = true;
 		titles[] = { 0, "" };
 	};

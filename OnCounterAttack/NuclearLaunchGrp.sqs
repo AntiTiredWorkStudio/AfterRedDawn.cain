@@ -1,0 +1,38 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+
+SpawnEUnit = []
+[[10499.27,10191.10,0.05],"SoldierESaboteurBizon"]exec "UnitSpawn\EUnit.sqs"
+@(count SpawnEUnit > 0)
+_ngrp01 = SpawnEUnit select 0
+SpawnEUnit = []
+
+[[10455.75,10174.13,0.05],"SoldierESaboteurBizon"]exec "UnitSpawn\EUnit.sqs"
+@(count SpawnEUnit > 0)
+_ngrp02 = SpawnEUnit select 0
+SpawnEUnit = []
+
+[[10579.84,10187.56,0.19],"SoldierESaboteurBizon"]exec "UnitSpawn\EUnit.sqs"
+@(count SpawnEUnit > 0)
+_ngrp03 = SpawnEUnit select 0
+
+
+_action01 = "Logic" createVehicle [10499.27,10191.10,0]
+_action01 setpos [10499.27,10191.10,0]
+_action02 = "Logic" createVehicle [10455.75,10174.13,0]
+_action02 setpos [10455.75,10174.13,0]
+_action03 = "Logic" createVehicle [10579.84,10187.56,0]
+_action03 setpos [10579.84,10187.56,0]
+
+_ngrp01 setDammage 1
+_ngrp02 setDammage 1
+_ngrp03 setDammage 1
+
+KeyUnit = [_action01,_action02,_action03] select (random 2)
+_action01 addAction["Search","OnCounterAttack\NuclearCodeSearch.sqs"]
+_action02 addAction["Search","OnCounterAttack\NuclearCodeSearch.sqs"]
+_action03 addAction["Search","OnCounterAttack\NuclearCodeSearch.sqs"]
+
+
+exit

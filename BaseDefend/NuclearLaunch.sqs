@@ -3,7 +3,14 @@
 ; *****************************************************
 _nuclearSCUD = _this select 0
 
-SCUDPassword = "566453"
+SCUDPassword = format["%1",(100000 + (random 899999))]
+SCUDPasswordBook = []
+_i = 0
+#Loop
+SCUDPasswordBook = SCUDPasswordBook + [format["%1",(100000 + (random 899999))]]
+_i = _i+1
+?(_i<6):goto "Loop"
+SCUDPasswordBook set[3,SCUDPassword]
 SCUDPasswordConfirmed = false
 [_nuclearSCUD]exec "BaseDefend\ScudState.sqs"
 NuclearLaunchID = _nuclearSCUD addAction["Input Launch Code","BaseDefend\PasswordCheck.sqs"]

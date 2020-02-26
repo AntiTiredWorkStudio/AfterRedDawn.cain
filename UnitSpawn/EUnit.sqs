@@ -7,4 +7,5 @@ _unitType createUnit [_pos, group WestFactory]
 _unit = (units group WestFactory) select 1
 [_unit] join grpNull
 LastSpawnUnit = _unit
+SpawnEUnit = SpawnEUnit + [_unit] 
 exit
