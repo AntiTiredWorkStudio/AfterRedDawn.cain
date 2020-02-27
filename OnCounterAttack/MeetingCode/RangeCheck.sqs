@@ -3,7 +3,7 @@
 ; *****************************************************
 _player = _this select 0
 _WOfficer = _this select 1
-@((_player distance _WOfficer)>30)
+@((_player distance _WOfficer)>30 && !Surrender)
 {_x setBehaviour "COMBAT";_x doTarget _player;}forEach MeetingGuardUnits
 MeetingGuard = true
 exit

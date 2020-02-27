@@ -31,4 +31,6 @@ _blake say "BlakeTalk06"
 @(!MeetingGuard && (_player distance _blake < 8))
 _blake say "BlakeTalk07"
 ~4
+_selection_0 = _blake addAction["End scud missile launch and surrender","OnCounterAttack\MeetingCode\MeetingSelection.sqs"]
+_selection_1 = _blake addAction["Fight to win or die","OnCounterAttack\MeetingCode\MeetingSelection.sqs"]
 exit

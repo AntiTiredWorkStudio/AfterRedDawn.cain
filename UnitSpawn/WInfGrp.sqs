@@ -31,6 +31,11 @@ _veh = _vehiclesDefine createVehicle _pos
 (units group _leader select 9) moveInDriver _veh
 LastSpawnLeader = _leader
 
+LastSpawnUnits = []
+LastSpawnUnits = units group _leader
+
+LastSpawnVehicle = _veh
+
 if(count _this <= 1)Then{goto "End"}
 
 _methords = _this select 1

@@ -60,6 +60,8 @@ group _veh01 setFormation "LINE"
 {_x setSkill 1;}forEach [_veh01,_veh02,_veh03,_veh04]
 
 LastSpawnLeader = _leader
+LastSpawnTanks = []
+LastSpawnTanks = [_veh01,_veh02,_veh03,_veh04]
 
 if(count _this <= 1)Then{goto "End"}
 

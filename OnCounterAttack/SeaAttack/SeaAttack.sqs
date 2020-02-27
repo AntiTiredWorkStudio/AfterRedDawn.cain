@@ -1,0 +1,20 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+_AttackCore = _this select 0
+_AttackRadius = _this select 1
+_veh = _this select 2
+
+_AttackPos = _AttackCore;
+_AttackPos set[0,(_AttackPos select 0)+(cos (random 360))*(random _AttackRadius)];
+_AttackPos set[1,(_AttackPos select 1)+(sin (random 360))*(random _AttackRadius)];
+
+_veh doMove _AttackPos
+
+@(_veh distance (object 6756)<250)
+
+_unit = (crew _veh)
+{if(_x != (Driver _veh) && _x != (Gunner _veh))Then{unAssignVehicle _x}}forEach (crew _veh)
+@(count crew _veh <= 2)
+(Leader Driver _veh) Move _AttackPos
+exit

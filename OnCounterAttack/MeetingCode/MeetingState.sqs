@@ -4,7 +4,7 @@
 _blake = _this select 0
 _BlakeJeep = _this select 1
 _MeetingGuardUnit = _this select 2
-@(MeetingGuard)
+@(MeetingGuard && !Surrender)
 "14" objStatus "FAILED"
 {_x setBehaviour "COMBAT";_x setCombatMode "RED";}forEach _MeetingGuardUnit
 if(_blake distance (object 206) < 15)Then{goto "BlakeEscape"}

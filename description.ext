@@ -468,6 +468,74 @@ class NuclearLaunchPad:DefaultPad
 	
 };
 
+
+
+class NuclearCodeGive:DefaultPad
+{
+	idc = 120
+	controlsBackground[] = {CodeGiveBackgroundWindow};
+	controls[] = {Title,Password,ConfirmButton,CodeGiveBackButton,WrongHint,RightHint};
+
+	class Title:DefaultPadTitle {text = "Input correct launch code";};
+	
+	class CodeGiveBackgroundWindow:BackgroundWindow
+	{
+		x = 0.35;
+		y = 0.3;
+		w = 0.3;
+		h = 0.3;
+	};
+	
+	
+	class WrongHint:CenterHelpLine {
+		idc = 11571;
+		text = "";
+		y = 0.3;
+		colorText[] = {1,0,0,1};
+	};
+	class RightHint:CenterHelpLine {
+		idc = 11572;
+		text = "";
+		y = 0.3;
+		colorText[] = {0,1,0,1};
+	};
+	
+	
+	class ConfirmButton:GuiButton
+	{
+		x = 0.37;
+		y = 0.5;
+		w = 0.1;
+		h = 0.08;
+		text = "Confirm";
+		colorText[] = {1,0,0,1};
+		action = "onCodeGive=true;inputCode=(ctrlText 11570);";
+	};
+	
+	class CodeGiveBackButton:GuiButton
+	{
+		x = 0.53;
+		y = 0.5;
+		w = 0.1;
+		h = 0.08;
+		text = "Back";
+		colorText[] = {0,0,0,1};
+		action = "closeDialog 120;";
+	};
+	
+	class Password:GuiEditableText
+	{
+		idc = 11570
+		style = GUICENTER;
+		x = 0.37;
+		y = 0.39;
+		w = 0.26;
+		h = 0.05;
+		text = "";
+	};
+	
+};
+
 class CfgSounds
 {
 	sounds[] = 	{ };
@@ -1018,6 +1086,33 @@ class CfgSounds
 		forceTitles = false;
 		titles[] = { 0, "Are you willing to surrender Scud in exchange for your life and that of your followers?What say you."};
 	};
+	
+	
+	class BlakeTalk08
+	{
+		name = "";
+		sound[] = {"NormalVoice.ogg", db-40, 1.0};
+		forceTitles = false;
+		titles[] = { 0, "Good,wise choice.Please input the launch code on this cipher machine."};
+	};
+	
+	
+	class BlakeTalk09
+	{
+		name = "";
+		sound[] = {"NormalVoice.ogg", db-40, 1.0};
+		forceTitles = false;
+		titles[] = { 0, "The launch code doesn't look right."};
+	};
+	
+	
+	class BlakeTalk10
+	{
+		name = "";
+		sound[] = {"NormalVoice.ogg", db-40, 1.0};
+		forceTitles = false;
+		titles[] = { 0, "A wise choice."};
+	};
 };
 
 class CfgRadio
@@ -1167,6 +1262,14 @@ class CfgRadio
 	};
 	
 	class WESTNegotiation
+	{
+		name = "";
+		sound[] = {"36r08.ogg", db+90, 1.0};
+		title = "General Cuba, we have locked your position.You have a last chance to negotiate with us in Ii17,and you must come alone.If you launch a nuclear bomb,we will start a comprehensive attack and carry out a strategic interception.";
+	};
+	
+	
+	class WESTNegotiation01
 	{
 		name = "";
 		sound[] = {"36r08.ogg", db+90, 1.0};

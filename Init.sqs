@@ -113,6 +113,8 @@ ChapterAssault = false
 BadEnd01 = false
 ;核弹爆炸
 BadEnd02 = false
+;交出SCUD并投降
+BadEnd03 = false
 
 
 ;飞毛腿导弹车初始化

@@ -1,0 +1,64 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+_blake = _this select 0
+_handle = _this select 1
+_selection = _this select 2
+if(_selection == 0)Then{goto "SURRENDER"}
+if(_selection == 1)Then{goto "KEEPFIGHT"}
+#SURRENDER
+_blake say "BlakeTalk08"
+~4
+createDialog "NuclearCodeGive"
+#loop
+inputCode = ""
+onCodeGive=false
+@onCodeGive
+if(inputCode!=SCUDPassword)Then{goto "Wrong";}Else{goto "Right";}
+#Wrong
+ctrlSetText [11571, "Wrong"]
+ctrlSetText [11572, ""]
+ctrlSetText [11570, ""]
+~1
+closeDialog 120
+~1
+_blake say "BlakeTalk09"
+exit
+#Right
+Surrender = true
+ctrlSetText [11571, ""]
+ctrlSetText [11572, "Correct"]
+if(driver ScudCar != ObjNull)Then{unAssignVehicle (driver ScudCar)}
+~1
+ScudCar lock true
+closeDialog 120
+disableUserInput true
+~1
+_blake say "BlakeTalk10"
+hint "Handle password success."
+"14" objStatus "DONE"
+"15" objStatus "FAILED"
+~2
+TitleCut["","Black Out",3]
+~3
+_camera ="camera" camCreate getPos Guba
+_camera cameraEffect ["internal","back"]
+;=== 12:15:58
+_camera camSetTarget [95362.38,-29962.11,-35835.77]
+_camera camSetPos [11303.34,10553.72,25.70]
+_camera camSetFOV 0.700
+_camera camCommit 0
+@camCommitted _camera
+TitleCut["","Black In",3]
+disableUserInput false
+~3
+TitleText["Mission Complete","plain",3]
+~15
+BadEnd03 = true
+exit
+#KEEPFIGHT
+MeetingGuard = true
+_blake removeAction 0
+_blake removeAction 1
+"14" objStatus "FAILED"
+exit

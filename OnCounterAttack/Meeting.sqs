@@ -3,6 +3,8 @@
 ; *****************************************************
 ;击杀布莱克上校的任务是否被激活
 BlakeMissionActive = false
+;是否投降
+Surrender = false
 ;是否会议警戒
 MeetingGuard = false
 ;布莱克上校是否逃脱
