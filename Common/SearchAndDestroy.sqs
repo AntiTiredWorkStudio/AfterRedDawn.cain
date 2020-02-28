@@ -1,0 +1,25 @@
+_group = _this select 0
+_tRange = _this select 1
+_waypoints = _this select 2
+_corePos = getpos _target
+_seek = 0
+#Next
+;切换路点
+if(_seek >= (count _waypoints))Then{goto "End"}
+_waypoint = _waypoints select _seek
+_seek = _seek + 1
+_target = _waypoint select 0
+_radius = _waypoint select 1
+#Loop
+_enemyUnits = [_tRange,_target,_radius] Call Func_SelectRadiusUnits
+hint format["_enemyUnits:%1",_enemyUnits]
+~10
+;路点清除
+if(count _enemyUnits <= 0)Then{goto "Next"}
+_movepos = [getpos _target,_radius] Call Func_CircleRandomPos;
+_group Move _movepos
+@((Leader _group) countEnemy _enemyUnits == 0 && unitReady (Leader _group))
+goto "Loop"
+#End
+hint "finished";
+exit

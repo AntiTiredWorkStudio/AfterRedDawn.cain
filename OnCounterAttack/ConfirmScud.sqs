@@ -61,6 +61,6 @@ MeetingGuard = true
 WestFactory globalRadio"WESTNegotiation01"
 
 #TESTPART
-~10
+~3
 []exec "OnCounterAttack\NatoFinalAttack.sqs"
 exit

@@ -116,6 +116,8 @@ BadEnd02 = false
 ;交出SCUD并投降
 BadEnd03 = false
 
+[]exec "Common\Functions.sqs"
+
 
 ;飞毛腿导弹车初始化
 ScudCar = scud

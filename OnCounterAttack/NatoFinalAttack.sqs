@@ -91,7 +91,7 @@ SeaAttackForce = SeaAttackForce+[LastSpawnVehicle]
 ~1
 {[_AttackCore,_AttackRadius,_x]exec "OnCounterAttack\SeaAttack\SeaAttack.sqs"}forEach SeaAttackForce
 
-
+myFunction1 = preprocessFile "Common\SelectRadiusUnits.sqf";
 
 exit
 ;创建部队
