@@ -15,7 +15,7 @@ group BlackOpLeader allowFleeing 0
 AttackGroup = [BlackOpLeader,B1,B4,B5,B6,B7]
 BombGroup = [B2,B3]
 
-[AttackGroup,getpos (object 1036)]exec "OnDefend/BlackOpAttackGroup.sqs"
+[AttackGroup,getpos (object 1036)]exec "OnDefend\BlackOpAttackGroup.sqs"
 BombGroup doMove getpos (object 69198)
 @(unitReady B2 && unitReady B3)
 B2 doMove getpos Bomb01

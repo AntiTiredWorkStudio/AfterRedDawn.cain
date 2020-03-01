@@ -7,7 +7,7 @@ _MapNone = _this select 2
 #Loop
 @ (_tCommand distance _Map)<=2
 TriggerUnits = TriggerUnits+[_Map]
-_ActionID = _tCommand addAction["Steal Map","SignalSystem/StealMap.sqs"]
+_ActionID = _tCommand addAction["Steal Map","SignalSystem\StealMap.sqs"]
 @ (_tCommand distance _Map)>2
 _tCommand removeAction _ActionID;
 ?(!StolenMap) : goto "Loop"

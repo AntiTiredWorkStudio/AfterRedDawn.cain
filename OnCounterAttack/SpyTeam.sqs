@@ -3,7 +3,7 @@
 ; *****************************************************
 _spyLeader = _this select 0
 _commander = _this select 1
-{[_x,_commander] exec "OnCounterAttack/SpyAction.sqs"}forEach units group _spyLeader
+{[_x,_commander] exec "OnCounterAttack\SpyAction.sqs"}forEach units group _spyLeader
 
 group _spyLeader setGroupId ["Alpha", "GroupColor7","Command"]
 

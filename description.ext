@@ -1272,8 +1272,8 @@ class CfgRadio
 	class WESTNegotiation01
 	{
 		name = "";
-		sound[] = {"36r08.ogg", db+90, 1.0};
-		title = "General Cuba, we have locked your position.You have a last chance to negotiate with us in Ii17,and you must come alone.If you launch a nuclear bomb,we will start a comprehensive attack and carry out a strategic interception.";
+		sound[] = {"NormalVoice.ogg", db+90, 1.0};
+		title = "Since you refuse to surrender,we will carry out the plan of mopping up.Any Soviet troops on the island are to be killed.";
 	};
 	
 };

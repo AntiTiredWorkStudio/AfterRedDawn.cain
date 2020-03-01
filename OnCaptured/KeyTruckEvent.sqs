@@ -7,7 +7,7 @@ KeyTruckDriver moveInDriver KeyTruck
 ((units group KeyTruckDriver) select 2) moveInCargo KeyTruck
 KeyTruck setPos getpos InitPos
 KeyTruck doMove getpos StopPos
-[KeyTruck,Guba]exec "OnCaptured/FollowTruckEscape.sqs"
+[KeyTruck,Guba]exec "OnCaptured\FollowTruckEscape.sqs"
 @ (KeyTruck distance StopPos) < 15
 ~55
 ?cadetMode:hint "Truck Prepare To Go"

@@ -37,7 +37,7 @@ class Mission
 	};
 	class Groups
 	{
-		items=117;
+		items=115;
 		class Item0
 		{
 			side="EAST";
@@ -4734,8 +4734,7 @@ class Mission
 				items=1;
 				class Item0
 				{
-					position[]={9525.214844,104.359550,9615.798828};
-					azimut=490.109314;
+					position[]={10876.086914,109.416260,10378.493164};
 					special="NONE";
 					id=479;
 					side="EAST";
@@ -5060,135 +5059,19 @@ class Mission
 		};
 		class Item114
 		{
-			side="WEST";
+			side="LOGIC";
 			class Vehicles
 			{
-				items=9;
+				items=1;
 				class Item0
 				{
-					position[]={9960.967773,38.029839,9425.621094};
-					azimut=-68.330200;
+					position[]={10194.900391,1.981916,9134.895508};
 					id=506;
-					side="WEST";
-					vehicle="OfficerW";
+					side="LOGIC";
+					vehicle="Logic";
 					leader=1;
-					rank="SERGEANT";
-					skill=0.466667;
-					text="sad01";
-				};
-				class Item1
-				{
-					position[]={9966.723633,36.393486,9426.563477};
-					azimut=-68.330238;
-					id=507;
-					side="WEST";
-					vehicle="SoldierWMG";
-					rank="CORPORAL";
-					skill=0.333333;
-				};
-				class Item2
-				{
-					position[]={9967.462891,36.840904,9428.423828};
-					azimut=-68.330238;
-					id=508;
-					side="WEST";
-					vehicle="SoldierWG";
-					rank="CORPORAL";
-					skill=0.333333;
-				};
-				class Item3
-				{
-					position[]={9968.198242,37.398209,9430.280273};
-					azimut=-68.330238;
-					id=509;
-					side="WEST";
-					vehicle="SoldierWG";
-					rank="CORPORAL";
-					skill=0.333333;
-				};
-				class Item4
-				{
-					position[]={9968.935547,37.744473,9432.139648};
-					azimut=-68.330238;
-					id=510;
-					side="WEST";
-					vehicle="SoldierWLAW";
-					rank="CORPORAL";
-					skill=0.333333;
-				};
-				class Item5
-				{
-					position[]={9969.677734,37.730087,9433.998047};
-					azimut=-68.330238;
-					id=511;
-					side="WEST";
-					vehicle="SoldierWMG";
-					skill=0.200000;
-				};
-				class Item6
-				{
-					position[]={9970.416992,37.718414,9435.856445};
-					azimut=-68.330238;
-					id=512;
-					side="WEST";
-					vehicle="SoldierWB";
-					skill=0.200000;
-				};
-				class Item7
-				{
-					position[]={9971.151367,37.856964,9437.716797};
-					azimut=-68.330238;
-					id=513;
-					side="WEST";
-					vehicle="SoldierWB";
-					skill=0.200000;
-				};
-				class Item8
-				{
-					position[]={9971.894531,37.855915,9439.574219};
-					azimut=-68.330238;
-					id=514;
-					side="WEST";
-					vehicle="SoldierWB";
-					skill=0.200000;
-				};
-			};
-		};
-		class Item115
-		{
-			side="EAST";
-			class Vehicles
-			{
-				items=1;
-				class Item0
-				{
-					position[]={9746.618164,53.684998,9414.775391};
-					azimut=-68.330200;
-					id=515;
-					side="EAST";
-					vehicle="SoldierEB";
-					leader=1;
-					rank="SERGEANT";
-					skill=0.466667;
-				};
-			};
-		};
-		class Item116
-		{
-			side="EAST";
-			class Vehicles
-			{
-				items=1;
-				class Item0
-				{
-					position[]={9594.719727,128.474991,10008.707031};
-					azimut=-200.364548;
-					id=516;
-					side="EAST";
-					vehicle="SoldierEB";
-					leader=1;
-					rank="SERGEANT";
-					skill=0.466667;
+					skill=0.600000;
+					text="SeaAttack";
 				};
 			};
 		};
@@ -7283,7 +7166,7 @@ class Mission
 	};
 	class Markers
 	{
-		items=75;
+		items=76;
 		class Item0
 		{
 			position[]={5450.232910,362.780670,4999.553711};
@@ -7713,6 +7596,7 @@ class Mission
 			position[]={10848.532227,110.403221,10409.437500};
 			name="Ie18";
 			type="Empty";
+			colorName="ColorBlack";
 		};
 		class Item53
 		{
@@ -7876,6 +7760,14 @@ class Mission
 			text="Peace Negotiations";
 			type="Join";
 			colorName="ColorRed";
+		};
+		class Item75
+		{
+			position[]={10851.723633,124.901497,10409.936523};
+			name="CFU";
+			text="Call Friendly Units";
+			type="Flag";
+			colorName="ColorGreen";
 		};
 	};
 	class Sensors
@@ -8490,9 +8382,8 @@ class Mission
 			activationBy="DELTA";
 			repeating=1;
 			age="UNKNOWN";
-			text="CheckWestUnit";
-			expCond="this && View";
-			expActiv="(units (WestGroups select ViewSeek) select 0) exec ""camera.sqs"";ViewSeek=(ViewSeek+1)%(count WestGroups)";
+			text="GubaPos";
+			expActiv="hint format[""%1"",getpos Guba]";
 			class Effects
 			{
 			};

@@ -31,67 +31,28 @@ _i = _i+1
 ;~0.05
 ;skipTime 0.005
 ?(_i < _length):goto "delete"
-;hint format["afterDelete\n units:%1,groups:%2",count list WestList,count WestGroups]
-;删除结束
+_spawnPos = getpos (object 581)
+_SeaSpawnPos01 = [_spawnPos,50] Call Func_CircleRandomPos
+_SeaSpawnPos02 = [_spawnPos,50] Call Func_CircleRandomPos
+_SeaSpawnPos03 = [_spawnPos,50] Call Func_CircleRandomPos
+_SeaSpawnPos04 = [_spawnPos,50] Call Func_CircleRandomPos
+_SeaSpawnPos05 = [_spawnPos,50] Call Func_CircleRandomPos
+_SeaSpawnPos06 = [_spawnPos,50] Call Func_CircleRandomPos
 
-
-_SeaSpawnPos01 = [10264.97,9032.14,0.05]
-_SeaSpawnPos02 = [10260.97,9022.14,0.05]
-_SeaSpawnPos03 = [10256.97,9012.14,0.05]
-_SeaSpawnPos04 = [10252.97,9002.14,0.05]
-_SeaSpawnPos05 = [10242.97,8992.14,0.05]
-_SeaSpawnPos06 = [10232.97,8982.14,0.05]
-
-_AttackCore = getpos (object 6755)
-_AttackRadius = 150
-
-SeaAttackForce = []
-
-LastSpawnUnits = []
-[_SeaSpawnPos01]exec "UnitSpawn\WInfGrp.sqs"
-@(LastSpawnVehicle != ObjNull && (count LastSpawnUnits>0))
-{_x moveInCargo LastSpawnVehicle}forEach LastSpawnUnits
-SeaAttackForce = SeaAttackForce+[LastSpawnVehicle]
-
-
-LastSpawnUnits = []
-[_SeaSpawnPos02]exec "UnitSpawn\WInfGrp.sqs"
-@(LastSpawnVehicle != ObjNull && (count LastSpawnUnits>0))
-{_x moveInCargo LastSpawnVehicle}forEach LastSpawnUnits
-SeaAttackForce = SeaAttackForce+[LastSpawnVehicle]
-
-
-LastSpawnUnits = []
-[_SeaSpawnPos03]exec "UnitSpawn\WInfGrp.sqs"
-@(LastSpawnVehicle != ObjNull && (count LastSpawnUnits>0))
-{_x moveInCargo LastSpawnVehicle}forEach LastSpawnUnits
-SeaAttackForce = SeaAttackForce+[LastSpawnVehicle]
-
-
-LastSpawnUnits = []
-[_SeaSpawnPos04]exec "UnitSpawn\WInfGrp.sqs"
-@(LastSpawnVehicle != ObjNull && (count LastSpawnUnits>0))
-{_x moveInCargo LastSpawnVehicle}forEach LastSpawnUnits
-SeaAttackForce = SeaAttackForce+[LastSpawnVehicle]
-
-
-LastSpawnUnits = []
-[_SeaSpawnPos05]exec "UnitSpawn\WInfGrp.sqs"
-@(LastSpawnVehicle != ObjNull && (count LastSpawnUnits>0))
-{_x moveInCargo LastSpawnVehicle}forEach LastSpawnUnits
-SeaAttackForce = SeaAttackForce+[LastSpawnVehicle]
-
-
-LastSpawnUnits = []
-[_SeaSpawnPos06]exec "UnitSpawn\WInfGrp.sqs"
-@(LastSpawnVehicle != ObjNull && (count LastSpawnUnits>0))
-{_x moveInCargo LastSpawnVehicle}forEach LastSpawnUnits
-SeaAttackForce = SeaAttackForce+[LastSpawnVehicle]
-
-~1
-{[_AttackCore,_AttackRadius,_x]exec "OnCounterAttack\SeaAttack\SeaAttack.sqs"}forEach SeaAttackForce
-
-myFunction1 = preprocessFile "Common\SelectRadiusUnits.sqf";
+_group01 =[_SeaSpawnPos01,WestFactory,true,"OfficerW","SoldierWPilot","M113"] call Func_CInfGrp
+_group02 =[_SeaSpawnPos02,WestFactory,true,"OfficerW","SoldierWPilot","M113"] call Func_CInfGrp
+_group03 =[_SeaSpawnPos03,WestFactory,true,"OfficerW","SoldierWPilot","M113"] call Func_CInfGrp
+_group04 =[_SeaSpawnPos04,WestFactory,true,"OfficerW","SoldierWPilot","M113"] call Func_CInfGrp
+_group05 =[_SeaSpawnPos05,WestFactory,true,"OfficerW","SoldierWPilot","M113"] call Func_CInfGrp
+_group06 =[_SeaSpawnPos06,WestFactory,true,"OfficerW","SoldierWPilot","M113"] call Func_CInfGrp
+;Leader _group01 exec "camera.sqs"
+_waypoints = [[(object 6755),150],[(object 6549),150]]
+[getpos (object 476),100,_group01]exec "OnCounterAttack\SeaAttack\SeaAttack.sqs"
+[getpos (object 476),100,_group02]exec "OnCounterAttack\SeaAttack\SeaAttack.sqs"
+[getpos (object 476),100,_group03]exec "OnCounterAttack\SeaAttack\SeaAttack.sqs"
+[getpos (object 476),100,_group04]exec "OnCounterAttack\SeaAttack\SeaAttack.sqs"
+[getpos (object 476),100,_group05]exec "OnCounterAttack\SeaAttack\SeaAttack.sqs"
+[getpos (object 476),100,_group06]exec "OnCounterAttack\SeaAttack\SeaAttack.sqs"
 
 exit
 ;创建部队

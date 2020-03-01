@@ -3,18 +3,36 @@
 ; *****************************************************
 _AttackCore = _this select 0
 _AttackRadius = _this select 1
-_veh = _this select 2
+_group = _this select 2
+_vehicle = ObjNull
 
-_AttackPos = _AttackCore;
-_AttackPos set[0,(_AttackPos select 0)+(cos (random 360))*(random _AttackRadius)];
-_AttackPos set[1,(_AttackPos select 1)+(sin (random 360))*(random _AttackRadius)];
+{if(Vehicle _x != _x)Then{_vehicle = Vehicle _x;}}forEach units _group
 
-_veh doMove _AttackPos
+_driver = Driver _vehicle
+_gunner = Gunner _vehicle
+_cargoUnit = []
+{if(_x != _driver && _x != _gunner)Then{_cargoUnit = _cargoUnit + [ _x];}}forEach crew _vehicle
 
-@(_veh distance (object 6756)<250)
 
-_unit = (crew _veh)
-{if(_x != (Driver _veh) && _x != (Gunner _veh))Then{unAssignVehicle _x}}forEach (crew _veh)
-@(count crew _veh <= 2)
-(Leader Driver _veh) Move _AttackPos
+#Loop
+_movepos = [_AttackCore,_AttackRadius] Call Func_CircleRandomPos
+#Move
+if([_group] call Func_IsGrpReady)Then{_group move _movepos}
+~10
+if(((!canmove _vehicle) || (Leader _group) countEnemy (list CommandArea) > 0) && (count crew _vehicle)>2)Then{goto "Unload"}
+if((Leader _group) countEnemy (list CommandArea) == 0 && canmove _vehicle && ((count crew _vehicle)<(count units _group)))Then{goto "Load"}
+if([getpos (Leader _group),_movepos] call Func_Distance < 15)Then{goto "EnterPos"}
+goto "Move"
+#Unload
+[_vehicle] call Func_Unload
+@(count crew _vehicle)<=2 || (!canmove _vehicle)
+goto "Move"
+#Load
+[_vehicle] call Func_Load
+@((count crew _vehicle)==(count units _group)) || (!canmove _vehicle)
+goto "Move"
+#EnterPos
+~10
+(Leader _group) globalChat "New Pos"
+goto "Loop"
 exit

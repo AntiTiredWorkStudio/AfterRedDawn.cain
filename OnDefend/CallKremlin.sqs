@@ -12,7 +12,7 @@ if(!alive (object 9379) || KermlinState)Then{Guba removeAction _aid;exit;}
 @Guba distance Calling < 2
 if(!alive (object 9379) || KermlinState)Then{Guba removeAction _aid;exit;}
 TriggerUnits = TriggerUnits+[Guba]
-_aid = Guba addAction ["Call Kermlin","OnDefend/OnCallingKremlin.sqs"]
+_aid = Guba addAction ["Call Kermlin","OnDefend\OnCallingKremlin.sqs"]
 @Guba distance Calling > 2
 if(!alive (object 9379) || KermlinState)Then{Guba removeAction _aid;exit;}
 Guba removeAction _aid

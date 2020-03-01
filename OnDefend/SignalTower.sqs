@@ -13,7 +13,7 @@ if(Satellite)Then{exit}
 @(TFix distance Guba < 1)
 if(Satellite)Then{exit}
 TriggerUnits = TriggerUnits+[TFix]
-_aid = Guba addAction ["Turn on Satellite Phone","OnDefend/FixSignalTowner.sqs"]
+_aid = Guba addAction ["Turn on Satellite Phone","OnDefend\FixSignalTowner.sqs"]
 FixTownerId = _aid
 @(TFix distance Guba > 1)
 Guba removeAction _aid

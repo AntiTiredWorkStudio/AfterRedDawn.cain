@@ -79,11 +79,11 @@ if(_hasBinocular)Then{Guba removeWeapon "phone";Guba addWeapon "Binocular";}
 "9" objStatus "DONE"
 KermlinState = true
 2 setRadioMsg "Su25 Attack"
-[SkyStricks,[Su25_01,Su25_02,Su25_03,Su25_04],[AS0,AS1,AS2,AS3],AirStrikeLogic]exec "OnDefend/AirStrike.sqs"
-if(!BlackAttack)Then{[]exec "OnDefend/BlackOpAttack.sqs";BlackAttack=true}
+[SkyStricks,[Su25_01,Su25_02,Su25_03,Su25_04],[AS0,AS1,AS2,AS3],AirStrikeLogic]exec "OnDefend\AirStrike.sqs"
+if(!BlackAttack)Then{[]exec "OnDefend\BlackOpAttack.sqs";BlackAttack=true}
 goto "end"
 #failed
-if(!BlackAttack)Then{[]exec "OnDefend/BlackOpAttack.sqs";BlackAttack=true}
+if(!BlackAttack)Then{[]exec "OnDefend\BlackOpAttack.sqs";BlackAttack=true}
 playSound "TelephoneInterfere"
 ~2
 if(CallTimes == 3)Then{Guba say "TelephoneError";"9_1" objStatus "ACTIVE";}

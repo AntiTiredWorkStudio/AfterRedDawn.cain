@@ -12,7 +12,7 @@ goto "FinishCheck"
 0 fadeMusic 0
 PlayMusic "Track11"
 5 fadeMusic 1
-[]exec "OnCaptured/PlayerWeaponCheck.sqs"
+[]exec "OnCaptured\PlayerWeaponCheck.sqs"
 _EscapeGroup = (units group EscTeam)
 _T1 = (units group EscTeam) select 0
 _T2 = (units group EscTeam) select 1
@@ -41,8 +41,8 @@ Guba setCaptive true
 EscapeUaz setDammage 1
 Guba setDammage 0
 
-{[_x,Guba] exec "OnCaptured/TrackPlayer.sqs"}forEach units group DTeam01
-{[_x,Guba] exec "OnCaptured/TrackPlayer.sqs"}forEach units group DTeam02
+{[_x,Guba] exec "OnCaptured\TrackPlayer.sqs"}forEach units group DTeam01
+{[_x,Guba] exec "OnCaptured\TrackPlayer.sqs"}forEach units group DTeam02
 
 @ CapturedCount >= 2
 
@@ -89,8 +89,8 @@ _T1Guard = [t1_01,t1_02,t1_03,t1_04,t1_05]
 _T2Guard = [t2_01,t2_02,t2_03,t2_04,t2_05]
 _T1Index = 0
 _T2Index = 0
-{[_x,getpos (_T1Guard select _T1Index)]exec "OnCaptured/SetNatoBaseGuardUnit.sqs";_T1Index=_T1Index+1;}forEach units group DTeam01
-{[_x,getpos (_T2Guard select _T2Index)]exec "OnCaptured/SetNatoBaseGuardUnit.sqs";_T2Index=_T2Index+1;}forEach units group DTeam02
+{[_x,getpos (_T1Guard select _T1Index)]exec "OnCaptured\SetNatoBaseGuardUnit.sqs";_T1Index=_T1Index+1;}forEach units group DTeam01
+{[_x,getpos (_T2Guard select _T2Index)]exec "OnCaptured\SetNatoBaseGuardUnit.sqs";_T2Index=_T2Index+1;}forEach units group DTeam02
 skiptime 1
 
 if(!(DTeamSky in DTeamFly)) then {DTeamSky moveInCargo DTeamFly;}
@@ -135,10 +135,10 @@ Guba doMove getpos Tent
 disableUserInput true
 TitleCut["","Black"]
 ~3
-[DTeamSky,getpos guard01]exec "OnCaptured/SetNatoBaseGuardUnit.sqs"
-[DTeamSky_Driver,getpos guard02]exec "OnCaptured/SetNatoBaseGuardUnit.sqs"
-[DTeamSky_Gunner,getpos guard03]exec "OnCaptured/SetNatoBaseGuardUnit.sqs"
-[Guba,getpos Tent]exec "OnCaptured/SetNatoBaseGuardUnit.sqs"
+[DTeamSky,getpos guard01]exec "OnCaptured\SetNatoBaseGuardUnit.sqs"
+[DTeamSky_Driver,getpos guard02]exec "OnCaptured\SetNatoBaseGuardUnit.sqs"
+[DTeamSky_Gunner,getpos guard03]exec "OnCaptured\SetNatoBaseGuardUnit.sqs"
+[Guba,getpos Tent]exec "OnCaptured\SetNatoBaseGuardUnit.sqs"
 ~2
 Guba setDir 335
 
@@ -173,8 +173,8 @@ TitleText["","Plain Down"]
 savegame
 
 "2" objStatus "ACTIVE"
-[]exec "OnCaptured/GubaEscapeDefend.sqs"
-[]exec "OnCaptured/KeyTruckEvent.sqs"
+[]exec "OnCaptured\GubaEscapeDefend.sqs"
+[]exec "OnCaptured\KeyTruckEvent.sqs"
 
 
 #End

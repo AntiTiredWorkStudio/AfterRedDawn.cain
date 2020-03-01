@@ -57,10 +57,10 @@ TitleCut["","Black In",3]
 "13" objStatus "DONE"
 MeetingGuard = true
 ~10
+#TESTPART
 ;开战通牒
 WestFactory globalRadio"WESTNegotiation01"
-
-#TESTPART
-~3
-[]exec "OnCounterAttack\NatoFinalAttack.sqs"
+[]exec "OnCounterAttack\CallTogether.sqs"
+;~3
+;[]exec "OnCounterAttack\NatoFinalAttack.sqs"
 exit

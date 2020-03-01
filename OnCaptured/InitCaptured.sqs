@@ -1,10 +1,10 @@
 ; *****************************************************
 ; ** Operation Flashpoint Script File
 ; *****************************************************
-[DTeam01]exec "DammageRemove/RemoveGroupDammage.sqs"
-[DTeam02]exec "DammageRemove/RemoveGroupDammage.sqs"
-[DTeamSky]exec "DammageRemove/RemoveGroupDammage.sqs"
-[DTeamFly]exec "DammageRemove/RemoveUnitDammage.sqs"
+[DTeam01]exec "DammageRemove\RemoveGroupDammage.sqs"
+[DTeam02]exec "DammageRemove\RemoveGroupDammage.sqs"
+[DTeamSky]exec "DammageRemove\RemoveGroupDammage.sqs"
+[DTeamFly]exec "DammageRemove\RemoveUnitDammage.sqs"
 
 DTeamSky moveInCargo DTeamFly;
 DTeamSky setCombatMode "RED"
@@ -60,7 +60,7 @@ Guba cameraEffect ["terminate","back"]
 camDestroy _camera
 #PrepareCaptured
 
-[]exec"OnCaptured/PlayerCaptured.sqs"
+[]exec"OnCaptured\PlayerCaptured.sqs"
 
 exit
 

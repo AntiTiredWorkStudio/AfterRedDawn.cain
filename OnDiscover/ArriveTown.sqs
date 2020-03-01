@@ -5,7 +5,7 @@
 "7" objStatus "DONE"
 ~1
 "7_1" objStatus "ACTIVE"
-[]exec "OnDefend/EngineerState.sqs"
+[]exec "OnDefend\EngineerState.sqs"
 @(Guba distance TownLeader < 10)
 _LeaderPos = getpos TownLeader
 TownLeader setUnitPos "AUTO"

@@ -4,9 +4,9 @@
 _campGrp = _this select 0
 _groupCamp = group _campGrp
 campCount = 0
-{[_x]exec "OnDefend/CampUnitSingle.sqs";}forEach units _groupCamp
+{[_x]exec "OnDefend\CampUnitSingle.sqs";}forEach units _groupCamp
 @(campCount>7)
-if(!BlackAttack)Then{[]exec "OnDefend/BlackOpAttack.sqs";BlackAttack=true;}
+if(!BlackAttack)Then{[]exec "OnDefend\BlackOpAttack.sqs";BlackAttack=true;}
 @(campCount>=9)
 {_x doFollow (Leader _groupCamp)}forEach units _groupCamp
 _groupCamp setBehaviour "AWARE"
@@ -16,7 +16,7 @@ _groupCamp setBehaviour "AWARE"
 
 hint "Take the AT group to town."
 
-[(Leader _groupCamp)]exec "cmd/BaseCommand.sqs";
+[(Leader _groupCamp)]exec "cmd\BaseCommand.sqs";
 
 @(FinalLine && ((Leader _groupCamp) distance (object 999) < 30)) || (!FinalLine &&((Leader _groupCamp) distance RussiaFlag < 30))
 

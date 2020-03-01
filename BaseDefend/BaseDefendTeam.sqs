@@ -10,8 +10,8 @@ _KeyTarget = _this select 4
 _defendUnits = _defendUnits - _partorlUnits
 group (_this select 0) setBehaviour "SAFE"
 doStop _defendUnits
-[_partorlUnits,_partorlPoints]exec "BaseDefend/Partorl.sqs"
-[_defendUnits]exec ("BaseDefend/"+_defendBehaviours+".sqs")
+[_partorlUnits,_partorlPoints]exec "BaseDefend\Partorl.sqs"
+[_defendUnits]exec ("BaseDefend\"+_defendBehaviours+".sqs")
 @ (_defendGroup knowsAbout _KeyTarget)>0.6
 hint "Explose"
 _defendGroup setBehaviour "AWARE"

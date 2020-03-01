@@ -13,13 +13,13 @@ _tCommand = _this select 1
 
 #NotExist
 TriggerUnits = TriggerUnits+[_tUnit]
-_InviteInfo = [format["Invite %1 To Team",_tUnit],"CommandSystem/Commander/OnInvite.sqs"]
+_InviteInfo = [format["Invite %1 To Team",_tUnit],"CommandSystem\Commander\OnInvite.sqs"]
 _ActionID = _tCommand addAction _InviteInfo
 goto "OnCommandLeaveRegion"
 
 #Exist
 TriggerUnits = TriggerUnits+[_tUnit]
-_InviteInfo = [format["Dismiss %1 From Team",_tUnit],"CommandSystem/Commander/OnDissmiss.sqs"]
+_InviteInfo = [format["Dismiss %1 From Team",_tUnit],"CommandSystem\Commander\OnDissmiss.sqs"]
 _ActionID = _tCommand addAction _InviteInfo
 goto "OnCommandLeaveRegion"
 

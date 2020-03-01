@@ -3,7 +3,7 @@
 ; *****************************************************
 
 ;创建物体
-[[[10082.36,10235.36,0.05],[9588.02,10071.84,0.05],[9594.09,10076.10,0.05],[9616.04,10078.41,0.05],[9626.41,10082.47,0.05],[9599.10,8578.26,0.05]],["ACamp","Truck5tRepair","Truck5tRefuel","CampEmpty","CampEmpty","BoatE"],[0,340,340,340,340,135]]exec"UnitSpawn/Veh.sqs"
+[[[10082.36,10235.36,0.05],[9588.02,10071.84,0.05],[9594.09,10076.10,0.05],[9616.04,10078.41,0.05],[9626.41,10082.47,0.05],[9599.10,8578.26,0.05]],["ACamp","Truck5tRepair","Truck5tRefuel","CampEmpty","CampEmpty","BoatE"],[0,340,340,340,340,135]]exec"UnitSpawn\Veh.sqs"
 
 ~1
 
@@ -13,7 +13,7 @@ _grp01_waypoints = [[[(object 460),(object 6686),(object 477),(object 477),(obje
 _grp01_behaviour = [["SAFE"],"Behaviour"]
 _grp01_locate = [[[[9515.28,10063.67,0.05],[9519.00,10063.00,0.05],[9515.73,10058.78,0.05],[9603.58,10078.42,0.05],[9606.58,10078.42,0.05],[9606.58,10080.42,0.05]],true],"Locate"]
 _TownGroup = ["SoldierWMG","SoldierWG","SoldierWG","SoldierWLAW","SoldierWMG","SoldierWB","SoldierWB","SoldierWB","SoldierWG","SoldierWMG","SoldierWMG"]
-[getpos (object 6549),[_grp01_waypoints,_grp01_behaviour,_grp01_locate],_TownGroup]exec"UnitSpawn/WGrp.sqs"
+[getpos (object 6549),[_grp01_waypoints,_grp01_behaviour,_grp01_locate],_TownGroup]exec"UnitSpawn\WGrp.sqs"
 
 ~1
 
@@ -24,28 +24,28 @@ LastSpawnLeader = ObjNull
 _grp02_waypoints = [[[(object 347),(object 300),(object 260)],60,true],"Waypoints"]
 _grp02_behaviour = [["SAFE"],"Behaviour"]
 _grp02_guard = [[RTown,getMarkerPos "RTown"],"Reinforcements"]
-[getpos (object 279),[_grp02_waypoints,_grp02_behaviour,_grp02_guard]]exec"UnitSpawn/WInfGrp.sqs"
+[getpos (object 279),[_grp02_waypoints,_grp02_behaviour,_grp02_guard]]exec"UnitSpawn\WInfGrp.sqs"
 
 ~1
 
 ;创建坦克小组
 _tank_locate = [[[[10282.33,10170.86,0.05],[10294.35,10272.21,0.05],[10213.67,10104.09,0.05],[10346.80,10253.42,0.05]],true],"LocateTankGrp"]
 _tank_guard = [[RRoad,getpos (object 272)],"Reinforcements"]
-[[10350.32,10160.87,0.05],[_tank_locate,_tank_guard]]exec"UnitSpawn/WTankGrp.sqs"
+[[10350.32,10160.87,0.05],[_tank_locate,_tank_guard]]exec"UnitSpawn\WTankGrp.sqs"
 
 ~1
 
 ;创建火箭小队
 _rocket_locate = [[[[10095.03,10205.91,0.05],[10092.22,10205.71,0.05],[10088.65,10205.46,0.05]],true],"Locate"]
 _rocket_behaviour = [["SAFE"],"Behaviour"]
-[[10077.19,10242.58,0.05],[_rocket_locate,_rocket_behaviour]]exec"UnitSpawn/WAAGrp.sqs"
+[[10077.19,10242.58,0.05],[_rocket_locate,_rocket_behaviour]]exec"UnitSpawn\WAAGrp.sqs"
 
 
 ~1
 
 _grp03_locate = [[[[9414.14,8583.14,0.05],[9615.14,8606.51,1.92],[9612.71,8604.65,2.19],[9607.54,8600.91,1.78],[9479.46,8633.64,6.45],[9482.59,8630.78,6.45],[9414.62,8580.17,0.05]],true],"Locate"]
 ;创建grp03
-[getpos (object 3619),[[["SAFE"],"Behaviour"],_grp03_locate],_TownGroup]exec"UnitSpawn/WGrp.sqs"
+[getpos (object 3619),[[["SAFE"],"Behaviour"],_grp03_locate],_TownGroup]exec"UnitSpawn\WGrp.sqs"
 
 ~1
 
@@ -53,12 +53,12 @@ _grp03_locate = [[[[9414.14,8583.14,0.05],[9615.14,8606.51,1.92],[9612.71,8604.6
 _grp04_waypoints = [[[(object 426),(object 404),(object 386),(object 404)],5,true],"Waypoints"]
 _grp04_behaviour = [["SAFE"],"Behaviour"]
 _grp04Group = ["SoldierWG","SoldierWB","SoldierWG","SoldierWMG"]
-[getpos (object 4898),[_grp04_waypoints,_grp04_behaviour],_grp04Group]exec"UnitSpawn/WGrp.sqs"
+[getpos (object 4898),[_grp04_waypoints,_grp04_behaviour],_grp04Group]exec"UnitSpawn\WGrp.sqs"
 
 ~1
 
 ;创建火箭小队
 _rocket01_behaviour = [["SAFE"],"Behaviour"]
 _rocket01_guard = [[SouthPort,getpos (object 439)],"Reinforcements"]
-[getpos (object 4904),[_rocket01_behaviour,_rocket01_guard]]exec"UnitSpawn/WAAGrp.sqs"
+[getpos (object 4904),[_rocket01_behaviour,_rocket01_guard]]exec"UnitSpawn\WAAGrp.sqs"
 exit

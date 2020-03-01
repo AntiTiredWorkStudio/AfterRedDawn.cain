@@ -1,8 +1,78 @@
+;------------------------基础功能------------------------
+;坐标加减[坐标01([x,y,z]),坐标02([x,y,z])]
+Func_APos = preprocessFile "Common\APos.sqf"
 ;在某个区域内选取以某个物体为中心某半径范围内的单位[区域(trigger list),参照物(object),半径(number)] 返回 单位数组[object]
-Func_SelectRadiusUnits = preprocessFile "Common\SelectRadiusUnits.sqf";
+Func_SelectRadiusUnits = preprocessFile "Common\SelectRadiusUnits.sqf"
 ;在某点为圆心，某值为半径的范围内选取随机点[圆心位置([x,y,z]),半径(number)] 返回 位置[x,y,z]
-Func_CircleRandomPos = preprocessFile "Common\CircleRandomPos.sqf";
-~1
+Func_CircleRandomPos = preprocessFile "Common\CircleRandomPos.sqf"
+;测两个坐标间的距离
+Func_Distance = preprocessFile "Common\APosDistance.sqf"
 
-_waypoints = [[(object 6756),100],[(object 6549),200]]
+;载具卸载
+Func_Unload = preprocessFile "Common\Unload.sqf"
+
+;载具装载
+Func_Load = preprocessFile "Common\Load.sqf"
+
+;组就绪
+Func_IsGrpReady = preprocessFile "Common\IsGrpReady.sqf"
+
+;获取区域内的所有组
+Func_GetAreaGrps = preprocessFile "Common\GetAreaGroups.sqf"
+
+;------------------------创建单位------------------------
+;1.创建单独的单位[创建位置([x,y,z]),单位类型(string),工厂对象(unit)] 返回 单位unit
+Func_CUnit = preprocessFile "Common\UnitFactory\CUnit.sqf"
+
+;2.创建小组[创建位置([x,y,z]),工厂对象(unit),单位类型数组([string] 可选),指挥官类型(string 可选)] 返回 创建小组 group
+Func_CGrp = preprocessFile "Common\UnitFactory\CGrp.sqf"
+
+;3.创建机械化小组
+;_pos 					创建位置([x,y,z])
+;_factory 				工厂对象(unit)
+;_InCargo				创创建时在乘具内(bool 可选,默认false)
+;_solidersDefine 		单位类型数组([string] 可选,默认["SoldierWMG","SoldierWG","SoldierWG","SoldierWLAW","SoldierWMG","SoldierWB","SoldierWB"])
+;_leaderType 			指挥官类型(string 可选,默认OfficerW)
+;_crewType				驾驶员类型(string 可选,默认SoldierWPilot)
+;_vehiclesDefine		乘具类型(string 可选,默认M113)
+;返回值:小组Group
+Func_CInfGrp = preprocessFile "Common\UnitFactory\CInfGrp.sqf"
+
+;4.创建坦克小组
+;_pos 					创建位置([x,y,z])
+;_factory 				工厂对象(unit)
+;_crewType				驾驶员类型(string 可选,默认SoldierWCrew)
+;_vehiclesDefine		乘具类型(string 可选,默认M1Abrams)
+;返回值:[小组,[乘具]]:[_group,_vehicles]
+Func_CTankGrp = preprocessFile "Common\UnitFactory\CTankGrp.sqf"
+
+;4.创建单个物体
+;_pos 					创建位置([x,y,z])
+;_vehDefine				物体类型(string)
+;_vehDirs				朝向(Number 可选,默认0-360度)
+;返回值:物体(object)
+Func_CVeh = preprocessFile "Common\UnitFactory\CVeh.sqf"
+
+;Example使用案例:
+;_unit =[getpos Guba,"OfficerW",WestFactory] call Func_CUnit
+;_group =[getpos Guba,WestFactory,["SoldierWSaboteurXMS","SoldierWSaboteurXMS"],"SoldierWSaboteurXMS"] call Func_CGrp
+;_group =[getpos Guba,WestFactory,true] call Func_CInfGrp
+;_tankGroup =[getpos Guba,WestFactory] call Func_CTankGrp
+;_veh =[[9476.50,9805.75,0.05],"Fortress1",45] call Func_CVeh
+exit
+
+_waypoints = [[(object 6756),100],[(object 6593),50],[(object 6549),100]]
 [group sad01,CommandArea,_waypoints]exec "Common\SearchAndDestroy.sqs";
+
+_camera ="camera" camCreate getPos Guba
+_camera cameraEffect ["Internal","back"]
+setAccTime 4
+#Loop
+_targetpos =  getpos sad01
+_targetpos set[2,8]
+_camera camSetTarget sad01
+_camera camSetPos _targetpos
+_camera camSetFOV 0.700
+_camera camCommit 5
+~2
+goto "Loop"

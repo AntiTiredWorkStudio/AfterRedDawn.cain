@@ -47,5 +47,5 @@ hint "finished"
 
 _units doMove getpos (object 16184)
 ~25
-[]exec "Fleet/SupportTankSupply.sqs"
+[]exec "Fleet\SupportTankSupply.sqs"
 exit

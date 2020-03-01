@@ -7,7 +7,9 @@
 		;"FAILED"
 		;"DONE"
 		;"HIDDEN"
+;是否为调试模式
 Debug = true
+;任务定义
 "1" objStatus "ACTIVE"
 "2" objStatus "HIDDEN"
 "3" objStatus "HIDDEN"
@@ -29,8 +31,9 @@ Debug = true
 "13" objStatus "HIDDEN"
 "14" objStatus "HIDDEN"
 "15" objStatus "HIDDEN"
+"16" objStatus "HIDDEN"
 
-
+;初始化地图标记
 MapMarkers = [["ENEMYBASE01",(object 62227)],["SUPPLY",(object 4584)],["ENEMYBASE02",(object 4438)],["SCUDFOUND",(object 21691)],["CGUBA",(object 772)],["LOCK01",(object 14588)],["LOCK02",(object 13652)],["LOCK03",(object 14664)],["LOCK04",(object 18489)],["LOCK05",(object 12203)],["LOCK06",(object 20204)]]
 "Attack01" setMarkerPos [-1000,-1000]
 "Attack02" setMarkerPos [-1000,-1000]
@@ -54,6 +57,7 @@ SignalRegions = ["SignalRegion_01","SignalRegion_02","SignalRegion_03","SignalRe
 "SCUD_POS" setMarkerPos [-1000,-1000]
 "SCUDRange" setMarkerPos [-1000,-1000]
 "Meeting" setMarkerPos [-1000,-1000]
+"CFU" setMarkerPos [-1000,-1000]
 
 ControlMarkers = ["Control01","Control02","Control03","Control04","Control05","Control06"]
 
@@ -61,6 +65,7 @@ ControlMarkers = ["Control01","Control02","Control03","Control04","Control05","C
 {(_x select 0) setMarkerPos [-1000,-1000];}forEach MapMarkers
 {_x setMarkerPos [-1000,-1000];}forEach SignalRegions
 
+;初始化人物及物品
 Guba addMagazine"glocksMag";
 Guba addWeapon "glocks";
 Guba setIdentity "Guba"
@@ -71,7 +76,7 @@ KeyBarrel addMagazineCargo["glocksMag",4]
 
 (object 63448) setDammage 1
 
-
+;数组定义
 Defend = []
 WestSpawnGroups = []
 FollowGroup = []
@@ -83,8 +88,9 @@ ConditionControlGroup = [TownLeader,CampTeam,spy]
 SpawnLeaderUnit = []
 ;间谍上了列表中的车辆不会被揭穿伪装
 SpyCustomVehicle = [scud]
-;已找到的友军(数组/数量)
+;已找到的友军数组
 GatherTeamate = []
+;已经找到的友军数量
 CountGatherTeamate = 0
 
 showRadio true
@@ -108,26 +114,29 @@ ChapterDiscover = false
 ChapterDefender = false
 ChapterAssault = false
 
+;悲惨结局大全
+	;最终城镇失守
+	BadEnd01 = false
+	;核弹爆炸
+	BadEnd02 = false
+	;交出SCUD并投降
+	BadEnd03 = false
 
-;最终城镇失守
-BadEnd01 = false
-;核弹爆炸
-BadEnd02 = false
-;交出SCUD并投降
-BadEnd03 = false
-
+;加载函数
 []exec "Common\Functions.sqs"
 
 
 ;飞毛腿导弹车初始化
 ScudCar = scud
 [scud]exec "BaseDefend\InitScud.sqs"
-
+;信号区系统
 [Guba]exec "SignalSystem\InitSignalSystem.sqs"
 
 ;保护免受伤害的友军
 ImportantProtection = [TownLeader,Engineer01,Engineer02,CampTeam,(object 9379)] + (units group EscTeam)
 [Guba] exec "FriendlyProtection.sqs"
+
+;用于快速调试章节
 goto "Chapter04"
 #Chapter01
 ;--------------第一章：被俘----------------------

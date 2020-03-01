@@ -19,7 +19,7 @@ _methords = _this select 3
 
 if(count _methords <= 0)Then{goto "End"}
 
-{_paras=[_vList];_paras= _paras+(_x select 0);_paras exec format["UnitSpawn/Methords/%1.sqs",(_x select 1)]}forEach _methords
+{_paras=[_vList];_paras= _paras+(_x select 0);_paras exec format["UnitSpawn\Methords\%1.sqs",(_x select 1)]}forEach _methords
 
 #End
 exit

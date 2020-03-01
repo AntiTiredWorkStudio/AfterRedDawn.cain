@@ -11,7 +11,7 @@ _actionName = _action select 0
 _scriptName = _action select 1
 
 TriggerUnits = TriggerUnits+[_targetGroupLeader]
-_aid =_targetGroupLeader addAction [_actionName,format["GroupAction/"+_scriptName+".sqs"]]
+_aid =_targetGroupLeader addAction [_actionName,format["GroupAction\"+_scriptName+".sqs"]]
 
 _i=_i+1
 ?(_i < (count _actions)):goto "LoopAction"
