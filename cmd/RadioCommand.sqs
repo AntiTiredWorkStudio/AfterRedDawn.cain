@@ -1,0 +1,8 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+
+_teamIndex = _this select 0
+
+if(IsNull (ControlLeaders select _teamIndex))Then{hint format["%1 not used.",(ControlTexts select _teamIndex)];exit;}Else{hint "continue"}
+exit

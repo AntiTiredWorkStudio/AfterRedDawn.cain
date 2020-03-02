@@ -1,0 +1,26 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+_TeamId = _this select 0
+_flagName = MarkerFlags select _TeamId
+#Wait
+~3
+if((ControlLeaders select _TeamId)==grpNull)Then{goto "Wait"}
+
+#Update
+_tUnits = units (ControlLeaders select _TeamId)
+_i=0
+#tLoop
+if(_i>=((count _tUnits)))Then{goto "NONE"}Else{goto "ORIGIN"}
+#ORIGIN
+format["%1_%2",_flagName,_i] setMarkerPos getpos (_tUnits select _i)
+goto "Next"
+#NONE
+format["%1_%2",_flagName,_i] setMarkerPos [-1000,-1000]
+goto "Next"
+#Next
+_i = _i+1
+?(_i<12):goto "tLoop"
+~1
+goto "Update"
+exit

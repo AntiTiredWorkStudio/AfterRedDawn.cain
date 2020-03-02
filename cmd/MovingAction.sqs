@@ -1,24 +1,13 @@
 ; *****************************************************
 ; ** Operation Flashpoint Script File
 ; *****************************************************
-_Leader = _this select 0
-_Command = _this select 1
-;if(_Leader in units group _Command)Then{hint format["%1 is already in yout group.",name _Leader];Exit;}
-
-hint "Click map to choose destnation.";
-
-ControlUnits = units group _Leader
-
-
-if(!(_Leader in ControlLeaders))Then{ControlLeaders set[ControlIndex,_Leader];ControlIndex = (ControlIndex + 1)%7}
-
-CurrentControlIndex = 0
-{if(_x != _Leader)Then{CurrentControlIndex=CurrentControlIndex+1}}forEach ControlLeaders
-
-_Command sideChat format["%1 are %2",(group _Leader),(ControlTexts select CurrentControlIndex)]
-
+_result = _this select 0
+teamMovingGroup = _result select 0
+teamMovingFlag = _result select 1
+_Command = player
+hint format["Click map to choose destnation.%1",_this];
 
 if(!PointMap)Then{PointMap = true}
 @PointMap
-onMapSingleClick{if(PointMap)Then{PointMap = false;{_x setBehaviour "AWARE";_x doFollow (ControlUnits select 0);_x doMove _pos;_x setCombatMode "RED";_x setSpeedMode "Full";(ControlMarkers select CurrentControlIndex) setMarkerPos _pos;}forEach ControlUnits;Guba sideChat format["%1 move to destnation position.",(ControlTexts select CurrentControlIndex)];}Else{exit;}}
+onMapSingleClick{if(PointMap)Then{PointMap = false;{_x doFollow (Leader teamMovingGroup);}forEach units teamMovingGroup;teamMovingGroup Move _pos;teamMovingGroup setBehaviour "AWARE";teamMovingGroup setCombatMode "RED";teamMovingFlag setMarkerPos _pos;teamMovingGroup setSpeedMode "Full";player sideChat format["%1 move to %2.",teamMovingFlag,[_pos] call Func_RegionID];}Else{exit;}}
 exit

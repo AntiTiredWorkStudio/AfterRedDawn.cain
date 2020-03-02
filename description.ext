@@ -1113,6 +1113,51 @@ class CfgSounds
 		forceTitles = false;
 		titles[] = { 0, "A wise choice."};
 	};
+	
+	
+	
+	class GubaMobilize01
+	{
+		name = "";
+		sound[] = {"NormalVoice.ogg", db-40, 1.0};
+		forceTitles = false;
+		titles[] = { 0, "Comrades, we may now face our last battle."};
+	};
+	
+	
+	class GubaMobilize02
+	{
+		name = "";
+		sound[] = {"NormalVoice.ogg", db-40, 1.0};
+		forceTitles = false;
+		titles[] = { 0, "The U.S. military will carry out a full-scale encirclement and suppression of us at any time."};
+	};
+	
+	class GubaMobilize03
+	{
+		name = "";
+		sound[] = {"NormalVoice.ogg", db-40, 1.0};
+		forceTitles = false;
+		titles[] = { 0, "At this critical moment, we need to be united."};
+	};
+	
+
+	class GubaMobilize04
+	{
+		name = "";
+		sound[] = {"NormalVoice.ogg", db-40, 1.0};
+		forceTitles = false;
+		titles[] = { 0, "Defend our homeland,Until the last one."};
+	};
+	
+	
+	class GubaMobilize05
+	{
+		name = "";
+		sound[] = {"NormalVoice.ogg", db-40, 1.0};
+		forceTitles = false;
+		titles[] = { 0, "Remember,comrades, there must be no alteration in our plans: they shall be carried out to the day."};
+	};
 };
 
 class CfgRadio

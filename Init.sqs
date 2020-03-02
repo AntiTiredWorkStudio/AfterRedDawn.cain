@@ -110,7 +110,7 @@ SpyTeamFound = false
 	
 ;章节条件
 ChapterCaptured = false
-ChapterDiscover = false
+ChapterDiscover = true
 ChapterDefender = false
 ChapterAssault = false
 

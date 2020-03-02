@@ -1,0 +1,18 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+_logic = _this select 0
+_logic setskill 0
+_skill = skill _logic
+_aidList = []
+_aidList = [_logic] call Action0_Init
+#LoopSkill
+@(skill _logic != _skill)
+{_logic removeAction _x}forEach _aidList
+_aidList = [_logic] call (MenuInitFuncs select (skill _logic)*10)
+goto "Next"
+#Next
+_skill = skill _logic
+goto "LoopSkill"
+
+

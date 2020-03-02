@@ -3,6 +3,10 @@
 Func_APos = preprocessFile "Common\APos.sqf"
 ;在某个区域内选取以某个物体为中心某半径范围内的单位[区域(trigger list),参照物(object),半径(number)] 返回 单位数组[object]
 Func_SelectRadiusUnits = preprocessFile "Common\SelectRadiusUnits.sqf"
+;在区域中选择对应类型的单位
+Func_SelectUnitsByType = preprocessFile "Common\SelectUnitByType.sqf"
+;获得地图坐标
+Func_RegionID = preprocessFile "Common\MapRegion.sqf"
 ;在某点为圆心，某值为半径的范围内选取随机点[圆心位置([x,y,z]),半径(number)] 返回 位置[x,y,z]
 Func_CircleRandomPos = preprocessFile "Common\CircleRandomPos.sqf"
 ;测两个坐标间的距离

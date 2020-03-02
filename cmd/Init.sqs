@@ -1,20 +1,75 @@
 ; *****************************************************
 ; ** Operation Flashpoint Script File
 ; *****************************************************
+
+Func_SearchTeamByLogic= preprocessFile "cmd\SearchTeam.sqf"
+Func_SetTeam= preprocessFile "cmd\Actions2\SetTeam.sqf"
+
+Action0_Init = preprocessFile "cmd\Actions0\Init.sqf"
+Action1_Init = preprocessFile "cmd\Actions1\Init.sqf"
+Action2_Init = preprocessFile "cmd\Actions2\Init.sqf"
+Action3_Init = preprocessFile "cmd\Actions3\Init.sqf"
+MenuInitFuncs = [Action0_Init,Action1_Init,Action2_Init,Action3_Init]
+;指挥系统数据结构
 BaseCommand = _this select 0
 ListArea = _this select 1
 GroupCount = 0
 PointMap = false
 CurrentControlIndex = 0
 ControlIndex = 0
-ControlLeaders = []
+ControlLeaders = [grpNull,grpNull,grpNull,grpNull,grpNull,grpNull]
 ControlTexts = ["Team Red","Team Green","Team Blue","Team Yellow","Team Black","Team White"]
+ColorTexts = ["Red","Green","Blue","Yellow","Black","White"]
+MarkerFlags = ["red","green","blue","yellow","black","white"]
+
+_i=0
+#LoopMarker
+_markerName = format["red_%1",_i]
+_markerName setMarkerPos [-1000,-1000]
+_markerName = format["green_%1",_i]
+_markerName setMarkerPos [-1000,-1000]
+_markerName = format["blue_%1",_i]
+_markerName setMarkerPos [-1000,-1000]
+_markerName = format["yellow_%1",_i]
+_markerName setMarkerPos [-1000,-1000]
+_markerName = format["black_%1",_i]
+_markerName setMarkerPos [-1000,-1000]
+_markerName = format["white_%1",_i]
+_markerName setMarkerPos [-1000,-1000]
+_i=_i+1
+?(_i<12):goto "LoopMarker"
+[0]exec "cmd\CommandMarkers.sqs"
+[1]exec "cmd\CommandMarkers.sqs"
+[2]exec "cmd\CommandMarkers.sqs"
+[3]exec "cmd\CommandMarkers.sqs"
+[4]exec "cmd\CommandMarkers.sqs"
+[5]exec "cmd\CommandMarkers.sqs"
+ControllerGroup = []
 _i = 0
 #Loop
 _unit = (ListArea select _i)
-
-if(Leader _unit == _unit && _unit!=BaseCommand && !(_unit in ConditionControlGroup))Then{GroupCount = GroupCount +1;[_unit]exec "cmd\BaseCommand.sqs";}
+if(Leader _unit == _unit && _unit!=BaseCommand && !(_unit in ConditionControlGroup))Then{goto "Regist"}Else{goto "UnRegist"}
+#Regist
+;设置组
+ControllerGroup set[GroupCount,group _unit]
+[group _unit,GroupCount] exec "cmd\ControlMenu.sqs"
+GroupCount = GroupCount +1;
+goto "Next"
+#UnRegist
+goto "Next"
+#Next
 _i=_i+1
 ?(_i<count ListArea):goto "Loop"
+
+[player]exec "cmd\PlayerControl.sqs"
+
+_msgID = 0
+_i = 0
+#loopMsg
+_x = ControlLeaders select _i
+if(_x==grpNull)Then{}
+(_msgID+3) setRadioMsg (ColorTexts select _msgID) + ":NONE";_msgID=_msgID+1;
+_i=_i+1
+?(_i<6):goto "loopMsg"
 
 exit

@@ -1,0 +1,156 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+if(count _this == 0)Then{goto "OBJACTIVE"}ELSE{goto "CALLACTION"}
+#OBJACTIVE
+"16" objStatus "ACTIVE"
+"CFU" setMarkerPos getpos SignalTower08
+SignalTower08 addAction["Call All Friendly Unit.","OnCounterAttack\CallTogether.sqs"]
+
+
+exit
+#CALLACTION
+_tower = _this select 0
+_aid = _this select 2
+_caller = _this select 1
+_tower removeAction _aid
+_caller sideChat format["All units,this is %1,Please come to Ie18 area for concentration.We're going to have a final fight.%1 out.",_caller]
+
+_CallBackText = ["%1 Copy.","%1 Copy that.","%1 Copy,We are coming.","%1 is on the way."]
+
+_grps = [CommandArea] call Func_GetAreaGrps
+_grps = _grps - [group player]
+~3
+_i=0
+#Loop
+Leader (_grps select _i) sideChat format[(_CallBackText select (random count _CallBackText)),(_grps select _i)]
+_i=_i+1
+
+;~0.2+(random 3)
+~0.1
+?(_i<(count _grps)):goto"Loop"
+
+
+5 fadeMusic 0.5
+playMusic "Track4"
+TitleCut["","Black Out",5]
+~5
+
+
+_vehicles = [FullMapRegion,["T72","T80","BMP","BMP2","UralReammo","UralRefuel","UralRepair","Ural","Uaz"]]call Func_SelectUnitsByType
+_i = 0
+_seek = 0
+#Search
+if((getDammage (_vehicles select _i)<0.5 && fuel (_vehicles select _i)>0.5) && (typeof (_vehicles select _i) != "Ural" || (_vehicles select _i)==ammoCar))Then{goto "Move"}Else{goto "NotMove"}
+#Move
+_cow = _seek%5
+_row = _seek - ((_seek*100)%10)/100
+_vehPos = [[10864.96,10405.75,0],[_cow*10,-_row*3,0]] call Func_APos
+(_vehicles select _i) setDir 335
+(_vehicles select _i) setpos _vehPos
+_seek = _seek+1
+goto "Continue"
+#NotMove
+goto "Continue"
+#Continue
+_i = _i+1
+?(_i<(count _vehicles)):goto "Search"
+
+
+_i=0
+_corePos = getpos (object 222)
+_friendlyUnit = []
+#Loop01
+;_pos = [getpos (object 3791),150] Call Func_CircleRandomPos
+_j=0
+{_x setpos ([_corePos,[-15+_i*3,-_j*3,0]] call Func_APos);dostop _x;_j=_j+1;_x doWatch player;_friendlyUnit = _friendlyUnit+[_x]; }forEach units (_grps select _i) 
+(_grps select _i) setBehaviour "CARELESS"
+_i= _i+1
+player setpos ([_corePos,[-15+_i*3,5,0]] call Func_APos)
+
+;~0.2+(random 0.3)
+~0.1
+?(_i<(count _grps)):goto"Loop01"
+
+
+
+;Guba setpos [10852.17,10405.60,0.05]
+setAccTime 1
+Guba setpos [10856.76,10395.87,0.05]
+Guba setDir 180
+_camPos = getpos player
+_camera ="camera" camCreate _camPos
+_camera cameraEffect ["internal","back"]
+;=== 13:59:51
+_camera camSetTarget [11763.23,-87606.33,19976.59]
+_camera camSetPos [10850.00,10396.08,0.45]
+_camera camSetFOV 0.700
+_camera camCommit 0
+@camCommitted _camera
+~4
+TitleCut["","Black In",5]
+
+;=== 14:00:15
+_camera camSetTarget [11667.11,-73029.34,-54984.71]
+_camera camSetPos [10851.24,10409.89,17.36]
+_camera camSetFOV 0.700
+_camera camCommit 15
+~5
+Guba action ["WEAPONONBACK"]
+~3
+{_x playMove "EffectStandSaluteStart"}forEach _friendlyUnit
+@camCommitted _camera
+
+;=== 17:29:44
+_camera camSetTarget Player
+_camera camSetPos [10870.43,10374.71,0.23]
+_camera camSetFOV 0.700
+_camera camCommit 0
+@camCommitted _camera
+~3
+player playMove "EffectStandSaluteStart"
+;=== 17:29:14
+_camera camSetTarget Player
+_camera camSetPos [10870.43,10374.71,8.36]
+_camera camSetFOV 0.700
+_camera camCommit 7
+~3
+player playMove "EffectStandSaluteEnd"
+~1
+{_x playMove "EffectStandSaluteEnd"}forEach _friendlyUnit
+~5
+
+;=== 17:32:51
+_camera camSetTarget Player
+_camera camSetPos [10855.74,10388.18,0.68]
+_camera camSetFOV 0.700
+_camera camCommit 5
+@camCommitted _camera
+~3
+;=== 17:32:51
+_camera camSetTarget Player
+_camera camSetPos [10855.74,10388.18,0.68]
+_camera camSetFOV 0.300
+_camera camCommit 20
+Player say "GubaMobilize01"
+~4
+Player say "GubaMobilize02"
+~4
+Player say "GubaMobilize03"
+~4
+Player say "GubaMobilize04"
+~4
+Player say "GubaMobilize05"
+~4
+@camCommitted _camera
+~5
+player cameraEffect ["terminate","back"]
+camDestroy _camera
+
+~2
+
+Guba action ["WEAPONONINHAND"]
+{_x setBehaviour "AWARE"}forEach _friendlyUnit
+
+"16" objStatus "DONE"
+exit

@@ -1,0 +1,11 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+_FollowGroup = _this select 0
+_FollowLogic = _this select 1
+_FollowLogic setpos getpos (Leader _FollowGroup)
+#Repeat
+@(_FollowLogic distance (Leader _FollowGroup) > 5 || (_FollowGroup == grpNull))
+if(_FollowGroup == grpNull)Then{deleteVehicle _FollowLogic;exit}
+_FollowLogic setpos getpos (Leader _FollowGroup)
+goto "Repeat"

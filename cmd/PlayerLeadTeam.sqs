@@ -1,0 +1,9 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+_result = _this select 0
+OldGroup = _result select 0
+OldGroupFlag = _result select 1
+if(count units OldGroup >=12)Then{hint "Over the team limit.";exit}
+(units OldGroup) join group player
+exit

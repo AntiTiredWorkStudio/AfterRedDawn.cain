@@ -5,9 +5,9 @@ _Leader = _this select 0
 _controlGroup = group _Leader
 _controlUnits = units _controlGroup
 
-_aid = _Leader addAction[format["Take over control/Dismiss %1 group",name _Leader],"cmd\CommandAction.sqs"]
+_aid = _Leader addAction[format["Take over control %1 group",name _Leader],"cmd\CommandAction.sqs"]
 
-_aid01 = _Leader addAction[format["Guard Position %1 group",name _Leader],"cmd\MovingAction.sqs"]
+_aid01 = _Leader addAction[format["Set Position %1 group",name _Leader],"cmd\MovingAction.sqs"]
 
 if(!(_Leader in GatherTeamate))Then{[_Leader]exec "OnDiscover\TakeFriendlyToTown.sqs"}
 {Guba reveal _x}forEach units group _Leader

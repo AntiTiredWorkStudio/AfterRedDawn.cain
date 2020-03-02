@@ -1,0 +1,29 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+if(count _this == 3)Then{goto "ActionPart"}
+_command = _this select 0
+_aid = 0
+#Monitor
+@(count units group _command > 2)
+_aid = _command addAction["Group Independence","cmd\PlayerControl.sqs"]
+@(count units group _command < 2)
+_command removeAction _aid
+goto "Monitor"
+#ActionPart
+_command = _this select 0
+_grpUnit = units group _command
+_grpUnit = _grpUnit - [_command]
+
+_seek = 0
+_tseek = -1
+{if((count units _x) == 0)Then{_tseek=_seek;};_seek=_seek+1;}forEach ControllerGroup
+
+if(_tseek == -1)Then{_grpUnit join grpNull;_tseek=GroupCount;}else{_grpUnit join (ControllerGroup select _tseek)}
+
+hint format["%1,%2",ControllerGroup,_tseek]
+
+ControllerGroup set[_tseek,group (_grpUnit select 0)]
+[group (_grpUnit select 0),_tseek] exec "cmd\ControlMenu.sqs"
+GroupCount = GroupCount +1
+exit

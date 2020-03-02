@@ -9,19 +9,34 @@ _commandCurrentTeam = units group _Command
 _removeUnits = []
 _dismiss  =false
 
+_Leader removeAction _aid
+_Leader removeAction _aid+1
+;_Leader addAction[format["Take over control %1 group",name _Leader],"cmd\CommandAction.sqs"];
+;_Leader addAction[format["Dismiss %1 group",name _Leader],"cmd\CommandAction.sqs"];
+
+;计算组单位总数
 _unitCount = (count units group _Command)+(count units group _Leader)
-if(Leader _Leader == _Command)Then{hint "This team has already joined your group.";_dismiss=true;}Else{goto "End"}
+;解编条件判断
+if(Leader _Leader == _Command)Then{_dismiss=true;}Else{goto "End"}
+
+;组内活人判断
 ?(count _commandCurrentTeam <= 1):goto "End"
+
+;计算需要独立的组成员
 {if(_x != (leader _x))Then{_removeUnits=_removeUnits+[_x]}}forEach _commandCurrentTeam
+
+;组独立
 _removeUnits join grpNull
 {doStop _x}forEach _removeUnits
+_Leader addAction[format["Take over control %1 group",name _Leader],"cmd\CommandAction.sqs"];
+_Leader addAction[format["Set Position  %1 group",name _Leader],"cmd\MovingAction.sqs"]
 ~2
 if(!alive _Leader)Then{[Leader group (_removeUnits select 0)]exec "cmd\BaseCommand.sqs"}
 if(_dismiss)Then{exit;}
 #End
 if(_unitCount > 12)Then{hint "Team members reach the upper limit.";exit;}
 
-if(count units group _Command >1)Then{_Leader removeAction _aid;_Leader removeAction (_aid+1)}
+if(count units group _Command >1)Then{_Leader removeAction _aid;_Leader removeAction (_aid+1)}Else{_Leader addAction[format["Dismiss %1 group",name _Leader],"cmd\CommandAction.sqs"];}
 
 _Command sideChat format["%1,Alpha 1 is going to take control your team.",_LeaderGroup]
 
