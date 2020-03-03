@@ -5,7 +5,7 @@ _result = _this select 0
 teamMovingGroup = _result select 0
 teamMovingFlag = _result select 1
 _Command = player
-hint format["Click map to choose destnation.%1",_this];
+hint "Click map to choose destnation."
 
 if(!PointMap)Then{PointMap = true}
 @PointMap

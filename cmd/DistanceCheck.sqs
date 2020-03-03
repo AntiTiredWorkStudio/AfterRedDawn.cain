@@ -1,0 +1,11 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+_logic = _this select 0
+#Loop
+@(_logic distance player<=10 || !(alive _logic))
+if( !(alive _logic))Then{exit}
+@(_logic distance player>10 || !(alive _logic))
+if( !(alive _logic))Then{exit}
+_logic setSkill 0
+goto "Loop"

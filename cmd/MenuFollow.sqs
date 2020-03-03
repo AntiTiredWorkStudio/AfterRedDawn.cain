@@ -3,9 +3,11 @@
 ; *****************************************************
 _FollowGroup = _this select 0
 _FollowLogic = _this select 1
-_FollowLogic setpos getpos (Leader _FollowGroup)
+_fPos = getpos (Leader _FollowGroup)
+_FollowLogic setpos _fPos
 #Repeat
-@(_FollowLogic distance (Leader _FollowGroup) > 5 || (_FollowGroup == grpNull))
+@(alive _FollowLogic && (_FollowLogic distance (Leader _FollowGroup) > 2 || (_FollowGroup == grpNull)))
 if(_FollowGroup == grpNull)Then{deleteVehicle _FollowLogic;exit}
-_FollowLogic setpos getpos (Leader _FollowGroup)
+_fPos = getpos (Leader _FollowGroup)
+_FollowLogic setpos _fPos
 goto "Repeat"

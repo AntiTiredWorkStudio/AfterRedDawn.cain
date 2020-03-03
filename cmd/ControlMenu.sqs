@@ -7,5 +7,6 @@ _logic = "Logic" createVehicle getpos (Leader _group)
 _logic setpos getpos (Leader _group)
 _logic setDir _groupNum*0.1
 [_logic]exec "cmd\MenuActions.sqs"
+[_logic]exec "cmd\DistanceCheck.sqs"
 [_group,_logic]exec "cmd\MenuFollow.sqs"
 exit

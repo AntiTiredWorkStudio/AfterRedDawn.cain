@@ -1,9 +1,14 @@
 ; *****************************************************
 ; ** Operation Flashpoint Script File
 ; *****************************************************
-_result = _this select 0
+_logic = _this select 0
+_result = _this select 1
 OldGroup = _result select 0
 OldGroupFlag = _result select 1
-if(count units OldGroup >=12)Then{hint "Over the team limit.";exit}
+if(((count units OldGroup)+(count units group player)) >12)Then{hint "Over the team limit.";exit}
+OldGroupFlag setMarkerPos [-1000,-1000]
+_index = [ControlLeaders,OldGroup]call Func_GetTeamIndex
+if(_index != -1)Then{(_index+3) setRadioMsg (ColorTexts select _index) + ":NONE";}
+if(_logic == RemoteMenu)Then{deleteVehicle _logic}
 (units OldGroup) join group player
 exit

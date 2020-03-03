@@ -4,23 +4,38 @@
 
 Func_SearchTeamByLogic= preprocessFile "cmd\SearchTeam.sqf"
 Func_SetTeam= preprocessFile "cmd\Actions2\SetTeam.sqf"
+Func_CreateRemoteControlMenu = preprocessFile "cmd\CreateRemoteControlMenu.sqf"
+Func_GetTeamIndex = preprocessFile "cmd\GetTeamIndex.sqf"
+Func_BuildControlMenu = preprocessFile "cmd\BuildControlMenu.sqf"
 
 Action0_Init = preprocessFile "cmd\Actions0\Init.sqf"
 Action1_Init = preprocessFile "cmd\Actions1\Init.sqf"
 Action2_Init = preprocessFile "cmd\Actions2\Init.sqf"
 Action3_Init = preprocessFile "cmd\Actions3\Init.sqf"
 MenuInitFuncs = [Action0_Init,Action1_Init,Action2_Init,Action3_Init]
-;指挥系统数据结构
+
+;------------------指挥系统数据结构------------------
+;指挥官
 BaseCommand = _this select 0
+;地图范围
 ListArea = _this select 1
+;所有可控制组数量
 GroupCount = 0
+;点击地图事件判断
 PointMap = false
 CurrentControlIndex = 0
 ControlIndex = 0
+RemoteMenu = ObjNull
+
+;颜色编组
 ControlLeaders = [grpNull,grpNull,grpNull,grpNull,grpNull,grpNull]
+;组名称
 ControlTexts = ["Team Red","Team Green","Team Blue","Team Yellow","Team Black","Team White"]
+;颜色名称(首字母大写)
 ColorTexts = ["Red","Green","Blue","Yellow","Black","White"]
+;颜色名称(首字母小写)
 MarkerFlags = ["red","green","blue","yellow","black","white"]
+;------------------------------------------------------
 
 _i=0
 #LoopMarker
@@ -44,15 +59,20 @@ _i=_i+1
 [3]exec "cmd\CommandMarkers.sqs"
 [4]exec "cmd\CommandMarkers.sqs"
 [5]exec "cmd\CommandMarkers.sqs"
+
+;所有可控制组数组
 ControllerGroup = []
+
+;为组注册控制菜单
 _i = 0
 #Loop
 _unit = (ListArea select _i)
 if(Leader _unit == _unit && _unit!=BaseCommand && !(_unit in ConditionControlGroup))Then{goto "Regist"}Else{goto "UnRegist"}
 #Regist
 ;设置组
-ControllerGroup set[GroupCount,group _unit]
-[group _unit,GroupCount] exec "cmd\ControlMenu.sqs"
+;ControllerGroup set[GroupCount,group _unit]
+;[group _unit,GroupCount] exec "cmd\ControlMenu.sqs"
+[_unit] call Func_BuildControlMenu
 GroupCount = GroupCount +1;
 goto "Next"
 #UnRegist
@@ -61,8 +81,9 @@ goto "Next"
 _i=_i+1
 ?(_i<count ListArea):goto "Loop"
 
-[player]exec "cmd\PlayerControl.sqs"
+[BaseCommand]exec "cmd\PlayerControl.sqs"
 
+;设置无线电消息
 _msgID = 0
 _i = 0
 #loopMsg
