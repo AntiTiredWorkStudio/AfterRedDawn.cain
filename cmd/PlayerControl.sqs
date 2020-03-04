@@ -2,16 +2,40 @@
 ; ** Operation Flashpoint Script File
 ; *****************************************************
 if(count _this == 3)Then{goto "ActionPart"}
+MenuLevel = 0
+AssignActions = [0,0,0,0,0,0,0]
 _command = _this select 0
 _aid = 0
 #Monitor
-@(count units group _command > 2)
-_aid = _command addAction["Group Independence","cmd\PlayerControl.sqs"]
-@(count units group _command < 2)
+@(count units group _command > 2 && MenuLevel==0)
+_aid = _command addAction["[Group]Group Command","cmd\PlayerControl.sqs"]
+@(count units group _command < 2 ||  MenuLevel==1)
 _command removeAction _aid
 goto "Monitor"
 #ActionPart
-_command = _this select 0
+_tUnit = _this select 0
+_aid = _this select 2
+if(MenuLevel == 0)Then{goto "SubMenu"}
+if(MenuLevel == 1)Then{goto "Action"}
+#SubMenu
+hint "submenu";
+AssignActions set [0,_tUnit addAction["[Group]Assign group to Red","cmd\PlayerControl.sqs"]]
+AssignActions set [1,_tUnit addAction["[Group]Assign group to Green","cmd\PlayerControl.sqs"]]
+AssignActions set [2,_tUnit addAction["[Group]Assign group to Blue","cmd\PlayerControl.sqs"]]
+AssignActions set [3,_tUnit addAction["[Group]Assign group to Yellow","cmd\PlayerControl.sqs"]]
+AssignActions set [4,_tUnit addAction["[Group]Assign group to Black","cmd\PlayerControl.sqs"]]
+AssignActions set [5,_tUnit addAction["[Group]Assign group to White","cmd\PlayerControl.sqs"]]
+AssignActions set [6,_tUnit addAction["[Group]Independent","cmd\PlayerControl.sqs"]]
+AssignActions set [7,_tUnit addAction["[Group]Close","cmd\PlayerControl.sqs"]]
+MenuLevel = 1
+exit
+#Action
+hint "action";
+_i = 0
+_selection = 0
+{if(_aid == _x)Then{_selection=_i;};_i=_i+1;_tUnit removeAction _x}forEach AssignActions
+if(_selection == 7)Then{MenuLevel = 0;exit}
+_command = _tUnit
 _grpUnit = units group _command
 _grpUnit = _grpUnit - [_command]
 _grpUnit join grpNull;
@@ -19,11 +43,18 @@ _seek = 0
 _tseek = -1
 {if((count units _x) == 0)Then{_tseek=_seek;};_seek=_seek+1;}forEach ControllerGroup
 
-if(_tseek == -1)Then{_tseek=GroupCount;}
-
+if(_tseek == -1)Then{_tseek=GroupCount;GroupCount = GroupCount +1;}
 
 ControllerGroup set[_tseek,group (_grpUnit select 0)]
 
-[group (_grpUnit select 0),_tseek] exec "cmd\ControlMenu.sqs"
-GroupCount = GroupCount +1
+_logic = [group (_grpUnit select 0),_tseek,(_grpUnit select 0)]call Func_CreateRemoteControlMenu
+
+if(_selection == 0)Then{[_logic]exec "cmd\Actions2\TeamRed.sqs"}
+if(_selection == 1)Then{[_logic]exec "cmd\Actions2\TeamGreen.sqs"}
+if(_selection == 2)Then{[_logic]exec "cmd\Actions2\TeamBlue.sqs"}
+if(_selection == 3)Then{[_logic]exec "cmd\Actions2\TeamYellow.sqs"}
+if(_selection == 4)Then{[_logic]exec "cmd\Actions2\TeamBlack.sqs"}
+if(_selection == 5)Then{[_logic]exec "cmd\Actions2\TeamWhite.sqs"}
+
+MenuLevel = 0
 exit

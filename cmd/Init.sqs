@@ -29,6 +29,12 @@ RemoteMenu = ObjNull
 
 ;颜色编组
 ControlLeaders = [grpNull,grpNull,grpNull,grpNull,grpNull,grpNull]
+(ControlLeaders select 0) setGroupId ["Alpha", "GroupColor2"]
+(ControlLeaders select 1) setGroupId ["Alpha", "GroupColor3"]
+(ControlLeaders select 2) setGroupId ["Alpha", "GroupColor4"]
+(ControlLeaders select 3) setGroupId ["Alpha", "GroupColor5"]
+(ControlLeaders select 4) setGroupId ["Alpha", "GroupColor6"]
+(ControlLeaders select 5) setGroupId ["Alpha", "GroupColor7"]
 ;组名称
 ControlTexts = ["Team Red","Team Green","Team Blue","Team Yellow","Team Black","Team White"]
 ;颜色名称(首字母大写)
@@ -83,14 +89,6 @@ _i=_i+1
 
 [BaseCommand]exec "cmd\PlayerControl.sqs"
 
-;设置无线电消息
-_msgID = 0
-_i = 0
-#loopMsg
-_x = ControlLeaders select _i
-if(_x==grpNull)Then{}
-(_msgID+3) setRadioMsg (ColorTexts select _msgID) + ":NONE";_msgID=_msgID+1;
-_i=_i+1
-?(_i<6):goto "loopMsg"
+[]exec"cmd\InitRadio.sqs"
 
 exit

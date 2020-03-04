@@ -1,8 +1,9 @@
-; *****************************************************
-; ** Operation Flashpoint Script File
-; *****************************************************
-
 _teamIndex = _this select 0
+if(count RadioMenuHandle<(_teamIndex+1))Then{exit}
+_para = (RadioMenuHandle select _teamIndex) select 0
+_func = (RadioMenuHandle select _teamIndex) select 1
+_para call _func
+exit
 
 if(IsNull (ControlLeaders select _teamIndex))Then{goto "NotUse"}Else{goto "Continue"}
 #NotUse

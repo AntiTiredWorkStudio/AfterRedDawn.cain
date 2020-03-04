@@ -5,5 +5,6 @@ _logic = "Logic" createVehicle getpos _remoteController;
 _logic setpos getpos _remoteController;
 _logic setDir _groupNum*0.1;
 [_logic]exec "cmd\MenuActions.sqs";
+[_logic]exec "cmd\DistanceCheck.sqs";
 [group _remoteController,_logic]exec "cmd\MenuFollow.sqs";
 _logic

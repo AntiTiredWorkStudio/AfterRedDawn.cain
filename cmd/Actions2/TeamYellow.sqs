@@ -2,5 +2,8 @@ _logic = _this select 0
 _result = [_logic,ControlLeaders,ControllerGroup] call Func_SearchTeamByLogic
 _grp = _result select 0
 if(_grp in ControlLeaders)Then{hint format["The group is %1.",_result select 1];goto "End"}
-if((count units (ControlLeaders select 3)) != 0)Then{[_logic,3,_grp]call Func_SetTeam}Else{ControlLeaders set[3,_grp];6 setRadioMsg (ColorTexts select 3) + ":" + format["%1",_grp]}
-_logic setSkill 0.1
+if((count units (ControlLeaders select 3)) != 0)Then{[_logic,3,_grp]call Func_SetTeam}Else{ControlLeaders set[3,_grp];}
+#End
+_logic setSkill 0
+[]exec "cmd\InitRadio.sqs"
+exit

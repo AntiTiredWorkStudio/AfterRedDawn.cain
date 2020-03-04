@@ -1,0 +1,28 @@
+RadioMenuHandle = []
+SelectionTeamIndex = -1
+Func_TeamFlag = preprocessFile "cmd\RadioMsgFlags.sqf"
+Func_BuildRadioMenu = preprocessFile "cmd\BuildRadioMenu.sqf"
+Func_ResetMenu = preprocessFile "cmd\ResetRadioMenu.sqf"
+Func_SelectRadioTeam = preprocessFile "cmd\SelectRadioTeam.sqf"
+Func_RadioSetDestine = preprocessFile "cmd\RadioSetDestination.sqf"
+Func_RadioLeadTeam = preprocessFile "cmd\RadioLeadTeam.sqf"
+
+_RadioTeamControl = [[3,"[%1]Set Destination",[],Func_RadioSetDestine],[4,"[%1]Lead Team",[],Func_RadioLeadTeam],[5,"[%1]Close",[],Func_ResetMenu]]
+
+_RadioTeams = [[3,"Red:%1",[0,_RadioTeamControl],Func_SelectRadioTeam],[4,"Green:%1",[1,_RadioTeamControl],Func_SelectRadioTeam],[5,"Blue:%1",[2,_RadioTeamControl],Func_SelectRadioTeam],[6,"Yellow:%1",[3,_RadioTeamControl],Func_SelectRadioTeam],[7,"Black:%1",[4,_RadioTeamControl],Func_SelectRadioTeam],[8,"White:%1",[5,_RadioTeamControl],Func_SelectRadioTeam]]
+
+_RadioMenu = [[3,"Military Radio(%1 Teams)",_RadioTeams,Func_BuildRadioMenu]]
+
+_RadioMenu call Func_BuildRadioMenu
+
+exit
+;设置无线电消息
+_msgID = 0
+_i = 0
+#loopMsg
+_x = ControlLeaders select _i
+if(_x==grpNull)Then{}
+(_msgID+3) setRadioMsg (ColorTexts select _msgID) + ":NONE";_msgID=_msgID+1;
+_i=_i+1
+?(_i<6):goto "loopMsg"
+exit

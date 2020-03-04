@@ -34,8 +34,8 @@ SignalInfoList= [SignalGroup01,SignalGroup02,SignalGroup03,SignalGroup04,SignalG
 
 
 
-1 setRadioMsg "[UNAVAILABLE]"
-2 setRadioMsg "[UNAVAILABLE]"
+1 setRadioMsg "NULL"
+2 setRadioMsg "NULL"
 
 [RadioOperator,MapTable]exec "SignalSystem\OnStolenMap.sqs"
 [RadioOperator,RadioMechine]exec "SignalSystem\OnStolenRadio.sqs"

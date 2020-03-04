@@ -69,7 +69,8 @@ ControlMarkers = ["Control01","Control02","Control03","Control04","Control05","C
 Guba addMagazine"glocksMag";
 Guba addWeapon "glocks";
 Guba setIdentity "Guba"
-group Guba setGroupId ["Alpha", "GroupColor1","Command"]
+group Guba setGroupId ["Alpha", "GroupColor0"]
+
 
 KeyBarrel addWeaponCargo["glocks",1]
 KeyBarrel addMagazineCargo["glocksMag",4]
