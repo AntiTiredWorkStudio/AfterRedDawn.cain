@@ -57,6 +57,13 @@ Func_CTankGrp = preprocessFile "Common\UnitFactory\CTankGrp.sqf"
 ;返回值:物体(object)
 Func_CVeh = preprocessFile "Common\UnitFactory\CVeh.sqf"
 
+;5.创建直升机
+;_pos 					创建位置([x,y,z])
+;_heliDefine 	物体类型(string)
+;_factory =	 	工厂对象(unit)
+;返回值:物体(object)
+Func_CHeli = preprocessFile "Common\UnitFactory\CHeli.sqf"
+
 ;Example使用案例:
 ;_unit =[getpos Guba,"OfficerW",WestFactory] call Func_CUnit
 ;_group =[getpos Guba,WestFactory,["SoldierWSaboteurXMS","SoldierWSaboteurXMS"],"SoldierWSaboteurXMS"] call Func_CGrp

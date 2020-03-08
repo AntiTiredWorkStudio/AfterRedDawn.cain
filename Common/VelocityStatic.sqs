@@ -1,0 +1,12 @@
+_target = _this select 0
+_times = _this select 1
+_index = 0
+#Loop
+_target setVelocity [0,0,0]
+~0.25
+_target setVelocity [0,0,0]
+_target setDir 0
+if(_index > _times)Then{goto "End"}
+_index = _index+1
+goto "Loop"
+#End
