@@ -1,6 +1,7 @@
 ; *****************************************************
 ; ** Operation Flashpoint Script File
 ; *****************************************************
+
 ;删除所有无用的西方单位
 _unitList = list WestList
 WestGroups = []
@@ -9,6 +10,7 @@ WestGroups = []
 ~3
 deleteVehicleList = []
 _i = 0
+hint "delete start"
 #cycle
 _loopTarget = _unitList select _i
 if(_loopTarget distance (object 21691) < 1500 || (_loopTarget == WestFactory))Then{goto "JumpLoop"}
@@ -18,19 +20,42 @@ if((count crew _loopTarget) <= 0)Then{goto "UnitDelete"}
 deleteVehicleList = deleteVehicleList+[_loopTarget]
 #JumpLoop
 _i = _i+1
-;~0.05
-;skipTime 0.005
 ?(_i < (count _unitList)):goto "cycle"
-;hint format["delete task:%1",deleteVehicleList]
-;hint "start delete"
+SearchGroups = []
 _i = 0
 _length = count deleteVehicleList
 #delete
-deleteVehicle (deleteVehicleList select _i)
+_deleteTarget = (deleteVehicleList select _i)
+deleteVehicle _deleteTarget
 _i = _i+1
-;~0.05
-;skipTime 0.005
 ?(_i < _length):goto "delete"
+
+hint "finish delete"
+~15
+
+_unitList = list WestList
+WestGroups = []
+{if(!(group _x in WestGroups))Then{WestGroups=WestGroups+[group _x]}}forEach _unitList
+#TestCreate
+_TestCount = 1
+#TestLoop
+
+_grp = [getpos player,WestFactory]call Func_CGrp
+if(isNull _grp)Then{goto "End"}
+~1
+hint format["grp:%1",_grp]
+_TestCount = _TestCount+1
+goto "TestLoop"
+#End
+hint format["finished:%1",_TestCount]
+exit
+
+[ [10526.00,8563.37,50],getpos (object 8134),[getpos (object 6233),getpos (object 7630),getpos (object 6647)]]exec "OnCounterAttack\SeaAttack\Paratroopers.sqs"
+
+
+[ [10556.00,8563.37,50],getpos (object 5459),[getpos (object 6233),getpos (object 7630),getpos (object 6647)]]exec "OnCounterAttack\SeaAttack\Paratroopers.sqs"
+
+
 _spawnPos = getpos (object 581)
 _SeaSpawnPos01 = [_spawnPos,50] Call Func_CircleRandomPos
 _SeaSpawnPos02 = [_spawnPos,50] Call Func_CircleRandomPos

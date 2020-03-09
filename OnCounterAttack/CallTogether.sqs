@@ -6,10 +6,9 @@ if(count _this == 0)Then{goto "OBJACTIVE"}ELSE{goto "CALLACTION"}
 "16" objStatus "ACTIVE"
 "CFU" setMarkerPos getpos SignalTower08
 SignalTower08 addAction["Call All Friendly Unit.","OnCounterAttack\CallTogether.sqs"]
-setViewDistance 2000
-[ [9907.00,8661.37,50],[getpos (object 8134),getpos (object 5459),getpos (object 8783)],[getpos (object 6233),getpos (object 7630),getpos (object 6647)]]exec "OnCounterAttack\SeaAttack\Paratroopers.sqs"
 
-[ [9807.00,8761.37,50],[getpos (object 8134),getpos (object 5459),getpos (object 8783)],[getpos (object 6233),getpos (object 7630),getpos (object 6647)]]exec "OnCounterAttack\SeaAttack\Paratroopers.sqs"
+exit
+
 exit
 #CALLACTION
 _tower = _this select 0
@@ -33,6 +32,7 @@ _i=_i+1
 ?(_i<(count _grps)):goto"Loop"
 
 
+"16" objStatus "DONE"
 5 fadeMusic 0.5
 playMusic "Track4"
 TitleCut["","Black Out",5]
@@ -146,13 +146,8 @@ Player say "GubaMobilize05"
 ~4
 @camCommitted _camera
 ~5
-player cameraEffect ["terminate","back"]
-camDestroy _camera
+;player cameraEffect ["terminate","back"]
+;camDestroy _camera
+ChapterAssault = true
 
-~2
-
-Guba action ["WEAPONONINHAND"]
-{_x setBehaviour "AWARE"}forEach _friendlyUnit
-
-"16" objStatus "DONE"
 exit

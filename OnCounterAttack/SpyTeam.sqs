@@ -29,6 +29,7 @@ _spyLeader setBehaviour "AWARE"
 
 ~1
 
-[_spyLeader] exec "cmd\BaseCommand.sqs"
+[_spyLeader] call Func_BuildControlMenu
+GroupCount = GroupCount +1;
 
 exit

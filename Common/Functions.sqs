@@ -12,6 +12,12 @@ Func_CircleRandomPos = preprocessFile "Common\CircleRandomPos.sqf"
 ;测两个坐标间的距离
 Func_Distance = preprocessFile "Common\APosDistance.sqf"
 
+;获取组信息
+Func_GetEmptyGroups = preprocessFile "Common\GetEmptyGroups.sqf"
+
+;获取一组group中第一个空组
+Func_GetEmptyFromGroups = preprocessFile "Common\GetEmptyFromGroups.sqf"
+
 ;载具卸载
 Func_Unload = preprocessFile "Common\Unload.sqf"
 

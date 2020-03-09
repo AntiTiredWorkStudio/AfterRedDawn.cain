@@ -8,7 +8,7 @@
 		;"DONE"
 		;"HIDDEN"
 ;是否为调试模式
-Debug = true
+Debug = false
 ;任务定义
 "1" objStatus "ACTIVE"
 "2" objStatus "HIDDEN"
@@ -66,6 +66,7 @@ ControlMarkers = ["Control01","Control02","Control03","Control04","Control05","C
 {_x setMarkerPos [-1000,-1000];}forEach SignalRegions
 
 ;初始化人物及物品
+removeAllWeapons Guba;
 Guba addMagazine"glocksMag";
 Guba addWeapon "glocks";
 Guba setIdentity "Guba"
@@ -111,9 +112,10 @@ SpyTeamFound = false
 	
 ;章节条件
 ChapterCaptured = false
-ChapterDiscover = true
+ChapterDiscover = false
 ChapterDefender = false
 ChapterAssault = false
+GoodEnd01 = false
 
 ;悲惨结局大全
 	;最终城镇失守
@@ -138,7 +140,7 @@ ImportantProtection = [TownLeader,Engineer01,Engineer02,CampTeam,(object 9379)] 
 [Guba] exec "FriendlyProtection.sqs"
 
 ;用于快速调试章节
-goto "Chapter04"
+;goto "Chapter04"
 #Chapter01
 ;--------------第一章：被俘----------------------
 TitleText["Chapter 01 : Captured","Plain Down",3]
@@ -146,6 +148,9 @@ TitleText["Chapter 01 : Captured","Plain Down",3]
 ~5
 TitleText["","Plain Down",3]
 @ChapterCaptured
+~3
+saveGame
+~3
 #Chapter02
 ;--------------第二章：探索----------------------
 TitleText["Chapter 02 : Lurker","Plain Down",3]
@@ -157,6 +162,9 @@ TitleText["Chapter 02 : Lurker","Plain Down",3]
 ~5
 TitleText["","Plain Down",3]
 @ChapterDiscover
+~3
+saveGame
+~3
 #Chapter03
 ;--------------第三章：防御----------------------
 TitleText["Chapter 03 : Defender","Plain Down",3]
@@ -164,6 +172,9 @@ TitleText["Chapter 03 : Defender","Plain Down",3]
 ~5
 TitleText["","Plain Down",3]
 @ChapterDefender
+~3
+saveGame
+~3
 #Chapter04
 ;--------------第四章：反击----------------------
 if(CommandAreaSetting)Then{goto "JumpSetting"}
@@ -175,6 +186,12 @@ TitleText["Chapter 04 : Assault","Plain Down",3]
 ~5
 TitleText["","Plain Down",3]
 @ChapterAssault
-playMusic "WanderMusic";
-0 fadeMusic 0
-5 fadeMusic 0.25
+TitleText["Mission Complete","Plain",3]
+~5
+TitleCut["","Black Out",5]
+~6
+TitleText["To be continued...","Plain",3]
+~10
+10 fadeMusic 0
+~10
+GoodEnd01 = true

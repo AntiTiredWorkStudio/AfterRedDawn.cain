@@ -4,6 +4,8 @@
 if(count _this >0)Then{goto "action"}
 if(!alive CampTeam)Then{exit;}
 _actionID = CampTeam addAction["Talking about next plan","OnCounterAttack\ConversationSpy.sqs"]
+@SpyTeamFound
+CampTeam removeAction _actionID
 exit
 #action
 
@@ -112,10 +114,8 @@ Guba switchMove "Default"
 CampTeam switchMove "Default"
 CampTeam doWatch ObjNull
 TitleCut["","Black In",3]
-
 ~2
 if(!SpyTeamFound)Then{"11_1" objStatus "ACTIVE";"Gc39" setMarkerPos getpos (object 9793);}
-
 @SpyTeamFound
 ~3
 "11_1" objStatus "DONE"

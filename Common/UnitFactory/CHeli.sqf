@@ -6,6 +6,7 @@ if(count _this >= 4)Then{_vehDirs = _this select 3};
 _heli = _heliDefine createVehicle _pos;
 _pos set[2,50];
 _heli setpos _pos;
+_heli setFuel 1;
 _heli setDir _vehDirs;
 _driver = [_pos,"SoldierWPilot",_factory]call Func_CUnit;
 _gunner = [_pos,"SoldierWPilot",_factory]call Func_CUnit;
@@ -14,5 +15,5 @@ _driver moveInDriver _heli;
 _gunner moveInGunner _heli;
 _heli action["Engine On"];
 [_heli,50] exec "Common\VelocityStatic.sqs";
-_heli doMove getpos _heli;
+_heli Move getpos _heli;
 _heli

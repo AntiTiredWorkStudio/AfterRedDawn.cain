@@ -10,26 +10,32 @@ _attackPos = _this select 2
 
 _attackTimes = _this select 3
 
-#Reload
-_ParatroopersGrps = []
-_heli = [_heliCreatePos,"Ch47D",WestFactory] call Func_CHeli
-_heli exec "camera.sqs"
-_Paratroopers = ["SoldierWG36a","SoldierWG36a","SoldierWG36a","SoldierWG36a","SoldierWG36a","SoldierWG36a","SoldierWLAW","SoldierWLAW","SoldierWLAW","SoldierWLAWSniper","SoldierWMG"]
-_LeaderType = "OfficerW"
-_heliCreatePos set[2,400]
+_heliLocate = _heliCreatePos
+_heli = [_heliLocate,"Ch47D",WestFactory] call Func_CHeli
+_heli disableAI "TARGET"
+_heli disableAI "AUTOTARGET"
 
-_grpHeli01 = [_heliCreatePos,WestFactory,_Paratroopers,_LeaderType]call Func_CGrp
+#Reload
+_ParatroopersUnit = ["SoldierWG36a","SoldierWG36a","SoldierWG36a","SoldierWG36a","SoldierWG36a","SoldierWG36a","SoldierWLAW","SoldierWLAW","SoldierWLAW","SoldierWLAWSniper","SoldierWMG"]
+_ParatroopLeaderType = "OfficerW"
+_heliLocate set[2,400]
+_grpHeli01 = [_heliLocate,WestFactory,_ParatroopersUnit,_ParatroopLeaderType]call Func_CGrp
+units _grpHeli01 orderGetIn true
+{_x assignAsCargo _heli}forEach units _grpHeli01
 {_x moveInCargo _heli}forEach units _grpHeli01
-;_Paratroopers = ["SoldierWG36a","SoldierWG36a","SoldierWG36a","SoldierWG36a","SoldierWG36a","SoldierWG36a","SoldierWLAW","SoldierWLAW","SoldierWLAW","SoldierWLAWSniper","SoldierWMG"]
-;_LeaderType = "OfficerW"
-_grpHeli02 = [_heliCreatePos,WestFactory,_Paratroopers,_LeaderType]call Func_CGrp
+
+_grpHeli02 = [_heliLocate,WestFactory,_ParatroopersUnit,_ParatroopLeaderType]call Func_CGrp
+units _grpHeli01 orderGetIn true
+{_x assignAsCargo _heli}forEach units _grpHeli02
 {_x moveInCargo _heli}forEach units _grpHeli02
+
 ~13
 _heli flyInHeight 400
-_landPoint = (_landPos select (random (count _landPos)))
+_landPoint = _landPos
 _heli Move _landPoint
 _heli setSpeedMode "NORMAL"
 @(([(getpos _heli),_landPoint]call Func_Distance) <450)
+hint "start jump"
 _crews = []
 _crews = _crews + (units _grpHeli01)
 _crews = _crews + (units _grpHeli02)
@@ -40,11 +46,13 @@ unassignVehicle _current
 _current action["EJECT",_heli]
 ~1+(random 1)
 _i = _i+1
+if(!alive _heli)Then {goto "FinishEject"}
 ?(_i<(count _crews)):goto "PLoop"
 
-_grpHeli01 Move (_attackPos select (random (count _attackPos)))
+#FinishEject
+_grpHeli01 Move (_attackPos select (random (count _attackPos -1)))
 
-_grpHeli02 Move (_attackPos select (random (count _attackPos)))
+_grpHeli02 Move (_attackPos select (random (count _attackPos -1)))
 
 _grpHeli01 setCombatMode "RED"
 _grpHeli01 setSpeedMode "NORMAL"
@@ -54,10 +62,13 @@ _grpHeli02 setCombatMode "RED"
 _grpHeli02 setSpeedMode "NORMAL"
 _grpHeli02 setBehaviour "AWARE"
 
-@(count crew _heli <= 3)
-_heli Move _heliCreatePos
+if(!alive _heli)Then {goto "CheckDead"}
+@(count crew _heli <= 2)
+_heli Move _heliLocate
+#CheckDead
 @((count units _grpHeli01)==0 && (count units _grpHeli02)==0)
-deleteVehicle (driver _heli)
-deleteVehicle (gunner _heli)
-deleteVehicle _heli
-goto "Reload"
+;deleteVehicle (driver _heli)
+;deleteVehicle (gunner _heli)
+;deleteVehicle _heli
+;goto "Reload"
+exit

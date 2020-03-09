@@ -23,5 +23,6 @@ dostop _tUnit
 ?(_tUnit distance _fUnit)>5 :goto "Track"
 ?(_tUnit distance _fUnit)<5 :goto "Hold"
 #End
-hint "end track"
+;hint "end track"
+_tUnit setUnitPos "Auto"
 exit
