@@ -6,7 +6,6 @@ _holdgroup = units group _holdgroupLeader
 _holdgroup = _holdgroup-[d1,d2,d3]
 [[6390.44,6533.95,0.14],"SoldierESaboteurBizon"]exec "UnitSpawn\EUnit.sqs"
 @(LastSpawnUnit != ObjNull)
-;LastSpawnUnit exec "camera.sqs"
 LastSpawnUnit removeMagazine "pipebomb"
 LastSpawnUnit removeMagazine "pipebomb"
 LastSpawnUnit removeMagazine "pipebomb"
@@ -24,8 +23,6 @@ d2 doMove getpos (object 31545)
 [d1,d2] doMove getpos fireFlame
 
 @(not alive d1) && (not alive d2)
-
-_holdgroupLeader exec "camera.sqs"
 
 {_x doFollow _holdgroupLeader;_x allowFleeing 1;}forEach _holdgroup
 

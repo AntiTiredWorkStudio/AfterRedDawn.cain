@@ -35,6 +35,7 @@ hint "You can drive uaz to deploy the mines and bombs."
 Engineer01 doWatch ObjNull
 Engineer02 doWatch ObjNull
 
-[TownLeader]exec "cmd\BaseCommand.sqs"
+[TownLeader] call Func_BuildControlMenu
+GroupCount = GroupCount +1;
 
 exit

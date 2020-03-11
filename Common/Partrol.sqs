@@ -1,0 +1,12 @@
+_WayPoints = _this select 0
+_Grp = _this select 1
+_Behaviour = _this select 2
+_index = 0
+if(count _WayPoints <= 1)Then{Exit}
+_Grp setBehaviour _Behaviour
+~1
+#LoopPartrol
+_Grp Move (_WayPoints select _index)
+@(unitReady (Leader _Grp))
+_index = (_index +1)%(count _WayPoints)
+goto "LoopPartrol"

@@ -16,7 +16,8 @@ _groupCamp setBehaviour "AWARE"
 
 hint "Take the AT group to town."
 
-[(Leader _groupCamp)]exec "cmd\BaseCommand.sqs";
+[(Leader _groupCamp)] call Func_BuildControlMenu
+GroupCount = GroupCount +1;
 
 @(FinalLine && ((Leader _groupCamp) distance (object 999) < 30)) || (!FinalLine &&((Leader _groupCamp) distance RussiaFlag < 30))
 

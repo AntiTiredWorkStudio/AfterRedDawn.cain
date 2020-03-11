@@ -5,7 +5,7 @@
 @ ((count weapons Guba) > 0 or (Guba distance Tent)>15) or (Guba in KeyTruck)
 Guba setCaptive false
 
-hint "You Captive Is Exploer"
+hint "You Captive Is Relieved."
 if(Guba in KeyTruck) then {KeyTruck lock true}
 ~ 25+(random 10)
 ? ((Guba distance StopPos)>80) : goto "EscapeDone"

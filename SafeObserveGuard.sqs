@@ -16,5 +16,5 @@ Defend set[_defendId,false]
 ?(Defend select _defendId) : goto "end"  
 goto "repeat"
 #end
-hint"end look"
+if(Debug)Then{hint"end look"}
 exit

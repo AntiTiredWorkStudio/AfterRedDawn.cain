@@ -3,7 +3,7 @@
 ; *****************************************************
 
 @ (count weapons Guba) > 0
-hint format["%1",weapons Guba]
+;hint format["%1",weapons Guba]
 player selectWeapon "Glocks";
 
 {_x reveal Guba;Guba reveal _x;_x setBehaviour "AWARE";}forEach units group DTeamSky

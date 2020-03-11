@@ -25,7 +25,7 @@ LoseFinalLine = false
 _f1 = FinalLine_F1
 _f2 = FinalLine_F2
 _f3 = getpos FinalLine_Heal
-;hint format["%1,%2,%3",_f1,_f2,_f3]
+
 
 "8" objStatus "ACTIVE"
 "9" objStatus "ACTIVE"

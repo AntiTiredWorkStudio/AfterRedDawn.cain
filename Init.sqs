@@ -8,10 +8,11 @@
 		;"DONE"
 		;"HIDDEN"
 ;是否为调试模式
-Debug = false
+Debug = true
 ;任务定义
 "1" objStatus "ACTIVE"
 "2" objStatus "HIDDEN"
+"2_1" objStatus "HIDDEN"
 "3" objStatus "HIDDEN"
 "3_1" objStatus "HIDDEN"
 "4" objStatus "HIDDEN"
@@ -32,6 +33,13 @@ Debug = false
 "14" objStatus "HIDDEN"
 "15" objStatus "HIDDEN"
 "16" objStatus "HIDDEN"
+
+3 setRadioMsg "NULL"
+4 setRadioMsg "NULL"
+5 setRadioMsg "NULL"
+6 setRadioMsg "NULL"
+7 setRadioMsg "NULL"
+8 setRadioMsg "NULL"
 
 ;初始化地图标记
 MapMarkers = [["ENEMYBASE01",(object 62227)],["SUPPLY",(object 4584)],["ENEMYBASE02",(object 4438)],["SCUDFOUND",(object 21691)],["CGUBA",(object 772)],["LOCK01",(object 14588)],["LOCK02",(object 13652)],["LOCK03",(object 14664)],["LOCK04",(object 18489)],["LOCK05",(object 12203)],["LOCK06",(object 20204)]]
@@ -66,15 +74,22 @@ ControlMarkers = ["Control01","Control02","Control03","Control04","Control05","C
 {_x setMarkerPos [-1000,-1000];}forEach SignalRegions
 
 ;初始化人物及物品
+Guba = player;
+
 removeAllWeapons Guba;
 Guba addMagazine"glocksMag";
 Guba addWeapon "glocks";
 Guba setIdentity "Guba"
 group Guba setGroupId ["Alpha", "GroupColor0"]
 
-
-KeyBarrel addWeaponCargo["glocks",1]
-KeyBarrel addMagazineCargo["glocksMag",4]
+_handGunPos = getpos KeyBarrel
+_handGunPos set[2,1.07]
+_handGunPos set[0,(_handGunPos select 0)-0.5]
+_handGunPos set[1,(_handGunPos select 1)+0.5]
+_weaponHandGun = "WeaponHolder" createVehicle _handGunPos
+_weaponHandGun setpos _handGunPos
+_weaponHandGun addMagazineCargo ["glocksMag",4]
+_weaponHandGun addWeaponCargo ["glocks",1]
 
 (object 63448) setDammage 1
 
@@ -95,12 +110,14 @@ GatherTeamate = []
 ;已经找到的友军数量
 CountGatherTeamate = 0
 
-showRadio true
-
 CommandAreaSetting = false
 
 ;找到间谍小队
 SpyTeamFound = false
+;隐藏地图
+HideMap = false
+;隐藏无线电
+HideRadio = false
 
 ;任务条件
 	;--偷取无线电--
@@ -140,7 +157,7 @@ ImportantProtection = [TownLeader,Engineer01,Engineer02,CampTeam,(object 9379)] 
 [Guba] exec "FriendlyProtection.sqs"
 
 ;用于快速调试章节
-;goto "Chapter04"
+goto "Chapter02"
 #Chapter01
 ;--------------第一章：被俘----------------------
 TitleText["Chapter 01 : Captured","Plain Down",3]

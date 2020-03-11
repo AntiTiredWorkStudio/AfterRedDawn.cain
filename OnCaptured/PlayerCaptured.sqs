@@ -13,6 +13,9 @@ goto "FinishCheck"
 PlayMusic "Track11"
 5 fadeMusic 1
 []exec "OnCaptured\PlayerWeaponCheck.sqs"
+
+(units  group EscTeam select 2) say "ESCTeam_01"
+
 _EscapeGroup = (units group EscTeam)
 _T1 = (units group EscTeam) select 0
 _T2 = (units group EscTeam) select 1
@@ -24,8 +27,20 @@ EscTeam doMove getpos EscapeTarget
 {_x doMove getpos EscTeam;_x doFire EscTeam;_x setSpeedMode "FULL"}forEach units group DTeam02
 DTeamFly doTarget EscapeUaz
 @ !canmove EscapeUaz
+
+(units  group EscTeam select 2)  say "ESCTeam_02"
+
 EscapeUaz lock false
 DTeamFly doTarget ObjNull
+
+Guba action["Eject",EscapeUaz]
+Guba setVelocity [4.6,2.4,0]
+Guba setDammage 0
+Guba playMove "CrouchToCrouchSprintF"
+
+{_x action["Eject",EscapeUaz];_x setVelocity [4.6,2.4,0];_x  setDammage 0;_x playMove "LyingToCrouch"}forEach units group EscTeam
+
+
 ~0.5
 
 {unassignVehicle _x}forEach _EscapeGroup
@@ -33,7 +48,7 @@ DTeamFly doTarget ObjNull
 {_x doMove getpos SkyLandPlane;_x setSpeedMode "FULL"}forEach units group EscTeam
 @!(Guba in EscapeUaz)
 EscapeUaz lock true
-
+EscapeUaz setDammage 1
 @(!alive _T1 and !alive _T2 and !alive _T3)
 ;hint format["%1",(count units group _EscapeGroup)]
 ;hint "All Unit Dead"
@@ -45,8 +60,6 @@ Guba setDammage 0
 {[_x,Guba] exec "OnCaptured\TrackPlayer.sqs"}forEach units group DTeam02
 
 @ CapturedCount >= 2
-
-;hint "On Captured"
 
 TitleText["Drop your weapons old man! I count 3 times!","Plain Down"]
 ~3
@@ -68,7 +81,6 @@ Guba setCaptive false
 goto "End"
 
 #FinishCheck
-showMap=false
 ~1
 Arrest = true
 TitleText["You are under arrest,Old Devil!","Plain Down"]
@@ -80,6 +92,15 @@ Guba say "36v01"
 ~6
 TitleText["","Plain Down"]
 ~1
+
+disableUserInput false
+
+HideMap = true
+HideRadio = true
+[]exec "OnCaptured\MapViewState.sqs"
+[]exec "OnCaptured\RadioViewState.sqs"
+
+
 ;*************** 02 **************************
 TitleCut["You are being escorted to NATO's base","Black"]
 ~5
@@ -102,9 +123,6 @@ DTeamFly doMove getpos LandStopPos
 ~5
 TitleCut["","Black In"]
 
-
-
-disableUserInput false
 #OnTheWay
 DTeamFly doMove getpos LandStopPos
 ;DTeamSky doMove getpos LandStopPos
@@ -171,6 +189,7 @@ TitleText["","Plain Down"]
 10 fadeMusic 0
 
 savegame
+
 
 "2" objStatus "ACTIVE"
 []exec "OnCaptured\GubaEscapeDefend.sqs"

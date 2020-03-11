@@ -8,6 +8,12 @@ TitleText["Stealing","Plain Down"]
 TitleText["","Plain Down"]
 RadioMechine setpos [-1000,-1000]
 StolenRadio = true
+
+#repeat
+HideRadio = false
+~0.5
+?(!shownRadio):goto"repeat"
+
 1 setRadioMsg "Call Units"
 hint "You can use radio to Call your units,Press 0-0-1 to call."
 "3" objStatus "ACTIVE"

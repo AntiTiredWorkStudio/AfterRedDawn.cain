@@ -13,7 +13,7 @@ doStop _defendUnits
 [_partorlUnits,_partorlPoints]exec "BaseDefend\Partorl.sqs"
 [_defendUnits]exec ("BaseDefend\"+_defendBehaviours+".sqs")
 @ (_defendGroup knowsAbout _KeyTarget)>0.6
-hint "Explose"
+if(Debug)Then{hint "Explose"}
 _defendGroup setBehaviour "AWARE"
 {_x reveal _KeyTarget;_KeyTarget reveal _x;_x doTarget _KeyTarget;_x doMove getpos _KeyTarget}forEach _defendUnits
 exit

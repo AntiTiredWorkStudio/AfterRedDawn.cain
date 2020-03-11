@@ -1,0 +1,16 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+#repeat
+showRadio false
+showGPS false
+~0.5
+?(shownRadio):goto"repeat"
+@(shownRadio || (!HideRadio))
+if(HideRadio)Then{goto "repeat"}
+#repeatShow
+showRadio true
+showGPS true
+~0.5
+?(!shownRadio):goto"repeatShow"
+exit

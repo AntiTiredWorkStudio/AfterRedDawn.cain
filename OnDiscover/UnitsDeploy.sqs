@@ -1,0 +1,98 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+_p01 = getMarkerPos "partrol_01"
+_p02 = getMarkerPos "partrol_02"
+_p03 = getMarkerPos "partrol_03"
+_p04 = getMarkerPos "partrol_04"
+_p05 = getMarkerPos "partrol_05"
+_p06 = getMarkerPos "partrol_06"
+_p07 = getMarkerPos "partrol_07"
+_p08 = getMarkerPos "partrol_08"
+_p09 = getMarkerPos "partrol_09"
+_p10 = getMarkerPos "partrol_10"
+_p11 = getMarkerPos "partrol_11"
+_p12 = getMarkerPos "partrol_12"
+_p13 = getMarkerPos "partrol_13"
+_p14 = getMarkerPos "partrol_14"
+_p15 = getMarkerPos "partrol_15"
+_p16 = getMarkerPos "partrol_16"
+_p17 = getMarkerPos "partrol_17"
+_p18 = getMarkerPos "partrol_18"
+_p19 = getMarkerPos "partrol_19"
+_p20 = getMarkerPos "partrol_20"
+_p21 = getMarkerPos "partrol_21"
+_p22 = getMarkerPos "partrol_22"
+_p23 = getMarkerPos "partrol_23"
+_p24 = getMarkerPos "partrol_24"
+_p25 = getMarkerPos "partrol_25"
+_pFe56 = getMarkerPos "Fe56"
+_pgUnitDefine = ["SoldierWG","SoldierWG","SoldierWB","SoldierWB"]
+
+~0.2
+_pg01 = [_p01,CivilianFactory,_pgUnitDefine ,"SoldierWMG"] call Func_CGrp
+_pg01 setSpeedMode "NORMAL"
+
+~0.2
+_pg02 = [_p03,CivilianFactory, _pgUnitDefine,"SoldierWMG"] call Func_CGrp
+_pg02 setSpeedMode "NORMAL"
+
+~0.2
+_pg03= [_p05,CivilianFactory,_pgUnitDefine,"SoldierWMG"] call Func_CGrp
+_pg03 setSpeedMode "NORMAL"
+
+~0.2
+_pg04= [_p02,CivilianFactory,_pgUnitDefine,"SoldierWMG"] call Func_CGrp
+_pg04 setSpeedMode "NORMAL"
+
+~0.2
+_pg05= [_p07,CivilianFactory,_pgUnitDefine,"SoldierWMG"] call Func_CGrp
+_pg05 setSpeedMode "NORMAL"
+
+~0.2
+_pg06= [_p09,CivilianFactory,_pgUnitDefine,"SoldierWMG"] call Func_CGrp
+_pg06 setSpeedMode "NORMAL"
+
+~0.2
+_pg07= [_p08,CivilianFactory,_pgUnitDefine,"SoldierWMG"] call Func_CGrp
+_pg07 setSpeedMode "NORMAL"
+
+~0.2
+_pg08= [_p11,CivilianFactory,_pgUnitDefine,"SoldierWMG"] call Func_CGrp
+_pg08 setSpeedMode "NORMAL"
+
+~0.2
+_pg09= [_p13,CivilianFactory,_pgUnitDefine,"SoldierWMG"] call Func_CGrp
+_pg09 setSpeedMode "NORMAL"
+
+~0.2
+_pg10= [_p14,CivilianFactory,_pgUnitDefine,"SoldierWMG"] call Func_CGrp
+_pg10 setSpeedMode "NORMAL"
+
+~0.2
+_pg11= [_p19,CivilianFactory,_pgUnitDefine,"SoldierWMG"] call Func_CGrp
+_pg11 setSpeedMode "NORMAL"
+
+~0.2
+_pg12= [_p24,CivilianFactory,_pgUnitDefine,"SoldierWMG"] call Func_CGrp
+_pg12 setSpeedMode "NORMAL"
+
+~0.2
+_pg13= [_p18,CivilianFactory,_pgUnitDefine,"SoldierWMG"] call Func_CGrp
+_pg13 setSpeedMode "NORMAL"
+
+~0.2
+[[_p01,_p02,_p03,_p04,_p05],_pg01,"SAFE"]exec "Common\Partrol.sqs"
+[[_p03,_p04,_p05,_p01,_p02],_pg02,"SAFE"]exec "Common\Partrol.sqs"
+[[_p05,_p01,_p02,_p03,_p04],_pg03,"SAFE"]exec "Common\Partrol.sqs"
+[[_p03,_p06],_pg04,"SAFE"]exec "Common\Partrol.sqs"
+[[_p07,_p08,_p09,_p10],_pg05,"SAFE"]exec "Common\Partrol.sqs"
+[[_p09,_p10,_p07,_p08],_pg06,"SAFE"]exec "Common\Partrol.sqs"
+[[_p07,_p02,_p03],_pg07,"SAFE"]exec "Common\Partrol.sqs"
+[[_p11,_p12,_p13,_p14],_pg08,"SAFE"]exec "Common\Partrol.sqs"
+[[_p13,_p25,_p14],_pg09,"SAFE"]exec "Common\Partrol.sqs"
+[[_p14,_p15,_p16,_pFe56],_pg10,"SAFE"]exec "Common\Partrol.sqs"
+[[_p19,_p20,_p21,_p22,_p21,_p20],_pg11,"SAFE"]exec "Common\Partrol.sqs"
+[[_p24,_p23],_pg12,"SAFE"]exec "Common\Partrol.sqs"
+[[_p18,_p17,_p16,_p15],_pg13,"SAFE"]exec "Common\Partrol.sqs"
+exit

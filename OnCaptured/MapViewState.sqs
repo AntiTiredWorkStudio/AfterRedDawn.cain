@@ -1,0 +1,23 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+#repeat
+showMap false
+showRadio false
+showGPS false
+showWatch false
+showCompass false
+~0.5
+?(shownMap):goto"repeat"
+@(shownMap || !HideMap)
+if(HideMap)Then{goto "repeat"}
+
+showWatch true
+
+showCompass true
+
+#repeatShow
+showMap true
+~1
+?(!shownMap):goto"repeatShow"
+exit

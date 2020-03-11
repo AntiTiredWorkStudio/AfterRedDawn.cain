@@ -10,11 +10,20 @@ tempPos = getpos MapTable
 MapTable setpos [-1000,-1000]
 MapTableNone setpos tempPos
 StolenMap = true
+
+#repeat
+
+HideMap = false
+
+~0.5
+?(!shownMap):goto"repeat"
+
 {(_x select 2) setMarkerPos getpos (_x select 0);(_x select 1) setMarkerPos getpos (_x select 0)}forEach SignalInfoList
 
 {(_x select 0) setMarkerPos getpos (_x select 1);}forEach MapMarkers
 "SCUDSecond" setMarkerPos [-1000,-1000]
 hint "Your map markers has Upgraded."
+"2_1" objStatus "DONE"
 "4" objStatus "ACTIVE"
 "4" objStatus "DONE"
 "5" objStatus "ACTIVE"

@@ -20,14 +20,14 @@ dostop DTeamFly
 (units group EscTeam select 0) moveInCargo EscapeUaz
 (units group EscTeam select 2) moveInCargo EscapeUaz
 Guba moveInCargo EscapeUaz
-{_x allowFleeing 1}forEach units group EscTeam
+{_x allowFleeing 0}forEach units group EscTeam
 
 CapturedCount = 0
 Arrest = false
 
 Guba setCaptive true
 
-TitleCut["","White In",10]
+TitleCut["","White In",2]
 goto "PrepareCaptured"
 _camera ="camera" camCreate getPos Guba
 _camera cameraEffect ["internal","back"]

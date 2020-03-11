@@ -5,7 +5,6 @@ onLoadMission = You are in the UAZ to escape
 onLoadIntro = "Near the Villa"
 showGPS=1
 
-
 //Gui related
 #define DEFAULTFONT						"CourierNewB64"
 #define SMALLFONT						"Garamond64"
@@ -539,6 +538,23 @@ class NuclearCodeGive:DefaultPad
 class CfgSounds
 {
 	sounds[] = 	{ };
+	
+	class ESCTeam_01
+	{
+		name = "";
+		sound[] = {"NormalVoice.ogg", db-40, 1.0};
+		forceTitles = true;
+		titles[] = { 0, "Our helicopter is right ahead,the Mi24 will cover our retreat." };
+	};
+	
+	
+	class ESCTeam_02
+	{
+		name = "";
+		sound[] = {"NormalVoice.ogg", db-40, 1.0};
+		forceTitles = true;
+		titles[] = { 0, "We're under attack ! Jump the car !" };
+	};
 	
 	class Meeting01
 	{
