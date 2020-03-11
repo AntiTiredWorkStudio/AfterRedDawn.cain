@@ -157,7 +157,7 @@ ImportantProtection = [TownLeader,Engineer01,Engineer02,CampTeam,(object 9379)] 
 [Guba] exec "FriendlyProtection.sqs"
 
 ;用于快速调试章节
-goto "Chapter02"
+;goto "Chapter02"
 #Chapter01
 ;--------------第一章：被俘----------------------
 TitleText["Chapter 01 : Captured","Plain Down",3]

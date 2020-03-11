@@ -46,9 +46,18 @@ Guba playMove "CrouchToCrouchSprintF"
 {unassignVehicle _x}forEach _EscapeGroup
 
 {_x doMove getpos SkyLandPlane;_x setSpeedMode "FULL"}forEach units group EscTeam
+
+
 @!(Guba in EscapeUaz)
+
+_bflare01pos = (getpos EscapeUaz)
+_bflare01pos set[2,120]
+_bflare01="Flare" createVehicle _bflare01pos
+
 EscapeUaz lock true
 EscapeUaz setDammage 1
+
+
 @(!alive _T1 and !alive _T2 and !alive _T3)
 ;hint format["%1",(count units group _EscapeGroup)]
 ;hint "All Unit Dead"

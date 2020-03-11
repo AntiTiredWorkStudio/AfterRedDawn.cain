@@ -47,8 +47,8 @@ class Mission
 				items=1;
 				class Item0
 				{
-					position[]={7161.188477,306.743866,6024.773438};
-					azimut=994.126648;
+					position[]={5985.497559,418.646973,6312.129395};
+					azimut=849.088745;
 					special="NONE";
 					id=0;
 					side="EAST";
@@ -8529,7 +8529,7 @@ class Mission
 		};
 		class Item174
 		{
-			position[]={6021.016602,415.934967,6135.587891};
+			position[]={6016.597168,415.934967,6127.602539};
 			name="partrol_25";
 			type="Empty";
 			a=0.400000;

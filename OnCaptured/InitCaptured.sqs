@@ -60,6 +60,10 @@ Guba cameraEffect ["terminate","back"]
 camDestroy _camera
 #PrepareCaptured
 
+_bflarepos=(getpos DTeam01)
+_bflarepos set[2,120]
+_bflare="FlareGreen" createVehicle _bflarepos
+
 []exec"OnCaptured\PlayerCaptured.sqs"
 
 exit
