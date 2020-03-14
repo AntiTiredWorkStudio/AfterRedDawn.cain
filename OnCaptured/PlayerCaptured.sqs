@@ -9,6 +9,7 @@ EscapeUaz setDammage 1
 setAccTime 4
 goto "FinishCheck"
 #start
+EscapeUaz setVelocity [10,0,0]
 0 fadeMusic 0
 PlayMusic "Track11"
 5 fadeMusic 1

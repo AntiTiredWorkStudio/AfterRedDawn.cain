@@ -124,4 +124,6 @@ TownLeader setUnitPos "UP"
 []exec "OnDiscover\FindTeamate.sqs"
 
 []exec "OnDiscover\UnitsDeploy.sqs"
+
+[Transport]exec "OnDiscover\TransportCar.sqs"
 exit;

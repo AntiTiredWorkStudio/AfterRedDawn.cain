@@ -1,0 +1,14 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+clearWeaponCargo _this
+clearMagazineCargo _this
+_this addWeaponCargo["HKG3",5]
+_this addWeaponCargo["M60",3]
+_this addWeaponCargo["M16S",5]
+_this addWeaponCargo["M16GrenadeLauncher",5]
+_this addMagazineCargo["HKG3Mag",25]
+_this addMagazineCargo["M60",15]
+_this addMagazineCargo["M16",25]
+_this addMagazineCargo["GrenadeLauncher",15]
+exit

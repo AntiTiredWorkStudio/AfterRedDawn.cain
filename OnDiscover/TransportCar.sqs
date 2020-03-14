@@ -1,0 +1,135 @@
+; *****************************************************
+; ** Operation Flashpoint Script File
+; *****************************************************
+_transportCar = _this select 0
+clearWeaponCargo _transportCar 
+clearMagazineCargo _transportCar 
+_GGrp = group GLeader
+deleteVehicle GLeader
+{dostop _x}forEach units _GGrp
+_GGrp setBehaviour "SAFE"
+_Logic01 = "Logic" createVehicle getpos _transportCar
+_Logic02 = "Logic" createVehicle getpos _transportCar
+_Logic01 moveInCargo _transportCar
+_Logic02 moveInCargo _transportCar
+_driver = [getpos _transportCar,"SoldierWB",CivilianFactory]call Func_CUnit
+_driver moveInDriver _transportCar
+_EastCaptive01 = [(getpos object 1705),player,["SoldierEB","SoldierEB","SoldierEB"],"OfficerE"] call Func_CGrp
+_EastCaptive01 setBehaviour "Careless"
+{_x setCaptive true;removeAllWeapons _x;dostop _x;_x switchMove "FXStandSurUniv"}forEach units _EastCaptive01
+_CaptiveLeader = Leader _EastCaptive01
+
+_EastCaptive02 = [(getMarkerPos "GGuardACaptive"),player,["SoldierEB"],"SoldierEB"] call Func_CGrp
+_EastCaptive02 setBehaviour "Careless"
+{_x setCaptive true;removeAllWeapons _x;dostop _x;_x switchMove "FXStandSurUniv"}forEach units _EastCaptive02
+
+_EastCaptive03 = [(getMarkerPos "GGuardBCaptive"),player,[],"SoldierEB"] call Func_CGrp
+_EastCaptive03 setBehaviour "Careless"
+{_x setCaptive true;removeAllWeapons _x;dostop _x;_x switchMove "FXStandSurUniv"}forEach units _EastCaptive03
+
+_GuardA = [(getMarkerPos "GGuardPos03"),CivilianFactory]call Func_CGrp
+_GuardA setBehaviour "SAFE"
+_GuardAFire = "Fire" createVehicle (getMarkerPos "GGuardPos03_Fire")
+_GuardAFire inflame true
+((units _GuardA) select 1) setpos (getMarkerPos "GGuardPos03_Guard01") 
+(Leader _GuardA)  setpos (getMarkerPos "GGuardPos02") 
+
+{dostop _x}forEach (units _GuardA)
+
+_GuardATent01 = "CampEmpty" createVehicle (getMarkerPos "GGuardPos03_Tent01")
+_GuardATent01 setDir 40
+_GuardATent02 = "CampEmpty" createVehicle (getMarkerPos "GGuardPos03_Tent02")
+_GuardATent02 setDir 40
+
+
+_GuardB = [(getMarkerPos "GGuardPos04"),CivilianFactory]call Func_CGrp
+_GuardB setBehaviour "SAFE"
+
+((units _GuardB) select 1) setpos getMarkerPos "GGuardPos04_Oppsite"
+((units _GuardB) select 2) setpos ([getMarkerPos "GGuardPos04_Oppsite",[-3,0,0]] call Func_APos)
+((units _GuardB) select 3) setpos ([getMarkerPos "GGuardPos04_Oppsite",[3,0,0]] call Func_APos)
+
+{dostop _x}forEach (units _GuardB)
+
+_GuardBTent01 = "CampEmpty" createVehicle (getMarkerPos "GGuardPos04_Tent01")
+_GuardBTent02 = "CampEmpty" createVehicle (getMarkerPos "GGuardPos04_Tent02")
+_GuardBTent03 = "CampEmpty" createVehicle (getMarkerPos "GGuardPos04_Tent03")
+_GuardBFire = "Fire" createVehicle (getMarkerPos "GGuardPos04_Fire")
+_GuardBFire inflame true
+
+
+_GuardC = [(getMarkerPos "GGuardPos05"),CivilianFactory]call Func_CGrp
+_GuardC setBehaviour "SAFE"
+(Leader _GuardC) setpos (getMarkerPos "GGuardPos06")
+(units _GuardC select 1) setpos ([getMarkerPos "GGuardPos06",[-1,-2,0]] call Func_APos)
+(units _GuardC select 2) setpos ([getMarkerPos "GGuardPos06",[1,2,0]] call Func_APos)
+{dostop _x}forEach (units _GuardC)
+
+;@player distance _transportCar < 50
+~30
+{dostop _x;_x switchMove "Default"}forEach units _EastCaptive01
+(units _EastCaptive01) orderGetIn true
+{_x assignAsCargo _transportCar}forEach units _EastCaptive01
+GGuard doMove getMarkerPos "GGuardPos"
+[_EastCaptive01,player]exec "OnDiscover\GubaJoinCaptives.sqs"
+~30
+_transportCar doMove (getpos (object 2446))
+@(unitReady _transportCar)
+(Leader _GuardA)  doMove (getMarkerPos "GGuardPos01")
+{dostop _x;_x switchMove "Default"}forEach units _EastCaptive02
+(units _EastCaptive02) orderGetIn true
+{_x assignAsCargo _transportCar}forEach (units _EastCaptive02)
+@(unitReady (Leader _GuardA))
+(Leader _GuardA)  doWatch _transportCar
+~30
+(units _EastCaptive02) join _EastCaptive01 
+
+(Leader _GuardA)  doWatch ObjNull
+(Leader _GuardA)  doMove (getMarkerPos "GGuardPos02") 
+@(unitReady (Leader _GuardA) )
+
+_transportCar doMove (getpos (object 2544))
+
+@(unitReady _transportCar)
+{dostop _x;_x switchMove "Default"}forEach units _EastCaptive03
+(units _EastCaptive03) orderGetIn true
+{_x assignAsCargo _transportCar}forEach (units _EastCaptive03)
+~30
+ (units _EastCaptive03) join _EastCaptive01 
+_transportCar doMove (getpos (object 4637))
+@(unitReady _transportCar)
+(Leader _GuardC) doMove getMarkerPos "GGuardPos07"
+@(unitReady (Leader _GuardC))
+{UnAssignVehicle _x}forEach  (units _EastCaptive01)
+_EastCaptive01 Move getpos (object 4638)
+@(unitReady (Leader _EastCaptive01))
+@(count (crew _transportCar)<=5)
+~12
+_transportCar doMove (getpos (object 1604))
+_followUnit = [(Leader _GuardC),(units _GuardC select 1),(units _GuardC select 2),(units _GuardC select 3)]
+_followUnit doMove (getMarkerPos "BoardingPos")
+_EastCaptive01 Move (getMarkerPos "BoardingPos")
+@(unitReady (Leader _GuardC)  && unitReady (Leader _EastCaptive01))
+
+_captives =  (units _EastCaptive01)
+_BoatACaptive = [_captives select 0,_captives select 1,_captive select 2,_captives select 3]
+_BoatBCaptive =_captives -_BoatACaptive
+_BoatACaptive orderGetIn true
+_BoatBCaptive orderGetIn true
+{_x assignAsCargo CaptiveBoat01}forEach _BoatACaptive
+{_x assignAsCargo CaptiveBoat02}forEach _BoatBCaptive
+
+@(count (crew CaptiveBoat01)>=4)
+@(count (crew CaptiveBoat02)>=3)
+_followUnit orderGetIn true
+(_followUnit select 1) assignAsGunner CaptiveBoat01
+(_followUnit select 0) assignAsDriver CaptiveBoat01
+(_followUnit select 2) assignAsGunner CaptiveBoat02
+(_followUnit select 3) assignAsDriver CaptiveBoat02
+
+@(count (crew CaptiveBoat01)>=6)
+@(count (crew CaptiveBoat02)>=5)
+~5
+CaptiveBoat01 doMove getMarkerPos "BoardingDest01"
+CaptiveBoat02 doMove getMarkerPos "BoardingDest02"
+exit
