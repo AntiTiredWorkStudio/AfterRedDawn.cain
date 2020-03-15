@@ -65,7 +65,7 @@ _GuardC setBehaviour "SAFE"
 (units _GuardC select 2) setpos ([getMarkerPos "GGuardPos06",[1,2,0]] call Func_APos)
 {dostop _x}forEach (units _GuardC)
 
-;@player distance _transportCar < 50
+@player distance _transportCar < 50
 ~30
 {dostop _x;_x switchMove "Default"}forEach units _EastCaptive01
 (units _EastCaptive01) orderGetIn true
@@ -100,16 +100,18 @@ _transportCar doMove (getpos (object 4637))
 @(unitReady _transportCar)
 (Leader _GuardC) doMove getMarkerPos "GGuardPos07"
 @(unitReady (Leader _GuardC))
+(Leader _GuardC) doWatch (Leader _EastCaptive01)
 {UnAssignVehicle _x}forEach  (units _EastCaptive01)
-_EastCaptive01 Move getpos (object 4638)
+{_x doMove (getpos (object 4638))}forEach units _EastCaptive01
 @(unitReady (Leader _EastCaptive01))
 @(count (crew _transportCar)<=5)
 ~12
 _transportCar doMove (getpos (object 1604))
 _followUnit = [(Leader _GuardC),(units _GuardC select 1),(units _GuardC select 2),(units _GuardC select 3)]
-_followUnit doMove (getMarkerPos "BoardingPos")
-_EastCaptive01 Move (getMarkerPos "BoardingPos")
-@(unitReady (Leader _GuardC)  && unitReady (Leader _EastCaptive01))
+{_x doMove (getMarkerPos "BoardingPos")}forEach _followUnit
+{_x doMove (getMarkerPos "BoardingPos")}forEach units _EastCaptive01
+[_GuardC,_EastCaptive01]exec "OnDiscover\SaveCaptives.sqs"
+@(unitReady (Leader _GuardC)  && unitReady (Leader _EastCaptive01) && (captive player))
 
 _captives =  (units _EastCaptive01)
 _BoatACaptive = [_captives select 0,_captives select 1,_captive select 2,_captives select 3]
@@ -119,17 +121,19 @@ _BoatBCaptive orderGetIn true
 {_x assignAsCargo CaptiveBoat01}forEach _BoatACaptive
 {_x assignAsCargo CaptiveBoat02}forEach _BoatBCaptive
 
-@(count (crew CaptiveBoat01)>=4)
-@(count (crew CaptiveBoat02)>=3)
+@(count (crew CaptiveBoat01)>=3 && (captive player))
+@(count (crew CaptiveBoat02)>=3 && (captive player))
 _followUnit orderGetIn true
 (_followUnit select 1) assignAsGunner CaptiveBoat01
 (_followUnit select 0) assignAsDriver CaptiveBoat01
 (_followUnit select 2) assignAsGunner CaptiveBoat02
 (_followUnit select 3) assignAsDriver CaptiveBoat02
 
-@(count (crew CaptiveBoat01)>=6)
-@(count (crew CaptiveBoat02)>=5)
+@(count (crew CaptiveBoat01)>=5 && (captive player))
+@(count (crew CaptiveBoat02)>=5 && (captive player))
 ~5
 CaptiveBoat01 doMove getMarkerPos "BoardingDest01"
 CaptiveBoat02 doMove getMarkerPos "BoardingDest02"
+@(unitReady CaptiveBoat01 && unitReady CaptiveBoat02)
+if(player in CaptiveBoat01 || player in CaptiveBoat02)Then{exit;}
 exit

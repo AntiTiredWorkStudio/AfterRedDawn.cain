@@ -1,12 +1,20 @@
 ; *****************************************************
 ; ** Operation Flashpoint Script File
 ; *****************************************************
+if(count _this >= 3)Then{goto "ActionPart"}
 @(Guba distance RussiaFlag < 30)
 "7" objStatus "DONE"
 ~1
 "7_1" objStatus "ACTIVE"
 []exec "OnDefend\EngineerState.sqs"
 @(Guba distance TownLeader < 10)
+TownLeader addAction[format["Talk to %1",name TownLeader],"OnDiscover\ArriveTown.sqs"]
+exit
+#ActionPart
+_townLeader = _this select 0
+_aid = _this select 2
+_townLeader removeAction _aid
+
 _LeaderPos = getpos TownLeader
 TownLeader setUnitPos "AUTO"
 TownLeader setBehaviour "SAFE"

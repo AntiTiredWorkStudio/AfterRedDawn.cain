@@ -1,0 +1,10 @@
+_grp = _this select 0
+_captiveGrp = _this select 1
+@(count units _grp <= 0)
+_captiveGrp Move (getpos player)
+_captiveGrp setSpeedMode "Normal"
+_captiveGrp setCombatMode "RED"
+_captiveGrp setBehaviour "AWARE"
+[Leader _captiveGrp] call Func_BuildControlMenu
+{_x setCaptive false}forEach units _captiveGrp
+GroupCount = GroupCount +1

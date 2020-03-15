@@ -8,7 +8,7 @@
 		;"DONE"
 		;"HIDDEN"
 ;是否为调试模式
-Debug = true
+Debug = false
 ;任务定义
 "1" objStatus "ACTIVE"
 "2" objStatus "HIDDEN"
@@ -141,6 +141,8 @@ GoodEnd01 = false
 	BadEnd02 = false
 	;交出SCUD并投降
 	BadEnd03 = false
+	;被抓捕
+	BadEnd04 = false
 
 ;加载函数
 []exec "Common\Functions.sqs"
@@ -157,7 +159,7 @@ ImportantProtection = [TownLeader,Engineer01,Engineer02,CampTeam,(object 9379)] 
 [Guba] exec "FriendlyProtection.sqs"
 
 ;用于快速调试章节
-goto "Chapter02"
+;goto "Chapter02"
 #Chapter01
 ;--------------第一章：被俘----------------------
 TitleText["Chapter 01 : Captured","Plain Down",3]

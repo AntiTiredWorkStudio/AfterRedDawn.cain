@@ -79,6 +79,7 @@ if(Leader _unit == _unit && _unit!=BaseCommand && !(_unit in ConditionControlGro
 ;ControllerGroup set[GroupCount,group _unit]
 ;[group _unit,GroupCount] exec "cmd\ControlMenu.sqs"
 [_unit] call Func_BuildControlMenu
+[_unit]exec "OnDiscover\TakeFriendlyToTown.sqs"
 GroupCount = GroupCount +1;
 goto "Next"
 #UnRegist

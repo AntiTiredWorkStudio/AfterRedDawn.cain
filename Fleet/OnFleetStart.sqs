@@ -40,7 +40,7 @@ sup01 Move getpos (object 3460)
 
 @(sup01 distance (object 3460) < 15)
 ~2
-hint "finished"
+
 {unassignVehicle _x;_x setBehaviour "AWARE"} forEach _units
 
 @(count crew sup01 <=2)

@@ -47,8 +47,8 @@ class Mission
 				items=1;
 				class Item0
 				{
-					position[]={4238.939941,35.724483,3076.396729};
-					azimut=905.797546;
+					position[]={7092.255371,311.994110,6023.681152};
+					azimut=725.317810;
 					special="NONE";
 					id=0;
 					side="EAST";
@@ -5148,7 +5148,7 @@ class Mission
 	};
 	class Vehicles
 	{
-		items=213;
+		items=215;
 		class Item0
 		{
 			position[]={7280.409180,313.073730,7759.161133};
@@ -7402,6 +7402,25 @@ class Mission
 			skill=1.000000;
 			text="CaptiveBoat02";
 		};
+		class Item213
+		{
+			position[]={4288.613770,8.865000,2945.256104};
+			azimut=209.610992;
+			id=531;
+			side="EMPTY";
+			vehicle="ReammoBoxWest";
+			skill=0.200000;
+			init="this exec ""WestAmmoBox.sqs""";
+		};
+		class Item214
+		{
+			position[]={4289.221680,8.865000,2945.752686};
+			azimut=-131.552582;
+			id=532;
+			side="EMPTY";
+			vehicle="Fence";
+			skill=0.600000;
+		};
 	};
 	class Markers
 	{
@@ -8924,7 +8943,7 @@ class Mission
 		};
 		class Item195
 		{
-			position[]={3625.569336,0.841444,2668.453857};
+			position[]={3657.412354,1.064940,2663.336914};
 			name="BoardingDest01";
 			type="Empty";
 			a=0.400000;
@@ -8933,7 +8952,7 @@ class Mission
 		};
 		class Item196
 		{
-			position[]={3611.783447,0.841444,2681.613281};
+			position[]={3645.901123,1.064940,2703.220215};
 			name="BoardingDest02";
 			type="Empty";
 			a=0.400000;

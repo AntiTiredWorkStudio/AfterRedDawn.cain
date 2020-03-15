@@ -8,5 +8,4 @@ _Player = _this select 1
 Player setCaptive true
 @((count weapons _Player>0) || (_Player distance (Leader _CaptiveGrp))>10)
 Player setCaptive false
-;goto "LoopCheck"
 exit
